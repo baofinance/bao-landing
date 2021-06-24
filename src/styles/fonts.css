@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'Inter Roman';
+  src: url('/fonts/Inter-roman.otf') format('opentype');
+  font-weight: normal;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+@font-face {
+  font-family: 'GT Haptik Medium';
+  src: url('/fonts/GT-Haptik-Medium.woff2');
+}
+
+@font-face {
+  font-family: 'Poppins,sans-serif';
+  src: url('/fonts/GT-Haptik-Regular.woff2');
+}
+
+@font-face {
+  font-family: 'Kaushan Script';
+  src: url('/fonts/KaushanScript-Regular.woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('/fonts/NotoSans-Regular.woff2');
+}
