@@ -90,13 +90,6 @@ module.exports = {
         }
       }
     },
-    {
-      resolve: 'gatsby-source-medium-feed',
-      options: {
-        userName: '@thebaoman', // Medium user name
-        name: 'MediumFeed', // GraphQL query AllMediumFeed
-      },
-    },  
     'gatsby-remark-reading-time',
     {
       resolve: `gatsby-plugin-mdx`,
@@ -207,13 +200,6 @@ module.exports = {
         ]
       }
     },
-    'gatsby-plugin-eslint',
-      {
-        resolve: 'gatsby-source-medium',
-        options: {
-          username: '@thebaoman', // Medium user name
-        },
-      },
     //{
     //  resolve: `gatsby-plugin-algolia-docsearch-appid`,
     //  options: {
