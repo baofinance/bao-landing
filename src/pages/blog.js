@@ -1,11 +1,7 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
-import { convertNodeToElement } from 'react-html-parser'
-import AccordionItem from "../components/accordionItem";
-import fallbackImage from "../images/twitter-card.jpg";
 
 import Layout from '../layouts'
 import BG from '../components/bg'
@@ -16,9 +12,7 @@ const StyledBlog = styled.div`
   padding-bottom: 4rem;
   margin-bottom: 4rem;
   padding-top: 2rem;
-
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
-
   @media (max-width: 960px) {
     flex-direction: column;
     grid-template-columns: 1fr;
@@ -59,28 +53,23 @@ export const Posts = styled.div`
   backdrop-filter: blur(2px);
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
   border: 1px solid rgba(0, 0, 0, 0);
-
   :hover {
     border: 1px solid ${({ theme }) => theme.colors.grey3};
   }
   h1 {
     max-width: 960px;
   }
-
   a {
     color: ${({ theme }) => theme.textColor};
+  }
+  p {
+    max-width: 450px;
   }
   p:last-child {
     margin-bottom: 0;
   }
-
   @media (max-width: 960px) {
     width: 100%;
-  }
-
-  h4 {
-    font-family: Kaushan Script;
-    font-size: 2rem;
   }
 `
 
@@ -90,7 +79,6 @@ export const PostLinkWrapper = styled(Link)`
   flex-direction: column-reverse;
   justify-content: space-between;
   align-items: flex-start;
-
   /* > * + * {
     margin-left: 36px;
   } */
@@ -120,24 +108,6 @@ export const PostTitleWrapper = styled.div`
   }
 `
 
-export const PostContentWrapper = styled.div`
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  padding: 0 2rem;
-  h2 {
-    font-size: 36px;
-  }
-  /* > * + * {
-    margin-left: 24px;
-  } */
-  @media (max-width: 960px) {
-    > * + * {
-      margin-left: 0;
-    }
-  }
-`
-
 export const PostMetaData = styled.p`
   font-size: 1rem;
   margin-bottom: 0.5rem;
@@ -149,7 +119,7 @@ export const PostMetaData = styled.p`
   }
 `
 
-export const StyledImage = styled.div`
+export const StyledImage = styled(Img)`
   width: 100%;
   border-radius: 12px;
   height: 420px;
@@ -162,8 +132,8 @@ export const StyledImage = styled.div`
 `
 
 export const NewPill = styled.p`
-  color: #ce6509;
-  background-color: #50251c;
+  color: ${({ theme }) => theme.white};
+  background-color: ${({ theme }) => theme.colors.link};
   padding: 0rem 0.5rem;
   position: absolute;
   left: -1rem;
@@ -177,59 +147,84 @@ export const NewPill = styled.p`
 
 const Blog = props => {
   const data = useStaticQuery(graphql`
-  query {
-    allMediumFeed(sort: { fields: [date], order: DESC }) {
-      edges {
-        node {
-          title
-          date(formatString: "DD MMMM YYYY")
-          author
-          link
-          content
-          thumbnail
-          slug
+    {
+      allMdx(filter: { fileAbsolutePath: { regex: "/blog/" } }, sort: { order: DESC, fields: frontmatter___date }) {
+        edges {
+          node {
+            id
+            excerpt(pruneLength: 250)
+            frontmatter {
+              date(formatString: "MMMM Do, YYYY")
+              title
+              previewText
+              featuredImage {
+                childImageSharp {
+                  fluid(maxWidth: 1200) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+            fields {
+              slug
+              readingTime {
+                text
+              }
+            }
+          }
+          next {
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+            }
+          }
+          previous {
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+            }
+          }
         }
       }
     }
-  }
   `)
 
   return (
     <Layout path={props.location.pathname}>
       <BG />
-      <SEO title="Bao Finance Blog" path={props.location.pathname} />
+      <SEO title="Uniswap Blog" path={props.location.pathname} />
 
       <StyledBlog>
         <PageTitleWrapper>
-          <h2 style={{ fontSize: '56px', fontWeight: '600', fontFamily: 'Kaushan Script', textAlign: 'center' }}>Blog</h2>
-          {/* <p>
-            News, stories, and announcements from Bao Finance.{' '}
-            <a style={{ paddingBottom: '1rem', color: '#ce6509' }} href="https://thebaoman.medium.com/" target="_blank" rel="noreferrer">
+          <h2 style={{ fontSize: '56px' }}>Blog</h2>
+          <p>
+            News, stories, and announcements from Uniswap.{' '}
+            <a style={{ paddingBottom: '1rem' }} href="/rss.xml" target="_blank">
               Subscribe
             </a>
-          </p> */}
+          </p>
         </PageTitleWrapper>
         <PostsWrapper>
-          {data.allMediumFeed.edges.map(({ node }, index) => {
+          {data.allMdx.edges.map(({ node }, index) => {
             return (
               <Posts wide={index} key={node.id}>
-
-                <PostLinkWrapper >
+                <PostLinkWrapper wide={index} to={node.fields.slug}>
                   {index === 0 && <NewPill>New</NewPill>}
                   <PostTitleWrapper>
+                    <h2 style={{ marginTop: '0px' }}>{node.frontmatter.title}</h2>
 
-                    <h2 style={{ marginTop: '0px', fontFamily: 'Kaushan Script' }}><a href="href={`https://medium.com/@thebaoman/${node.slug}`}">{node.title}</a></h2>
-                    <PostMetaData>{node.date}</PostMetaData>
+                    {node.frontmatter.previewText ? <p>{node.frontmatter.previewText} </p> : ''}
+
+                    <PostMetaData>{node.frontmatter.date + ' - ' + node.fields.readingTime.text}</PostMetaData>
                   </PostTitleWrapper>
-                  <StyledImage><img src={fallbackImage}/></StyledImage>
+                  {node.frontmatter.featuredImage && (
+                    <StyledImage fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
+                  )}
                 </PostLinkWrapper>
-                <PostContentWrapper>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: node.content
-                    }}></div>
-
-                </PostContentWrapper>
               </Posts>
             )
           })}

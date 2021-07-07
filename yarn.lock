@@ -1898,6 +1898,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.14.0":
+  version "7.14.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
+  integrity sha512-/PCB2uJ7oM44tz8YhC4Z/6PeOKXp4K588f+5M3clr1M4zbqztlo0XEfJ2LEzj/FgwfgGcIdl8n7YYjTCI0BYwg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.2.0":
   version "7.11.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
@@ -9530,12 +9537,12 @@ gatsby-source-medium-feed@1.0.6:
     "@babel/runtime" "^7.0.0"
     rss-parser "3.7.0"
 
-gatsby-source-medium@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-medium/-/gatsby-source-medium-3.1.0.tgz#bfbd63208d2c7508dcb27b30c419c5ca3515721f"
-  integrity sha512-oNz4KZFJPVIIor+Aixg580emwDFTTR1fZONFC37IF2gpP6zb/ppZ+J7+maJ8dxxf7GdXouXgZXvWcnhdCRJB9Q==
+gatsby-source-medium@^3.8.0:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-medium/-/gatsby-source-medium-3.8.0.tgz#ed4e96a273c085e203a89e203d219950d2de3167"
+  integrity sha512-RIAojDWwGFxhW7qxlWznPY1F+AnESQIKXQAhgXYWrymNgP1ODOLVDkxb35VhGbWVsQTC17f4PDXSxmgORoIkPg==
   dependencies:
-    "@babel/runtime" "^7.12.5"
+    "@babel/runtime" "^7.14.0"
     axios "^0.21.1"
 
 gatsby-telemetry@^1.3.9:

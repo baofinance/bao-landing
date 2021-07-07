@@ -9,18 +9,14 @@ const StyledSectionFlex = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
-  z-index: 99999;
   justify-content: space-between;
-  font-family: Poppins,sans-serif;
-  
+  align-items: center;
+  max-width: 960px;
+  width: 100%;
   @media (max-width: 1024px) {
     padding: 1rem;
     margin-top: 0rem;
     flex-direction: ${({ wrapSmall }) => (!wrapSmall ? 'row' : 'column')};
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
   }
   @media (max-width: 960px) {
     padding: 1rem;
@@ -41,15 +37,20 @@ const StyledSectionFlex = styled.div`
   }
 `
 
+const Numbers = styled(StyledSectionFlex)`
+  @media (max-width: 960px) {
+    /* display: none; */
+  }
+`
+
 const BigNumbers = styled(StyledSectionFlex)`
-  font-size: 18px;
-  flex-direction: column
+  font-size: 36px;
+  font-weight: 700;
+  flex-direction: column;
+  
   @media (max-width: 960px) {
     font-size: 32px;
   }
-  --tw-space-x-reverse: 0;
-    margin-right: calc(5rem*var(--tw-space-x-reverse));
-    margin-left: calc(5rem*(1 - var(--tw-space-x-reverse)));
 `
 
 export const GET_BLOCK = gql`
@@ -86,67 +87,83 @@ const ProtocolData = () => {
   const { data: globalData } = useQuery(GLOBAL_QUERY, { pollInterval: 10000, client: client })
 
   // hardcode at 1B in case of data failure
-  const price = globalData ? globalData?.baoToken?.price : 0.0008
-  const tvl = globalData ? globalData?.baoToken?.holders : 100000000
-  const mc = globalData ? globalData?.uniswapFactory?.txCount : 29000000
-  const holders = globalData ? globalData?.baoToken?.holders : 16000
+  const volume = globalData ? globalData?.uniswapFactory?.totalVolumeUSD : 100000000000
+  const transactions = globalData ? globalData?.uniswapFactory?.txCount : 29000000
 
-
-  const formattedPrice = new Intl.NumberFormat('en-US', {
+  const formattedVol = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     notation: 'compact',
     compactDisplay: 'short'
     // maximumSignificantDigits: 5
-  }).format(price)
+  }).format(volume)
 
-  const formattedTVL = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const formattedTransactions = new Intl.NumberFormat('en-US', {
     notation: 'compact',
     compactDisplay: 'short'
     // maximumSignificantDigits: 5
-  }).format(tvl)
-
-  const formattedMC = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    notation: 'compact',
-    compactDisplay: 'short'
-    // maximumSignificantDigits: 5
-  }).format(mc)
-
-  const formattedHolders = new Intl.NumberFormat('en-US', {
-    notation: 'compact',
-    compactDisplay: 'short'
-    // maximumSignificantDigits: 5
-  }).format(holders)
+  }).format(transactions)
 
   return (
-      <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center', margin: 0, position: 'fixed', bottom: 0, paddingTop: '1.25rem', paddingBottom: '1.25rem', backgroundColor: '#efeae7',  border: '1px solid rgb(226, 214, 207)',
-      overflow: 'hidden' }}>
-        <BigNumbers>
-        <div style={{ whitespace: 'nowrap' }}>
-            <span style={{ fontWeight: 600, fontFamily: 'Kaushan Script' }}>BAO: </span><span style={{ fontWeight: 200 }}>{formattedPrice}</span>
-          </div>
-        </BigNumbers>
-        <BigNumbers>
-          <div style={{ whitespace: 'nowrap' }}>
-            <span style={{ fontWeight: 600, fontFamily: 'Kaushan Script' }}>Total Value Locked: </span><span style={{ fontWeight: 200 }}>{formattedTVL}</span><span style={{ opacity: '0.5' }}>+</span>
-          </div>
-        </BigNumbers>
-        <BigNumbers>
-        <div style={{ whitespace: 'nowrap' }}>
-            <span style={{ fontWeight: 600, fontFamily: 'Kaushan Script' }}>Market Cap: </span><span style={{ fontWeight: 200 }}>{formattedMC}</span><span style={{ opacity: '0.5' }}>+</span>
-          </div>
-        </BigNumbers>
-        <BigNumbers>
-        <div style={{ whitespace: 'nowrap' }}>
-          <span style={{ fontWeight: 600, fontFamily: 'Kaushan Script' }}>Token Holders: </span><span style={{ fontWeight: 200 }}>{formattedHolders}</span><span style={{ opacity: '0.5' }}>+</span>
+    <section className="fact-one">
+      <div className="container">
+        <div className="row">
+          <Numbers id="about" style={{ flexDirection: 'column' }}>
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', margin: 0 }}>
+              <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
+                <div className="fact-one__single">
+                  <div className="fact-one__inner">
+                    <BigNumbers>
+                      <span>
+                        {formattedVol}
+                      </span>
+                      <p style={{ fontSize: '14px' }}>TVL</p>
+                    </BigNumbers>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
+                <div className="fact-one__single">
+                  <div className="fact-one__inner">
+              <BigNumbers>
+                <span>
+                  72K
+                </span>
+                <p style={{ fontSize: '14px' }}>Holders</p>
+              </BigNumbers>
+              </div>
+                </div>
+              </div>
+              <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
+                <div className="fact-one__single">
+                  <div className="fact-one__inner">
+              <BigNumbers>
+                <span>
+                  {formattedTransactions}
+                </span>
+                <p style={{ fontSize: '14px' }}>BAO Price</p>
+              </BigNumbers>
+              </div>
+                </div>
+              </div>
+              <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
+                <div className="fact-one__single">
+                  <div className="fact-one__inner">
+              <BigNumbers>
+                <span>
+                  200
+                </span>
+                <p style={{ fontSize: '14px' }}>Market Cap</p>
+              </BigNumbers>
+              </div>
+                </div>
+              </div>
+            </div>
+          </Numbers>
         </div>
-        </BigNumbers>
       </div>
-        )
+    </section>
+  )
 }
 
 export default ProtocolData

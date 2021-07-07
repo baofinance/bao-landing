@@ -12,7 +12,8 @@ import { useDarkMode } from '../contexts/Application'
 import { CardBGImage, CardFade, CardNoise, StyledExternalLink, StyledLeftLink, StyledRightLink } from '../components/utils'
 import FloatingImage from '../components/floatingImage'
 import RoadMap from '../components/roadMap'
-import baobasket from "../images/baobasket.svg";
+import baobasket from '../images/baobasket.svg'
+import AccordionItem from '../components/accordionItem'
 
 const BGCard = styled.span`
   width: 100vw;
@@ -51,9 +52,20 @@ const StyledBodySubText = styled.h3`
   max-width: 960px;
   text-align: center;
   line-height: 160%;
+  font-size: 1.25rem;
   @media (max-width: 640px) {
     text-align: left;
   }
+`
+
+const StyledBodyParagraph = styled.h3`
+max-width: 960px;
+text-align: left;
+line-height: 160%;
+font-size: 1.25rem;
+@media (max-width: 640px) {
+  text-align: left;
+}
 `
 
 const StyledTitle = styled.div`
@@ -280,7 +292,7 @@ const StyledLeft = styled.div`
   margin-right: auto;
   max-width: 1280px;
   margin-top: 6rem;
-  margin-bottom: -4rem;
+  margin-bottom: 2rem;
   @media (min-width: 1024px) {
     grid-template-columns: repeat(12,minmax(0,1fr));
     grid-gap: 2rem;
@@ -401,6 +413,13 @@ const StyledRight = styled.div`
     padding: 2rem;
     margin-top: 6rem;
   }
+`
+const StyledRightImage = styled.div`
+position: absolute;
+right: 0px;
+width: 600px;
+padding: 50px;
+bottom: 0px;
 `
 
 const StyledRightTitle = styled.div`
@@ -589,6 +608,20 @@ const IndexPage = props => {
         }
       }
     }
+    pandaswap: file(relativePath: { eq: "pandaswap.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    polygonfranchise: file(relativePath: { eq: "polygonfranchise.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
   }
 `)
 
@@ -612,33 +645,19 @@ const IndexPage = props => {
             These bao buns are the tradition of taking something good that exists, and wrapping it up into being a new treasure.
             Bao Finance aims to do this by being a new protocol that adds features to existing DeFi systems.
           </StyledLeftSubText>
-          <StyledLeftItemRow>
-            <StyledLeftLink href={'https://bao.finance'} target="_blank">
-              <StyledProductImage fadeIn={false} fluid={props.data.mainnetfarms.childImageSharp.fluid} />
-            </StyledLeftLink>
-            <StyledLeftLink href={'https://xdai.bao.finance'} target="_blank">
-              <StyledProductImage fadeIn={false} fluid={props.data.xdaifarms.childImageSharp.fluid} />
-            </StyledLeftLink>
-            <StyledLeftLink href={'https://alpha.baoswap.xyz/'} target="_blank">
-              <StyledProductImage fadeIn={false} fluid={props.data.baoswap.childImageSharp.fluid} />
-            </StyledLeftLink>
-          </StyledLeftItemRow>
         </StyledLeftTitle>
       </StyledLeft>
       <FloatingImage />
       <StyledBody>
+      <ProtocolData />
+        <EcosystemSection data={data} props={props} />
         <RoadmapSection data={data} props={props} />
-        {/*<ProductsSection data={data} props={props} />
-        <StyledImgSection>
-              <MiniNewInfo to="/blog/uniswap-v3/">
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <NewPill>Announcing Uniswap V3</NewPill>
-                  More details ↗
-                </div>
-                <StyledHeroImage fadeIn={false} fluid={props.data.thin.childImageSharp.fluid} />
-              </MiniNewInfo>
-            </StyledImgSection>
-         <ProtocolData /> */}
+        <VisionSection data={data} props={props} />
+        <FaqSection data={data} props={props} />
+        <ProductSection data={data} props={props} />
+      <StyledRightImage>
+        <img src={baobasket}></img>
+      </StyledRightImage>
       </StyledBody>
       <BG />
     </Layout>
@@ -680,86 +699,147 @@ const StyledSectionTitle = styled.h1`
 const RoadmapSection = props => {
   return (
     <>
-      {/* 
-        <StyledRight>
-        <StyledRightTitle>
-          <StyledRightSubTitle>Deliciously wrapped finance!</StyledRightSubTitle>
-          <StyledRightSubText>
-          Bao (包) stands for a treasure or package. Something wonderful that is wrapped up in another layer. Bao buns, or in Chinese Baozi (包子) are delicious wrapped dumplings.
-          These bao buns are the tradition of taking something good that exists, and wrapping it up into being a new treasure.
-          Bao Finance aims to do this by being a new protocol that adds features to existing DeFi systems.
-          </StyledRightSubText>
-          <StyledRightItemRow>
-            <StyledRightLink href={'https://bao.finance'} target="_blank">
-              <StyledProductImage fadeIn={false} fluid={props.data.mainnetfarms.childImageSharp.fluid} />
-            </StyledRightLink>
-            <StyledRightLink href={'https://xdai.bao.finance'} target="_blank">
-              <StyledProductImage fadeIn={false} fluid={props.data.xdaifarms.childImageSharp.fluid} />
-            </StyledRightLink>
-            <StyledRightLink href={'https://alpha.baoswap.xyz/'} target="_blank">
-              <StyledProductImage fadeIn={false} fluid={props.data.baoswap.childImageSharp.fluid} />
-            </StyledRightLink>
-          </StyledRightItemRow>
-        </StyledRightTitle>
-        </StyledRight> 
-        */}
-
       <StyledSectionTitle>Roadmap</StyledSectionTitle>
       <StyledBodySubText>
-        Bao Finance is like a combination of Synthetix and Aave, but utilizes LP tokens for collateral.
-        Rather than re-invent the wheel, Bao will create new features for existing DeFi protocols.
+        Bao Finance is an open-source, fully community run project. Our native token, BAO, acts as a governance 
+        token that puts control in the hands of our community, otherwise know as the BaoDao. 
       </StyledBodySubText>
       <RoadMap />
     </>
   )
 }
 
-const ProductsSection = props => {
+const EcosystemSection = props => {
   return (
     <>
-      <StyledSectionTitle>A suite of tools for a tokenized world.</StyledSectionTitle>
+          <StyledSectionTitle>Crosschain DeFi Ecosystem</StyledSectionTitle>
       <StyledBodySubText>
-        We build state of the art open source apps to access the Uniswap protocol and contribute to the world of
-        decentralized finance.
+      Bao is creating a multinetwork suite of applications that will provide services to DeFi users regardless 
+      of their preferred chains. We’ve already deployed our main project and franchised versions of it on xDai, 
+      Binance Smart Chain, and soon Polygon; with more planned in the future. 
       </StyledBodySubText>
       <StyledItemRow>
-        <StyledExternalLink href={'https://socks.uniswap.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.socks.childImageSharp.fluid} />
+        <StyledExternalLink href={'https://mainnet.bao.finance'} target="_blank">
+          <StyledProductImage fadeIn={false} fluid={props.data.baoswap.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://info.uniswap.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.info.childImageSharp.fluid} />
+        <StyledExternalLink href={'https://xdai.bao.finance'} target="_blank">
+          <StyledProductImage fadeIn={false} fluid={props.data.xdaifarms.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://app.uniswap.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.swap.childImageSharp.fluid} />
+        <StyledExternalLink href={'https://baoswap.xyz'} target="_blank">
+          <StyledProductImage fadeIn={false} fluid={props.data.mainnetfarms.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://tokenlists.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.tokenlists.childImageSharp.fluid} />
+        <StyledExternalLink href={'https://pandaswap.xyz'} target="_blank">
+          <StyledProductImage fadeIn={false} fluid={props.data.pandaswap.childImageSharp.fluid} />
         </StyledExternalLink>
         <StyledExternalLink href={'https://sybil.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.sybil.childImageSharp.fluid} />
-        </StyledExternalLink>
-      </StyledItemRow>
-
-      <StyledSectionTitle>Superpowers for DEFI developers.</StyledSectionTitle>
-      <StyledBodySubText>
-        Check out the <Link to="/docs/v2/">documentation</Link>, the{' '}
-        <Link to="/docs/v2/javascript-SDK/quick-start/">quick start</Link> or a guide below to integrate your project
-        with thousands of tokens and billions in liquidity.
-      </StyledBodySubText>
-      <StyledSectionFlex style={{ paddingBottom: '0px', paddingTop: '1rem' }}>
-        <Wizard />
-      </StyledSectionFlex>
-
-      <StyledSectionTitle>A global community.</StyledSectionTitle>
-      <StyledBodySubText>
-        Learn more about Uniswap, chat with the team, others in the community, and have your say in shaping the future
-        of the Uniswap protocol.
-      </StyledBodySubText>
-      <StyledItemRow>
-        <StyledExternalLink href={'https://www.reddit.com/r/Uniswap'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
+          <StyledProductImage fadeIn={false} fluid={props.data.polygonfranchise.childImageSharp.fluid} />
         </StyledExternalLink>
       </StyledItemRow>
     </>
+  )
+}
+
+const VisionSection = props => {
+  return (
+    <>
+<StyledSectionTitle>The Bao Vision of Finance</StyledSectionTitle>
+<StyledBodyParagraph>
+<p>Traditional finance doesn’t work. For too long it’s been serving the wealthy suits while erecting barriers of entry for everyone 
+else. They own the data, restrict the tools, and change the rules to always be in their favor. It’s time to not only give that power 
+back to the people, but to create even more powerful tools that the old cumbersome system could never dream of.</p>
+
+<p>At Bao Finance, we’re building a community composed of brilliant minds all seeking control of their own finances and building a new 
+system that works for everyone. Synthetic assets allow us to create financial instruments and markets never seen before. If the data 
+exists, so too can a marketplace for it - the possibilities are endless.</p>
+
+<p>It all comes down to data. Most people aren’t aware that financial data is what makes institutions so powerful and why you can’t do what 
+they do. This is why synthetics will matter. If you can get liquidity in any discrete quantifiable event, what have you created? The world’s 
+most accurate financial data system. Financial data is used within insurance, lending, hedge funds, risk mitigation, banking, yield, mortgages, 
+credit scores, etc.</p>
+
+<p>Incentivised synthetics allow you to start building an open financial data market. Once you have synthetics, you own the financial data 
+stream to anything because you can incentivise liquidity to make it more accurate. With this financial data stream you can start any DeFi 
+business you want on top of it, or package and sell the data for others to build on. You become the foundation for the future of finance.</p>
+
+<p>We’re not looking for speculative investors, pump and dumpers, or idle participants. Our goal is to attract people who truly want to take 
+the future of their personal finances into their own hands.</p>
+</StyledBodyParagraph>
+  </>
+  )
+}
+
+const FaqSection = props => {
+  return (
+    <>
+    <section className="faq-one">
+      <div className="container">
+        <div className="block-title text-center">
+          <StyledSectionTitle>FAQ</StyledSectionTitle>
+        </div>
+        <div className="accrodion-grp faq-accrodion">
+          <AccordionItem
+            title="What are synthetics?"
+            content="Synthetic assets are an important part of a decentralized 
+            ecosystem. They allow decentralized infrastructure to offer assets 
+            that track the price of any system."
+            status={true}
+          />
+          <AccordionItem
+            title="How do they work?"
+            content="Most people do not understand synthetics. They think that 
+            derivatives are only good for synthetic stocks. They just want to buy 
+            stocks like $APPL or $GME on the blockchain 24/7. While that is a good 
+            part of synthetics, it is just replicating our existing market on the 
+            blockchain. What is far more powerful and exciting is that with synthetics 
+            we can do something new. With synthetics you can turn any quantifiable 
+            discrete event into a financial feed that people can buy and sell. "
+            status={false}
+          />
+          <AccordionItem
+            title="What's the difference between soft and hard synthetics?"
+            content="We use the terms soft synthetics and hard synthetics to refer 
+            to two different types of synthetic asset. Soft synthetics are indexes. 
+            Well known indexes in the space currently are DPI, Indexed.Finance and PieDao.
+            Hard synthetics are synthetics assets that links price to data. That data 
+            could itself be a price, like $TSLA stock price, the price of 1 once of gold, 
+            or something more exotic like the number of goals Neymar Jr scores, rainfall 
+            levels or crime rates etc. The value of the synthetic asset is backed by 
+            collateral. in Bao's case, we will be focusing on allowing the use of LP tokens 
+            as that collateral."
+            status={false}
+          />
+          <AccordionItem
+            title="How does Bao do synthetics differently?"
+            content="Right now existing protocols for synthetics require you to put your assets 
+            into a base token in order to collateralise the creation of your synthetic asset, 
+            taking on risk and losing your exposure to the underlying assets of your choice.
+            Instead of this, we are allowing users to use their LP tokens to create synthetic 
+            assets, so they will still have their exposure to the underlying assets and the LP 
+            fees from that trade pair. Despite these inefficiencies the market for synthetics on 
+            Ethereum is already >$1B marketcap and >$1B TVL. We believe BAO will increase that 
+            dramatically by making it practical to partake in synthetic asset creation."
+            status={false}
+          />
+        </div>
+      </div>
+    </section>
+    </>
+  )
+}
+
+const ProductSection = props => {
+  return (
+    <>
+      <StyledSectionTitle>Balancing, Automation, and Options</StyledSectionTitle>
+      <StyledBodySubText>
+      Our community wants to build innovative products on top of this cutting-edge technology and create 
+      serious competition for the established giants – together. Goodbye Big Banks. <br />
+      Hello BaoBanks. 
+</StyledBodySubText>
+
+<StyledSectionFlex style={{ paddingBottom: '0px', paddingTop: '1rem' }}>
+  <Wizard />
+</StyledSectionFlex>
+  </>
   )
 }

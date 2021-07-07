@@ -208,6 +208,12 @@ module.exports = {
       }
     },
     'gatsby-plugin-eslint',
+      {
+        resolve: 'gatsby-source-medium',
+        options: {
+          username: '@thebaoman', // Medium user name
+        },
+      },
     //{
     //  resolve: `gatsby-plugin-algolia-docsearch-appid`,
     //  options: {
