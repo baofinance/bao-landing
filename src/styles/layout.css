@@ -852,7 +852,8 @@ pre tt:after {
 * 12. fact styles
 */
 .fact-one {
-  padding-top: 120px;
+  padding-top: 60px;
+  z-index: 0;
 }
 .fact-one .container {
   z-index: 10;

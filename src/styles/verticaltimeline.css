@@ -242,7 +242,7 @@
     height: 0;
     width: 0;
     border: 7px solid transparent;
-    border-right: 7px solid #50251c;
+    border-right: 7px solid rgb(226, 214, 207);
   }
   
   .vertical-timeline--one-column-right .vertical-timeline-element-content-arrow {
