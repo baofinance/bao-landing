@@ -415,11 +415,12 @@ const StyledRight = styled.div`
   }
 `
 const StyledRightImage = styled.div`
-position: absolute;
-right: 0px;
-width: 600px;
-padding: 50px;
-bottom: 0px;
+  position: absolute;
+  right: 0px;
+  width: 600px;
+  padding: 50px;
+  bottom: 0px;
+  z-index: -1;
 `
 
 const StyledRightTitle = styled.div`
@@ -649,15 +650,15 @@ const IndexPage = props => {
       </StyledLeft>
       <FloatingImage />
       <StyledBody>
-      <ProtocolData />
+        <ProtocolData />
         <EcosystemSection data={data} props={props} />
         <RoadmapSection data={data} props={props} />
         <VisionSection data={data} props={props} />
         <FaqSection data={data} props={props} />
         <ProductSection data={data} props={props} />
-      <StyledRightImage>
-        <img src={baobasket}></img>
-      </StyledRightImage>
+        <StyledRightImage>
+          <img src={baobasket}></img>
+        </StyledRightImage>
       </StyledBody>
       <BG />
     </Layout>
@@ -672,7 +673,7 @@ const StyledSectionTitle = styled.h1`
   white-space: wrap;
   overflow-wrap: normal;
   max-width: 900px;
-  margin-top: 10rem;
+  margin-top: 5rem;
   font-weight: 600;
   pointer-events: none;
   white-space: wrap;
