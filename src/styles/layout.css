@@ -709,7 +709,7 @@ pre tt:after {
 */
 
 .faq-one {
-  padding: 0 0 120px;
+  padding: 0 0 4rem;
   position: relative;
   width: 100%;
 }
@@ -724,7 +724,6 @@ pre tt:after {
   max-width: 1170px;
   margin: 0 auto;
   position: relative;
-  padding: 2em 0;
 }
 
 @media (min-width: 992px) {
@@ -937,4 +936,138 @@ pre tt:after {
 }
 .fact-one [class*="col-"]:nth-child(4) .fact-one__single:before {
   background-image: linear-gradient(40deg, #50251c 0%, #50251c 100%);
+}
+
+/*
+* 16. service styles
+*/
+.service-one {
+  padding-bottom: 90px;
+}
+.service-one .container {
+  position: relative;
+  z-index: 10;
+}
+.service-one__single {
+  position: relative;
+  margin-bottom: 25px;
+  border: 1px solid rgb(226, 214, 207);
+  border-radius: 12px;
+  position: relative;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  box-shadow: rgb(247 244 242) 1px 1px 0px inset;
+}
+.service-one__single:before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -3px;
+  border-radius: 12px;
+  opacity: 0;
+  background-image: linear-gradient(40deg, #50251c 0%, #ce6509 100%);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.service-one__single h3 {
+  font-family: "Kaushan Script";
+  margin: 0;
+  font-size: 24px;
+  line-height: 32px;
+  color: #50251c;
+}
+.service-one__single h3 a {
+  color: inherit;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.service-one__single h3 a:hover {
+  color: #ce6509;
+}
+.service-one__single p {
+  color: #74727a;
+  font-size: 16px;
+  line-height: 32px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.service-one__single:hover:before {
+  opacity: 1;
+}
+.service-one__link {
+  color: #2a2833;
+  font-size: 22px;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.service-one__link:hover {
+  color: #ce6509;
+}
+.service-one__inner {
+  background-color: #efeae7;
+  text-align: center;
+  border-radius: 12px;
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 35px;
+  width: 280px;
+  height: 400px;
+}
+.service-one__icon {
+  width: 108px;
+  height: 108px;
+  -webkit-box-shadow: 0px 20px 40px 0px rgba(80, 37, 28, 0.8);
+  box-shadow: 0px 20px 40px 0px rgba(80, 37, 28, 0.8);
+  border-radius: 5px;
+  background-image: linear-gradient(40deg, #50251c 0%, #ce6509 100%);
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 70px;
+  margin-bottom: 30px;
+}
+.service-one [class*="col-"]:nth-child(1) .service-one__single:before,
+.service-one [class*="col-"]:nth-child(1) .service-one__icon {
+  background-image: linear-gradient(40deg, #50251c 0%, #ce6509 100%);
+}
+.service-one [class*="col-"]:nth-child(1) .service-one__icon {
+  -webkit-box-shadow: 0px 20px 40px 0px rgba(80, 37, 28, 0.8);
+  box-shadow: 0px 20px 40px 0px rgba(80, 37, 28, 0.8);
+}
+.service-one [class*="col-"]:nth-child(2) .service-one__single:before,
+.service-one [class*="col-"]:nth-child(2) .service-one__icon {
+  background-image: linear-gradient(40deg, #50251c 0%, #ce6509 100%);
+}
+.service-one [class*="col-"]:nth-child(2) .service-one__icon {
+  -webkit-box-shadow: 0px 20px 40px 0px rgba(80, 37, 28, 0.8);
+  box-shadow: 0px 20px 40px 0px rgba(80, 37, 28, 0.8);
+}
+.service-one [class*="col-"]:nth-child(3) .service-one__single:before,
+.service-one [class*="col-"]:nth-child(3) .service-one__icon {
+  background-image: linear-gradient(40deg, #50251c 0%, #ce6509 100%);
+}
+.service-one [class*="col-"]:nth-child(3) .service-one__icon {
+  -webkit-box-shadow: 0px 20px 40px 0px rgba(80, 37, 28, 0.8);
+  box-shadow: 0px 20px 40px 0px rgba(80, 37, 28, 0.8);
+}
+.service-one [class*="col-"]:nth-child(4) .service-one__single:before,
+.service-one [class*="col-"]:nth-child(4) .service-one__icon {
+  background-image: linear-gradient(40deg, #50251c 0%, #ce6509 100%);
+}
+.service-one [class*="col-"]:nth-child(4) .service-one__icon {
+  -webkit-box-shadow: 0px 20px 40px 0px rgba(80, 37, 28, 0.8);
+  box-shadow: 0px 20px 40px 0px rgba(80, 37, 28, 0.8);
 }

@@ -134,18 +134,19 @@ const StyledBannerImage = styled(Img)`
 `
 
 const StyledProductImage = styled(Img)`
-  width: 100%;
-  height: 100%;
-  min-width: 150px;
-  max-width: 150px;
-  border: 1px solid rgb(226, 214, 207);
-  border-radius: 12px;
-  background-color: ${({ theme }) => theme.colors.buttonBackground};
-  box-shadow: ${({ theme }) => theme.shadows.huge};
-  @media (max-width: 640px) {
-    min-width: 120px;
-    max-width: 120px;
-  }
+max-width: 150px;
+margin-left: auto;
+margin-right: auto;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: center;
+-webkit-box-pack: center;
+-ms-flex-pack: center;
+justify-content: center;
+margin-bottom: 20px;
 `
 
 const StyledSectionFlex = styled.div`
@@ -182,7 +183,7 @@ const StyledItemRow = styled.nav`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: 0rem;
+  margin: 1.5rem;
   width: 100%;
   & > *:not(:first-of-type) {
     margin-top: 12px;
@@ -578,7 +579,7 @@ const IndexPage = props => {
         }
       }
     }
-    mainnetfarms: file(relativePath: { eq: "mainnetfarms.png" }) {
+    baomainnet: file(relativePath: { eq: "baomainnet.png" }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
           ...GatsbyImageSharpFluid
@@ -674,7 +675,7 @@ const StyledSectionTitle = styled.h1`
   white-space: wrap;
   overflow-wrap: normal;
   max-width: 900px;
-  margin-top: 5rem;
+  margin-top: 3rem;
   font-weight: 600;
   pointer-events: none;
   white-space: wrap;
@@ -701,7 +702,7 @@ const StyledSectionTitle = styled.h1`
 const RoadmapSection = props => {
   return (
     <>
-      <StyledSectionTitle>Roadmap</StyledSectionTitle>
+      <StyledSectionTitle>Current Roadmap</StyledSectionTitle>
       <StyledBodySubText>
         Bao Finance is an open-source, fully community run project. Our native token, BAO, acts as a governance 
         token that puts control in the hands of our community, otherwise know as the BaoDao. 
@@ -714,28 +715,86 @@ const RoadmapSection = props => {
 const EcosystemSection = props => {
   return (
     <>
-          <StyledSectionTitle>Crosschain DeFi Ecosystem</StyledSectionTitle>
+          <StyledSectionTitle>We're Building a Crosschain DeFi Ecosystem</StyledSectionTitle>
       <StyledBodySubText>
       Bao is creating a multinetwork suite of applications that will provide services to DeFi users regardless 
       of their preferred chains. We’ve already deployed our main project and franchised versions of it on xDai, 
       Binance Smart Chain, and soon Polygon; with more planned in the future. 
       </StyledBodySubText>
       <StyledItemRow>
-        <StyledExternalLink href={'https://mainnet.bao.finance'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.baoswap.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://xdai.bao.finance'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.xdaifarms.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://baoswap.xyz'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.mainnetfarms.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://pandaswap.xyz'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.pandaswap.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'#'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.polygonfranchise.childImageSharp.fluid} />
-        </StyledExternalLink>
+          <div
+            className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp"
+            data-wow-duration="1500ms"
+          >
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+              <StyledProductImage fadeIn={false} fluid={props.data.baomainnet.childImageSharp.fluid} />
+              <h3>
+                  <a href="#none">
+                    Bao Mainnet
+                  </a>
+                </h3>
+                <p>
+                  Farm BAO on Ethereum Mainnet! Over 180 pairs!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-lg-3 col-md-6 col-sm-12 wow fadeInDown"
+            data-wow-duration="1500ms"
+          >
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+              <StyledProductImage fadeIn={false} fluid={props.data.baoswap.childImageSharp.fluid} />
+              <h3>
+                  <a href="#none">
+                    BaoSwap
+                  </a>
+                </h3>
+                <p>
+                  Swap tokens and become a liquidity provider on xDai!
+                  Stake Bao.cx for tBao and earn fees from the exchange!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp"
+            data-wow-duration="1500ms"
+          >
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+              <StyledProductImage fadeIn={false} fluid={props.data.pandaswap.childImageSharp.fluid} />
+                <h3>
+                  <a href="#none">
+                    Pandaswap
+                  </a>
+                </h3>
+                <p>
+                  Discover experimental products like Rhino and Bamboo on Binance Smart Chain!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-lg-3 col-md-6 col-sm-12 wow fadeInDown"
+            data-wow-duration="1500ms"
+          >
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+              <StyledProductImage fadeIn={false} fluid={props.data.polygonfranchise.childImageSharp.fluid} />
+                <h3>
+                  <a href="#none">
+                    Coming Soon
+                  </a>
+                </h3>
+                <p>
+                  Polygon / Matic franchise along with the debut of our soft synthetics will be launching soon!
+                </p>
+              </div>
+            </div>
+          </div>
       </StyledItemRow>
     </>
   )
@@ -744,6 +803,7 @@ const EcosystemSection = props => {
 const VisionSection = props => {
   return (
     <>
+    <div style={{marginTop: "3rem"}}></div>
 <StyledSectionTitle>The Bao Vision of Finance</StyledSectionTitle>
 <StyledBodyParagraph>
 <p>Traditional finance doesn’t work. For too long it’s been serving the wealthy suits while erecting barriers of entry for everyone 

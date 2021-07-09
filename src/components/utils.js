@@ -1,10 +1,8 @@
 import styled from 'styled-components'
-import uImage from '../images/big_bao_fade.png'
 import { Link } from 'gatsby'
 
 export const CardBGImage = styled.span`
   mix-blend-mode: ${({ isDark }) => (isDark ? 'overlay' : 'lighten')};
-  background: url(${uImage});
   width: 100%;
   height: 100%;
   opacity: 0.5;

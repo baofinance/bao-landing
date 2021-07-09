@@ -7,7 +7,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `Bao Finance`,
-    description: `Automated liquidity protocol on Ethereum`,
+    description: `Deliciously wrapped finance!`,
     author: `@Vitalsine`,
     menulinks: menu,
     siteUrl: `https://cryptodadgang.xyz`,
