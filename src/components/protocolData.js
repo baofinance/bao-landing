@@ -127,7 +127,7 @@ const ProtocolData = () => {
                   <div className="fact-one__inner">
               <BigNumbers>
                 <span>
-                  72K
+                  16K
                 </span>
                 <p style={{ fontSize: '14px' }}>Holders</p>
               </BigNumbers>
