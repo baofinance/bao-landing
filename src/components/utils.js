@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import uImage from '../images/big_bao_fade.png'
-import noise from '../images/noise.png'
 import { Link } from 'gatsby'
 
 export const CardBGImage = styled.span`
@@ -22,7 +21,6 @@ export const CardBGImage = styled.span`
 `
 
 export const CardNoise = styled.span`
-  background: url(${noise});
   mix-blend-mode: overlay;
   width: 100%;
   height: 100%;

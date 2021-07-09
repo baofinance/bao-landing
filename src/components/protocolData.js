@@ -83,6 +83,8 @@ export const ETH_PRICE = block => {
 const ProtocolData = () => {
   const [tvl, setTvl] = useState()
   const [price, setPrice] = useState()
+  const [mcap, setMcap] = useState()
+
 
   useEffect(async () => {
     const tvl = await (await fetch('https://api.llama.fi/tvl/bao-finance/', { method: 'GET' })).json()
@@ -93,6 +95,11 @@ const ProtocolData = () => {
       { method: 'GET' }
     )).json()
     setPrice(price['bao-finance'].usd)
+
+    const mcap = await (await fetch('https://api.coingecko.com/api/v3/coins/bao-finance?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false',
+      { method: 'GET' }
+    )).json()
+    setMcap(mcap['market_data'].market_cap.usd)
   }, [])
 
   const formatPrice = str =>
@@ -125,37 +132,37 @@ const ProtocolData = () => {
               <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
                 <div className="fact-one__single">
                   <div className="fact-one__inner">
-              <BigNumbers>
-                <span>
-                  16K
-                </span>
-                <p style={{ fontSize: '14px' }}>Chains</p>
-              </BigNumbers>
-              </div>
+                    <BigNumbers>
+                      <span>
+                        16K
+                      </span>
+                      <p style={{ fontSize: '14px' }}>Holders</p>
+                    </BigNumbers>
+                  </div>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
                 <div className="fact-one__single">
                   <div className="fact-one__inner">
-              <BigNumbers>
-                <span>
-                  {price ? formatPrice(price) : '...'}
-                </span>
-                <p style={{ fontSize: '14px' }}>BAO Price</p>
-              </BigNumbers>
-              </div>
+                    <BigNumbers>
+                      <span>
+                        {price ? formatPrice(price) : '...'}
+                      </span>
+                      <p style={{ fontSize: '14px' }}>BAO Price</p>
+                    </BigNumbers>
+                  </div>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
                 <div className="fact-one__single">
                   <div className="fact-one__inner">
-              <BigNumbers>
-                <span>
-                  200
-                </span>
-                <p style={{ fontSize: '14px' }}>Market Cap</p>
-              </BigNumbers>
-              </div>
+                    <BigNumbers>
+                      <span>
+                        {mcap ? formatPrice(mcap) : '...'}
+                      </span>
+                      <p style={{ fontSize: '14px' }}>Market Cap</p>
+                    </BigNumbers>
+                  </div>
                 </div>
               </div>
             </div>

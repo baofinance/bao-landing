@@ -43,77 +43,88 @@ const RoadMap = () => {
         <RoadmapSubHeader>Ethereum Mainnet</RoadmapSubHeader>
         <RoadmapDesc>
           Bao.Finance launches on Ethereum Mainnet.
-      </RoadmapDesc>
+        </RoadmapDesc>
       </VerticalTimelineElement>
       <VerticalTimelineElement
         className="vertical-timeline-element--work"
         date="Q4 2020"
       >
-        <RoadmapHeader>Phase 1 of Token Distribution</RoadmapHeader>
+        <RoadmapHeader>Token Distribution</RoadmapHeader>
         <RoadmapSubHeader>Yield Farming Begins</RoadmapSubHeader>
         <RoadmapDesc>
           During the yield farming phase, users will earn rewards each block for staking their LP tokens in the Bao.Finance farming protocol.
           During this one year period we will distribute 800 billion bao.
           BAO has a broad distribution, rewarding over 200 market assets creating the most diverse yield farming distribution in history so that everyone can participate with minimal risk of monopolies.
-      </RoadmapDesc>
+        </RoadmapDesc>
       </VerticalTimelineElement>
       <VerticalTimelineElement
         className="vertical-timeline-element--work"
         date="Q1 2021"
       >
         <RoadmapHeader>xDai Migration, BaoSwap & Co</RoadmapHeader>
-        <RoadmapSubHeader>L2 Deployment & Franchise Announcement</RoadmapSubHeader>
+        <RoadmapSubHeader>Sidechain Deployment & Franchise Announcement</RoadmapSubHeader>
         <RoadmapDesc>
           BaoSwap launches on xDai sidechain along with the ability to yield farm with BaoSwap or Sushiswap LP tokens.
-          Bao.Finance franchises announced. Alphas realeased for PandaSwap on BSC and YetiSwap on AVAX, with plans for additional franchises in the future.
-      </RoadmapDesc>
+          Bao.Finance franchises announced. Franchises provide an opportunity to capture new liquidity and value for the Bao ecosystem without adding extra overhead and without competing with our partners.
+          Bao’s xDAI ecosystem will still be our primary and top priority.
+        </RoadmapDesc>
       </VerticalTimelineElement>
       <VerticalTimelineElement
         className="vertical-timeline-element--work"
         date="Q2 2021"
       >
-        <RoadmapHeader>Bao Baskets & Soft Synthetics</RoadmapHeader>
-        <RoadmapSubHeader>Soft Synthetics Launch on xDai</RoadmapSubHeader>
+        <RoadmapHeader>Pandaswap Franchise Launch</RoadmapHeader>
+        <RoadmapSubHeader>First Franchise Launches on Binance Smart Chain</RoadmapSubHeader>
         <RoadmapDesc>
-          Bao Baskets will provide us balancer tooling for future synthetics, but we’ll also use this opportunity to launch “Soft Synthetics”.
-          Bao Baskets will be configured pools of assets where users are able to get balanced exposure to a “basket“ of assets by holding one LP token.
-          This will be futher incentivized with yield farming opportunities.
-      </RoadmapDesc>
-        <RoadmapDesc>
-          Additional Bao franchises will launch on other EVM compatiable chains.
-          Franchises provide an opportunity to capture new liquidity and value for the Bao ecosystem without adding extra overhead and without competing with our partners.
-          Bao’s xDAI ecosystem will still be our primary and top priority.
-      </RoadmapDesc>
+          Pandaswap, the first Bao Finance franchise, launches on Binance Smart Chain. Along with PNDA, Pandaswap introduced two new tokens
+          to the BAO ecosystem - RHINO, an experimental deflationary token, and BAMBOO, which users receive in exchange for staking
+          their PNDA tokens in the BambooBar. BAMBOO appreciates in value by collecting fees from the exchange platform.
+        </RoadmapDesc>
       </VerticalTimelineElement>
       <VerticalTimelineElement
         className="vertical-timeline-element--work"
         date="Q3 2021"
       >
-        <RoadmapHeader>Full Synthetics</RoadmapHeader>
-        <RoadmapSubHeader>Full Synthetics Launch</RoadmapSubHeader>
+        <RoadmapHeader>Polygon Franchise & Debut of Soft Synthetics</RoadmapHeader>
+        <RoadmapSubHeader>Initial Launch of Indexes on Matic Network</RoadmapSubHeader>
         <RoadmapDesc>
-          Full Synthetics launch on xDai based BaoSwap LP tokens, Ethereum Mainnet based on Sushiswap LP tokens, and other EVM compatiable networks based on their respective LP tokens.
-      </RoadmapDesc>
+          Soft synthetics, or indexes, will be configured pools of assets where users are able to get balanced exposure to a “basket“ of
+          assets by holding one LP token. Indexes will utilize an asset manager that will allow for complex strategies including lending and staking.
+          This will be further incentivized with yield farming opportunities.
+        </RoadmapDesc>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement
+        className="vertical-timeline-element--work"
+        date="Q3 2021"
+      >
+        <RoadmapHeader>Bao Baskets Launch</RoadmapHeader>
+        <RoadmapSubHeader>Soft Synthetics Launch on Mainnet and xDai Deployments</RoadmapSubHeader>
+        <RoadmapDesc>
+          Bao Baskets launch on xDai based on BaoSwap LP tokens, Ethereum Mainnet based on Sushiswap LP tokens. Indexes will launch on other franchises based on their respective LP tokens.
+        </RoadmapDesc>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement
+        className="vertical-timeline-element--work"
+        date="Q4 2021"
+      >
+        <RoadmapHeader>Full Synthetics Launch</RoadmapHeader>
+        <RoadmapSubHeader>Hard Synthetics Launch Across All Deployments</RoadmapSubHeader>
+        <RoadmapDesc>
+          Hard Synthetics will launch across all Bao and franchise deployments.
+        </RoadmapDesc>
       </VerticalTimelineElement>
       <VerticalTimelineElement
         className="vertical-timeline-element--work"
         date=""
-      /* icon={<StyledBao />} */
-      >
+              >
         <RoadmapHeader>Future Plans</RoadmapHeader>
         <RoadmapSubHeader>Planned Features</RoadmapSubHeader>
         <RoadmapDesc>
-          Margin trading and limit orders based on staked LP tokens.
-      </RoadmapDesc>
+          Margin trading, lending pools, options, & perpetual futures that utilize LP tokens as collateral.
+        </RoadmapDesc>
         <RoadmapDesc>
-          Lending pools using LP tokens as colateral.
-      </RoadmapDesc>
-        <RoadmapDesc>
-          Options/Perpetual Futures based on staked LP tokens.
-      </RoadmapDesc>
-        <RoadmapDesc>
-          Auto-balancer systems so users can balance their synthetic assets, futures, and LP tokens.
-      </RoadmapDesc>
+          Robo - an auto-balancing system so users can balance their synthetic assets, futures, and LP positions.
+        </RoadmapDesc>
       </VerticalTimelineElement>
     </VerticalTimeline>
   );

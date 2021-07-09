@@ -421,6 +421,10 @@ const StyledRightImage = styled.div`
   padding: 50px;
   bottom: 0px;
   z-index: -1;
+  @media (max-width: 1919px) {
+        display: none;
+    }
+  }
 `
 
 const StyledRightTitle = styled.div`
@@ -629,9 +633,6 @@ const IndexPage = props => {
   return (
     <Layout path={props.location.pathname}>
       <BGCard>
-        <CardNoise />
-        <CardBGImage isDark={isDark} />
-        <CardFade />
       </BGCard>
       <SEO
         title="Home"
@@ -732,7 +733,7 @@ const EcosystemSection = props => {
         <StyledExternalLink href={'https://pandaswap.xyz'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.pandaswap.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://sybil.org'} target="_blank">
+        <StyledExternalLink href={'#'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.polygonfranchise.childImageSharp.fluid} />
         </StyledExternalLink>
       </StyledItemRow>

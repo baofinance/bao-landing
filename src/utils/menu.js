@@ -3,14 +3,9 @@ const menu = [
     name: 'Products',
     sublinks: [
       {
-        name: 'Bao Mainnet Farms',
+        name: 'Bao Mainnet',
         link: 'https://bao.finance/',
         description: 'Farm BAO on Ethereum Mainnet.',
-      },
-      {
-        name: 'Bao xDai Farms',
-        link: 'https://xdai.bao.finance/',
-        description: 'Farm BAOcx on xDai.',
       },
       {
         name: 'BaoSwap',
