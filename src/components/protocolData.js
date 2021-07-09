@@ -1,9 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import gql from 'graphql-tag'
-import { useQuery } from '@apollo/react-hooks'
-import { client } from '../apollo/client'
-import { GLOBAL_QUERY } from '../apollo/queries'
 
 const StyledSectionFlex = styled.div`
   display: flex;
@@ -44,7 +41,7 @@ const Numbers = styled(StyledSectionFlex)`
 `
 
 const BigNumbers = styled(StyledSectionFlex)`
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 700;
   flex-direction: column;
   
@@ -84,25 +81,28 @@ export const ETH_PRICE = block => {
 }
 
 const ProtocolData = () => {
-  const { data: globalData } = useQuery(GLOBAL_QUERY, { pollInterval: 10000, client: client })
+  const [tvl, setTvl] = useState()
+  const [price, setPrice] = useState()
 
-  // hardcode at 1B in case of data failure
-  const volume = globalData ? globalData?.uniswapFactory?.totalVolumeUSD : 100000000000
-  const transactions = globalData ? globalData?.uniswapFactory?.txCount : 29000000
+  useEffect(async () => {
+    const tvl = await (await fetch('https://api.llama.fi/tvl/bao-finance/', { method: 'GET' })).json()
+    setTvl(parseFloat(tvl))
 
-  const formattedVol = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    notation: 'compact',
-    compactDisplay: 'short'
-    // maximumSignificantDigits: 5
-  }).format(volume)
+    const price = await (await fetch(
+      'https://api.coingecko.com/api/v3/simple/price?ids=bao-finance&vs_currencies=usd',
+      { method: 'GET' }
+    )).json()
+    setPrice(price['bao-finance'].usd)
+  }, [])
 
-  const formattedTransactions = new Intl.NumberFormat('en-US', {
-    notation: 'compact',
-    compactDisplay: 'short'
-    // maximumSignificantDigits: 5
-  }).format(transactions)
+  const formatPrice = str =>
+    new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      notation: 'compact',
+      compactDisplay: 'short'
+      // maximumSignificantDigits: 5
+    }).format(str)
 
   return (
     <section className="fact-one">
@@ -115,7 +115,7 @@ const ProtocolData = () => {
                   <div className="fact-one__inner">
                     <BigNumbers>
                       <span>
-                        {formattedVol}
+                        {tvl ? formatPrice(tvl) : '...'}
                       </span>
                       <p style={{ fontSize: '14px' }}>TVL</p>
                     </BigNumbers>
@@ -127,9 +127,9 @@ const ProtocolData = () => {
                   <div className="fact-one__inner">
               <BigNumbers>
                 <span>
-                  72K
+                  4
                 </span>
-                <p style={{ fontSize: '14px' }}>Holders</p>
+                <p style={{ fontSize: '14px' }}>Chains</p>
               </BigNumbers>
               </div>
                 </div>
@@ -139,7 +139,7 @@ const ProtocolData = () => {
                   <div className="fact-one__inner">
               <BigNumbers>
                 <span>
-                  {formattedTransactions}
+                  {price ? formatPrice(price) : '...'}
                 </span>
                 <p style={{ fontSize: '14px' }}>BAO Price</p>
               </BigNumbers>
