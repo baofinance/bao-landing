@@ -72,17 +72,6 @@ const StyledCardBG = styled(Img)`
 `
 
 const Success = props => {
-  const data = useStaticQuery(graphql`
-    {
-      baoImage: file(relativePath: { eq: "bao_image.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
-        }
-      }
-    }
-  `)
 
   return (
     <Layout path={props.location.pathname} nofooter={true}>
@@ -90,7 +79,6 @@ const Success = props => {
       <SEO title="Success" path={props.location.pathname} />
       <StyledAbout>
         <StyledSectionFlex style={{ flexDirection: 'column', paddingBottom: '0px' }}>
-          <StyledCardBG fluid={data.baoImage.childImageSharp.fluid} />
           <Title style={{ width: '100%' }}>You are now subscribed.</Title>
           <p>
             {"We'll be in touch soon. You can always unsubscribe"}

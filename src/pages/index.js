@@ -530,55 +530,6 @@ const IndexPage = props => {
         siteUrl
       }
     }
-    newYear: file(relativePath: { eq: "newyear.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
-    }
-    baoroadmap: file(relativePath: { eq: "baoroadmap.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
-    }
-    swap: file(relativePath: { eq: "swap.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    info: file(relativePath: { eq: "info.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    socks: file(relativePath: { eq: "socks.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    sybil: file(relativePath: { eq: "sybil.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    tokenlists: file(relativePath: { eq: "tokenlists.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     baomainnet: file(relativePath: { eq: "baomainnet.png" }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
@@ -593,21 +544,7 @@ const IndexPage = props => {
         }
       }
     }
-    reddit: file(relativePath: { eq: "reddit.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     baoswap: file(relativePath: { eq: "baoswap.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    thin: file(relativePath: { eq: "thin.png" }) {
       childImageSharp {
         fluid(maxWidth: 1200) {
           ...GatsbyImageSharpFluid
