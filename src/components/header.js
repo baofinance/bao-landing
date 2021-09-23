@@ -1,19 +1,13 @@
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import { useMediaQuery } from '@react-hook/media-query'
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
+import PropTypes from 'prop-types'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import Menu from './menu'
-
 import Bao from '../images/bao.inline.svg'
 import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
-
-import { Sun, Moon } from 'react-feather'
-import { useDarkMode } from '../contexts/Application'
-
 import useDocumentScrollThrottled from '../utils/useDocumentScrollThrottled'
+import Menu from './menu'
 
 const StyledHeader = styled.div`
   display: flex;
@@ -21,34 +15,17 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  width: 100%;
   padding: 1rem 1.25rem;
   margin-left: auto;
   margin-right: auto;
   z-index: 3;
   position: sticky;
   top: -1px;
-  background: ${({ theme, open, showBG }) => (showBG && !open ? theme.backgroundColor : 'none')};
-  transition: background-color 0.25s ease;
+  background: ${({ theme }) => theme.backgroundColor};
   @media (max-width: 960px) {
     padding: 1.5rem 2rem;
     height: ${({ open }) => (open ? '100vh' : '100%')};
-  }
-`
-
-const HeaderWrapper = styled.header`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 3;
-  position: sticky;
-  top: -1px;
-  max-width: 1600px;
-  background: ${({ theme, open, showBG }) => (showBG && !open ? '#fff8ee' : 'none')};
-  transition: background-color 0.25s ease;
   }
 `
 
@@ -92,52 +69,33 @@ const StyledNavTitleWrapper = styled.nav`
 `
 
 const HeaderText = styled.h2`
-color: ${({ theme }) => theme.textColor};;
-font-family: "Reem Kufi", sans-serif;
-font-size: 20px;
-font-weight: 700;
-letter-spacing: 0.03em;
-margin-right: 6rem;
+  color: ${({ theme }) => theme.textColor};
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-right: 6rem;
 `
 
 const StyledTradeLink = styled.a`
-  padding: 0.33rem 1rem;
+  padding: 0.25rem 1rem;
   background-color: ${({ theme }) => theme.buttonBackground};
   text-decoration: none;
   color: ${({ theme }) => theme.buttonText};
   border: ${({ theme }) => theme.buttonBorder};
-  border-radius: 6px;
+  border-radius: 8px;
   display: inline-block;
   transition: transform 0.25s ease;
-  font-weight: 600;
   font-family: 'Poppins,sans-serif';
   box-shadow: rgb(181 176 174) 1px 1px 2px, rgb(255 252 245 / 50%) -1px -1px 2px;
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
 
   :hover {
-    transform: translate3d(2px, 2px, 10px);
+    transform: translate3d(2px, 2px, 5px);
   }
 
   @media (max-width: 1160px) {
     display: none;
-  }
-`
-
-const StyledButton = styled.button`
-  border: none;
-  background-color: rgba(0, 0, 0, 0);
-  path {
-    fill: ${({ theme }) => theme.textColor};
-  }
-  color: ${({ theme }) => theme.textColor};
-  :focus {
-    outline: none;
-  }
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  :hover {
-    cursor: pointer;
   }
 `
 
@@ -193,30 +151,16 @@ const StyledMenuIcon = styled(MenuIcon)`
   }
 `
 
-const HideSmall = styled.span`
-  @media (max-width: 960px) {
-    display: none;
-  }
-`
-
 const Header = props => {
   const matches = useMediaQuery('only screen and (max-width: 1024px)')
   const node = useRef()
   const button = useRef()
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
   const [headerBG, setHeaderBG] = useState(false)
-  const [darkMode, toggleDarkMode] = useDarkMode()
 
   useDocumentScrollThrottled(callbackData => {
     const { currentScrollTop } = callbackData
-    // const isScrolledDown = previousScrollTop < currentScrollTop
-    // const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL
-
     setHeaderBG(currentScrollTop > 2)
-
-    // setTimeout(() => {
-    //   setSidebarBG(isScrolledDown && isMinimumScrolled)
-    // }, TIMEOUT_DELAY)
   })
 
   const data = useStaticQuery(graphql`
@@ -266,58 +210,36 @@ const Header = props => {
 
   return (
     <StyledHeader open={isMenuOpen} showBG={headerBG}>
-      <HeaderWrapper>
-        <StyledNavTitleWrapper>
-          <StyledHomeLink
-            to="/"
-            style={{
-              textDecoration: `none`
-            }}
-          >
-            <StyledBao />
-            <HeaderText>Bao.Finance</HeaderText>
-          </StyledHomeLink>
-        </StyledNavTitleWrapper>
-        <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
-        </MenuToggle>
-        <StyledNav ref={node} open={isMenuOpen}>
-          {data.site.siteMetadata.menulinks.map(item => {
-            return <Menu key={item.name} data={item} />
-          })}
+      <StyledNavTitleWrapper>
+        <StyledHomeLink
+          to="/"
+          style={{
+            textDecoration: `none`
+          }}
+        >
+          <StyledBao />
+          <HeaderText>Bao.Finance</HeaderText>
+        </StyledHomeLink>
+      </StyledNavTitleWrapper>
+      <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
+        {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
+      </MenuToggle>
+      <StyledNav ref={node} open={isMenuOpen}>
+        {data.site.siteMetadata.menulinks.map(item => {
+          return <Menu key={item.name} data={item} />
+        })}
 
-          {props.path !== undefined && (
-            <StyledTradeLink
-              target="_blank"
-              href="https://bao.finance/"
-            >
-              Mainnet
-            </StyledTradeLink>
-          )}
-          {props.path !== undefined && (
-            <StyledTradeLink
-              target="_blank"
-              href="https://www.baoswap.xyz/"
-            >
-              xDai
-            </StyledTradeLink>
-          )}
-          {props.path !== undefined && (
-            <StyledTradeLink
-              target="_blank"
-              href="https://pandaswap.xyz/"
-            >
-              PandaSwap
-            </StyledTradeLink>
-          )}
-          {/* <HideSmall>
-          <StyledButton type="button" onClick={toggleDarkMode}>
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </StyledButton>
-          </HideSmall> */}
-
-        </StyledNav>
-      </HeaderWrapper>
+        {props.path !== undefined && (
+          <StyledTradeLink target="_blank" href="https://bao.finance/">
+            Mainnet
+          </StyledTradeLink>
+        )}
+        {props.path !== undefined && (
+          <StyledTradeLink target="_blank" href="https://www.baoswap.xyz/">
+            xDai
+          </StyledTradeLink>
+        )}
+      </StyledNav>
     </StyledHeader>
   )
 }

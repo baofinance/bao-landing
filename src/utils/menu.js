@@ -1,20 +1,5 @@
 const menu = [
   {
-    name: 'Products',
-    sublinks: [
-      {
-        name: 'Bao Mainnet',
-        link: 'https://bao.finance/',
-        description: 'Farm BAO on Ethereum Mainnet.',
-      },
-      {
-        name: 'BaoSwap',
-        link: 'https://alpha.baoswap.xyz/',
-        description: 'Swap tokens and provide liquidity on xDai.',
-      },
-    ],
-  },
-  {
     name: 'Developers',
     sublinks: [
       { name: 'Documentation', link: 'https://docs.bao.finance/' },
@@ -38,6 +23,13 @@ const menu = [
     ],
   },
   {
+    name: 'Franchises',
+    sublinks: [
+      { name: 'Polly Finance', link: 'https://pollyfinance.com', description: 'on Polygon', },
+      { name: 'PandaSwap', link: 'https://pandaswap.xyz/', description: 'On Binance Smart Chain', },
+    ],
+  },
+  {
     name: 'About',
     sublinks: [
       {
@@ -52,13 +44,6 @@ const menu = [
         name: 'FAQ',
         link: 'https://docs.bao.finance/faq/bao-related-questions',
       },
-    ],
-  },
-  {
-    name: 'Franchises',
-    sublinks: [
-      { name: 'PandaSwap', link: 'https://pandaswap.xyz/' },
-      { name: '???', link: '#' },
     ],
   },
 ]

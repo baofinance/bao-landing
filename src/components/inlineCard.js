@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 
 import styled from 'styled-components'
 
-const StyledMiniCards = styled(Link)`
+const StyledMiniCards = styled.div`
   padding: 1.25rem;
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
   background-color: ${({ theme }) => theme.cardBG};
@@ -13,10 +13,9 @@ const StyledMiniCards = styled(Link)`
   width: 260px;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  /* border: 1px solid ${({ theme }) => theme.textColor}; */
-  box-shadow: ${({ theme }) => theme.shadows.huge};
-  /* font-style: monospace; */
-  /* border-radius: 12px; */
+  border: 1px solid rgb(226, 214, 207);
+  box-shadow: rgb(247 244 242) 1px 1px 0px inset;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -73,7 +72,7 @@ const StyledMiniCardDesc = styled.p`
 
 const InlineCard = props => {
   return (
-    <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
+    <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }}>
       <Tag>{props.icon}</Tag>
 
       {props.image && <StyledCardBG fluid={props.image} />}

@@ -66,7 +66,7 @@ const RoadMap = () => {
         <RoadmapDesc>
           BaoSwap launches on xDai sidechain along with the ability to yield farm with BaoSwap or Sushiswap LP tokens.
           Bao.Finance franchises announced. Franchises provide an opportunity to capture new liquidity and value for the Bao ecosystem without adding extra overhead and without competing with our partners.
-          Bao’s xDAI ecosystem will still be our primary and top priority.
+          Bao’s xDai ecosystem will still be our primary and top priority.
         </RoadmapDesc>
       </VerticalTimelineElement>
       <VerticalTimelineElement
@@ -86,21 +86,21 @@ const RoadMap = () => {
         date="Q3 2021"
       >
         <RoadmapHeader>Polygon Franchise & Debut of Soft Synthetics</RoadmapHeader>
-        <RoadmapSubHeader>Initial Launch of Indexes on Matic Network</RoadmapSubHeader>
+        <RoadmapSubHeader>Launch of Soft Synthetics on Polygon Network</RoadmapSubHeader>
         <RoadmapDesc>
-          Soft synthetics, or indexes, will be configured pools of assets where users are able to get balanced exposure to a “basket“ of
-          assets by holding one LP token. Indexes will utilize an asset manager that will allow for complex strategies including lending and staking.
+          Soft synthetics, or nests, will be configured pools of assets where users are able to get balanced exposure to a basket of
+          assets by holding one token. Nests will utilize an asset manager that will allow for complex strategies including lending and staking.
           This will be further incentivized with yield farming opportunities.
         </RoadmapDesc>
       </VerticalTimelineElement>
       <VerticalTimelineElement
         className="vertical-timeline-element--work"
-        date="Q3 2021"
+        date="Q4 2021"
       >
         <RoadmapHeader>Bao Baskets Launch</RoadmapHeader>
-        <RoadmapSubHeader>Soft Synthetics Launch on Mainnet and xDai Deployments</RoadmapSubHeader>
+        <RoadmapSubHeader>Soft Synthetics Launch on Mainnet</RoadmapSubHeader>
         <RoadmapDesc>
-          Bao Baskets launch on xDai based on BaoSwap LP tokens, Ethereum Mainnet based on Sushiswap LP tokens. Indexes will launch on other franchises based on their respective LP tokens.
+          Bao Baskets launch on Ethereum Mainnet exclusively utilizing SushiSwap for liquidity.
         </RoadmapDesc>
       </VerticalTimelineElement>
       <VerticalTimelineElement
@@ -108,22 +108,9 @@ const RoadMap = () => {
         date="Q4 2021"
       >
         <RoadmapHeader>Full Synthetics Launch</RoadmapHeader>
-        <RoadmapSubHeader>Hard Synthetics Launch Across All Deployments</RoadmapSubHeader>
+        <RoadmapSubHeader>Hard Synthetics Launch on Mainnet</RoadmapSubHeader>
         <RoadmapDesc>
-          Hard Synthetics will launch across all Bao and franchise deployments.
-        </RoadmapDesc>
-      </VerticalTimelineElement>
-      <VerticalTimelineElement
-        className="vertical-timeline-element--work"
-        date=""
-              >
-        <RoadmapHeader>Future Plans</RoadmapHeader>
-        <RoadmapSubHeader>Planned Features</RoadmapSubHeader>
-        <RoadmapDesc>
-          Margin trading, lending pools, options, & perpetual futures that utilize LP tokens as collateral.
-        </RoadmapDesc>
-        <RoadmapDesc>
-          Robo - an auto-balancing system so users can balance their synthetic assets, futures, and LP positions.
+          Hard Synthetics will launch on Ethereum Mainnet in December 2021 ahead of the Bao token unlock.
         </RoadmapDesc>
       </VerticalTimelineElement>
     </VerticalTimeline>
