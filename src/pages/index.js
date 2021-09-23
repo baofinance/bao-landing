@@ -696,7 +696,7 @@ const EcosystemSection = props => {
               <h3>
                 <a href="https://pollyfinance.com">Polly Finance</a>
               </h3>
-              <p>Debut of our soft synthetics platform on the Polygon Network!</p>
+              <p>Soft synthetics, a.k.a. "Nests", on the Polygon Network!</p>
             </div>
           </div>
         </div>
