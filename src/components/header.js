@@ -15,7 +15,7 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  width: 100%;
+  max-width: 1280px;
   padding: 1rem 1.25rem;
   margin-left: auto;
   margin-right: auto;
