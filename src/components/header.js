@@ -15,7 +15,6 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  max-width: 1280px;
   padding: 1rem 1.25rem;
   margin-left: auto;
   margin-right: auto;
@@ -84,6 +83,7 @@ const StyledTradeLink = styled.a`
   color: ${({ theme }) => theme.buttonText};
   border: ${({ theme }) => theme.buttonBorder};
   border-radius: 8px;
+  font-weight: 700;
   display: inline-block;
   transition: transform 0.25s ease;
   font-family: 'Poppins,sans-serif';

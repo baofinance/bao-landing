@@ -26,7 +26,7 @@ const menu = [
     name: 'Franchises',
     sublinks: [
       { name: 'Polly Finance', link: 'https://pollyfinance.com', description: 'on Polygon' },
-      { name: 'PandaSwap', link: 'https://pandaswap.xyz/', description: 'On Binance Smart Chain' }
+      { name: 'PandaSwap', link: 'https://pandaswap.xyz/', description: 'on Binance Smart Chain' }
     ]
   },
   {
