@@ -1,20 +1,14 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-const AccordionItem = (props) => {
-  const [status, setStatus] = useState(props.status);
+const AccordionItem = props => {
+  const [status, setStatus] = useState(props.status)
   const handleClick = () => {
-    setStatus(!status);
-  };
+    setStatus(!status)
+  }
   return (
-    <div className={`accrodion ${status === true ? "active" : ""}`}>
+    <div className={`accrodion ${status === true ? 'active' : ''}`}>
       <div className="accrodion-inner">
-        <div
-          className="accrodion-title"
-          role="button"
-          tabIndex="0"
-          onKeyDown={handleClick}
-          onClick={handleClick}
-        >
+        <div className="accrodion-title" role="button" tabIndex="0" onKeyDown={handleClick} onClick={handleClick}>
           <h4>{props.title}</h4>
         </div>
         {status === true ? (
@@ -26,7 +20,7 @@ const AccordionItem = (props) => {
         ) : null}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AccordionItem;
+export default AccordionItem

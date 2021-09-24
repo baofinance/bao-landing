@@ -8,7 +8,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Header from '../components/header'
-import MiniHeader from '../components/miniheader'
 
 import Footer from '../components/footer'
 import Mdx from '../components/mdx'
@@ -19,7 +18,7 @@ import '../styles/layout.css'
 import '../styles/prism-github.css'
 import '../styles/fonts.css'
 
-const Layout = ({ path, children, nofooter, isDocs }) => {
+const Layout = ({ path, children, nofooter }) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -33,11 +32,7 @@ const Layout = ({ path, children, nofooter, isDocs }) => {
 
   return (
     <StyledThemeProvider>
-      {isDocs ? (
-        <MiniHeader path={path} siteTitle={data.site.siteMetadata.title} />
-      ) : (
         <Header path={path} siteTitle={data.site.siteMetadata.title} />
-      )}
       <Mdx>{children}</Mdx>
       {nofooter ? null : <Footer />}
     </StyledThemeProvider>

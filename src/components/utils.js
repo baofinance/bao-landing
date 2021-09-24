@@ -149,4 +149,3 @@ export const StyledExternalLink = styled.a`
     font-size: 20px;
   }
 `
-

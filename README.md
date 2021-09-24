@@ -1,6 +1,6 @@
 # bao-finance-web
 
-Contains the source code for the Bao.Finance homepage.
+Contains the source code for the Bao Finance homepage.
 
 ## Development
 

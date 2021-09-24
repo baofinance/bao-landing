@@ -44,7 +44,7 @@ const BigNumbers = styled(StyledSectionFlex)`
   font-size: 28px;
   font-weight: 700;
   flex-direction: column;
-  
+
   @media (max-width: 960px) {
     font-size: 32px;
   }
@@ -85,20 +85,21 @@ const ProtocolData = () => {
   const [price, setPrice] = useState()
   const [mcap, setMcap] = useState()
 
-
   useEffect(async () => {
     const tvl = await (await fetch('https://api.llama.fi/tvl/bao-finance/', { method: 'GET' })).json()
     setTvl(parseFloat(tvl))
 
-    const price = await (await fetch(
-      'https://api.coingecko.com/api/v3/simple/price?ids=bao-finance&vs_currencies=usd',
-      { method: 'GET' }
-    )).json()
+    const price = await (
+      await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bao-finance&vs_currencies=usd', { method: 'GET' })
+    ).json()
     setPrice(price['bao-finance'].usd)
 
-    const mcap = await (await fetch('https://api.coingecko.com/api/v3/coins/bao-finance?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false',
-      { method: 'GET' }
-    )).json()
+    const mcap = await (
+      await fetch(
+        'https://api.coingecko.com/api/v3/coins/bao-finance?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false',
+        { method: 'GET' }
+      )
+    ).json()
     setMcap(mcap['market_data'].market_cap.usd)
   }, [])
 
@@ -116,14 +117,20 @@ const ProtocolData = () => {
       <div className="container">
         <div className="row">
           <Numbers id="about" style={{ flexDirection: 'column' }}>
-            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', margin: 0 }}>
+            <div
+              style={{
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                margin: 0
+              }}
+            >
               <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
                 <div className="fact-one__single">
                   <div className="fact-one__inner">
                     <BigNumbers>
-                      <span>
-                        {tvl ? formatPrice(tvl) : '...'}
-                      </span>
+                      <span>{tvl ? formatPrice(tvl) : '...'}</span>
                       <p style={{ fontSize: '14px' }}>TVL</p>
                     </BigNumbers>
                   </div>
@@ -133,9 +140,7 @@ const ProtocolData = () => {
                 <div className="fact-one__single">
                   <div className="fact-one__inner">
                     <BigNumbers>
-                      <span>
-                        16K
-                      </span>
+                      <span>16K</span>
                       <p style={{ fontSize: '14px' }}>Holders</p>
                     </BigNumbers>
                   </div>
@@ -145,9 +150,7 @@ const ProtocolData = () => {
                 <div className="fact-one__single">
                   <div className="fact-one__inner">
                     <BigNumbers>
-                      <span>
-                        {price ? formatPrice(price) : '...'}
-                      </span>
+                      <span>{price ? formatPrice(price) : '...'}</span>
                       <p style={{ fontSize: '14px' }}>BAO Price</p>
                     </BigNumbers>
                   </div>
@@ -157,9 +160,7 @@ const ProtocolData = () => {
                 <div className="fact-one__single">
                   <div className="fact-one__inner">
                     <BigNumbers>
-                      <span>
-                        {mcap ? formatPrice(mcap) : '...'}
-                      </span>
+                      <span>{mcap ? formatPrice(mcap) : '...'}</span>
                       <p style={{ fontSize: '14px' }}>Market Cap</p>
                     </BigNumbers>
                   </div>

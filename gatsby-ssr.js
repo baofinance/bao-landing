@@ -1,5 +1,4 @@
 import React from 'react'
-export { wrapRootElement } from './src/apollo/wrapper'
 
 const MagicScriptTag = () => {
   let codeToRunOnClient = `

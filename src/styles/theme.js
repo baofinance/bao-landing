@@ -26,8 +26,8 @@ export const theme = darkMode => ({
   greyText: darkMode ? '#efeae7' : '#ce6509',
 
   buttonBorder: darkMode ? '1px solid rgb(226, 214, 207)' : '1px solid rgb(226, 214, 207)',
-  buttonText : darkMode ? '#50251c' : '#50251c',
-  buttonBackground : darkMode? '#efeae7' : '#efeae7',
+  buttonText: darkMode ? '#50251c' : '#50251c',
+  buttonBackground: darkMode ? '#efeae7' : '#efeae7',
 
   heroBG: darkMode
     ? 'radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%)'

@@ -218,7 +218,7 @@ const Header = props => {
           }}
         >
           <StyledBao />
-          <HeaderText>Bao.Finance</HeaderText>
+          <HeaderText>Bao Finance</HeaderText>
         </StyledHomeLink>
       </StyledNavTitleWrapper>
       <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>

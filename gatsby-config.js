@@ -8,22 +8,13 @@ module.exports = {
   siteMetadata: {
     title: `Bao Finance`,
     description: `Deliciously wrapped finance!`,
-    author: `@Vitalsine`,
+    author: `@baofinance`,
     menulinks: menu,
     siteUrl: `https://cryptodadgang.xyz`,
-    repository: `https://github.com/Vitalsine85/bao-finance-web`,
+    repository: `https://github.com/baofinance/bao-landing`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },
   plugins: [
-    //    {
-    //      resolve: `gatsby-plugin-s3`,
-    //      options: {
-    //        bucketName: process.env.AWS_S3_BUCKET || 'NOT_SPECIFIED',
-    //        protocol: 'https',
-    //        hostname: 'uniswap.org',
-    //        acl: null
-    //      }
-    //    },
     {
       resolve: 'gatsby-plugin-node-reload',
     },
@@ -41,27 +32,6 @@ module.exports = {
       }
     },
     `re-slug`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `blog`,
-        path: `${__dirname}/src/pages/blog/`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `docs`,
-        path: `${__dirname}/src/pages/docs/`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `faq`,
-        path: `${__dirname}/src/pages/faq/`
-      }
-    },
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {
@@ -97,9 +67,6 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
           default: require.resolve('./src/layouts'),
-          docs: require.resolve(`./src/layouts/docs`),
-          blog: require.resolve(`./src/layouts/blogPost`),
-          faq: require.resolve(`./src/layouts/faq`)
         },
         remarkPlugins: [require(`remark-math`)],
         rehypePlugins: [require(`rehype-katex`)],
@@ -195,22 +162,10 @@ module.exports = {
             }
             `,
             output: '/rss.xml',
-            title: 'Uniswap Blog RSS Feed'
+            title: 'Bao Finance Blog RSS Feed'
           }
         ]
       }
     },
-    //{
-    //  resolve: `gatsby-plugin-algolia-docsearch-appid`,
-    //  options: {
-    //    apiKey: '8962240e69e6d23a88432f501c115470',
-    //    indexName: 'uniswap_v2_docs',
-    //    appId: 'VZ0CVS8XCW',
-    //    inputSelector: 'blank' // use dummy selector to avoid double render
-    //  }
-    // }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ]
 }

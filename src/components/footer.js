@@ -33,7 +33,7 @@ const StyledFooter = styled.footer`
   font-family: 'Poppins,sans-serif';
   max-width: 1440px;
   margin: auto;
-  
+
   @media (max-width: 1155px) {
     display: block;
   }
@@ -130,8 +130,8 @@ const Footer = () => {
   `)
 
   return (
-    <StyledFooter>     
-    <StyledSection>
+    <StyledFooter>
+      <StyledSection>
         {data.site.siteMetadata.menulinks.map(item => {
           return (
             <StyledFooterSectionNav key={item.name}>
@@ -143,7 +143,7 @@ const Footer = () => {
       </StyledSection>
       <StyledSection>
         <StyledFooterSection>
-        <p>© 2021 Bao Finance</p>
+          <p>© 2021 Bao Finance</p>
         </StyledFooterSection>
       </StyledSection>
     </StyledFooter>
