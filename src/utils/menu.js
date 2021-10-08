@@ -19,7 +19,7 @@ const menu = [
     sublinks: [
       { name: 'Discord', link: 'https://discord.gg/BW3P62vJXT' },
       { name: 'Twitter', link: 'https://twitter.com/thebaoman' },
-      { name: 'Medium', link: 'https://thebaoman.medium.com/' }
+      { name: 'Medium', link: 'https://medium.com/baomunity' }
     ]
   },
   {
