@@ -32,7 +32,7 @@ const Layout = ({ path, children, nofooter }) => {
 
   return (
     <StyledThemeProvider>
-        <Header path={path} siteTitle={data.site.siteMetadata.title} />
+      <Header path={path} siteTitle={data.site.siteMetadata.title} />
       <Mdx>{children}</Mdx>
       {nofooter ? null : <Footer />}
     </StyledThemeProvider>

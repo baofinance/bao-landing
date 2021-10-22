@@ -43,8 +43,8 @@ const RoadMap = () => {
         <RoadmapHeader>Token Distribution</RoadmapHeader>
         <RoadmapSubHeader>Yield Farming Begins</RoadmapSubHeader>
         <RoadmapDesc>
-          During the yield farming phase, users will earn rewards each block for staking their LP tokens in the
-          Bao Finance farming protocol. During this one year period we will distribute 800 billion bao. BAO has a broad
+          During the yield farming phase, users will earn rewards each block for staking their LP tokens in the Bao
+          Finance farming protocol. During this one year period we will distribute 800 billion bao. BAO has a broad
           distribution, rewarding over 200 market assets creating the most diverse yield farming distribution in history
           so that everyone can participate with minimal risk of monopolies.
         </RoadmapDesc>
