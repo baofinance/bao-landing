@@ -3,7 +3,8 @@ const menu = [
     name: 'Developers',
     sublinks: [
       { name: 'Documentation', link: 'https://docs.bao.finance/' },
-      { name: 'GitHub', link: 'https://github.com/baofinance' }
+      { name: 'GitHub', link: 'https://github.com/baofinance' },
+      { name: 'Bug Bounty', link: 'https://www.immunefi.com/bounty/baofinance' }
     ]
   },
   {
