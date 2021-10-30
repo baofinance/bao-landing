@@ -11,7 +11,7 @@ import SEO from '../components/seo'
 import Wizard from '../components/wizard'
 import baobasket from '../images/baobasket.svg'
 import Layout from '../layouts'
-import bugbounty from '../images/bugbounty.svg'
+import immunefi from '../images/immunefi.png'
 
 const BGCard = styled.span`
   width: 100vw;
@@ -311,10 +311,10 @@ const IndexPage = props => {
         <ProtocolData />
         <EcosystemSection data={data} props={props} />
         <VisionSection data={data} props={props} />
+        <SecuritySection data={data} props={props} />
         <RoadmapSection data={data} props={props} />
         <ProductSection data={data} props={props} />
         <FaqSection data={data} props={props} />
-        <SecuritySection data={data} props={props} />
         <StyledRightImage>
           <img src={baobasket}></img>
         </StyledRightImage>
@@ -546,7 +546,7 @@ const SecuritySection = props => {
     <>
       <div style={{ marginTop: '3rem' }}></div>
       <a href="https://www.immunefi.com/bounty/baofinance" target="_blank">
-        <img src={bugbounty} height="125px" />
+        <img src={immunefi} height="250px" />
       </a>
     </>
   )
