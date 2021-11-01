@@ -1,5 +1,5 @@
 import React from 'react'
-import moc from '../images/floatingBao.png'
+import moc from '../images/floatingbao.png'
 
 const FloatingImage = () => {
   return (
