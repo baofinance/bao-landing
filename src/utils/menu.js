@@ -35,7 +35,7 @@ const menu = [
     sublinks: [
       {
         name: 'Blog',
-        link: '/blog/'
+        link: 'https://medium.com/@thebaoman'
       },
       {
         name: 'Info',
