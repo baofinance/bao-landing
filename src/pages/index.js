@@ -394,7 +394,7 @@ const EcosystemSection = props => {
             <div className="service-one__inner">
               <StyledProductImage fadeIn={false} fluid={props.data.baoswap.childImageSharp.fluid} />
               <h3>
-                <a href="https://xdai.bao.finance">BaoSwap</a>
+                <a href="https://baoswap.xyz">BaoSwap</a>
               </h3>
               <p>Swap and provide liquidity on xDai! Stake Bao.cx and earn fees from the exchange!</p>
             </div>
