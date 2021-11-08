@@ -405,7 +405,7 @@ const EcosystemSection = props => {
             <div className="service-one__inner">
               <StyledProductImage fadeIn={false} fluid={props.data.pandaswap.childImageSharp.fluid} />
               <h3>
-                <a href="https://pandaswap.xyz">Pandaswap</a>
+                <a href="https://farms.pandaswap.xyz/">Pandaswap</a>
               </h3>
               <p>Discover experimental products like Rhino and Bamboo on Binance Smart Chain!</p>
             </div>
