@@ -396,7 +396,7 @@ const EcosystemSection = props => {
               <h3>
                 <a href="https://baoswap.xyz">BaoSwap</a>
               </h3>
-              <p>Swap and provide liquidity on xDai! Stake Bao.cx and earn fees from the exchange!</p>
+              <p>Swap and provide liquidity on  xDai! Stake Bao.cx and earn fees from the exchange!</p>
             </div>
           </div>
         </div>
