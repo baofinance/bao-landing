@@ -379,48 +379,48 @@ const EcosystemSection = props => {
       </StyledBodySubText>
       <StyledItemRow>
         <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
-          <div className="service-one__single text-center">
-            <div className="service-one__inner">
-              <StyledProductImage fadeIn={false} fluid={props.data.baomainnet.childImageSharp.fluid} />
-              <h3>
-                <a href="https://app.bao.finance">Bao Mainnet</a>
-              </h3>
-              <p>Farm BAO on Ethereum Mainnet! Over 180 pairs!</p>
+          <a href="https://app.bao.finance">
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+                <StyledProductImage fadeIn={false} fluid={props.data.baomainnet.childImageSharp.fluid} />
+                <h3>Bao Mainnet</h3>
+                <p>Farm BAO on Ethereum Mainnet! Over 180 pairs!</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
         <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInDown" data-wow-duration="1500ms">
-          <div className="service-one__single text-center">
-            <div className="service-one__inner">
-              <StyledProductImage fadeIn={false} fluid={props.data.baoswap.childImageSharp.fluid} />
-              <h3>
-                <a href="https://baoswap.xyz">BaoSwap</a>
-              </h3>
-              <p>Swap and provide liquidity on  xDai! Stake Bao.cx and earn fees from the exchange!</p>
+          <a href="https://baoswap.xyz">
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+                <StyledProductImage fadeIn={false} fluid={props.data.baoswap.childImageSharp.fluid} />
+                <h3>BaoSwap</h3>
+                <p>Swap and provide liquidity on xDai! Stake Bao.cx and earn fees from the exchange!</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
         <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
-          <div className="service-one__single text-center">
-            <div className="service-one__inner">
-              <StyledProductImage fadeIn={false} fluid={props.data.pandaswap.childImageSharp.fluid} />
-              <h3>
-                <a href="https://farms.pandaswap.xyz/">Pandaswap</a>
-              </h3>
-              <p>Discover experimental products like Rhino and Bamboo on Binance Smart Chain!</p>
+          <a href="https://farms.pandaswap.xyz/">
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+                <StyledProductImage fadeIn={false} fluid={props.data.pandaswap.childImageSharp.fluid} />
+                <h3>Pandaswap</h3>
+                <p>Discover experimental products like Rhino and Bamboo on Binance Smart Chain!</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
         <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInDown" data-wow-duration="1500ms">
-          <div className="service-one__single text-center">
-            <div className="service-one__inner">
-              <StyledProductImage fadeIn={false} fluid={props.data.pollyfinance.childImageSharp.fluid} />
-              <h3>
-                <a href="https://pollyfinance.com">Polly Finance</a>
-              </h3>
-              <p>Soft synthetics, a.k.a. "Nests", on the Polygon Network!</p>
+          <a href="https://pollyfinance.com">
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+                <StyledProductImage fadeIn={false} fluid={props.data.pollyfinance.childImageSharp.fluid} />
+                <h3>Polly Finance</h3>
+                <p>Soft synthetics, a.k.a. "Nests", on the Polygon Network!</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </StyledItemRow>
     </>
