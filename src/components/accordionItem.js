@@ -7,8 +7,8 @@ const AccordionItem = props => {
   }
   return (
     <div className={`accrodion ${status === true ? 'active' : ''}`}>
-      <div className="accrodion-inner">
-        <div className="accrodion-title" role="button" tabIndex="0" onKeyDown={handleClick} onClick={handleClick}>
+      <div className="accrodion-inner" onKeyDown={handleClick} onClick={handleClick}>
+        <div className="accrodion-title" role="button" tabIndex="0">
           <h4>{props.title}</h4>
         </div>
         {status === true ? (
