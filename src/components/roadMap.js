@@ -79,9 +79,9 @@ const RoadMap = () => {
         </RoadmapDesc>
       </VerticalTimelineElement>
       <VerticalTimelineElement className="vertical-timeline-element--work" date="Q4 2021">
-        <RoadmapHeader>Bao Baskets Launch</RoadmapHeader>
-        <RoadmapSubHeader>Soft Synthetics Launch on Mainnet</RoadmapSubHeader>
-        <RoadmapDesc>Bao Baskets launch on Ethereum Mainnet exclusively utilizing SushiSwap for liquidity.</RoadmapDesc>
+        <RoadmapHeader>DAO Enrichment</RoadmapHeader>
+        <RoadmapSubHeader>Decentralizing Governance</RoadmapSubHeader>
+        <RoadmapDesc>Creation of multi-sig wallet management and further decentralization of governance. Deploy franchise governance for Polly and Pandaswap.</RoadmapDesc>
       </VerticalTimelineElement>
       <VerticalTimelineElement className="vertical-timeline-element--work" date="Q4 2021">
         <RoadmapHeader>Full Synthetics Launch</RoadmapHeader>
