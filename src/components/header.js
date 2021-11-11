@@ -193,21 +193,6 @@ const Header = props => {
     return () => (document.body.style.overflow = originalStyle)
   }, [isMenuOpen]) // Empty array ensures effect is only run on mount and unmount
 
-  useEffect(() => {
-    const handleClickOutside = e => {
-      if (node.current.contains(e.target) || button.current.contains(e.target)) {
-        return
-      }
-      updateIsMenuOpen(false)
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [isMenuOpen, updateIsMenuOpen, matches])
-
   return (
     <StyledHeader open={isMenuOpen} showBG={headerBG}>
       <StyledNavTitleWrapper>
@@ -221,25 +206,6 @@ const Header = props => {
           <HeaderText>Bao Finance</HeaderText>
         </StyledHomeLink>
       </StyledNavTitleWrapper>
-      <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
-        {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
-      </MenuToggle>
-      <StyledNav ref={node} open={isMenuOpen}>
-        {data.site.siteMetadata.menulinks.map(item => {
-          return <Menu key={item.name} data={item} />
-        })}
-
-        {props.path !== undefined && (
-          <StyledTradeLink target="_blank" href="https://app.bao.finance/">
-            Mainnet
-          </StyledTradeLink>
-        )}
-        {props.path !== undefined && (
-          <StyledTradeLink target="_blank" href="https://xdai.bao.finance/">
-            xDai
-          </StyledTradeLink>
-        )}
-      </StyledNav>
     </StyledHeader>
   )
 }
