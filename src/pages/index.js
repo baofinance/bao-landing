@@ -293,7 +293,7 @@ const IndexPage = props => {
       <SEO
         title="Home"
         path={props.location.pathname}
-        description={'Like SNX and Aave, but use LP tokens for collateral.'}
+        description={'Deliciously wrapped finance!'}
       />
       <StyledLeft>
         <StyledLeftTitle>

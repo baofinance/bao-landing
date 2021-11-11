@@ -10,7 +10,7 @@ module.exports = {
     description: `Deliciously wrapped finance!`,
     author: `@baofinance`,
     menulinks: menu,
-    siteUrl: `https://cryptodadgang.xyz`,
+    siteUrl: `https://bao.finance`,
     repository: `https://github.com/baofinance/bao-landing`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },
@@ -21,7 +21,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://cryptodadgang.xyz`
+        siteUrl: `https://bao.finance`
       }
     },
     {
