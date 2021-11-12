@@ -281,6 +281,7 @@ const IndexPage = props => {
         <EcosystemSection data={data} props={props} />
         <VisionSection data={data} props={props} />
         <RoadmapSection data={data} props={props} />
+        <SocialSection data={data} props={props} />
       </StyledBody>
       <BG />
     </Layout>
@@ -332,6 +333,65 @@ const RoadmapSection = props => {
 }
 
 const EcosystemSection = props => {
+  return (
+    <>
+      <StyledSectionTitle>We're Building a Crosschain DeFi Ecosystem</StyledSectionTitle>
+      <StyledBodySubText>
+        Bao is creating a multinetwork suite of applications that will provide services to DeFi users regardless of
+        their preferred chains. We’ve already deployed our main project and franchised versions of it on xDai, Binance
+        Smart Chain, and Polygon; with more planned in the future.
+      </StyledBodySubText>
+      <StyledItemRow>
+        <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
+          <a href="https://app.bao.finance">
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+                <StyledProductImage fadeIn={false} fluid={props.data.baomainnet.childImageSharp.fluid} />
+                <h3>Bao Mainnet</h3>
+                <p>Farm BAO on Ethereum Mainnet! Over 180 pairs!</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInDown" data-wow-duration="1500ms">
+          <a href="https://baoswap.xyz">
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+                <StyledProductImage fadeIn={false} fluid={props.data.baoswap.childImageSharp.fluid} />
+                <h3>BaoSwap</h3>
+                <p>Swap and provide liquidity on xDai! Stake Bao.cx and earn fees from the exchange!</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
+          <a href="https://farms.pandaswap.xyz/">
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+                <StyledProductImage fadeIn={false} fluid={props.data.pandaswap.childImageSharp.fluid} />
+                <h3>Pandaswap</h3>
+                <p>Discover experimental products like Rhino and Bamboo on Binance Smart Chain!</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInDown" data-wow-duration="1500ms">
+          <a href="https://pollyfinance.com">
+            <div className="service-one__single text-center">
+              <div className="service-one__inner">
+                <StyledProductImage fadeIn={false} fluid={props.data.pollyfinance.childImageSharp.fluid} />
+                <h3>Polly Finance</h3>
+                <p>Soft synthetics, a.k.a. "Nests", on the Polygon Network!</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </StyledItemRow>
+    </>
+  )
+}
+
+const SocialSection = props => {
   return (
     <>
       <StyledSectionTitle>We're Building a Crosschain DeFi Ecosystem</StyledSectionTitle>
