@@ -293,7 +293,7 @@ const StyledSectionTitle = styled.h1`
   white-space: wrap;
   overflow-wrap: normal;
   max-width: 900px;
-  margin-top: 7rem;
+  margin-top: 1rem;
   font-weight: 600;
   pointer-events: none;
   white-space: wrap;
