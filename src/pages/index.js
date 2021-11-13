@@ -46,6 +46,7 @@ const StyledBodySubText = styled.h3`
   text-align: center;
   line-height: 160%;
   font-size: 1.25rem;
+  font-family: 'Noto Sans', sans-serif;
   @media (max-width: 640px) {
     text-align: left;
   }
@@ -113,6 +114,7 @@ const StyledItemRow = styled.nav`
   flex-wrap: wrap;
   margin: 1.5rem;
   width: 100%;
+  font-family: 'Noto Sans', sans-serif;
   & > *:not(:first-of-type) {
     margin-top: 12px;
   }
@@ -182,7 +184,7 @@ const StyledLeftSubTitle = styled.h1`
   pointer-events: none;
   white-space: wrap;
   overflow-wrap: normal;
-  font-family: 'Kaushan Script';
+  font-family: 'Noto Sans', sans-serif;
   letter-spacing: -0.025em;
   text-align: center;
   @media (min-width: 640px) {
@@ -272,11 +274,7 @@ const IndexPage = props => {
   return (
     <Layout path={props.location.pathname}>
       <BGCard></BGCard>
-      <SEO
-        title="Home"
-        path={props.location.pathname}
-        description={'Deliciously wrapped finance!'}
-      />
+      <SEO title="Home" path={props.location.pathname} description={'Deliciously wrapped finance!'} />
       <StyledBody>
         <EcosystemSection data={data} props={props} />
         <VisionSection data={data} props={props} />
@@ -295,12 +293,12 @@ const StyledSectionTitle = styled.h1`
   white-space: wrap;
   overflow-wrap: normal;
   max-width: 900px;
-  margin-top: 3rem;
+  margin-top: 7rem;
   font-weight: 600;
   pointer-events: none;
   white-space: wrap;
   overflow-wrap: normal;
-  font-family: 'Kaushan Script';
+  font-family: 'Noto Sans', sans-serif;
   letter-spacing: -0.025em;
   text-align: center;
 
