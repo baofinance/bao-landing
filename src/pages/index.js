@@ -31,12 +31,10 @@ const StyledBody = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 12rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
   @media (max-width: 960px) {
     margin-bottom: 0;
     padding: 2rem;
-    padding-bottom: 8rem;
   }
 `
 
