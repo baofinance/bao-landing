@@ -32,7 +32,6 @@ const StyledBody = styled.div`
   justify-content: center;
   align-items: center;
   padding-bottom: 12rem;
-  margin-bottom: 4rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
   @media (max-width: 960px) {
     margin-bottom: 0;
@@ -113,6 +112,7 @@ const StyledItemRow = styled.nav`
   flex-direction: column;
   flex-wrap: wrap;
   margin: 1.5rem;
+  margin-bottom: 1px;
   width: 100%;
   font-family: 'Noto Sans', sans-serif;
   & > *:not(:first-of-type) {
@@ -293,7 +293,7 @@ const StyledSectionTitle = styled.h1`
   white-space: wrap;
   overflow-wrap: normal;
   max-width: 900px;
-  margin-top: 1rem;
+  margin-top: 1px;
   font-weight: 600;
   pointer-events: none;
   white-space: wrap;
@@ -307,12 +307,10 @@ const StyledSectionTitle = styled.h1`
     font-size: 2rem;
     line-height: 2.5rem;
     max-width: 600px;
-    margin-top: 4rem;
   }
   @media (max-width: 640px) {
     width: 100%;
     font-weight: 400;
-    margin-top: 4rem;
     text-align: left;
   }
 `
@@ -451,7 +449,6 @@ const SocialSection = props => {
 const VisionSection = props => {
   return (
     <>
-      <div style={{ marginTop: '3rem' }}></div>
       <StyledSectionTitle>The Bao Vision</StyledSectionTitle>
       <StyledBodyParagraph>
         <p>
