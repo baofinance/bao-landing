@@ -57,6 +57,7 @@ const StyledBodyParagraph = styled.h3`
   @media (max-width: 640px) {
     text-align: left;
   }
+  margin-bottom: 1px;
 `
 
 const StyledProductImage = styled(Img)`
@@ -102,6 +103,9 @@ const StyledSectionFlex = styled.div`
   p {
     margin-bottom: 0.5rem;
   }
+`
+const StyledSpace = styled.div`
+  margin: 10px;
 `
 
 const StyledItemRow = styled.nav`
@@ -277,6 +281,7 @@ const IndexPage = props => {
         <EcosystemSection data={data} props={props} />
         <VisionSection data={data} props={props} />
         <RoadmapSection data={data} props={props} />
+        <StyledSpace />
         <SocialSection data={data} props={props} />
       </StyledBody>
       <BG />
