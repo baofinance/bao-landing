@@ -499,7 +499,7 @@ const FaqSection = props => {
             to two different types of synthetic asset. Soft synthetics are baskets of tokens, 
             similar to indexes, but managed autonomously. Hard synthetics are synthetics assets 
             that links price to data. That data could itself be a price, like $TSLA stock price, 
-            the price of 1 once of gold, or something more exotic like the number of goals Neymar 
+            the price of 1 ounce of gold, or something more exotic like the number of goals Neymar 
             Jr scores, rainfall levels or crime rates etc. The value of the synthetic asset is backed by 
             collateral. in Bao's case, we will be focusing on allowing the use of LP tokens 
             as that collateral."
