@@ -384,7 +384,7 @@ const EcosystemSection = props => {
               <div className="service-one__inner">
                 <StyledProductImage fadeIn={false} fluid={props.data.baomainnet.childImageSharp.fluid} />
                 <h3>Bao Mainnet</h3>
-                <p>Farm BAO on Ethereum Mainnet! Over 180 pairs!</p>
+                <p>Mint Synthetics on Bao Markets! Our initial offering, baoUSD, is a multi-collateralized stablecoin.</p>
               </div>
             </div>
           </a>

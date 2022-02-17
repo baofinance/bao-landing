@@ -35,59 +35,83 @@ const RoadMap = () => {
   return (
     <VerticalTimeline>
       <VerticalTimelineElement className="vertical-timeline-element--work">
-        <RoadmapHeader>Bao Finance Launches</RoadmapHeader>
-        <RoadmapSubHeader>Ethereum Mainnet</RoadmapSubHeader>
-        <RoadmapDesc>Bao Finance launches on Ethereum Mainnet.</RoadmapDesc>
-      </VerticalTimelineElement>
-      <VerticalTimelineElement className="vertical-timeline-element--work" date="Q4 2020">
-        <RoadmapHeader>Token Distribution</RoadmapHeader>
-        <RoadmapSubHeader>Yield Farming Begins</RoadmapSubHeader>
+        <RoadmapHeader>Deploy Bao Markets</RoadmapHeader>
+        <RoadmapSubHeader>Hard Synthetics</RoadmapSubHeader>
         <RoadmapDesc>
-          During the yield farming phase, users will earn rewards each block for staking their LP tokens in the Bao
-          Finance farming protocol. During this one year period we will distribute 800 billion bao. BAO has a broad
-          distribution, rewarding over 200 market assets creating the most diverse yield farming distribution in history
-          so that everyone can participate with minimal risk of monopolies.
+          Our intial deployment of Bao Markets will feature our first hard synth, baoUSD, a multi-collateralized
+          stablecoin.
         </RoadmapDesc>
       </VerticalTimelineElement>
-      <VerticalTimelineElement className="vertical-timeline-element--work" date="Q1 2021">
-        <RoadmapHeader>xDai Migration, BaoSwap & Co</RoadmapHeader>
-        <RoadmapSubHeader>Sidechain Deployment & Franchise Announcement</RoadmapSubHeader>
+      <VerticalTimelineElement className="vertical-timeline-element--work">
+        <RoadmapHeader>Deploy Bao Baskets</RoadmapHeader>
+        <RoadmapSubHeader>Soft Synthetics</RoadmapSubHeader>
         <RoadmapDesc>
-          BaoSwap launches on xDai sidechain along with the ability to yield farm with BaoSwap or Sushiswap LP tokens.
-          Bao Finance franchises announced. Franchises provide an opportunity to capture new liquidity and value for the
-          Bao ecosystem without adding extra overhead and without competing with our partners. Bao’s xDai ecosystem will
-          still be our primary and top priority.
+          Bao Baskets will be similar to our Polly Nests, but will feature the gas saving feature from PieDAO, the oven!
         </RoadmapDesc>
       </VerticalTimelineElement>
-      <VerticalTimelineElement className="vertical-timeline-element--work" date="Q2 2021">
-        <RoadmapHeader>Pandaswap Franchise Launch</RoadmapHeader>
-        <RoadmapSubHeader>First Franchise Launches on Binance Smart Chain</RoadmapSubHeader>
+      <VerticalTimelineElement className="vertical-timeline-element--work">
+        <RoadmapHeader>Bao Baskets as Collateral for baoUSD</RoadmapHeader>
+        <RoadmapSubHeader>Product Synergy</RoadmapSubHeader>
         <RoadmapDesc>
-          Pandaswap, the first Bao Finance franchise, launches on Binance Smart Chain. Along with PNDA, Pandaswap
-          introduced two new tokens to the BAO ecosystem - RHINO, an experimental deflationary token, and BAMBOO, which
-          users receive in exchange for staking their PNDA tokens in the BambooBar. BAMBOO appreciates in value by
-          collecting fees from the exchange platform.
+          Using Bao Baskets as collateral for baoUSD, and future synthetics, allows users to leverage yield bearing
+          assets as collateral to mint synthetics.
         </RoadmapDesc>
       </VerticalTimelineElement>
-      <VerticalTimelineElement className="vertical-timeline-element--work" date="Q3 2021">
-        <RoadmapHeader>Polygon Franchise & Debut of Soft Synthetics</RoadmapHeader>
-        <RoadmapSubHeader>Launch of Soft Synthetics on Polygon Network</RoadmapSubHeader>
+      <VerticalTimelineElement className="vertical-timeline-element--work">
+        <RoadmapHeader>Token Migration</RoadmapHeader>
+        <RoadmapSubHeader>BAOv2</RoadmapSubHeader>
         <RoadmapDesc>
-          Soft synthetics, or nests, will be configured pools of assets where users are able to get balanced exposure to
-          a basket of assets by holding one token. Nests will utilize an asset manager that will allow for complex
-          strategies including lending and staking. This will be further incentivized with yield farming opportunities.
+          We will migrate to a new token contract to alleviate some of the issues that our v1 contract presented.
         </RoadmapDesc>
       </VerticalTimelineElement>
-      <VerticalTimelineElement className="vertical-timeline-element--work" date="Q4 2021">
-        <RoadmapHeader>DAO Enrichment</RoadmapHeader>
-        <RoadmapSubHeader>Decentralizing Governance</RoadmapSubHeader>
-        <RoadmapDesc>Creation of multi-sig wallet management and further decentralization of governance. Deploy franchise governance for Polly and Pandaswap.</RoadmapDesc>
-      </VerticalTimelineElement>
-      <VerticalTimelineElement className="vertical-timeline-element--work" date="Q4 2021">
-        <RoadmapHeader>Full Synthetics Launch</RoadmapHeader>
-        <RoadmapSubHeader>Hard Synthetics Launch on Mainnet</RoadmapSubHeader>
+      <VerticalTimelineElement className="vertical-timeline-element--work">
+        <RoadmapHeader>veBAO and Staking</RoadmapHeader>
+        <RoadmapSubHeader>Improved Distribution Model and Rewards</RoadmapSubHeader>
         <RoadmapDesc>
-          Hard Synthetics will launch on Ethereum Mainnet in December 2021 ahead of the Bao token unlock.
+          veBAO will introduce a new rewards mechanic that will incentivize users to lock their tokens for extended
+          periods of time. All rewards will go through veBAO.
+        </RoadmapDesc>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement className="vertical-timeline-element--work">
+        <RoadmapHeader>Basket Strategies</RoadmapHeader>
+        <RoadmapSubHeader>New Strategies and Integrations</RoadmapSubHeader>
+        <RoadmapDesc>
+          We will focus on developing new strategies and integrations for our Bao Baskets so that we can maximize yield
+          and diversify exposure.
+        </RoadmapDesc>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement className="vertical-timeline-element--work">
+        <RoadmapHeader>Improve Hard Synths</RoadmapHeader>
+        <RoadmapSubHeader>New Synth and More Collateral Types</RoadmapSubHeader>
+        <RoadmapDesc>Develop a new syntehtic for Bao Markets as well as introduce more collateral types.</RoadmapDesc>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement className="vertical-timeline-element--work">
+        <RoadmapHeader>Improved Governance</RoadmapHeader>
+        <RoadmapSubHeader>On-chain Governance</RoadmapSubHeader>
+        <RoadmapDesc>
+          Implement Governance Bravo. Governance Bravo is the governance system developed and used by Compound Protocol.
+        </RoadmapDesc>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement className="vertical-timeline-element--work">
+        <RoadmapHeader>Deploy Hard Synths on Polly</RoadmapHeader>
+        <RoadmapSubHeader>Polygon Franchise</RoadmapSubHeader>
+        <RoadmapDesc>Deploy our hard synth market to our Polly franchise on Polygon.</RoadmapDesc>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement className="vertical-timeline-element--work">
+        <RoadmapHeader>Phase 1 of Permissionless Baskets</RoadmapHeader>
+        <RoadmapSubHeader>Build Your Own Basket</RoadmapSubHeader>
+        <RoadmapDesc>
+          Our soft synths, Baskets and Nests, will become a permissionless platform over time. Users will have the
+          ability to create their own Basket compositions, as well as choose custom strategies for them. Phase 1 will
+          allow users to create their own Baskets and choose from a predetermined list of strategies.
+        </RoadmapDesc>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement className="vertical-timeline-element--work">
+        <RoadmapHeader>Bao Labs</RoadmapHeader>
+        <RoadmapSubHeader>New Galaxy</RoadmapSubHeader>
+        <RoadmapDesc>
+          Bao Labs will be a galaxy with the sole function of researching and developing new synthetic assets for our
+          Bao Markets.
         </RoadmapDesc>
       </VerticalTimelineElement>
     </VerticalTimeline>
