@@ -358,7 +358,7 @@ const StyledSectionTitle = styled.h1`
 const RoadmapSection = props => {
   return (
     <>
-      <StyledSectionTitle>Roadmap</StyledSectionTitle>
+      <StyledSectionTitle>2022 Goals</StyledSectionTitle>
       <StyledBodySubText>
         Bao Finance is an open-source, fully community run project. Our native token, BAO, acts as a governance token
         that puts control in the hands of our community, otherwise know as the BaoDao.
