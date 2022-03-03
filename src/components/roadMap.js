@@ -83,7 +83,7 @@ const RoadMap = () => {
       <VerticalTimelineElement className="vertical-timeline-element--work">
         <RoadmapHeader>Improve Hard Synths</RoadmapHeader>
         <RoadmapSubHeader>New Synth and More Collateral Types</RoadmapSubHeader>
-        <RoadmapDesc>Develop a new syntehtic for Bao Markets as well as introduce more collateral types.</RoadmapDesc>
+        <RoadmapDesc>Develop a new synthetic for Bao Markets as well as introduce more collateral types.</RoadmapDesc>
       </VerticalTimelineElement>
       <VerticalTimelineElement className="vertical-timeline-element--work">
         <RoadmapHeader>Improved Governance</RoadmapHeader>
