@@ -86,17 +86,17 @@ const ProtocolData = () => {
   const [mcap, setMcap] = useState()
 
   useEffect(async () => {
-    const tvl = await (await fetch('https://api.llama.fi/tvl/bao-finance/', { method: 'GET' })).json()
+    const tvl = await (await fetch('https://api.llama.fi/tvl/bao-finance-v2/', { method: 'GET' })).json()
     setTvl(parseFloat(tvl))
 
     const price = await (
-      await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bao-finance&vs_currencies=usd', { method: 'GET' })
+      await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bao-finance-v2&vs_currencies=usd', { method: 'GET' })
     ).json()
-    setPrice(price['bao-finance'].usd)
+    setPrice(price['bao-finance-v2'].usd)
 
     const mcap = await (
       await fetch(
-        'https://api.coingecko.com/api/v3/coins/bao-finance?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false',
+        'https://api.coingecko.com/api/v3/coins/bao-finance-v2?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false',
         { method: 'GET' }
       )
     ).json()
