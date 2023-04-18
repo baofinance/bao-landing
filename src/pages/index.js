@@ -389,17 +389,6 @@ const EcosystemSection = props => {
             </div>
           </a>
         </div>
-        <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInDown" data-wow-duration="1500ms">
-          <a href="https://baoswap.xyz">
-            <div className="service-one__single text-center">
-              <div className="service-one__inner">
-                <StyledProductImage fadeIn={false} fluid={props.data.baoswap.childImageSharp.fluid} />
-                <h3>BaoSwap</h3>
-                <p>Swap and provide liquidity on xDai! Stake Bao.cx and earn fees from the exchange!</p>
-              </div>
-            </div>
-          </a>
-        </div>
         <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
           <a href="https://farms.pandaswap.xyz/">
             <div className="service-one__single text-center">
