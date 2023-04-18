@@ -100,7 +100,7 @@ const ProtocolData = () => {
         { method: 'GET' }
       )
     ).json()
-    setMcap(mcap['market_data'].market_cap.usd)
+    setMcap(mcap['total_supply'])
   }, [])
 
   const formatPrice = str =>
@@ -160,7 +160,7 @@ const ProtocolData = () => {
                 <div className="fact-one__single">
                   <div className="fact-one__inner">
                     <BigNumbers>
-                      <span>{mcap ? formatPrice(mcap) : '...'}</span>
+                      <span>{mcap ? formatPrice(mcap * price) : '...'}</span>
                       <p style={{ fontSize: '14px' }}>Market Cap</p>
                     </BigNumbers>
                   </div>
