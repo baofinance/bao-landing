@@ -86,7 +86,7 @@ const ProtocolData = () => {
   const [mcap, setMcap] = useState()
 
   useEffect(async () => {
-    const tvl = await (await fetch('https://api.llama.fi/tvl/bao-finance-v2/', { method: 'GET' })).json()
+    const tvl = await (await fetch('https://api.llama.fi/tvl/bao-finance/', { method: 'GET' })).json()
     setTvl(parseFloat(tvl))
 
     const price = await (
