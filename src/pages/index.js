@@ -1,17 +1,15 @@
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
-import AccordionItem from '../components/accordionItem'
 import BG from '../components/bg'
 import FloatingImage from '../components/floatingImage'
 import ProtocolData from '../components/protocolData'
-import RoadMap from '../components/roadMap'
 import SEO from '../components/seo'
 import Wizard from '../components/wizard'
 import baobasket from '../images/baobasket.svg'
-import Layout from '../layouts'
 import immunefi from '../images/immunefi.png'
+import Layout from '../layouts'
 
 const BGCard = styled.span`
   width: 100vw;
@@ -290,31 +288,25 @@ const IndexPage = props => {
   return (
     <Layout path={props.location.pathname}>
       <BGCard></BGCard>
-      <SEO
-        title="Home"
-        path={props.location.pathname}
-        description={'Deliciously wrapped finance!'}
-      />
+      <SEO title="Home" path={props.location.pathname} description={'Deliciously wrapped finance!'} />
       <StyledLeft>
         <StyledLeftTitle>
           <StyledLeftSubTitle>Deliciously wrapped finance!</StyledLeftSubTitle>
           <StyledLeftSubText>
-            Bao (包) stands for a treasure or package. Something wonderful that is wrapped up in another layer. Bao
-            buns, or in Chinese Baozi (包子) are delicious wrapped dumplings. These bao buns are the tradition of taking
-            something good that exists, and wrapping it up into being a new treasure. Bao Finance aims to do this by
-            being a new protocol that adds features to existing DeFi systems.
+            Bao is a community-run, open-source project creating new decentralized, synthetic tokens and markets. Bao
+            (包) stands for a treasure or package. Something extraordinary exists in another layer. Bao buns, or Baozi
+            (包子) in Chinese, are delicious wrapped dumplings. These bao buns are the tradition of taking something
+            good that exists and wrapping it up into a new treasure. Bao aims to do this by building new features on top
+            of existing DeFi systems.
           </StyledLeftSubText>
         </StyledLeftTitle>
       </StyledLeft>
       <FloatingImage />
       <StyledBody>
         <ProtocolData />
-        <EcosystemSection data={data} props={props} />
         <VisionSection data={data} props={props} />
         <SecuritySection data={data} props={props} />
-        <RoadmapSection data={data} props={props} />
         <ProductSection data={data} props={props} />
-        <FaqSection data={data} props={props} />
         <StyledRightImage>
           <img src={baobasket}></img>
         </StyledRightImage>
@@ -355,67 +347,6 @@ const StyledSectionTitle = styled.h1`
   }
 `
 
-const RoadmapSection = props => {
-  return (
-    <>
-      <StyledSectionTitle>2022 Goals</StyledSectionTitle>
-      <StyledBodySubText>
-        Bao Finance is an open-source, fully community run project. Our native token, BAO, acts as a governance token
-        that puts control in the hands of our community, otherwise know as the BaoDao.
-      </StyledBodySubText>
-      <RoadMap />
-    </>
-  )
-}
-
-const EcosystemSection = props => {
-  return (
-    <>
-      <StyledSectionTitle>We're Building a Crosschain DeFi Ecosystem</StyledSectionTitle>
-      <StyledBodySubText>
-        Bao is creating a multinetwork suite of applications that will provide services to DeFi users regardless of
-        their preferred chains. We’ve already deployed our main project and franchised versions of it on xDai, Binance
-        Smart Chain, and Polygon; with more planned in the future.
-      </StyledBodySubText>
-      <StyledItemRow>
-        <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
-          <a href="https://app.bao.finance">
-            <div className="service-one__single text-center">
-              <div className="service-one__inner">
-                <StyledProductImage fadeIn={false} fluid={props.data.baomainnet.childImageSharp.fluid} />
-                <h3>Bao Mainnet</h3>
-                <p>Mint Synthetics on Bao Markets! Our initial offering, baoUSD, is a multi-collateralized stablecoin.</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
-          <a href="https://farms.pandaswap.xyz/">
-            <div className="service-one__single text-center">
-              <div className="service-one__inner">
-                <StyledProductImage fadeIn={false} fluid={props.data.pandaswap.childImageSharp.fluid} />
-                <h3>Pandaswap</h3>
-                <p>Discover experimental products like Rhino and Bamboo on Binance Smart Chain!</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div className="col-lg-3 col-md-6 col-sm-12 wow fadeInDown" data-wow-duration="1500ms">
-          <a href="https://pollyfinance.com">
-            <div className="service-one__single text-center">
-              <div className="service-one__inner">
-                <StyledProductImage fadeIn={false} fluid={props.data.pollyfinance.childImageSharp.fluid} />
-                <h3>Polly Finance</h3>
-                <p>Soft synthetics, a.k.a. "Nests", on the Polygon Network!</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </StyledItemRow>
-    </>
-  )
-}
-
 const VisionSection = props => {
   return (
     <>
@@ -455,74 +386,9 @@ const VisionSection = props => {
   )
 }
 
-const FaqSection = props => {
-  return (
-    <>
-      <section className="faq-one">
-        <div className="container">
-          <div className="block-title text-center">
-            <StyledSectionTitle>FAQ</StyledSectionTitle>
-          </div>
-          <div className="accrodion-grp faq-accrodion">
-            <AccordionItem
-              title="What are synthetics?"
-              content="Synthetic assets are an important part of a decentralized 
-            ecosystem. They allow decentralized infrastructure to offer assets 
-            that track the price of any system."
-              status={true}
-            />
-            <AccordionItem
-              title="How do they work?"
-              content="Most people do not understand synthetics. They think that 
-            derivatives are only good for synthetic stocks. They just want to buy 
-            stocks like $APPL or $GME on the blockchain 24/7. While that is a good 
-            part of synthetics, it is just replicating our existing market on the 
-            blockchain. What is far more powerful and exciting is that with synthetics 
-            we can do something new. With synthetics you can turn any quantifiable 
-            discrete event into a financial feed that people can buy and sell. "
-              status={false}
-            />
-            <AccordionItem
-              title="What's the difference between soft and hard synthetics?"
-              content="We use the terms soft synthetics and hard synthetics to refer 
-            to two different types of synthetic asset. Soft synthetics are baskets of tokens, 
-            similar to indexes, but managed autonomously. Hard synthetics are synthetics assets 
-            that links price to data. That data could itself be a price, like $TSLA stock price, 
-            the price of 1 ounce of gold, or something more exotic like the number of goals Neymar 
-            Jr scores, rainfall levels or crime rates etc. The value of the synthetic asset is backed by 
-            collateral. in Bao's case, we will be focusing on allowing the use of LP tokens 
-            as that collateral."
-              status={false}
-            />
-            <AccordionItem
-              title="How does Bao do synthetics differently?"
-              content="Right now existing protocols for synthetics require you to put your assets 
-            into a base token in order to collateralise the creation of your synthetic asset, 
-            taking on risk and losing your exposure to the underlying assets of your choice.
-            Instead of this, we are allowing users to use their LP tokens to create synthetic 
-            assets, so they will still have their exposure to the underlying assets and the LP 
-            fees from that trade pair. Despite these inefficiencies the market for synthetics on 
-            Ethereum is already >$1B marketcap and >$1B TVL. We believe BAO will increase that 
-            dramatically by making it practical to partake in synthetic asset creation."
-              status={false}
-            />
-          </div>
-        </div>
-      </section>
-    </>
-  )
-}
-
 const ProductSection = props => {
   return (
     <>
-      <StyledSectionTitle>Balancing, Automation, and Options</StyledSectionTitle>
-      <StyledBodySubText>
-        Our community wants to build innovative products on top of this cutting-edge technology and create serious
-        competition for the established giants – together. Goodbye Big Banks. <br />
-        Hello BaoBanks.
-      </StyledBodySubText>
-
       <StyledSectionFlex style={{ paddingBottom: '0px', paddingTop: '1rem' }}>
         <Wizard />
       </StyledSectionFlex>
@@ -534,7 +400,7 @@ const SecuritySection = props => {
   return (
     <>
       <div style={{ marginTop: '3rem' }}></div>
-      <a href="https://www.immunefi.com/bounty/baofinance" target="_blank">
+      <a href="https://www.immunefi.com/bounty/baofinance" target="_blank" rel="noreferrer">
         <img src={immunefi} height="250px" />
       </a>
     </>

@@ -90,13 +90,13 @@ const ProtocolData = () => {
     setTvl(parseFloat(tvl))
 
     const price = await (
-      await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bao-finance-v2&vs_currencies=usd', { method: 'GET' })
+      await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bao-finance&vs_currencies=usd', { method: 'GET' })
     ).json()
     setPrice(price['bao-finance-v2'].usd)
 
     const mcap = await (
       await fetch(
-        'https://api.coingecko.com/api/v3/coins/bao-finance-v2?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false',
+        'https://api.coingecko.com/api/v3/coins/bao-finance?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false',
         { method: 'GET' }
       )
     ).json()

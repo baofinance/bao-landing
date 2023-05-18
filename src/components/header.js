@@ -231,7 +231,12 @@ const Header = props => {
 
         {props.path !== undefined && (
           <StyledTradeLink target="_blank" href="https://app.bao.finance/">
-            App
+            Mainnet
+          </StyledTradeLink>
+        )}
+        {props.path !== undefined && (
+          <StyledTradeLink target="_blank" href="https://xdai.bao.finance/">
+            xDai
           </StyledTradeLink>
         )}
       </StyledNav>
