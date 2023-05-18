@@ -24,27 +24,19 @@ const menu = [
     ]
   },
   {
-    name: 'Franchises',
-    sublinks: [
-      { name: 'Polly Finance', link: 'https://pollyfinance.com', description: 'on Polygon' },
-      { name: 'BaoSwap', link: 'https://baoswap.xyz', description: 'on xDai' },
-      { name: 'PandaSwap', link: 'https://farms.pandaswap.xyz/', description: 'on Binance Smart Chain' }
-    ]
-  },
-  {
     name: 'About',
     sublinks: [
       {
         name: 'Blog',
-        link: 'https://medium.com/@thebaoman'
+        link: 'https://medium.com/baomunity'
       },
       {
         name: 'Info',
-        link: 'https://docs.bao.finance/'
+        link: 'https://info.bao.finance/docs/'
       },
       {
         name: 'FAQ',
-        link: 'https://docs.bao.finance/faq/bao-related-questions'
+        link: 'https://info.bao.finance/docs/faq/bao-related-questions'
       }
     ]
   }
