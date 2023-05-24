@@ -1,18 +1,9 @@
-# gatsby files
-.cache/
-public
-
-# dependencies
-.next/
-node_modules/
-
-#misc
-**/.DS_Store
-.now
-.nvmrc
-yarn-error.log
-.vercel
-.env
-.env.*
-
+.idea
+node_modules
+.DS_Store
+build/
+*.log
+.next
+out
+.env.local
 .vscode
