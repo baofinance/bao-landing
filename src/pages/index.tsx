@@ -63,25 +63,49 @@ const Vaults: React.FC = () => {
 			</div>
 
 			<div className='grid w-full grid-cols-6'>
-				<div className='col-span-3 m-auto mt-20 p-8'>
-					<Typography variant='h3' className='mr-2 inline font-bakbak text-baoRed'>
-						DEMOCRATIZING
+				<div className='col-span-4 m-auto p-8'>
+					<Typography variant='h3' className='mr-2 inline font-bakbak'>
+						DISCOVER
 					</Typography>
 					<Typography variant='h3' className='-mt-2 mr-2 inline font-bakbak'>
-						ECONOMIC
+						BAO
 					</Typography>
-					<Typography variant='h3' className='-mt-2 inline font-bakbak'>
-						DATA
+					<Typography variant='h3' className='mr-2 inline font-bakbak text-baoRed'>
+						BASKETS
 					</Typography>
 					<Typography variant='p'>
-						Bao empowers users by democratizing data in the realm of decentralized finance. By leveraging Chainlink oracles, Bao brings
-						real-time, accurate data on-chain, ensuring transparency and reliability. This enables anyone to access and utilize financial
-						data, making informed decisions and participating in markets that were once exclusive. Bao{`'`}s commitment to data
-						democratization paves the way for a more inclusive and accessible financial landscape.
+						Bao Baskets are your gateway to diversified exposure in the world of decentralized finance. Powered by automated strategies, Bao
+						Baskets put your assets to work, generating yield through lending, yield farming, and other innovative methods. With regular
+						rebalancing based on yield optimization, Bao Baskets compound rewards, providing an efficient and convenient way to participate
+						in DeFi{`'`}s vibrant ecosystem. Experience the power of diversification with Bao Baskets today!
 					</Typography>
 				</div>
-				<div className='col-span-3 m-auto'>
+				<div className='col-span-2 m-auto'>
+					<Image src='/images/basket.png' width={600} height={600} alt='bao' className='mt-6' />
+				</div>
+			</div>
+
+			<div className='grid w-full grid-cols-6'>
+				<div className='col-span-2 m-auto h-fit'>
 					<Image src='/images/generator.png' width={600} height={600} alt='bao' className='mt-6' />
+				</div>
+				<div className='col-span-4 m-auto p-8'>
+					<Typography variant='h3' className='mr-2 inline font-bakbak text-baoRed'>
+						UNLOCK
+					</Typography>
+					<Typography variant='h3' className='-mt-2 mr-2 inline font-bakbak'>
+						YOUR
+					</Typography>
+					<Typography variant='h3' className='mr-2 inline font-bakbak'>
+						COLLATERAL
+					</Typography>
+					<Typography variant='p'>
+						Bao Vaults open the doors to a world of lending, borrowing, and minting synthetic assets within the decentralized finance
+						landscape. Securely deposit your collateral assets, such as ETH, bSTBL, and bETH, to access a range of borrowing and minting
+						opportunities. Whether you want to mint stablecoins like baoUSD or create custom synthetics, Bao Vaults provide a flexible and
+						user-friendly platform. Monitor your debt health, manage your positions, and seize opportunities in this dynamic ecosystem. Join
+						Bao Vaults today and unlock the potential of collateralized finance!
+					</Typography>
 				</div>
 			</div>
 		</>
