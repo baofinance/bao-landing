@@ -75,7 +75,7 @@
     "@gnosis.pm/safe-apps-web3-react": "^1.5.1",
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^2.0.10",
-    "@material-tailwind/react": "^1.2.3",
+    "@material-tailwind/react": "^2.0.0",
     "@material-ui/pickers": "^3.3.10",
     "@metamask/providers": "^10.2.1",
     "@tailwindcss/forms": "^0.5.3",

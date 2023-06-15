@@ -5,7 +5,7 @@ const AccountButton: React.FC = () => {
 	return (
 		<>
 			<a href='https://app.bao.finance' target='_blank' rel='noopener noreferrer'>
-				<Button size='sm'>Go to App</Button>
+				<Button size='sm'>Launch App</Button>
 			</a>
 		</>
 	)
