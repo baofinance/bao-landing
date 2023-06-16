@@ -419,12 +419,6 @@ const Products = () => {
 }
 
 const Faq = () => {
-	const [open, setOpen] = useState(1)
-
-	const handleOpen = value => {
-		setOpen(open === value ? 0 : value)
-	}
-
 	const faqs = [
 		{
 			question: 'What are synthetics?',
