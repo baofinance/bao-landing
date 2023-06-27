@@ -162,7 +162,7 @@ export function Hero() {
             </div>
           </div>
           <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
-            <p className="text-center text-sm font-semibold text-baoWhite lg:text-left">
+            <p className="text-center font-semibold text-baoWhite lg:text-left">
               We only work with the most innovative teams
             </p>
             <ul
@@ -170,20 +170,20 @@ export function Hero() {
               className="mx-auto mt-8 grid max-w-xl grid-cols-4 flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start"
             >
               {[
-                ['Chainlink', logoChainlink, 'https://chain.link'],
-                ['Balancer', logoBalancer, 'https://balancer.fi'],
-                ['Liquity', logoLiquity, 'https://liquity.fi'],
-                ['Aura', logoAura, 'https://aura.finance'],
-                ['Curve', logoCurve, 'https://curve.fi'],
-                ['StakeDAO', logoStakeDAO, 'https://stakedao.org'],
-                ['BProtocol', logoBProtocol, 'https://bprotocol.org'],
-                ['Saddle', logoSaddle, 'https://saddle.finance'],
+                ['Chainlink', logoChainlink],
+                ['Balancer', logoBalancer],
+                ['Liquity', logoLiquity],
+                ['Aura', logoAura],
+                ['Curve', logoCurve],
+                ['StakeDAO', logoStakeDAO],
+                ['BProtocol', logoBProtocol],
+                ['Saddle', logoSaddle],
               ].map(([name, logo, href]) => (
                 <li key={name} className={clsx('flex')}>
                   <Image
                     src={logo}
                     alt={name}
-                    className="h-8 w-8"
+                    className="h-12 w-12"
                     unoptimized
                   />
                 </li>
