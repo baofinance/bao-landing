@@ -1,18 +1,32 @@
-# gatsby files
-.cache/
-public
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-.next/
-node_modules/
+/node_modules
+/.pnp
+.pnp.js
 
-#misc
-**/.DS_Store
-.now
-.nvmrc
-yarn-error.log
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+
+# vercel
 .vercel
-.env
-.env.*
-
-.vscode
