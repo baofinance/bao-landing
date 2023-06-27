@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "engine": {
-    "node": ">=16"
+    "node": "16.8.0"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
