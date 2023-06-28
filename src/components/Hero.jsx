@@ -143,14 +143,14 @@ export function Hero() {
               >
                 <span>Launch App</span>
               </Button>
-              <Button
+              {/* <Button
                 href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                 variant="transparent"
                 color="white"
               >
                 <PlayIcon className="h-6 w-6 flex-none" />
                 <span className="ml-2.5">Watch the video</span>
-              </Button>
+              </Button> */}
             </div>
           </div>
           <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
