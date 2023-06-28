@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "npx next build && npm run export",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "npx next start",
+    "export": "npx next export",
+    "lint": "npx next lint --fix",
+    "prettier": "npx prettier --write 'src/**/*.{ts,tsx}'",
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
