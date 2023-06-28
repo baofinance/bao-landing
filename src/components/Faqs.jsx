@@ -55,7 +55,7 @@ export const Faqs = () => {
                   height={24}
                   width={24}
                   color="#e53164"
-                  className="mr-1 h-6 w-6"
+                  className="mr-2 h-6 w-6"
                 />{' '}
                 Read Our Full Docs
               </Button>
