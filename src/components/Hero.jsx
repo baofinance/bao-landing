@@ -137,7 +137,7 @@ export function Hero() {
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <Button
-                href="https://app.bao.finance"
+                href="https://app.baofinance.io"
                 variant="transparent"
                 color="white"
               >

@@ -46,7 +46,7 @@ export const Faqs = () => {
             </p>
             <div className="md:inline-block">
               <Button
-                href="https://docs.bao.finance/"
+                href="https://docs.baofinance.io/"
                 variant="transparent"
                 color="white"
               >

@@ -1,34 +1,16 @@
-# Pocket
+![GitHub Super-Linter](https://github.com/baofinance/ui/workflows/Lint%20Code%20Base/badge.svg)
 
-Pocket is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+# Bao Finance Landing
 
-## Getting started
+This is the [www.baofinance.io](https://www.baofinance.io) Landing project.
 
-To get started with this template, first install the npm dependencies:
+## Contributing
 
-```bash
-npm install
-```
+Please read through the [contribution guidelines](./CONTRIBUTING.md) for more information on
+how to report new bugs, coding standards, and development guidelines.
 
-Next, run the development server:
+## Community
 
-```bash
-npm run dev
-```
-
-Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
-
-## Customizing
-
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
-
-## License
-
-This site template is a commercial product and is licensed under the [Tailwind UI license](https://tailwindui.com/license).
-
-## Learn more
-
-To learn more about the technologies used in this site template, see the following resources:
-
-1. `yarn install`
-1. `yarn start`
+- Check out [@BaoCommunity](https://twitter.com/BaoCommunity) on twitter
+- Take a look at the official [BAO docs](https://info.baofinance.io/docs)
+- Join our [discord](https://discord.gg/BW3P62vJXT) 

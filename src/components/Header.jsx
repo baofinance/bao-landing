@@ -36,10 +36,21 @@ function ChevronUpIcon(props) {
 function ExternalLinkIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-<path d="M18 6L6 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M8 6L18 6L18 16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  )}
-
+      <path
+        d="M18 6L6 18"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M8 6L18 6L18 16"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  )
+}
 
 function MobileNavLink({ children, ...props }) {
   return (
@@ -64,31 +75,40 @@ export function Header() {
             </Link>
           </div>
           <div className="flex items-center gap-6">
-          <Button variant='transparent' color='white' href="#" className="hidden lg:block">
+            <Button
+              variant="transparent"
+              color="white"
+              href="https://app.baofinance.io"
+              className="hidden lg:block"
+            >
               Launch App
             </Button>
             <Popover>
               {({ open }) => (
                 <>
                   <Popover.Button
-                    className="relative z-10 inline-flex items-center rounded-lg stroke-baoWhite p-2 h-[40px] w-[40px] active:stroke-gray-900 [&:not(:focus-visible)]:focus:outline-none"
+                    className="relative z-10 inline-flex h-[40px] w-[40px] items-center rounded-lg stroke-baoWhite p-2 active:stroke-gray-900 [&:not(:focus-visible)]:focus:outline-none"
                     aria-label="Toggle site navigation"
                   >
-							<div className='flex flex-col items-center justify-center'>
-								<span
-									className={`block h-0.5 w-6 rounded-sm bg-baoWhite 
-                    transition-all duration-300 ease-out ${open ? 'translate-y-1 rotate-45' : '-translate-y-0.5'}`}
-								></span>
-								<span
-									className={`my-0.5 block h-0.5 w-6 rounded-sm bg-baoWhite transition-all duration-300 ease-out ${
-										open ? 'opacity-0' : 'opacity-100'
-									}`}
-								></span>
-								<span
-									className={`block h-0.5 w-6 rounded-sm bg-baoWhite 
-                    transition-all duration-300 ease-out ${open ? '-translate-y-1 -rotate-45' : 'translate-y-0.5'}`}
-								></span>
-							</div>
+                    <div className="flex flex-col items-center justify-center">
+                      <span
+                        className={`block h-0.5 w-6 rounded-sm bg-baoWhite 
+                    transition-all duration-300 ease-out ${
+                      open ? 'translate-y-1 rotate-45' : '-translate-y-0.5'
+                    }`}
+                      ></span>
+                      <span
+                        className={`my-0.5 block h-0.5 w-6 rounded-sm bg-baoWhite transition-all duration-300 ease-out ${
+                          open ? 'opacity-0' : 'opacity-100'
+                        }`}
+                      ></span>
+                      <span
+                        className={`block h-0.5 w-6 rounded-sm bg-baoWhite 
+                    transition-all duration-300 ease-out ${
+                      open ? '-translate-y-1 -rotate-45' : 'translate-y-0.5'
+                    }`}
+                      ></span>
+                    </div>
                   </Popover.Button>
                   <AnimatePresence initial={false}>
                     {open && (
@@ -113,36 +133,73 @@ export function Header() {
                           }}
                           className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-baoBlack px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
                         >
-										<div className='py-4'>
-                      <p className='block text-lg leading-7 tracking-tight text-baoWhite/60 font-bakbak'>Learn</p>
-											<MobileNavLink href='https://medium.com/baomunity' target='_blank'>
-												Blog <ExternalLinkIcon className='h-3 w-3 align-top inline-block stroke-baoWhite'/>
-											</MobileNavLink>
-											<MobileNavLink href='https://docs.bao.finance' target='_blank'>
-												Docs <ExternalLinkIcon className='h-3 w-3 align-top inline-block stroke-baoWhite'/>
-											</MobileNavLink>
-										</div>
-										<div className='py-4'>
-                    <p className='block text-lg leading-7 tracking-tight text-baoWhite/60 font-bakbak'>Products</p>
-											<MobileNavLink href='https://app.bao.finance/vaults'>Vaults</MobileNavLink>
-											<MobileNavLink href='https://app.bao.finance/baskets'>Baskets</MobileNavLink>
-											<MobileNavLink href='https://app.bao.finance/vebao'>veBAO</MobileNavLink>
-											<MobileNavLink href='https://app.bao.finance/gauges'>Gauges</MobileNavLink>
-										</div>
-										<div className='py-4'>
-                    <p className='block text-lg leading-7 tracking-tight text-baoWhite/60 font-bakbak'>Ecosystem</p>
-											<MobileNavLink href='https://snapshot.org/#/baovotes.eth/' target='_blank'>
-												Snapshot Governance <ExternalLinkIcon className='h-3 w-3 align-top inline-block stroke-baoWhite'/>
-											</MobileNavLink>
-											<MobileNavLink href='https://www.immunefi.com/bounty/baofinance' target='_blank'>
-												Immunefi Bug Bounty <ExternalLinkIcon className='h-3 w-3 align-top inline-block stroke-baoWhite'/>
-											</MobileNavLink>
-											<MobileNavLink href='https://gov.bao.finance/' target='_blank'>
-												Forum <ExternalLinkIcon className='h-3 w-3 align-top inline-block stroke-baoWhite'/>
-											</MobileNavLink>
-										</div>
+                          <div className="py-4">
+                            <p className="block font-bakbak text-lg leading-7 tracking-tight text-baoWhite/60">
+                              Learn
+                            </p>
+                            <MobileNavLink
+                              href="https://medium.com/baomunity"
+                              target="_blank"
+                            >
+                              Blog{' '}
+                              <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
+                            </MobileNavLink>
+                            <MobileNavLink
+                              href="https://docs.baofinance.io"
+                              target="_blank"
+                            >
+                              Docs{' '}
+                              <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
+                            </MobileNavLink>
+                          </div>
+                          <div className="py-4">
+                            <p className="block font-bakbak text-lg leading-7 tracking-tight text-baoWhite/60">
+                              Products
+                            </p>
+                            <MobileNavLink href="https://app.baofinance.io/vaults">
+                              Vaults
+                            </MobileNavLink>
+                            <MobileNavLink href="https://app.baofinance.io/baskets">
+                              Baskets
+                            </MobileNavLink>
+                            <MobileNavLink href="https://app.baofinance.io/vebao">
+                              veBAO
+                            </MobileNavLink>
+                            <MobileNavLink href="https://app.baofinance.io/gauges">
+                              Gauges
+                            </MobileNavLink>
+                          </div>
+                          <div className="py-4">
+                            <p className="block font-bakbak text-lg leading-7 tracking-tight text-baoWhite/60">
+                              Ecosystem
+                            </p>
+                            <MobileNavLink
+                              href="https://snapshot.org/#/baovotes.eth/"
+                              target="_blank"
+                            >
+                              Snapshot Governance{' '}
+                              <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
+                            </MobileNavLink>
+                            <MobileNavLink
+                              href="https://www.immunefi.com/bounty/baofinance"
+                              target="_blank"
+                            >
+                              Immunefi Bug Bounty{' '}
+                              <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
+                            </MobileNavLink>
+                            <MobileNavLink
+                              href="https://gov.baofinance.io/"
+                              target="_blank"
+                            >
+                              Forum{' '}
+                              <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
+                            </MobileNavLink>
+                          </div>
                           <div className="mt-8 flex flex-col gap-4">
-                            <Button href="https://app.bao.finance/" variant="solid">
+                            <Button
+                              href="https://app.baofinance.io/"
+                              variant="solid"
+                            >
                               Launch App
                             </Button>
                           </div>
