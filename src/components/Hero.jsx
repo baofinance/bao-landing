@@ -131,7 +131,7 @@ export function Hero() {
               </h1>
             </div>
             <p className="mt-6 text-lg text-baoWhite">
-              We are building omnichain, decentralized and secure synthetic
+              Building omnichain, decentralized and secure synthetic
               liquidity, tokens and markets. Accessible to all. Stoppable by
               no-one.
             </p>
@@ -163,7 +163,7 @@ export function Hero() {
           </div>
           <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
             <p className="text-center font-semibold text-baoWhite lg:text-left">
-              We only work with the most innovative teams
+              We work with some of the most innovative teams
             </p>
             <ul
               role="list"

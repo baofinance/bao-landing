@@ -19,12 +19,12 @@ export const Faqs = () => {
     {
       question: 'How do synthetics work?',
       answer:
-        'Most people do not understand synthetics. They think that derivatives are only good for synthetic stocks. They just want to buy stocks like $APPL or $GME on the blockchain 24/7. While that is a good part of synthetics, it is just replicating our existing market on the blockchain. What is far more powerful and exciting is that with synthetics we can do something new. With synthetics you can turn any quantifiable discrete event into a financial feed that people can buy and sell.',
+        'Most people do not understand synthetics. They think that derivatives are only good for synthetic stocks. They just want to buy stocks like $APPL or $GME on the blockchain 24/7. While that is a good part of synthetics, it is just replicating our existing market on the blockchain. What is far more powerful and exciting is that with synthetics you can do something new. With synthetics you can turn any quantifiable discrete event into a financial feed that people can buy and sell.',
     },
     {
       question: 'What are soft and hard synthetics?',
       answer:
-        'We use the terms soft synthetics and hard synthetics to refer to two different types of synthetic asset. Soft synthetics are baskets of tokens managed autonomously. Hard synthetics are synthetic assets that links price to data. That data could itself be a price, like $TSLA stock price, the price of 1 ounce of gold, or something more exotic like the number of goals Neymar Jr scores, rainfall levels or crime rates etc. The value of the synthetic asset is backed by collateral.',
+        'Soft synthetics and hard synthetics to refer to two different types of synthetic asset. Soft synthetics are baskets of tokens managed autonomously. Hard synthetics are synthetic assets that links price to data. That data could itself be a price, like $TSLA stock price, the price of 1 ounce of gold, or something more exotic like the number of goals Neymar Jr scores, rainfall levels or crime rates etc. The value of the synthetic asset is backed by collateral.',
     },
     {
       question: 'How does Bao do synthetics differently?',
