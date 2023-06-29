@@ -144,7 +144,7 @@ export function Header() {
                               <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
                             </MobileNavLink>
                             <MobileNavLink
-                              href="https://docs.baofinance.io"
+                              href="https://docs.bao.finance"
                               target="_blank"
                             >
                               Docs{' '}
@@ -187,7 +187,7 @@ export function Header() {
                               <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
                             </MobileNavLink>
                             <MobileNavLink
-                              href="https://gov.baofinance.io/"
+                              href="https://gov.bao.finance/"
                               target="_blank"
                             >
                               Forum{' '}

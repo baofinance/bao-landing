@@ -45,7 +45,7 @@ export function Footer() {
       <a
         className="xs:pl-2 xs:pr-2 pl-3 pr-3 text-baoWhite no-underline hover:text-baoRed"
         target="_blank"
-        href="https://gov.baofinance.io/"
+        href="https://gov.bao.finance/"
         aria-label="Governance Forum"
         rel="noreferrer"
       >
@@ -63,7 +63,7 @@ export function Footer() {
       <a
         className="xs:pl-2 xs:pr-2 pl-3 pr-3 text-baoWhite no-underline hover:text-baoRed"
         target="_blank"
-        href="https://docs.baofinance.io/"
+        href="https://docs.bao.finance/"
         aria-label="Documentation"
         rel="noreferrer"
       >
