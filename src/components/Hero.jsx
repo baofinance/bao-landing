@@ -144,7 +144,7 @@ export function Hero() {
                 <span>Launch App</span>
               </Button>
               <Button
-                href="https://vimeo.com/840593622"
+                href="https://vimeo.com/842191774"
                 variant="transparent"
                 color="white"
               >
