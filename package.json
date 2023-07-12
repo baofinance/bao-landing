@@ -2,9 +2,6 @@
   "name": "@baofinance/landing",
   "private": true,
   "version": "0.1.0",
-  "engines": {
-    "node": "14.18.1"
-  },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@mdx-js/mdx": "^1.5.5",
