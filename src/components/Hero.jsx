@@ -1,20 +1,21 @@
-import Link from 'next/link'
-import { useId } from 'react'
-import Image from 'next/image'
-import clsx from 'clsx'
-
+import 'node_modules/react-modal-video/scss/modal-video.scss';
 import { AppScreen } from '@/components/AppScreen'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { PhoneFrame } from '@/components/PhoneFrame'
-import logoChainlink from '@/images/logos/chainlink.svg'
-import logoBalancer from '@/images/logos/balancer.svg'
-import logoLiquity from '@/images/logos/liquity.svg'
 import logoAura from '@/images/logos/aura.svg'
-import logoCurve from '@/images/logos/curve.svg'
-import logoStakeDAO from '@/images/logos/stake-dao.svg'
 import logoBProtocol from '@/images/logos/b-protocol.svg'
+import logoBalancer from '@/images/logos/balancer.svg'
+import logoChainlink from '@/images/logos/chainlink.svg'
+import logoCurve from '@/images/logos/curve.svg'
+import logoLiquity from '@/images/logos/liquity.svg'
 import logoSaddle from '@/images/logos/saddle.svg'
+import logoStakeDAO from '@/images/logos/stake-dao.svg'
+import clsx from 'clsx'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useId, useState } from 'react'
+import ModalVideo from 'react-modal-video'
 
 function BackgroundIllustration(props) {
   let id = useId()
@@ -114,6 +115,8 @@ function AppDemo() {
 }
 
 export function Hero() {
+  const [isOpen, setOpen] = useState(false)
+
   return (
     <div className="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
       <Container>
@@ -131,9 +134,8 @@ export function Hero() {
               </h1>
             </div>
             <p className="mt-6 text-lg text-baoWhite">
-              Building omnichain, decentralized and secure synthetic
-              liquidity, tokens and markets. Accessible to all. Stoppable by
-              no-one.
+              Building omnichain, decentralized and secure synthetic liquidity,
+              tokens and markets. Accessible to all. Stoppable by no-one.
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <Button
@@ -143,8 +145,15 @@ export function Hero() {
               >
                 <span>Launch App</span>
               </Button>
+              <ModalVideo
+                channel="youtube"
+                youtube={{ mute: 0, autoplay: 1 }}
+                isOpen={isOpen}
+                videoId="FkgzCP5Hl1E"
+                onClose={() => setOpen(false)}
+              />
               <Button
-                href="https://vimeo.com/842191774"
+                onClick={() => setOpen(true)}
                 variant="transparent"
                 color="white"
               >
