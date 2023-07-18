@@ -146,10 +146,10 @@ export function Hero() {
                 <span>Launch App</span>
               </Button>
               <ModalVideo
-                channel="youtube"
+                channel="vimeo"
                 youtube={{ mute: 0, autoplay: 1 }}
                 isOpen={isOpen}
-                videoId="FkgzCP5Hl1E"
+                videoId="846280982"
                 onClose={() => setOpen(false)}
               />
               <Button
