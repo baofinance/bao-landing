@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
+  faChartColumn,
   faChartLineUp,
   faChartPieSimpleCircleCurrency,
   faChartPieSimpleCircleDollar,
@@ -12,7 +13,7 @@ import {
   faScaleBalanced,
   faTools,
   faUserGroup,
-  faVault,
+  faVault
 } from '@fortawesome/pro-regular-svg-icons'
 import Image from 'next/image'
 import { Fragment, useEffect, useId, useRef, useState } from 'react'
@@ -32,24 +33,24 @@ const features = [
   {
     name: 'Borrow price stable currencies on your terms',
     description:
-      'Mint currencies like baoUSD or baoETH while utilizing our yield-bearing Bao Baskets or ETH as collateral.',
+      'Mint currencies like baoUSD or baoETH while utilizing the safest collaterals available.',
     icon: DeviceUserIcon,
-    screen: VaultsScreen,
+    screen: VaultsScreen
   },
   {
-    name: 'Get diversified exposure and earn yield',
+    name: 'Swap protocol tokens built into the app',
     description:
-      'Curated collections of tokens, powered by automated strategies, provide optimal yield opportunities and exposure to various sectors.',
+      'Seamlessly swap your favorite protocol tokens directly within the app. Enjoy fast, secure, and efficient token exchanges without ever leaving the platform.',
     icon: DeviceNotificationIcon,
-    screen: BasketsScreen,
+    screen: SwapScreen
   },
   {
     name: 'Earn protocol revenue and governance rights',
     description:
       'Lock governance tokens, amplifying voting power to influence gauge weights and direct incentives within the ecosystem.',
     icon: DeviceTouchIcon,
-    screen: VoteScreen,
-  },
+    screen: VoteScreen
+  }
 ]
 
 function DeviceUserIcon(props) {
@@ -68,7 +69,7 @@ function DeviceNotificationIcon(props) {
       <FontAwesomeIcon
         height={32}
         width={32}
-        icon={faChartPieSimpleCircleDollar}
+        icon={faChartColumn}
         color="#e53164"
       />{' '}
     </svg>
@@ -81,7 +82,12 @@ function DeviceTouchIcon(props) {
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
       <circle cx={16} cy={16} r={16} className="fill-baoRed/20" />
-      <FontAwesomeIcon height={32} width={32} icon={faCheckToSlot} color="#e53164" />
+      <FontAwesomeIcon
+        height={32}
+        width={32}
+        icon={faCheckToSlot}
+        color="#e53164"
+      />
     </svg>
   )
 }
@@ -89,7 +95,7 @@ function DeviceTouchIcon(props) {
 const headerAnimation = {
   initial: { opacity: 0, transition: { duration: 0.3 } },
   animate: { opacity: 1, transition: { duration: 0.3, delay: 0.3 } },
-  exit: { opacity: 0, transition: { duration: 0.3 } },
+  exit: { opacity: 0, transition: { duration: 0.3 } }
 }
 
 const maxZIndex = 2147483647
@@ -100,13 +106,13 @@ const bodyVariantBackwards = {
   zIndex: 0,
   filter: 'blur(4px)',
   zIndex: 0,
-  transition: { duration: 0.4 },
+  transition: { duration: 0.4 }
 }
 
-const bodyVariantForwards = (custom) => ({
+const bodyVariantForwards = custom => ({
   y: '100%',
   zIndex: maxZIndex - custom.changeCount,
-  transition: { duration: 0.4 },
+  transition: { duration: 0.4 }
 })
 
 const bodyAnimation = {
@@ -114,19 +120,19 @@ const bodyAnimation = {
   animate: 'animate',
   exit: 'exit',
   variants: {
-    initial: (custom) =>
+    initial: custom =>
       custom.isForwards ? bodyVariantForwards(custom) : bodyVariantBackwards,
-    animate: (custom) => ({
+    animate: custom => ({
       y: '0%',
       opacity: 1,
       scale: 1,
       zIndex: maxZIndex / 2 - custom.changeCount,
       filter: 'blur(0px)',
-      transition: { duration: 0.4 },
+      transition: { duration: 0.4 }
     }),
-    exit: (custom) =>
-      custom.isForwards ? bodyVariantBackwards : bodyVariantForwards(custom),
-  },
+    exit: custom =>
+      custom.isForwards ? bodyVariantBackwards : bodyVariantForwards(custom)
+  }
 }
 
 function VaultsScreen({ custom, animated = false }) {
@@ -144,12 +150,12 @@ function VaultsScreen({ custom, animated = false }) {
   )
 }
 
-function BasketsScreen({ custom, animated = false }) {
+function SwapScreen({ custom, animated = false }) {
   return (
     <AppScreen className="w-full">
       <MotionAppScreenBody {...(animated ? { ...bodyAnimation, custom } : {})}>
         <Image
-          src="/images/app-beth.png"
+          src="/images/app-swap.png"
           width={1080}
           height={1920}
           alt="baoUSD app"
@@ -191,9 +197,9 @@ function FeaturesDesktop() {
   let isForwards = prevIndex === undefined ? true : selectedIndex > prevIndex
 
   let onChange = useDebouncedCallback(
-    (selectedIndex) => {
+    selectedIndex => {
       setSelectedIndex(selectedIndex)
-      setChangeCount((changeCount) => changeCount + 1)
+      setChangeCount(changeCount => changeCount + 1)
     },
     100,
     { leading: true }
@@ -274,7 +280,7 @@ function FeaturesMobile() {
 
   useEffect(() => {
     let observer = new window.IntersectionObserver(
-      (entries) => {
+      entries => {
         for (let entry of entries) {
           if (entry.isIntersecting) {
             setActiveIndex(slideRefs.current.indexOf(entry.target))
@@ -284,7 +290,7 @@ function FeaturesMobile() {
       },
       {
         root: slideContainerRef.current,
-        threshold: 0.6,
+        threshold: 0.6
       }
     )
 
@@ -308,7 +314,7 @@ function FeaturesMobile() {
         {features.map((feature, featureIndex) => (
           <div
             key={featureIndex}
-            ref={(ref) => (slideRefs.current[featureIndex] = ref)}
+            ref={ref => (slideRefs.current[featureIndex] = ref)}
             className="w-full flex-none snap-center px-4 sm:px-6"
           >
             <div className="relative transform overflow-hidden rounded-2xl bg-gray-800 px-5 py-6">
@@ -347,7 +353,7 @@ function FeaturesMobile() {
             onClick={() => {
               slideRefs.current[featureIndex].scrollIntoView({
                 block: 'nearest',
-                inline: 'nearest',
+                inline: 'nearest'
               })
             }}
           >
@@ -370,7 +376,7 @@ export function PrimaryFeatures() {
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
           <div>
             <h1 className="mr-2 inline-block font-bakbak text-4xl tracking-tight text-baoWhite">
-              Building towards a decentralized future
+              BAO makes synthetics easy.
             </h1>
           </div>
           <p className="mt-2 text-lg text-baoWhite/80">

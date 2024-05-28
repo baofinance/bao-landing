@@ -25,7 +25,6 @@ export default function Home() {
         <PrimaryFeatures />
         <SecondaryFeatures />
         <CallToAction />
-        <Faqs />
         {/* <ProtocolData /> */}
       </main>
       <Footer />

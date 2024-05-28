@@ -6,7 +6,7 @@ import {
   faRobot,
   faScaleBalanced,
   faTools,
-  faUserGroup,
+  faUserGroup
 } from '@fortawesome/pro-regular-svg-icons'
 
 const features = [
@@ -14,38 +14,38 @@ const features = [
     name: 'Automated Strategies',
     description:
       'Bao products leverage sophisticated automated strategies to generate optimal yield, ensuring efficient deployment of your assets.',
-    icon: AutomatedIcon,
+    icon: AutomatedIcon
   },
   {
-    name: 'Rebalancing Mechanism',
+    name: 'Innovative Synthetics',
     description:
-      'Baskets are regularly rebalanced to maintain optimal composition, maximizing potential returns and adapting to market conditions.',
-    icon: BalanceIcon,
+      'Bao products feature advanced synthetic assets that mirror underlying asset performance, allowing users to diversify portfolios and hedge risks without holding actual assets. Enjoy reliable, tech-driven exposure to various markets.',
+    icon: BalanceIcon
   },
   {
     name: 'Customizable Options',
     description:
       'Vaults provide users with the flexibility to mint and trade synthetics, tailoring their exposure to specific data points or price movements.',
-    icon: CustomizableIcon,
+    icon: CustomizableIcon
   },
   {
     name: 'Yield Maximization',
     description:
       'Through innovative strategies, Bao products maximize yield by compounding rewards and leveraging opportunities across various protocols.',
-    icon: YieldIcon,
+    icon: YieldIcon
   },
   {
     name: 'Governance Participation',
     description:
       'Bao token holders gain the ability to participate in the governance process, shaping the future of the platform and influencing key decisions.',
-    icon: GovernanceIcon,
+    icon: GovernanceIcon
   },
   {
     name: 'Enhanced Liquidity',
     description:
       'Bao products aim to provide increased liquidity to the market, allowing users to access and trade assets more efficiently and effectively.',
-    icon: LiquidityIcon,
-  },
+    icon: LiquidityIcon
+  }
 ]
 
 function AutomatedIcon(props) {
@@ -129,19 +129,19 @@ export function SecondaryFeatures() {
       <Container>
         <div className="mx-auto max-w-3xl sm:text-center">
           <h1 className="mr-2 inline-block font-bakbak text-4xl tracking-tight text-baoWhite">
-            Balancing, Automation, and Options
+            Unleashing Innovation.
           </h1>
           <p className="mt-2 text-lg text-baoWhite/80">
-            Our community wants to build innovative products on top of this
-            cutting-edge technology and create serious competition for the
-            established giants – together.
+            Our community wants to build innovative products on top of the
+            network's cutting-edge technology and create serious competition for
+            the established giants – together.
           </p>
         </div>
         <ul
           role="list"
           className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
         >
-          {features.map((feature) => (
+          {features.map(feature => (
             <li
               key={feature.name}
               className="rounded-2xl border border-gray-200 p-8"

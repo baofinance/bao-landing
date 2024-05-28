@@ -1,4 +1,4 @@
-import 'node_modules/react-modal-video/scss/modal-video.scss';
+import 'node_modules/react-modal-video/scss/modal-video.scss'
 import { AppScreen } from '@/components/AppScreen'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
@@ -9,13 +9,14 @@ import logoBalancer from '@/images/logos/balancer.svg'
 import logoChainlink from '@/images/logos/chainlink.svg'
 import logoCurve from '@/images/logos/curve.svg'
 import logoLiquity from '@/images/logos/liquity.svg'
-import logoSaddle from '@/images/logos/saddle.svg'
+import logoPaladin from '@/images/logos/paladin.png'
 import logoStakeDAO from '@/images/logos/stake-dao.svg'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useId, useState } from 'react'
 import ModalVideo from 'react-modal-video'
+import { LinkIcon } from '@heroicons/react/24/outline'
 
 function BackgroundIllustration(props) {
   let id = useId()
@@ -124,18 +125,17 @@ export function Hero() {
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
             <div>
               <h1 className="mr-2 inline-block stroke-white font-bakbak text-4xl uppercase tracking-tight">
-                Deliciously
+                Onchain
               </h1>
               <h1 className="mr-2 inline-block font-bakbak text-4xl uppercase tracking-tight text-baoRed">
-                Wrapped
+                Tokenized
               </h1>
               <h1 className="mr-2 inline-block font-bakbak text-4xl uppercase tracking-tight text-baoWhite">
-                Finance
+                Derivitives
               </h1>
             </div>
             <p className="mt-6 text-lg text-baoWhite">
-              Building omnichain, decentralized and secure synthetic liquidity,
-              tokens and markets. Accessible to all. Stoppable by no-one.
+              Grassroots. Community-run. VC-free. Decentralization maximalist.
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <Button
@@ -157,8 +157,8 @@ export function Hero() {
                 variant="transparent"
                 color="white"
               >
-                <PlayIcon className="h-6 w-6 flex-none" />
-                <span className="ml-2.5">Watch the video</span>
+                <LinkIcon className="mr-2.5 h-6 w-6 flex-none" />
+                <Link href="https://docs.bao.finance/">Learn More</Link>
               </Button>
             </div>
           </div>
@@ -186,7 +186,7 @@ export function Hero() {
                 ['Curve', logoCurve],
                 ['StakeDAO', logoStakeDAO],
                 ['BProtocol', logoBProtocol],
-                ['Saddle', logoSaddle],
+                ['Paladin', logoPaladin]
               ].map(([name, logo, href]) => (
                 <li key={name} className={clsx('flex')}>
                   <Image
