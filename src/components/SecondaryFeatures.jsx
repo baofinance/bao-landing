@@ -133,8 +133,8 @@ export function SecondaryFeatures() {
           </h1>
           <p className="mt-2 text-lg text-baoWhite/80">
             Our community wants to build innovative products on top of the
-            network's cutting-edge technology and create serious competition for
-            the established giants – together.
+            network&apos;s cutting-edge technology and create serious
+            competition for the established giants – together.
           </p>
         </div>
         <ul
