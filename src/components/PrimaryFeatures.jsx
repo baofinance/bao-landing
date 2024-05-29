@@ -13,7 +13,7 @@ import {
   faScaleBalanced,
   faTools,
   faUserGroup,
-  faVault
+  faVault,
 } from '@fortawesome/pro-regular-svg-icons'
 import Image from 'next/image'
 import { Fragment, useEffect, useId, useRef, useState } from 'react'
@@ -31,26 +31,26 @@ const MotionAppScreenBody = motion(AppScreen.Body)
 
 const features = [
   {
-    name: 'Borrow price stable currencies on your terms',
+    name: 'Borrow price stable derivatives on your terms',
     description:
-      'Mint currencies like baoUSD or baoETH while utilizing the safest collaterals available.',
+      'borrow on-chain derivatives while using the safest Liquid Staked ETH tokens as collateral. Options for borrowing are continually expanding. baoUSD and baoETH markets are available now!',
     icon: DeviceUserIcon,
-    screen: VaultsScreen
+    screen: VaultsScreen,
   },
   {
     name: 'Swap protocol tokens built into the app',
     description:
       'Seamlessly swap your favorite protocol tokens directly within the app. Enjoy fast, secure, and efficient token exchanges without ever leaving the platform.',
     icon: DeviceNotificationIcon,
-    screen: SwapScreen
+    screen: SwapScreen,
   },
   {
     name: 'Earn protocol revenue and governance rights',
     description:
       'Lock governance tokens, amplifying voting power to influence gauge weights and direct incentives within the ecosystem.',
     icon: DeviceTouchIcon,
-    screen: VoteScreen
-  }
+    screen: VoteScreen,
+  },
 ]
 
 function DeviceUserIcon(props) {
@@ -95,7 +95,7 @@ function DeviceTouchIcon(props) {
 const headerAnimation = {
   initial: { opacity: 0, transition: { duration: 0.3 } },
   animate: { opacity: 1, transition: { duration: 0.3, delay: 0.3 } },
-  exit: { opacity: 0, transition: { duration: 0.3 } }
+  exit: { opacity: 0, transition: { duration: 0.3 } },
 }
 
 const maxZIndex = 2147483647
@@ -106,13 +106,13 @@ const bodyVariantBackwards = {
   zIndex: 0,
   filter: 'blur(4px)',
   zIndex: 0,
-  transition: { duration: 0.4 }
+  transition: { duration: 0.4 },
 }
 
-const bodyVariantForwards = custom => ({
+const bodyVariantForwards = (custom) => ({
   y: '100%',
   zIndex: maxZIndex - custom.changeCount,
-  transition: { duration: 0.4 }
+  transition: { duration: 0.4 },
 })
 
 const bodyAnimation = {
@@ -120,19 +120,19 @@ const bodyAnimation = {
   animate: 'animate',
   exit: 'exit',
   variants: {
-    initial: custom =>
+    initial: (custom) =>
       custom.isForwards ? bodyVariantForwards(custom) : bodyVariantBackwards,
-    animate: custom => ({
+    animate: (custom) => ({
       y: '0%',
       opacity: 1,
       scale: 1,
       zIndex: maxZIndex / 2 - custom.changeCount,
       filter: 'blur(0px)',
-      transition: { duration: 0.4 }
+      transition: { duration: 0.4 },
     }),
-    exit: custom =>
-      custom.isForwards ? bodyVariantBackwards : bodyVariantForwards(custom)
-  }
+    exit: (custom) =>
+      custom.isForwards ? bodyVariantBackwards : bodyVariantForwards(custom),
+  },
 }
 
 function VaultsScreen({ custom, animated = false }) {
@@ -197,9 +197,9 @@ function FeaturesDesktop() {
   let isForwards = prevIndex === undefined ? true : selectedIndex > prevIndex
 
   let onChange = useDebouncedCallback(
-    selectedIndex => {
+    (selectedIndex) => {
       setSelectedIndex(selectedIndex)
-      setChangeCount(changeCount => changeCount + 1)
+      setChangeCount((changeCount) => changeCount + 1)
     },
     100,
     { leading: true }
@@ -280,7 +280,7 @@ function FeaturesMobile() {
 
   useEffect(() => {
     let observer = new window.IntersectionObserver(
-      entries => {
+      (entries) => {
         for (let entry of entries) {
           if (entry.isIntersecting) {
             setActiveIndex(slideRefs.current.indexOf(entry.target))
@@ -290,7 +290,7 @@ function FeaturesMobile() {
       },
       {
         root: slideContainerRef.current,
-        threshold: 0.6
+        threshold: 0.6,
       }
     )
 
@@ -314,7 +314,7 @@ function FeaturesMobile() {
         {features.map((feature, featureIndex) => (
           <div
             key={featureIndex}
-            ref={ref => (slideRefs.current[featureIndex] = ref)}
+            ref={(ref) => (slideRefs.current[featureIndex] = ref)}
             className="w-full flex-none snap-center px-4 sm:px-6"
           >
             <div className="relative transform overflow-hidden rounded-2xl bg-gray-800 px-5 py-6">
@@ -353,7 +353,7 @@ function FeaturesMobile() {
             onClick={() => {
               slideRefs.current[featureIndex].scrollIntoView({
                 block: 'nearest',
-                inline: 'nearest'
+                inline: 'nearest',
               })
             }}
           >
@@ -376,13 +376,17 @@ export function PrimaryFeatures() {
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
           <div>
             <h1 className="mr-2 inline-block font-bakbak text-4xl tracking-tight text-baoWhite">
-              BAO makes synthetics easy.
+              Tokens Linked to Anything. Compatible with all of DeFi.
             </h1>
           </div>
           <p className="mt-2 text-lg text-baoWhite/80">
-            Our mission at Bao Finance is to revolutionize the financial
-            landscape, providing the tools and opportunities for everyone to
-            become a pivotal part of the new financial era.
+            Bao is building new on-chain markets with tokens priced by data
+            feeds, designed to disrupt and expand on the staggering $2.5
+            quadrillion centralized derivative market. With use cases including
+            RWAs, Stocks, Currencies, commodities, Interest rates and yields,
+            indexes, economic indicators, AI performance, Weather data, Energy
+            prices, social media trends, and more, the power of data-backed
+            derivatives is vast.
           </p>
         </div>
       </Container>

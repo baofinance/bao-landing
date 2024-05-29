@@ -3,55 +3,61 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChartLineUp,
   faDroplet,
+  faMoneyBill,
   faRobot,
   faScaleBalanced,
   faTools,
-  faUserGroup
+  faUserGroup,
 } from '@fortawesome/pro-regular-svg-icons'
 
 const features = [
   {
-    name: 'Automated Strategies',
+    name: 'VC Free',
     description:
-      'Bao products leverage sophisticated automated strategies to generate optimal yield, ensuring efficient deployment of your assets.',
-    icon: AutomatedIcon
+      'During our distribution phase, Bao raised funds from over 200 DeFi communities, freeing us from the shackles of Venture Capitalists primarily interested in extracting value.',
+    icon: AutomatedIcon,
   },
   {
     name: 'Innovative Synthetics',
     description:
       'Bao products feature advanced synthetic assets that mirror underlying asset performance, allowing users to diversify portfolios and hedge risks without holding actual assets. Enjoy reliable, tech-driven exposure to various markets.',
-    icon: BalanceIcon
+    icon: BalanceIcon,
   },
   {
-    name: 'Customizable Options',
+    name: 'Communty Run',
     description:
-      'Vaults provide users with the flexibility to mint and trade synthetics, tailoring their exposure to specific data points or price movements.',
-    icon: CustomizableIcon
+      'We are run by our community, which controls all aspects of the project, from its core team and products to revenue distribution and tokenomics.',
+    icon: CustomizableIcon,
   },
   {
-    name: 'Yield Maximization',
+    name: 'Grassroots',
     description:
-      'Through innovative strategies, Bao products maximize yield by compounding rewards and leveraging opportunities across various protocols.',
-    icon: YieldIcon
+      "Anyone can contribute to Bao's success. All of the core team were regular community members at one time. We are focused on mass participation from anyone who supports our mission.",
+    icon: YieldIcon,
   },
   {
     name: 'Governance Participation',
     description:
       'Bao token holders gain the ability to participate in the governance process, shaping the future of the platform and influencing key decisions.',
-    icon: GovernanceIcon
+    icon: GovernanceIcon,
   },
   {
-    name: 'Enhanced Liquidity',
+    name: 'Decentralization Maximalist',
     description:
-      'Bao products aim to provide increased liquidity to the market, allowing users to access and trade assets more efficiently and effectively.',
-    icon: LiquidityIcon
-  }
+      'Our products are designed with decentralization in mind. Without central points of failure, we are more resilient, censorship resistant, transparent, accessable, and adaptable.',
+    icon: LiquidityIcon,
+  },
 ]
 
 function AutomatedIcon(props) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
-      <FontAwesomeIcon height={32} width={32} icon={faRobot} color="#e53164" />
+      <FontAwesomeIcon
+        height={32}
+        width={32}
+        icon={faMoneyBill}
+        color="#e53164"
+      />
       <circle cx={16} cy={16} r={16} className="fill-baoRed/20" />
     </svg>
   )
@@ -129,19 +135,20 @@ export function SecondaryFeatures() {
       <Container>
         <div className="mx-auto max-w-3xl sm:text-center">
           <h1 className="mr-2 inline-block font-bakbak text-4xl tracking-tight text-baoWhite">
-            Unleashing Innovation.
+            Grassroots. Community-run. VC-free. Decentralization maximalist.
           </h1>
           <p className="mt-2 text-lg text-baoWhite/80">
-            Our community wants to build innovative products on top of the
-            network&apos;s cutting-edge technology and create serious
-            competition for the established giants – together.
+            Bao is a community of anons intent on transforming how we leverage
+            and interact with data. Our onchain derivatives take advantage of
+            the decentralization, transparency and security that blockchain
+            allows, moving financial power from institutions to individuals.
           </p>
         </div>
         <ul
           role="list"
           className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
         >
-          {features.map(feature => (
+          {features.map((feature) => (
             <li
               key={feature.name}
               className="rounded-2xl border border-gray-200 p-8"

@@ -105,7 +105,7 @@ function AppDemo() {
     <AppScreen>
       <AppScreen.Body>
         <Image
-          src="/images/app-bstbl.png"
+          src="/images/app-baousd.png"
           width={1080}
           height={1920}
           alt="mobile app"
@@ -123,14 +123,14 @@ export function Hero() {
       <Container>
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
-            <div>
-              <h1 className="mr-2 inline-block stroke-white font-bakbak text-4xl uppercase tracking-tight">
+            <div className="flex flex-col">
+              <h1 className="mr-2 inline-block stroke-white font-bakbak text-6xl uppercase tracking-tight">
                 Onchain
               </h1>
-              <h1 className="mr-2 inline-block font-bakbak text-4xl uppercase tracking-tight text-baoRed">
+              <h1 className="mr-2 inline-block font-bakbak text-6xl uppercase tracking-tight text-baoRed">
                 Tokenized
               </h1>
-              <h1 className="mr-2 inline-block font-bakbak text-4xl uppercase tracking-tight text-baoWhite">
+              <h1 className="mr-2 inline-block font-bakbak text-6xl uppercase tracking-tight text-baoWhite">
                 Derivitives
               </h1>
             </div>
@@ -145,18 +145,7 @@ export function Hero() {
               >
                 <span>Launch App</span>
               </Button>
-              <ModalVideo
-                channel="vimeo"
-                youtube={{ mute: 0, autoplay: 1 }}
-                isOpen={isOpen}
-                videoId="846280982"
-                onClose={() => setOpen(false)}
-              />
-              <Button
-                onClick={() => setOpen(true)}
-                variant="transparent"
-                color="white"
-              >
+              <Button variant="transparent" color="white">
                 <LinkIcon className="mr-2.5 h-6 w-6 flex-none" />
                 <Link href="https://docs.bao.finance/">Learn More</Link>
               </Button>
@@ -186,7 +175,7 @@ export function Hero() {
                 ['Curve', logoCurve],
                 ['StakeDAO', logoStakeDAO],
                 ['BProtocol', logoBProtocol],
-                ['Paladin', logoPaladin]
+                ['Paladin', logoPaladin],
               ].map(([name, logo, href]) => (
                 <li key={name} className={clsx('flex')}>
                   <Image
