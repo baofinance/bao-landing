@@ -1,11 +1,16 @@
-# bao-finance-web
+![GitHub Super-Linter](https://github.com/baofinance/ui/workflows/Lint%20Code%20Base/badge.svg)
 
-Contains the source code for the Bao Finance homepage.
+# Bao Finance Landing
 
-## Development
+This is the [www.baofinance.io](https://www.baofinance.io) Landing project.
 
-To start the dev server, pull the code down and run:
+## Contributing
 
-1. `yarn install`
-1. `yarn start`
- 
+Please read through the [contribution guidelines](./CONTRIBUTING.md) for more information on
+how to report new bugs, coding standards, and development guidelines.
+
+## Community
+
+- Check out [@BaoCommunity](https://twitter.com/BaoCommunity) on twitter
+- Take a look at the official [BAO docs](https://info.baofinance.io/docs)
+- Join our [discord](https://discord.gg/BW3P62vJXT) 

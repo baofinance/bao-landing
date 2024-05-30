@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Inter';
+  font-weight: 100 900;
+  font-display: block;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url('/fonts/Inter-roman.var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 100 900;
+  font-display: block;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url('/fonts/Inter-italic.var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Bakbak One';
+  font-weight: 100;
+  font-display: block;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url('/fonts/BakbakOne.var.woff2') format('woff2');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#__next {
+  min-height: 100%;
+}
+
+.stroke-white {
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-color: #faf2e3;
+	-webkit-text-stroke-width: 1px;
+}
+
+.stroke-red {
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-color: #e21a53;
+	-webkit-text-stroke-width: 1px;
+}
