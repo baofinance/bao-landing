@@ -18,12 +18,6 @@ const features = [
     icon: AutomatedIcon,
   },
   {
-    name: 'Innovative Synthetics',
-    description:
-      'Bao products feature advanced synthetic assets that mirror underlying asset performance, allowing users to diversify portfolios and hedge risks without holding actual assets. Enjoy reliable, tech-driven exposure to various markets.',
-    icon: BalanceIcon,
-  },
-  {
     name: 'Communty Run',
     description:
       'We are run by our community, which controls all aspects of the project, from its core team and products to revenue distribution and tokenomics.',
@@ -34,12 +28,6 @@ const features = [
     description:
       "Anyone can contribute to Bao's success. All of the core team were regular community members at one time. We are focused on mass participation from anyone who supports our mission.",
     icon: YieldIcon,
-  },
-  {
-    name: 'Governance Participation',
-    description:
-      'Bao token holders gain the ability to participate in the governance process, shaping the future of the platform and influencing key decisions.',
-    icon: GovernanceIcon,
   },
   {
     name: 'Decentralization Maximalist',
@@ -146,7 +134,7 @@ export function SecondaryFeatures() {
         </div>
         <ul
           role="list"
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
+          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-2"
         >
           {features.map((feature) => (
             <li
