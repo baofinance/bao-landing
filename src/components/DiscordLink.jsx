@@ -20,7 +20,7 @@ export function DiscordLink() {
           />
         </svg>
         <span className="inline justify-center align-middle font-bold">
-          Join Us!
+          Join Discord
         </span>
       </Link>
     </div>

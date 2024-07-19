@@ -8,7 +8,7 @@ const baseStyles = {
   outline:
     'inline-flex justify-center rounded-full border py-[calc(theme(spacing.2)-1px)] px-[calc(theme(spacing.3)-1px)] text-base outline-2 outline-offset-2 transition-colors font-bakbak',
   transparent:
-    'inline-flex justify-center rounded-full py-2 px-3 text-base outline-2 outline-offset-2 transition-colors border font-bakbak',
+    'inline-flex justify-center rounded-full py-2 px-4 text-base outline-2 outline-offset-2 transition-colors border font-bakbak',
 }
 
 const variantStyles = {
@@ -19,10 +19,12 @@ const variantStyles = {
     red: 'bg-baoRed text-baoWhite hover:bg-baoRed/80 active:bg-baoRed/90 active:text-baoWhite/80',
   },
   outline: {
-    white: 'border-baoWhite/20 text-baoWhite hover:border-baoRed/20 active:bg-baoRed active:text-baoWhite/80',
+    white:
+      'border-baoWhite/20 text-baoWhite hover:border-baoRed/20 active:bg-baoRed active:text-baoWhite/80',
   },
   transparent: {
-    white: 'bg-baoWhite/5 text-baoWhite hover:border-baoRed hover:bg-baoRed/20 border-baoWhite/20',
+    white:
+      'bg-baoWhite/5 text-baoWhite hover:border-baoRed hover:bg-baoRed/20 border-baoWhite/20',
   },
 }
 

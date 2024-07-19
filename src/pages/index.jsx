@@ -7,6 +7,9 @@ import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
+import { ProtocolData } from '@/components/ProtocolData'
+import { TertiaryFeatures } from '@/components/TertiaryFeatures'
+import { ActiveVaults } from '@/components/ActiveVaults'
 
 export default function Home() {
   return (
@@ -22,10 +25,10 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <ActiveVaults />
         <PrimaryFeatures />
         <SecondaryFeatures />
-        <CallToAction />
-        {/* <ProtocolData /> */}
+        <TertiaryFeatures />
       </main>
       <Footer />
     </>
