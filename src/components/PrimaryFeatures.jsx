@@ -345,7 +345,7 @@ export function PrimaryFeatures() {
     <section
       id="features"
       aria-label="Features for investing all your money"
-      className="bg-gray-900 pb-20 sm:pb-32"
+      className="py-20 sm:pb-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">

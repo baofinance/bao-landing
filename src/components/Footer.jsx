@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export function Footer() {
   return (
-    <footer className="bottom-0 left-0 m-auto mb-8 flex w-full justify-center p-16">
+    <footer className="bottom-0 left-0 m-auto mb-8 flex w-full justify-center bg-gray-900 p-16">
       <a
         className="xs:pl-2 xs:pr-2 pl-3 pr-3 text-baoWhite no-underline hover:text-baoRed"
         target="_blank"

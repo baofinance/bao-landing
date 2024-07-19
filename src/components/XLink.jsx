@@ -8,10 +8,15 @@ export function XLink() {
       <Link
         href="https://discord.gg/BW3P62vJXT"
         aria-label="Join Bao Finance on Discord"
-        className="flex place-items-center space-x-2 rounded-3xl bg-gray-400 px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="flex place-items-center space-x-2 rounded-3xl bg-gray-700 px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm duration-200 hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       >
-        <Image src="/icons/x.png" width="36" height="36" className="-mx-2" />
-        <span className="inline justify-center align-middle font-bold">
+        <Image
+          src="/icons/x.png"
+          width="36"
+          height="36"
+          className="-mx-2 invert"
+        />
+        <span className="inline justify-center align-middle font-bold text-white">
           Follow X
         </span>
       </Link>

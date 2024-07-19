@@ -6,6 +6,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useId, useState } from 'react'
 import { LinkIcon } from '@heroicons/react/24/outline'
+import logoAura from '@/images/logos/aura.svg'
+import logoBProtocol from '@/images/logos/b-protocol.svg'
+import logoBalancer from '@/images/logos/balancer.svg'
+import logoChainlink from '@/images/logos/chainlink.svg'
+import logoCurve from '@/images/logos/curve.svg'
+import logoLiquity from '@/images/logos/liquity.svg'
+import logoPaladin from '@/images/logos/paladin.png'
+import logoStakeDAO from '@/images/logos/stake-dao.svg'
+import clsx from 'clsx'
 
 function BackgroundIllustration(props) {
   let id = useId()
@@ -111,35 +120,55 @@ export function ActiveVaults() {
     <div className="relative overflow-hidden bg-gray-900 py-[5rem]">
       <Container>
         <div>
-          <div className="relative space-y-10">
-            <div className="relative z-10 flex flex-col gap-8 xl:flex-row">
-              <div className=" flex-1 space-y-5 rounded-2xl bg-gray-800 p-6">
-                <div className="flex place-items-center space-x-3">
-                  <Image src="/tokens/baoUSD.png" width={32} height={32} />
-                  <h1 className="font-bakkak inline-block font-bakbak text-2xl leading-3 tracking-tight text-baoWhite">
-                    baoUSD
-                  </h1>
+          <div className="relative space-y-12">
+            <div className="space-y-5">
+              <h1 className="mr-2 inline-block font-bakbak text-4xl tracking-tight text-baoWhite">
+                Our Tokens
+              </h1>
+              <div className="relative z-10 flex flex-col gap-3 xl:flex-row">
+                <div className=" flex-1 space-y-5 rounded-2xl bg-gray-800 p-5 outline outline-1 outline-gray-400 duration-100 hover:opacity-80">
+                  <div className="flex place-items-center space-x-3">
+                    <Image src="/tokens/BAO.png" width={32} height={32} />
+                    <h1 className="font-bakkak inline-block font-bakbak text-2xl leading-3 tracking-tight text-baoWhite">
+                      BAO
+                    </h1>
+                  </div>
+                  <p className="text-md mt-2 leading-7 text-baoWhite/80">
+                    The BAO token, central to the Bao ecosystem, has a fixed
+                    supply of 1.4 billion. Distributed initially to 200+
+                    communities, it now incentivizes liquidity through buybacks.
+                    The team receives 0.8 million BAO quarterly, staked for 4
+                    years in veBAO.
+                  </p>
                 </div>
-                <p className="text-md mt-2 leading-7 text-baoWhite/80">
-                  baoUSD is a stablecoin backed by Lido's wrapped staked ETH
-                  (wstETH), ETH, and BAO Baskets. This diverse backing keeps its
-                  price stable and secure. With transparency and reliability,
-                  baoUSD is perfect for everyday use.
-                </p>
-              </div>
-              <div className=" flex-1 space-y-5 rounded-2xl bg-gray-800 p-6">
-                <div className="flex place-items-center space-x-3">
-                  <Image src="/tokens/baoETH.png" width={32} height={32} />
-                  <h1 className="font-bakkak inline-block font-bakbak text-2xl leading-3 tracking-tight text-baoWhite">
-                    baoETH
-                  </h1>
+                <div className=" flex-1 space-y-5 rounded-2xl bg-gray-800 p-5 outline outline-1 outline-gray-400 duration-100 hover:opacity-80">
+                  <div className="flex place-items-center space-x-3">
+                    <Image src="/tokens/baoUSD.png" width={32} height={32} />
+                    <h1 className="font-bakkak inline-block font-bakbak text-2xl leading-3 tracking-tight text-baoWhite">
+                      baoUSD
+                    </h1>
+                  </div>
+                  <p className="text-md mt-2 leading-7 text-baoWhite/80">
+                    baoUSD is a stablecoin backed by Lido's wrapped staked ETH
+                    (wstETH), ETH, and BAO Baskets. This diverse backing keeps
+                    its price stable and secure. With transparency and
+                    reliability, baoUSD is perfect for everyday use.
+                  </p>
                 </div>
-                <p className="text-md mt-2 leading-7 text-baoWhite/80">
-                  baoETH is backed by Lido's wrapped staked ETH (wstETH), ETH,
-                  and BAO Baskets. This diverse backing provides stability and
-                  security, making baoETH a solid and dependable alternative to
-                  regular ETH.
-                </p>
+                <div className=" flex-1 space-y-5 rounded-2xl bg-gray-800 p-5 outline outline-1 outline-gray-400 duration-100 hover:opacity-80">
+                  <div className="flex place-items-center space-x-3">
+                    <Image src="/tokens/baoETH.png" width={32} height={32} />
+                    <h1 className="font-bakkak inline-block font-bakbak text-2xl leading-3 tracking-tight text-baoWhite">
+                      baoETH
+                    </h1>
+                  </div>
+                  <p className="text-md mt-2 leading-7 text-baoWhite/80">
+                    baoETH is backed by Lido's wrapped staked ETH (wstETH), ETH,
+                    and BAO Baskets. This diverse backing provides stability and
+                    security, making baoETH a solid and dependable alternative
+                    to regular ETH.
+                  </p>
+                </div>
               </div>
             </div>
             <div className="flex space-x-3">
@@ -213,19 +242,105 @@ export function ActiveVaults() {
                 </Link>
               </div>
               <p className="mt-2 text-lg text-baoWhite/80">
-                You can find and engage with Bao Finance on platforms like
-                Balancer, Aura, Curve, and StakeDAO. These platforms host
-                various liquidity pools and staking opportunities for Bao
-                Finance tokens, such as baoUSD and baoETH. By partnering with
-                these leading DeFi platforms, Bao Finance ensures that its
-                innovative financial tools are widely accessible, allowing users
-                to seamlessly integrate and benefit from its ecosystem across
-                the decentralized finance landscape.
+                Decentralized, transparent and trusted by over 200 defi
+                communities. By partnering with leading DeFi platforms, Bao
+                Finance ensures that its innovative financial tools are widely
+                accessible, allowing users to seamlessly integrate and benefit
+                from its ecosystem across the decentralized finance landscape.
               </p>
               <div className="mt-12">
                 <h1 className="mr-2 inline-block font-bakbak text-4xl tracking-tight text-baoWhite">
                   Featured Pools
                 </h1>
+                <p className="mt-2 text-lg text-baoWhite/80">
+                  Earn third party reward tokens like $AURA and $BAL to boost
+                  APR
+                </p>
+                <div className="relative z-10 mt-5 flex flex-col gap-8 xl:flex-row">
+                  <Link
+                    href="https://app.aura.finance/#/1/pool/215"
+                    target="_none"
+                    className="flex-1 space-y-5 rounded-2xl bg-gray-800 p-6 outline outline-1 outline-purple-300 duration-100 hover:opacity-80"
+                  >
+                    <div className="flex place-content-between">
+                      <div className="flex place-items-center space-x-3">
+                        <Image
+                          src="/platforms/Aura.webp"
+                          width={32}
+                          height={32}
+                        />
+                        <h1 className="font-bakkak inline-block font-bakbak text-2xl leading-3 tracking-tight text-baoWhite">
+                          Aura
+                        </h1>{' '}
+                        <div className="mx-4 h-8 w-[1px] bg-baoWhite" />
+                        <h1 className="font-bakkak inline-block font-bakbak text-2xl leading-3 tracking-tight text-baoWhite">
+                          26.16% vAPR
+                        </h1>{' '}
+                      </div>
+                      <div className="my-auto flex place-items-center space-x-6">
+                        <div className="relative my-auto flex">
+                          <Image
+                            src="/tokens/baoUSD.png"
+                            className="left-0 rounded-full outline outline-1 outline-baoWhite/60"
+                            width={25}
+                            height={25}
+                          />
+                          <Image
+                            src="/tokens/LUSD.png"
+                            className="absolute left-4 rounded-full outline outline-1 outline-baoWhite/60"
+                            width={25}
+                            height={25}
+                          />
+                        </div>
+                        <h1 className="font-bakkak inline-block font-bakbak text-2xl leading-3 tracking-tight text-baoWhite">
+                          baoUSD / LUSD
+                        </h1>{' '}
+                      </div>
+                    </div>
+                  </Link>
+                  <Link
+                    href="https://balancer.fi/pools/ethereum/v2/0x19df5bb37380186bc8efc5ad91516373a2c5459f000200000000000000000698"
+                    target="_none"
+                    className="flex-1 space-y-5 rounded-2xl bg-gray-800 p-6 outline outline-1 outline-gray-400 duration-100 hover:opacity-80"
+                  >
+                    <div className="flex place-content-between">
+                      <div className="flex place-items-center space-x-3">
+                        <Image
+                          src="/platforms/Balancer.png"
+                          className="rounded-full outline outline-1 outline-gray-400"
+                          width={32}
+                          height={32}
+                        />
+                        <h1 className="font-bakkak inline-block font-bakbak text-2xl leading-3 tracking-tight text-baoWhite">
+                          Balancer
+                        </h1>{' '}
+                        <div className="mx-4 h-8 w-[1px] bg-baoWhite" />
+                        <h1 className="font-bakkak inline-block font-bakbak text-2xl leading-3 tracking-tight text-baoWhite">
+                          34%-85% vAPR
+                        </h1>{' '}
+                      </div>
+                      <div className="my-auto flex place-items-center space-x-6">
+                        <div className="relative my-auto flex">
+                          <Image
+                            src="/tokens/BAO.png"
+                            className="left-0 rounded-full outline outline-1 outline-baoWhite/60"
+                            width={25}
+                            height={25}
+                          />
+                          <Image
+                            src="/tokens/baoETH.png"
+                            className="absolute left-4 rounded-full outline outline-1 outline-baoWhite/60"
+                            width={25}
+                            height={25}
+                          />
+                        </div>
+                        <h1 className="font-bakkak inline-block font-bakbak text-2xl leading-3 tracking-tight text-baoWhite">
+                          BAO / baoETH
+                        </h1>{' '}
+                      </div>
+                    </div>
+                  </Link>
+                </div>
                 <div className="relative z-10 mt-5 flex flex-col gap-8 xl:flex-row">
                   <Link
                     href="https://app.aura.finance/#/1/pool/215"
@@ -312,20 +427,6 @@ export function ActiveVaults() {
                   </Link>
                 </div>
               </div>
-            </div>
-            <div>
-              <h1 className="inline-block font-bakbak text-xl tracking-tight text-baoRed"></h1>
-              <div className=" max-w-3xl">
-                <h1 className="inline-block font-bakbak text-4xl tracking-tight text-baoWhite">
-                  BAO Governance
-                </h1>
-              </div>
-              <p className="mt-2 text-lg text-baoWhite/80">
-                Get involved with Bao Finance's governance! Join our community
-                on Discord for discussions and updates. Vote on key proposals on
-                Snapshot and stay informed on X. Your participation is
-                crucial—help shape the future of Bao Finance today!
-              </p>
             </div>
           </div>
         </div>

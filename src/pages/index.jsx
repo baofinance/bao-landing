@@ -26,9 +26,8 @@ export default function Home() {
       <main>
         <Hero />
         <ActiveVaults />
-        <PrimaryFeatures />
         <SecondaryFeatures />
-        <TertiaryFeatures />
+        <CallToAction />
       </main>
       <Footer />
     </>

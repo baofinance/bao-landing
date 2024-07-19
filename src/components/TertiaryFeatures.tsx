@@ -121,8 +121,7 @@ export function TertiaryFeatures() {
         <p className="mt-2 text-lg text-baoWhite/80">
           Get involved with Bao Finance's governance! Join our community on
           Discord for discussions and updates. Vote on key proposals on Snapshot
-          and stay informed on X. Your participation is crucial—help shape the
-          future of Bao Finance today!
+          and stay informed on X. Your participation is crucial.
         </p>
         <div className="mt-8 flex justify-center space-x-3">
           <DiscordLink color="white" />

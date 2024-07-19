@@ -2,16 +2,6 @@ import 'node_modules/react-modal-video/scss/modal-video.scss'
 import { AppScreen } from '@/components/AppScreen'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { PhoneFrame } from '@/components/PhoneFrame'
-import logoAura from '@/images/logos/aura.svg'
-import logoBProtocol from '@/images/logos/b-protocol.svg'
-import logoBalancer from '@/images/logos/balancer.svg'
-import logoChainlink from '@/images/logos/chainlink.svg'
-import logoCurve from '@/images/logos/curve.svg'
-import logoLiquity from '@/images/logos/liquity.svg'
-import logoPaladin from '@/images/logos/paladin.png'
-import logoStakeDAO from '@/images/logos/stake-dao.svg'
-import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useId, useState } from 'react'
@@ -137,7 +127,7 @@ export function Hero() {
       />
       <Container>
         <div>
-          <div className="relative flex h-[50vh] place-items-end lg:space-x-12 lg:space-y-20">
+          <div className="relative mt-[8rem] flex place-items-end md:mt-[12rem] lg:space-x-12 lg:space-y-20">
             <div className="relative z-10 max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
               <div className="flex flex-col place-content-start place-items-start space-y-3">
                 <div className="flex place-items-end space-x-8">
@@ -147,42 +137,12 @@ export function Hero() {
                       BAO FINANCE
                     </h1>
                   </div>
-                  <div className="mx-4 h-12 w-[1px] bg-baoWhite" />
-                  <div className="relative mb-2">
-                    <p className="text-center font-semibold text-baoWhite lg:text-left">
-                      Partnered With
-                    </p>
-                    <ul
-                      role="list"
-                      className="mx-auto mt-3 grid max-w-xl grid-cols-8 flex-wrap justify-center gap-x-4 gap-y-4 lg:mx-0 lg:justify-start"
-                    >
-                      {[
-                        ['Chainlink', logoChainlink],
-                        ['Balancer', logoBalancer],
-                        ['Liquity', logoLiquity],
-                        ['Aura', logoAura],
-                        ['Curve', logoCurve],
-                        ['StakeDAO', logoStakeDAO],
-                        ['BProtocol', logoBProtocol],
-                        ['Paladin', logoPaladin],
-                      ].map(([name, logo, href]) => (
-                        <li key={name} className={clsx('flex')}>
-                          <Image
-                            src={logo}
-                            alt={name}
-                            className="h-8 w-8"
-                            unoptimized
-                          />
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
-                <p className="mt-2 text-6xl font-semibold text-baoWhite/90">
+                <p className="mt-2 text-3xl font-bold leading-10 text-baoWhite/90 lg:text-6xl lg:font-semibold">
                   Powering the next generation of permissionless on-chain
                   derivitives and infrastructure.
                 </p>
-                <p className="mt-2 text-xl text-baoWhite/80">
+                <p className="mt-2 text-lg text-baoWhite/80 lg:text-xl">
                   With extremely competetive borrowing rates.
                 </p>
               </div>
@@ -192,39 +152,42 @@ export function Hero() {
                     16K
                   </h1>
                   <p className="mt-2 text-xl leading-4 text-baoWhite/70">
-                    Holders
+                    $BAO Holders
                   </p>
                 </div>
                 <div className="mx-2 h-[40px] w-[1px] bg-baoWhite opacity-50" />
                 <div>
                   <h1 className="mr-2 inline-block text-4xl font-medium leading-3 tracking-tight text-baoWhite">
-                    $1,234,567
+                    $300M+
                   </h1>
-                  <p className="mt-2 text-xl leading-4 text-baoWhite/70">TVL</p>
+                  <p className="mt-2 text-xl leading-4 text-baoWhite/70">
+                    DeBank TVF
+                  </p>
                 </div>
+
                 <Button
                   href="https://app.baofinance.io"
                   variant="transparent"
                   color="white"
-                  className="backdrop-blur-sm"
+                  className="!text-lg backdrop-blur-sm"
                 >
                   <span>Launch App</span>
                 </Button>
                 <Button
                   variant="transparent"
                   color="white"
-                  className="backdrop-blur-sm"
+                  className="place-items-center !text-lg backdrop-blur-sm"
                 >
                   <LinkIcon className="mr-2.5 h-6 w-6 flex-none" />
                   <Link href="https://docs.bao.finance/">Learn More</Link>
                 </Button>
               </div>
             </div>
-            <div className="mt-8 flex space-x-3">
+            {/* <div className="mt-8 flex space-x-3">
               <DiscordLink color="white" />
               <SnapshotLink color="white" />
               <XLink color="white" />
-            </div>
+            </div> */}
             {/* <div className="relative lg:col-span-7 lg:mt-0 xl:col-span-6">
               <p className="text-center font-semibold text-baoWhite lg:text-left">
                 Partnered with
