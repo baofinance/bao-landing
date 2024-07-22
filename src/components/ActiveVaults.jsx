@@ -165,14 +165,14 @@ export function ActiveVaults() {
                 Deposit yield-bearing assets like{' '}
                 <a
                   className="font-bold text-baoRed"
-                  href="https://https://app.ethena.fi"
+                  href="https://app.ethena.fi"
                 >
                   sUSDe
                 </a>
                 ,{' '}
                 <a
                   className="font-bold text-baoRed"
-                  href="https://https://app.ethena.fi"
+                  href="https://app.ethena.fi"
                 >
                   sDAI
                 </a>
