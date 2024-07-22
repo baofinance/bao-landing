@@ -354,9 +354,9 @@ export function ActiveVaults() {
                     </h1>
                   </div>
                   <p className="text-md mt-2 leading-7 text-baoWhite/80">
-                    baoUSD is a stablecoin backed by Lido's wrapped staked ETH
-                    (wstETH), ETH, and BAO Baskets. This diverse backing keeps
-                    its price stable and secure. With transparency and
+                    baoUSD is a stablecoin backed by Lido&apos;s wrapped staked
+                    ETH (wstETH), ETH, and BAO Baskets. This diverse backing
+                    keeps its price stable and secure. With transparency and
                     reliability, baoUSD is perfect for everyday use.
                   </p>
                 </div>
@@ -368,10 +368,10 @@ export function ActiveVaults() {
                     </h1>
                   </div>
                   <p className="text-md mt-2 leading-7 text-baoWhite/80">
-                    baoETH is backed by Lido's wrapped staked ETH (wstETH), ETH,
-                    and BAO Baskets. This diverse backing provides stability and
-                    security, making baoETH a solid and dependable alternative
-                    to regular ETH.
+                    baoETH is backed by Lido&apos;s wrapped staked ETH (wstETH),
+                    ETH, and BAO Baskets. This diverse backing provides
+                    stability and security, making baoETH a solid and dependable
+                    alternative to regular ETH.
                   </p>
                 </div>
               </div>
