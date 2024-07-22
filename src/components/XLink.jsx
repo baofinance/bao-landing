@@ -6,8 +6,8 @@ export function XLink() {
   return (
     <div className="mt-10 flex items-center justify-center gap-x-6 align-middle lg:mt-0 lg:flex-shrink-0">
       <Link
-        href="https://discord.gg/BW3P62vJXT"
-        aria-label="Join Bao Finance on Discord"
+        href="https://x.com/BaoCommunity"
+        aria-label="Follow BAO Finance on X"
         className="flex place-items-center space-x-2 rounded-3xl bg-gray-700 px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm duration-200 hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       >
         <Image

@@ -133,8 +133,8 @@ export function SecondaryFeatures() {
             </h1>
           </div>
           <p className="mt-2 text-lg text-baoWhite/80">
-            Get involved with Bao Finance's governance! Join our community on
-            Discord for discussions and updates. Vote on key proposals on
+            Get involved with Bao Finance&apos;s governance! Join our community
+            on Discord for discussions and updates. Vote on key proposals on
             Snapshot and stay informed on X. Your participation is crucial.
           </p>
           <div className="flex flex-wrap gap-2 lg:mt-4">
