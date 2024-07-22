@@ -11,6 +11,7 @@ import logoPaladin from '@/images/logos/paladin.png'
 import logoStakeDAO from '@/images/logos/stake-dao.svg'
 import clsx from 'clsx'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function CallToAction() {
   return (
@@ -22,31 +23,33 @@ export function CallToAction() {
         <CircleBackground color="#e53164" className="animate-spin-slower" />
       </div>
       <Container className="relative">
-        <div className="relative mb-2">
-          <h1 className="mr-2 inline-block font-bakbak text-3xl tracking-tight text-baoWhite">
+        <div className="relative mb-2 flex flex-col place-items-center">
+          <h1 className="mx-auto flex text-center font-bakbak text-3xl tracking-tight text-baoWhite">
             Partners
           </h1>
           <ul
             role="list"
-            className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-4 lg:mx-0 lg:justify-start"
+            className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-4 lg:mx-0"
           >
             {[
-              ['Chainlink', logoChainlink],
-              ['Balancer', logoBalancer],
-              ['Liquity', logoLiquity],
-              ['Aura', logoAura],
-              ['Curve', logoCurve],
-              ['StakeDAO', logoStakeDAO],
-              ['BProtocol', logoBProtocol],
-              ['Paladin', logoPaladin],
+              ['Chainlink', logoChainlink, 'https://chain.link'],
+              ['Balancer', logoBalancer, 'https://balancer.fi'],
+              ['Liquity', logoLiquity, 'https://www.liquity.org'],
+              ['Aura', logoAura, 'https://aura.finance'],
+              ['Curve', logoCurve, 'https://curve.fi/#/ethereum/swap'],
+              ['StakeDAO', logoStakeDAO, 'https://stakedao.org/'],
+              ['BProtocol', logoBProtocol, 'https://www.bprotocol.org'],
+              ['Paladin', logoPaladin, 'https://paladin.vote/#/'],
             ].map(([name, logo, href]) => (
               <li key={name} className={clsx('flex')}>
-                <Image
-                  src={logo}
-                  alt={name}
-                  className="h-14 w-14 rounded-full bg-baoWhite/5 p-2 outline outline-1 outline-baoWhite/30"
-                  unoptimized
-                />
+                <Link href={href}>
+                  <Image
+                    src={logo}
+                    alt={name}
+                    className="h-14 w-14 rounded-full bg-baoWhite/5 p-2 outline outline-1 outline-baoWhite/30"
+                    unoptimized
+                  />
+                </Link>
               </li>
             ))}
           </ul>

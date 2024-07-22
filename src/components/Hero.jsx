@@ -140,16 +140,17 @@ export function Hero() {
                 </div>
                 <p className="mt-2 text-3xl font-bold leading-10 text-baoWhite/90 lg:text-6xl lg:font-semibold">
                   Powering the next generation of permissionless on-chain
-                  derivitives and infrastructure.
+                  derivatives and infrastructure.
                 </p>
                 <p className="mt-2 text-lg text-baoWhite/80 lg:text-xl">
-                  With extremely competetive borrowing rates.
+                  Receive highly competitive rates for your assets that you
+                  deserve.
                 </p>
               </div>
               <div className="mt-[5rem] flex flex-wrap place-items-center gap-x-6 gap-y-4">
                 <div>
                   <h1 className="mr-2 inline-block text-4xl font-medium leading-3 tracking-tight text-baoWhite">
-                    16K
+                    14K+
                   </h1>
                   <p className="mt-2 text-xl leading-4 text-baoWhite/70">
                     $BAO Holders
@@ -164,15 +165,6 @@ export function Hero() {
                     DeBank TVF
                   </p>
                 </div>
-
-                <Button
-                  href="https://app.baofinance.io"
-                  variant="transparent"
-                  color="white"
-                  className="!text-lg backdrop-blur-sm"
-                >
-                  <span>Launch App</span>
-                </Button>
                 <Button
                   variant="transparent"
                   color="white"
@@ -180,6 +172,14 @@ export function Hero() {
                 >
                   <LinkIcon className="mr-2.5 h-6 w-6 flex-none" />
                   <Link href="https://docs.bao.finance/">Learn More</Link>
+                </Button>
+                <Button
+                  href="https://app.baofinance.io"
+                  variant="transparent"
+                  color="white"
+                  className="!text-lg backdrop-blur-sm"
+                >
+                  <span>Launch App</span>
                 </Button>
               </div>
             </div>

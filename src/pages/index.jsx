@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Bao Finance - Delicisouly wrapped finance!</title>
+        <title>Bao Finance - Deliciously wrapped finance!</title>
         <meta
           name="description"
           content="Bao Finance is building omnichain, decentralized and secure synthetic liquidity, tokens and markets. Accessible to all. Stoppable by

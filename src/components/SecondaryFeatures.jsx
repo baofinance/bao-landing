@@ -12,6 +12,7 @@ import {
 import { DiscordLink } from './DiscordLink'
 import { SnapshotLink } from './SnapshotLink'
 import { XLink } from './XLink'
+import { DeBankLink } from './DeBankLink'
 
 const features = [
   {
@@ -21,7 +22,7 @@ const features = [
     icon: AutomatedIcon,
   },
   {
-    name: 'Communty Run',
+    name: 'Community Run',
     description:
       'We are run by our community, which controls all aspects of the project, from its core team and products to revenue distribution and tokenomics.',
     icon: CustomizableIcon,
@@ -136,10 +137,11 @@ export function SecondaryFeatures() {
             Discord for discussions and updates. Vote on key proposals on
             Snapshot and stay informed on X. Your participation is crucial.
           </p>
-          <div className="mt-8 flex space-x-3">
+          <div className="flex flex-wrap gap-2 lg:mt-4">
             <DiscordLink color="white" />
             <SnapshotLink color="white" />
             <XLink color="white" />
+            <DeBankLink color="white" />
           </div>
         </div>
         <ul
