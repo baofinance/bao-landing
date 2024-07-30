@@ -16,28 +16,22 @@ import { DeBankLink } from './DeBankLink'
 
 const features = [
   {
-    name: 'VC Free',
+    name: 'SAFE Multisig',
     description:
-      'Bao is backed by our community members, freeing us from the shackles of Venture Capitalists primarily interested in extracting value. Remember, bye bye banks.',
+      'Trust: The DAO of Bao operates based on the framework of a roadmap, the roadmap is passed as a proposal yearly and agreed upon by the community. Every Bao community member can opt to create a proposal.',
     icon: AutomatedIcon,
   },
   {
-    name: 'Community Run',
+    name: 'Immunefi bug bounty program',
     description:
-      'The Bao community controls all aspects of the project, from its core team and products to revenue distribution and tokenomics',
+      'Secure: Immunefi is a bug bounty and security services platform that protects crypto projects from Web3 bugs. This platform facilitates network hosting, bug triaging, and program management in the blockchain. It also offers smart contract projects that help to review code, disclose vulnerabilities, secures projects against malicious exploits, and preserves against undetermined attacks. Bao has been part of the Immunefi bug bounty program since 2021.',
     icon: CustomizableIcon,
   },
   {
-    name: 'Grassroots',
+    name: 'Github repositories',
     description:
-      "Anyone can contribute to Bao's success. All of the core team were regular community members at one time. We are focused on mass participation from anyone who supports our mission.",
+      "Transperancy: All of Bao's products once deployed are publicly available on our repository.",
     icon: YieldIcon,
-  },
-  {
-    name: 'Decentralization Maximalist',
-    description:
-      'Our products are designed with decentralization in mind. Without central points of failure, we are more resilient, censorship resistant, transparent, accessible, and adaptable.',
-    icon: LiquidityIcon,
   },
 ]
 
@@ -117,7 +111,7 @@ function LiquidityIcon(props) {
   )
 }
 
-export function SecondaryFeatures() {
+export function Security() {
   return (
     <section
       id="secondary-features"
@@ -129,26 +123,16 @@ export function SecondaryFeatures() {
           <h1 className="inline-block font-bakbak text-xl tracking-tight text-baoRed"></h1>
           <div className=" max-w-3xl">
             <h1 className="inline-block font-bakbak text-6xl tracking-tight text-baoWhite">
-              BAO Governance
+              Security and Trust
             </h1>
           </div>
           <p className="mt-2 text-lg text-baoWhite/80">
-
-            Get involved with Bao Finance&apos;s governance! Join our 
-            community on Discord for discussions and updates. Vote on 
-            key proposals on Snapshot and stay informed on X and DeBank. 
-            Your participation is crucial.
+          Security is shaping the design of our products and governance. We look for decentralized assets as collaterals, use Best Practice in the development process, deploy audited smart contracts after extensive testing and run a bug bounty program on Immunefi. Every important decision is provided as BIP to the BAO community for approval. Our documentation is always kept uptodate and we constantly monitor our products.
           </p>
-          <div className="flex flex-wrap gap-2 lg:mt-4">
-            <DiscordLink color="white" />
-            <SnapshotLink color="white" />
-            <XLink color="white" />
-            <DeBankLink color="white" />
-          </div>
         </div>
         <ul
           role="list"
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 md:gap-y-10 lg:max-w-none lg:grid-cols-2"
+          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
         >
           {features.map((feature) => (
             <li

@@ -2,21 +2,15 @@ import 'node_modules/react-modal-video/scss/modal-video.scss'
 import { AppScreen } from '@/components/AppScreen'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { PhoneFrame } from '@/components/PhoneFrame'
-import logoAura from '@/images/logos/aura.svg'
-import logoBProtocol from '@/images/logos/b-protocol.svg'
-import logoBalancer from '@/images/logos/balancer.svg'
-import logoChainlink from '@/images/logos/chainlink.svg'
-import logoCurve from '@/images/logos/curve.svg'
-import logoLiquity from '@/images/logos/liquity.svg'
-import logoPaladin from '@/images/logos/paladin.png'
-import logoStakeDAO from '@/images/logos/stake-dao.svg'
-import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useId, useState } from 'react'
 import ModalVideo from 'react-modal-video'
 import { LinkIcon } from '@heroicons/react/24/outline'
+import { Logo } from './Logo'
+import { DiscordLink } from './DiscordLink'
+import { SnapshotLink } from './SnapshotLink'
+import { XLink } from './XLink'
 
 function BackgroundIllustration(props) {
   let id = useId()
@@ -118,75 +112,110 @@ function AppDemo() {
 export function Hero() {
   const [isOpen, setOpen] = useState(false)
 
+  const background = {
+    backgroundColor: '#1E2022',
+    opacity: 1,
+    backgroundImage: `linear-gradient(#2d2d2d 1px, transparent 1px), linear-gradient(to right, #2d2d2d 1px, #1E2022 1px)`,
+    backgroundSize: '20px 20px',
+  }
+
   return (
-    <div className="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
+    <div className="relative overflow-hidden py-6 sm:py-8 lg:pb-12 xl:pb-14">
+      <div
+        className="absolute left-0 top-0 h-full w-screen"
+        style={background}
+      />
       <Container>
-        <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
-          <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
-            <div className="flex flex-col">
-              <h1 className="mr-2 inline-block stroke-white font-bakbak text-6xl uppercase tracking-tight">
-                Onchain
-              </h1>
-              <h1 className="mr-2 inline-block font-bakbak text-6xl uppercase tracking-tight text-baoRed">
-                Tokenized
-              </h1>
-              <h1 className="mr-2 inline-block font-bakbak text-6xl uppercase tracking-tight text-baoWhite">
-                Derivitives
-              </h1>
+        <div>
+          <div className="relative mt-[8rem] flex place-items-end md:mt-[12rem] lg:space-x-12 lg:space-y-20">
+            <div className="relative z-10 max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
+              <div className="flex flex-col place-content-start place-items-start space-y-3">
+                <div className="flex place-items-end space-x-8">
+                  <div className="flex place-items-center space-x-3">
+                    <Logo width={43} height={43} />
+                    <h1 className="mr-2 inline-block font-bakbak text-3xl tracking-tight text-baoWhite">
+                      BAO FINANCE
+                    </h1>
+                  </div>
+                </div>
+                <p className="mt-2 text-3xl font-bold leading-10 text-baoWhite/90 lg:text-6xl lg:font-semibold">
+                  Powering the next generation of permissionless on-chain
+                  derivatives and infrastructure.
+                </p>
+                <p className="mt-2 text-lg text-baoWhite/80 lg:text-xl">
+                  APR’s that you deserve.
+                </p>
+              </div>
+              <div className="mt-[5rem] flex flex-wrap place-items-center gap-x-6 gap-y-4">
+                <div>
+                  <h1 className="mr-2 inline-block text-4xl font-medium leading-3 tracking-tight text-baoWhite">
+                    14K+
+                  </h1>
+                  <p className="mt-2 text-xl leading-4 text-baoWhite/70">
+                    $BAO Holders
+                  </p>
+                </div>
+                <div className="mx-2 h-[40px] w-[1px] bg-baoWhite opacity-50" />
+                <div>
+                  <h1 className="mr-2 inline-block text-4xl font-medium leading-3 tracking-tight text-baoWhite">
+                    $300M+
+                  </h1>
+                  <p className="mt-2 text-xl leading-4 text-baoWhite/70">
+                    DeBank TVF
+                  </p>
+                </div>
+                <Button
+                  variant="transparent"
+                  color="white"
+                  className="place-items-center !text-lg backdrop-blur-sm"
+                >
+                  <LinkIcon className="mr-2.5 h-6 w-6 flex-none" />
+                  <Link href="https://docs.bao.finance/">Learn More</Link>
+                </Button>
+                <Button
+                  href="https://app.baofinance.io"
+                  variant="transparent"
+                  color="white"
+                  className="!text-lg backdrop-blur-sm"
+                >
+                  <span>Launch App</span>
+                </Button>
+              </div>
             </div>
-            <p className="mt-6 text-lg text-baoWhite">
-              Grassroots. Community-run. VC-free. Decentralization maximalist.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
-              <Button
-                href="https://app.baofinance.io"
-                variant="transparent"
-                color="white"
+            {/* <div className="mt-8 flex space-x-3">
+              <DiscordLink color="white" />
+              <SnapshotLink color="white" />
+              <XLink color="white" />
+            </div> */}
+            {/* <div className="relative lg:col-span-7 lg:mt-0 xl:col-span-6">
+              <p className="text-center font-semibold text-baoWhite lg:text-left">
+                Partnered with
+              </p>
+              <ul Snapshot votes, DeBank 
+                role="list"
+                className="mx-auto mt-8 grid max-w-xl grid-cols-4 flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start"
               >
-                <span>Launch App</span>
-              </Button>
-              <Button variant="transparent" color="white">
-                <LinkIcon className="mr-2.5 h-6 w-6 flex-none" />
-                <Link href="https://docs.bao.finance/">Learn More</Link>
-              </Button>
-            </div>
-          </div>
-          <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
-            <BackgroundIllustration className="absolute left-1/2 top-4 h-[1026px] w-[1026px] -translate-x-1/3 stroke-gray-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
-            <div className="-mx-4 h-[448px] px-9 [mask-image:linear-gradient(to_bottom,white_60%,transparent)] sm:mx-0 lg:absolute lg:-inset-x-10 lg:-bottom-20 lg:-top-10 lg:h-auto lg:px-0 lg:pt-10 xl:-bottom-32">
-              <PhoneFrame className="mx-auto max-w-[366px]" priority>
-                <AppDemo />
-              </PhoneFrame>
-            </div>
-          </div>
-          <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
-            <p className="text-center font-semibold text-baoWhite lg:text-left">
-              We work with some of the most innovative teams
-            </p>
-            <ul
-              role="list"
-              className="mx-auto mt-8 grid max-w-xl grid-cols-4 flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start"
-            >
-              {[
-                ['Chainlink', logoChainlink],
-                ['Balancer', logoBalancer],
-                ['Liquity', logoLiquity],
-                ['Aura', logoAura],
-                ['Curve', logoCurve],
-                ['StakeDAO', logoStakeDAO],
-                ['BProtocol', logoBProtocol],
-                ['Paladin', logoPaladin],
-              ].map(([name, logo, href]) => (
-                <li key={name} className={clsx('flex')}>
-                  <Image
-                    src={logo}
-                    alt={name}
-                    className="h-12 w-12"
-                    unoptimized
-                  />
-                </li>
-              ))}
-            </ul>
+                {[
+                  ['Chainlink', logoChainlink],
+                  ['Balancer', logoBalancer],
+                  ['Liquity', logoLiquity],
+                  ['Aura', logoAura],
+                  ['Curve', logoCurve],
+                  ['StakeDAO', logoStakeDAO],
+                  ['BProtocol', logoBProtocol],
+                  ['Paladin', logoPaladin],
+                ].map(([name, logo, href]) => (
+                  <li key={name} className={clsx('flex')}>
+                    <Imagehttps://etherscan.io/address/0x0e7518b332f469a6a2f59e690f225cef5157cca9
+                      src={logo}
+                      alt={name}
+                      className="h-12 w-12"
+                      unoptimized
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div> */}
           </div>
         </div>
       </Container>
