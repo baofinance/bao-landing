@@ -16,27 +16,27 @@ import { DeBankLink } from './DeBankLink'
 
 const features = [
   {
-    name: 'VC Free',
+    name: 'Vaults',
     description:
-      'Bao is backed by our community members, freeing us from the shackles of Venture Capitalists primarily interested in extracting value. Remember, bye bye banks.',
+      'Deposit your collaterals and borrow Bao Synths.',
     icon: AutomatedIcon,
   },
   {
-    name: 'Community Run',
+    name: 'Swap',
     description:
-      'The Bao community controls all aspects of the project, from its core team and products to revenue distribution and tokenomics',
+      'Have a preference to swap directly in to Bao Synths check out our swap page.',
     icon: CustomizableIcon,
   },
   {
-    name: 'Grassroots',
+    name: 'Earn',
     description:
-      "Anyone can contribute to Bao's success. All of the core team were regular community members at one time. We are focused on mass participation from anyone who supports our mission.",
+      "Idle assets are poor assets, deposit Bao assets and put them to work.",
     icon: YieldIcon,
   },
   {
-    name: 'Decentralization Maximalist',
+    name: 'Lend',
     description:
-      'Our products are designed with decentralization in mind. Without central points of failure, we are more resilient, censorship resistant, transparent, accessible, and adaptable.',
+      'More risky but rewarding use non conventional assets for lending Bao Synths.',
     icon: LiquidityIcon,
   },
 ]
@@ -117,7 +117,7 @@ function LiquidityIcon(props) {
   )
 }
 
-export function SecondaryFeatures() {
+export function Protocol() {
   return (
     <section
       id="secondary-features"
@@ -129,22 +129,12 @@ export function SecondaryFeatures() {
           <h1 className="inline-block font-bakbak text-xl tracking-tight text-baoRed"></h1>
           <div className=" max-w-3xl">
             <h1 className="inline-block font-bakbak text-6xl tracking-tight text-baoWhite">
-              BAO Governance
+              Bao Protocol
             </h1>
           </div>
           <p className="mt-2 text-lg text-baoWhite/80">
-
-            Get involved with Bao Finance&apos;s governance! Join our 
-            community on Discord for discussions and updates. Vote on 
-            key proposals on Snapshot and stay informed on X and DeBank. 
-            Your participation is crucial.
+            What Bao offers look here!
           </p>
-          <div className="flex flex-wrap gap-2 lg:mt-4">
-            <DiscordLink color="white" />
-            <SnapshotLink color="white" />
-            <XLink color="white" />
-            <DeBankLink color="white" />
-          </div>
         </div>
         <ul
           role="list"

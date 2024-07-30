@@ -5,6 +5,9 @@ import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { ActiveVaults } from '@/components/ActiveVaults'
+import { Journey } from '@/components/Journey'
+import { Protocol } from '@/components/Protocol'
+import { Security } from '@/components/Security'
 
 export default function Home() {
   return (
@@ -22,6 +25,9 @@ export default function Home() {
         <Hero />
         <ActiveVaults />
         <SecondaryFeatures />
+        <Security />
+        <Protocol />
+        <Journey />
         <CallToAction />
       </main>
       <Footer />

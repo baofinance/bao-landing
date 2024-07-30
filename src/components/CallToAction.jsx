@@ -42,13 +42,15 @@ export function CallToAction() {
               ['Paladin', logoPaladin, 'https://paladin.vote/#/'],
             ].map(([name, logo, href]) => (
               <li key={name} className={clsx('flex')}>
-                <Link href={href}>
-                  <Image
-                    src={logo}
-                    alt={name}
-                    className="h-14 w-14 rounded-full bg-baoWhite/5 p-2 outline outline-1 outline-baoWhite/30"
-                    unoptimized
-                  />
+                <Link href={href} legacyBehavior passHref>
+                  <a target="_blank" rel="noopener noreferrer">
+                    <Image
+                      src={logo}
+                      alt={name}
+                      className="h-14 w-14 rounded-full bg-baoWhite/5 p-2 outline outline-1 outline-baoWhite/30"
+                      unoptimized
+                    />
+                  </a>
                 </Link>
               </li>
             ))}

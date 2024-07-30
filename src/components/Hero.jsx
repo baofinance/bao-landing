@@ -143,8 +143,7 @@ export function Hero() {
                   derivatives and infrastructure.
                 </p>
                 <p className="mt-2 text-lg text-baoWhite/80 lg:text-xl">
-                  Receive highly competitive rates for your assets that you
-                  deserve.
+                  APR’s that you deserve.
                 </p>
               </div>
               <div className="mt-[5rem] flex flex-wrap place-items-center gap-x-6 gap-y-4">

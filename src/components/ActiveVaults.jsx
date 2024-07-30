@@ -157,12 +157,12 @@ export function ActiveVaults() {
                 </Link>
               </div>
               <p className="mt-2 text-lg text-baoWhite/80">
-                Decentralized, transparent and trusted by over 200 defi
-                communities. By partnering with leading DeFi platforms, Bao
-                Finance ensures that its innovative financial tools are widely
-                accessible, allowing users to seamlessly integrate and benefit
-                from its ecosystem across the decentralized finance landscape.
-                Deposit yield-bearing assets like{' '}
+                Decentralized, transparent and relentlessly working on bringing 
+                you yields that you deserve. By partnering with leading DeFi 
+                platforms, Bao Finance ensures that its innovative financial 
+                tools are widely accessible, allowing users to seamlessly 
+                integrate and benefitbfrom its ecosystem across the decentralized 
+                finance landscape. Deposit yield-bearing assets like{' '}
                 <a
                   className="font-bold text-baoRed"
                   href="https://app.ethena.fi"
@@ -339,11 +339,10 @@ export function ActiveVaults() {
                     </h1>
                   </div>
                   <p className="text-md mt-2 leading-7 text-baoWhite/80">
-                    The $BAO token, now known as BAO v2, was distributed
-                    initially to 200+ communities, where it now incentivizes
-                    liquidity through buybacks. Rewards on BAO gauges are
-                    multiplied through the distribution of $BAO and locking to
-                    veBAO where ~1/3 of the circulating supply lives.
+                  The $BAO token, now known as BAO v2, incentivizes liquidity 
+                  through buybacks. Rewards on BAO gauges are multiplied through 
+                  the distribution of $BAO and locking to veBAO where ~1/3 of 
+                  the circulating supply lives.
                   </p>
                 </div>
                 <div className=" flex-1 space-y-5 rounded-2xl bg-gray-800 p-5 outline outline-1 outline-gray-400 duration-100 hover:opacity-80">
@@ -354,10 +353,12 @@ export function ActiveVaults() {
                     </h1>
                   </div>
                   <p className="text-md mt-2 leading-7 text-baoWhite/80">
-                    baoUSD is a stablecoin backed by Lido&apos;s wrapped staked
-                    ETH (wstETH), ETH, and BAO Baskets. This diverse backing
-                    keeps its price stable and secure. With transparency and
-                    reliability, baoUSD is perfect for everyday use.
+                    $baoUSD is a borrowable stablecoin backed by LST&apos;s 
+                    (wstETH/rETH) and ETH, if borrowing is not for you then
+                    an aggregator to swap to $baoUSD. This diverse backing 
+                    keeps its price stable and secure. With transparency and 
+                    reliability, $baoUSD is pegged through the US dollar and 
+                    works since its inception over 900 days ago.
                   </p>
                 </div>
                 <div className=" flex-1 space-y-5 rounded-2xl bg-gray-800 p-5 outline outline-1 outline-gray-400 duration-100 hover:opacity-80">
@@ -368,10 +369,11 @@ export function ActiveVaults() {
                     </h1>
                   </div>
                   <p className="text-md mt-2 leading-7 text-baoWhite/80">
-                    baoETH is backed by Lido&apos;s wrapped staked ETH (wstETH),
-                    ETH, and BAO Baskets. This diverse backing provides
-                    stability and security, making baoETH a solid and dependable
-                    alternative to regular ETH.
+                    $baoETH is a borrowable stablecoin backed by LST&apos;s 
+                    (wstETH/rETH) and ETH, if borrowing is not for you then
+                    an aggregator to swap to $baoETH. This diverse backing 
+                    provides stability and security, making $baoETH since over 
+                    500 days a solid and dependable alternative to regular ETH. 
                   </p>
                 </div>
               </div>
