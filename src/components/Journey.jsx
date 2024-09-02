@@ -127,7 +127,7 @@ export function Journey() {
             </h1>
           </div>
           <p className="mt-2 text-lg text-baoWhite/80">
-            Bao has been around since late 2020, check out where we are now and where we are goinh
+            Bao has been around since late 2020, check out where we are now and where we are going.
           </p>
         </div>
         <ul

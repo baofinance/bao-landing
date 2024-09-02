@@ -22,7 +22,7 @@ const features = [
     icon: AutomatedIcon,
   },
   {
-    name: 'Immunefi bug bounty program',
+    name: 'Immunefi Bug Bounty Program',
     description:
       'Secure: Immunefi is a bug bounty and security services platform that protects crypto projects from Web3 bugs. This platform facilitates network hosting, bug triaging, and program management in the blockchain. It also offers smart contract projects that help to review code, disclose vulnerabilities, secures projects against malicious exploits, and preserves against undetermined attacks. Bao has been part of the Immunefi bug bounty program since 2021.',
     icon: CustomizableIcon,
@@ -30,7 +30,7 @@ const features = [
   {
     name: 'Github repositories',
     description:
-      "Transperancy: All of Bao's products once deployed are publicly available on our repository.",
+      "Transparency: All of Bao's products once deployed are publicly available on our repository.",
     icon: YieldIcon,
   },
 ]
@@ -127,7 +127,7 @@ export function Security() {
             </h1>
           </div>
           <p className="mt-2 text-lg text-baoWhite/80">
-          Security is shaping the design of our products and governance. We look for decentralized assets as collaterals, use Best Practice in the development process, deploy audited smart contracts after extensive testing and run a bug bounty program on Immunefi. Every important decision is provided as BIP to the BAO community for approval. Our documentation is always kept uptodate and we constantly monitor our products.
+          Security is shaping the design of our products and governance. We look for decentralized assets as collaterals, use Best Practice in the development process, deploy audited smart contracts after extensive testing and run a bug bounty program on Immunefi. Every important decision is provided as BIP to the BAO community for approval. Our documentation is always kept up to date and we constantly monitor our products.
           </p>
         </div>
         <ul

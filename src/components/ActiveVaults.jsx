@@ -192,12 +192,8 @@ export function ActiveVaults() {
               <p className="mt-2 text-lg text-baoWhite/80"></p>
               <div className="mt-12">
                 <h1 className="mr-2 inline-block font-bakbak text-4xl tracking-tight text-baoWhite">
-                  Featured Pools
+                  Earn In Our Pools
                 </h1>
-                <p className="mt-2 text-lg text-baoWhite/80">
-                  Earn third party reward tokens like $AURA and $BAL to boost
-                  APR
-                </p>
                 <div className="relative z-10 mt-5 flex flex-col gap-5 ">
                   <Link
                     href="https://app.aura.finance/#/1/pool/216"
@@ -354,8 +350,8 @@ export function ActiveVaults() {
                   </div>
                   <p className="text-md mt-2 leading-7 text-baoWhite/80">
                     $baoUSD is a borrowable stablecoin backed by LST&apos;s 
-                    (wstETH/rETH) and ETH, if borrowing is not for you then
-                    an aggregator to swap to $baoUSD. This diverse backing 
+                    (wstETH/rETH) and ETH, $baoUSD can be obtained by borrowing
+                    or swapping through an aggregator. This diverse backing 
                     keeps its price stable and secure. With transparency and 
                     reliability, $baoUSD is pegged through the US dollar and 
                     works since its inception over 900 days ago.
