@@ -9,6 +9,10 @@ import {
   faTools,
   faUserGroup,
 } from '@fortawesome/pro-regular-svg-icons'
+import { DiscordLink } from './DiscordLink'
+import { SnapshotLink } from './SnapshotLink'
+import { XLink } from './XLink'
+import { DeBankLink } from './DeBankLink'
 
 const features = [
   {
@@ -18,7 +22,7 @@ const features = [
     icon: AutomatedIcon,
   },
   {
-    name: 'Communty Run',
+    name: 'Community Run',
     description:
       'We are run by our community, which controls all aspects of the project, from its core team and products to revenue distribution and tokenomics.',
     icon: CustomizableIcon,
@@ -117,24 +121,32 @@ export function SecondaryFeatures() {
   return (
     <section
       id="secondary-features"
-      aria-label="Features for building a portfolio"
-      className="py-20 sm:py-32"
+      aria-label="Decentralized"
+      className="py-12"
     >
       <Container>
-        <div className="mx-auto max-w-3xl sm:text-center">
-          <h1 className="mr-2 inline-block font-bakbak text-4xl tracking-tight text-baoWhite">
-            Grassroots. Community-run. VC-free. Decentralization maximalist.
-          </h1>
+        <div className="">
+          <h1 className="inline-block font-bakbak text-xl tracking-tight text-baoRed"></h1>
+          <div className=" max-w-3xl">
+            <h1 className="inline-block font-bakbak text-6xl tracking-tight text-baoWhite">
+              BAO Governance
+            </h1>
+          </div>
           <p className="mt-2 text-lg text-baoWhite/80">
-            Bao is a community of anons intent on transforming how we leverage
-            and interact with data. Our onchain derivatives take advantage of
-            the decentralization, transparency and security that blockchain
-            allows, moving financial power from institutions to individuals.
+            Get involved with Bao Finance&apos;s governance! Join our community
+            on Discord for discussions and updates. Vote on key proposals on
+            Snapshot and stay informed on X. Your participation is crucial.
           </p>
+          <div className="flex flex-wrap gap-2 lg:mt-4">
+            <DiscordLink color="white" />
+            <SnapshotLink color="white" />
+            <XLink color="white" />
+            <DeBankLink color="white" />
+          </div>
         </div>
         <ul
           role="list"
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-2"
+          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 md:gap-y-10 lg:max-w-none lg:grid-cols-2"
         >
           {features.map((feature) => (
             <li
