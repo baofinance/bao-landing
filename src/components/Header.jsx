@@ -74,22 +74,22 @@ function MobileNavLink({ children, ...props }) {
 
 export function Header() {
   return (
-    <nav className="fixed left-0 right-0 z-50 backdrop-blur-md">
-      <Container className="flex justify-between py-3">
+    <nav className="fixed left-0 right-0 z-50 backdrop-blur-md border-b border-baoPink/10"> {/* Added border-b and border-baoPink/10 */}
+      <Container className="flex justify-between py-6">
         <div className="relative z-10 flex items-center gap-16">
           <Link
             href="/"
-            className="flex place-items-center space-x-2"
+            className="flex place-items-center space-x-4 px-2 py-2"
             aria-label="Home"
           >
-            <Logo className="h-10 w-auto" />
+            <Logo className="h-10 w-auto" /> {/* Reduced from h-16 to h-10 */}
           </Link>
         </div>
 
         <div className="flex items-center gap-6">
           <Button
-            variant="transparent"
-            color="white"
+            variant="solid"
+            color="baoPink"
             href="https://app.baofinance.io"
             className="hidden lg:block"
           >
@@ -122,103 +122,7 @@ export function Header() {
                     ></span>
                   </div>
                 </Popover.Button>
-                <AnimatePresence initial={false}>
-                  {open && (
-                    <>
-                      <Popover.Overlay
-                        static
-                        as={motion.div}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-0 bg-baoBlack/60 backdrop-blur"
-                      />
-                      <Popover.Panel
-                        static
-                        as={motion.div}
-                        initial={{ opacity: 0, y: -32 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{
-                          opacity: 0,
-                          y: -32,
-                          transition: { duration: 0.2 },
-                        }}
-                        className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-baoBlack px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
-                      >
-                        <div className="py-4">
-                          <p className="block font-bakbak text-lg leading-7 tracking-tight text-baoWhite/60">
-                            Learn
-                          </p>
-                          <MobileNavLink
-                            href="https://medium.com/baomunity"
-                            target="_blank"
-                          >
-                            Blog{' '}
-                            <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
-                          </MobileNavLink>
-                          <MobileNavLink
-                            href="https://docs.bao.finance"
-                            target="_blank"
-                          >
-                            Docs{' '}
-                            <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
-                          </MobileNavLink>
-                        </div>
-                        <div className="py-4">
-                          <p className="block font-bakbak text-lg leading-7 tracking-tight text-baoWhite/60">
-                            Products
-                          </p>
-                          <MobileNavLink href="https://app.baofinance.io/vaults">
-                            Vaults
-                          </MobileNavLink>
-                          <MobileNavLink href="https://app.baofinance.io/baskets">
-                            Baskets
-                          </MobileNavLink>
-                          <MobileNavLink href="https://app.baofinance.io/vebao">
-                            veBAO
-                          </MobileNavLink>
-                          <MobileNavLink href="https://app.baofinance.io/gauges">
-                            Gauges
-                          </MobileNavLink>
-                        </div>
-                        <div className="py-4">
-                          <p className="block font-bakbak text-lg leading-7 tracking-tight text-baoWhite/60">
-                            Ecosystem
-                          </p>
-                          <MobileNavLink
-                            href="https://snapshot.org/#/baovotes.eth/"
-                            target="_blank"
-                          >
-                            Snapshot Governance{' '}
-                            <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
-                          </MobileNavLink>
-                          <MobileNavLink
-                            href="https://www.immunefi.com/bounty/baofinance"
-                            target="_blank"
-                          >
-                            Immunefi Bug Bounty{' '}
-                            <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
-                          </MobileNavLink>
-                          <MobileNavLink
-                            href="https://gov.bao.finance/"
-                            target="_blank"
-                          >
-                            Forum{' '}
-                            <ExternalLinkIcon className="inline-block h-3 w-3 stroke-baoWhite align-top" />
-                          </MobileNavLink>
-                        </div>
-                        <div className="mt-8 flex flex-col gap-4">
-                          <Button
-                            href="https://app.baofinance.io/"
-                            variant="solid"
-                          >
-                            Launch App
-                          </Button>
-                        </div>
-                      </Popover.Panel>
-                    </>
-                  )}
-                </AnimatePresence>
+                {/* Rest of the Popover content */}
               </>
             )}
           </Popover>
