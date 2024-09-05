@@ -1,8 +1,8 @@
-import React from "react"
-import Overlay from "./overlay"
-import Anser from "anser"
-import CodeFrame from "./code-frame"
-import { prettifyStack } from "../utils"
+import React from 'react'
+import Overlay from './overlay'
+import Anser from 'anser'
+import CodeFrame from './code-frame'
+import { prettifyStack } from '../utils'
 
 const BuildError = ({ error, open, dismiss }) => {
   const [file, cause, _emptyLine, ...rest] = error.split(`\n`)
@@ -13,7 +13,7 @@ const BuildError = ({ error, open, dismiss }) => {
   })
   const lineNumberRegex = /^[0-9]*:[0-9]*$/g
   const lineNumberFiltered = detailedError.filter(
-    d => d.content !== ` ` && d.content.match(lineNumberRegex)
+    (d) => d.content !== ` ` && d.content.match(lineNumberRegex)
   )[0]?.content
   const lineNumber = lineNumberFiltered.substr(
     0,

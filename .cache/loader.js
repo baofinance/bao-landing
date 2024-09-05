@@ -1,6 +1,6 @@
-import prefetchHelper from "./prefetch"
-import emitter from "./emitter"
-import { setMatchPaths, findPath, findMatchPath } from "./find-path"
+import prefetchHelper from './prefetch'
+import emitter from './emitter'
+import { setMatchPaths, findPath, findMatchPath } from './find-path'
 
 /**
  * Available resource loading statuses
@@ -16,15 +16,15 @@ export const PageResourceStatus = {
   Success: `success`,
 }
 
-const preferDefault = m => (m && m.default) || m
+const preferDefault = (m) => (m && m.default) || m
 
-const stripSurroundingSlashes = s => {
+const stripSurroundingSlashes = (s) => {
   s = s[0] === `/` ? s.slice(1) : s
   s = s.endsWith(`/`) ? s.slice(0, -1) : s
   return s
 }
 
-const createPageDataUrl = path => {
+const createPageDataUrl = (path) => {
   const fixedPath = path === `/` ? `index` : stripSurroundingSlashes(path)
   return `${__PATH_PREFIX__}/page-data/${fixedPath}/page-data.json`
 }
@@ -112,11 +112,11 @@ export class BaseLoader {
 
     // Prefer duplication with then + catch over .finally to prevent problems in ie11 + firefox
     return inFlightPromise
-      .then(response => {
+      .then((response) => {
         this.inFlightNetworkRequests.delete(url)
         return response
       })
-      .catch(err => {
+      .catch((err) => {
         this.inFlightNetworkRequests.delete(url)
         throw err
       })
@@ -124,13 +124,13 @@ export class BaseLoader {
 
   setApiRunner(apiRunner) {
     this.apiRunner = apiRunner
-    this.prefetchDisabled = apiRunner(`disableCorePrefetching`).some(a => a)
+    this.prefetchDisabled = apiRunner(`disableCorePrefetching`).some((a) => a)
   }
 
   fetchPageDataJson(loadObj) {
     const { pagePath, retries = 0 } = loadObj
     const url = createPageDataUrl(pagePath)
-    return this.memoizedGet(url).then(req => {
+    return this.memoizedGet(url).then((req) => {
       const { status, responseText } = req
 
       // Handle 200
@@ -196,7 +196,7 @@ export class BaseLoader {
       }
     }
 
-    return this.fetchPageDataJson({ pagePath }).then(pageData => {
+    return this.fetchPageDataJson({ pagePath }).then((pageData) => {
       this.pageDataDb.set(pagePath, pageData)
 
       return pageData
@@ -224,7 +224,7 @@ export class BaseLoader {
     const inFlightPromise = Promise.all([
       this.loadAppData(),
       this.loadPageDataJson(pagePath),
-    ]).then(allData => {
+    ]).then((allData) => {
       const result = allData[1]
       if (result.status === PageResourceStatus.Error) {
         return {
@@ -238,7 +238,7 @@ export class BaseLoader {
       const finalResult = {}
 
       const componentChunkPromise = this.loadComponent(componentChunkName).then(
-        component => {
+        (component) => {
           finalResult.createdAt = new Date()
           let pageResources
           if (!component) {
@@ -261,7 +261,7 @@ export class BaseLoader {
       )
 
       const staticQueryBatchPromise = Promise.all(
-        staticQueryHashes.map(staticQueryHash => {
+        staticQueryHashes.map((staticQueryHash) => {
           // Check for cache in case this static query result has already been loaded
           if (this.staticQueryDb[staticQueryHash]) {
             const jsonPayload = this.staticQueryDb[staticQueryHash]
@@ -270,12 +270,12 @@ export class BaseLoader {
 
           return this.memoizedGet(
             `${__PATH_PREFIX__}/page-data/sq/d/${staticQueryHash}.json`
-          ).then(req => {
+          ).then((req) => {
             const jsonPayload = JSON.parse(req.responseText)
             return { staticQueryHash, jsonPayload }
           })
         })
-      ).then(staticQueryResults => {
+      ).then((staticQueryResults) => {
         const staticQueryResultsMap = {}
 
         staticQueryResults.forEach(({ staticQueryHash, jsonPayload }) => {
@@ -306,10 +306,10 @@ export class BaseLoader {
     })
 
     inFlightPromise
-      .then(response => {
+      .then((response) => {
         this.inFlightDb.delete(pagePath)
       })
-      .catch(error => {
+      .catch((error) => {
         this.inFlightDb.delete(pagePath)
         throw error
       })
@@ -412,7 +412,7 @@ export class BaseLoader {
 
   loadAppData(retries = 0) {
     return this.memoizedGet(`${__PATH_PREFIX__}/page-data/app-data.json`).then(
-      req => {
+      (req) => {
         const { status, responseText } = req
 
         let appData
@@ -442,14 +442,14 @@ export class BaseLoader {
   }
 }
 
-const createComponentUrls = componentChunkName =>
+const createComponentUrls = (componentChunkName) =>
   (window.___chunkMapping[componentChunkName] || []).map(
-    chunk => __PATH_PREFIX__ + chunk
+    (chunk) => __PATH_PREFIX__ + chunk
   )
 
 export class ProdLoader extends BaseLoader {
   constructor(asyncRequires, matchPaths) {
-    const loadComponent = chunkName =>
+    const loadComponent = (chunkName) =>
       asyncRequires.components[chunkName]
         ? asyncRequires.components[chunkName]()
             .then(preferDefault)
@@ -461,7 +461,7 @@ export class ProdLoader extends BaseLoader {
   }
 
   doPrefetch(pagePath) {
-    return super.doPrefetch(pagePath).then(result => {
+    return super.doPrefetch(pagePath).then((result) => {
       if (result.status !== PageResourceStatus.Success) {
         return Promise.resolve()
       }
@@ -473,11 +473,11 @@ export class ProdLoader extends BaseLoader {
   }
 
   loadPageDataJson(rawPath) {
-    return super.loadPageDataJson(rawPath).then(data => {
+    return super.loadPageDataJson(rawPath).then((data) => {
       if (data.notFound) {
         // check if html file exist using HEAD request:
         // if it does we should navigate to it instead of showing 404
-        return doFetch(rawPath, `HEAD`).then(req => {
+        return doFetch(rawPath, `HEAD`).then((req) => {
           if (req.status === 200) {
             // page (.html file) actually exist (or we asked for 404 )
             // returning page resources status as errored to trigger
@@ -499,7 +499,7 @@ export class ProdLoader extends BaseLoader {
 
 let instance
 
-export const setLoader = _loader => {
+export const setLoader = (_loader) => {
   instance = _loader
 }
 
@@ -507,28 +507,28 @@ export const publicLoader = {
   // Deprecated methods. As far as we're aware, these are only used by
   // core gatsby and the offline plugin, however there's a very small
   // chance they're called by others.
-  getResourcesForPathname: rawPath => {
+  getResourcesForPathname: (rawPath) => {
     console.warn(
       `Warning: getResourcesForPathname is deprecated. Use loadPage instead`
     )
     return instance.i.loadPage(rawPath)
   },
-  getResourcesForPathnameSync: rawPath => {
+  getResourcesForPathnameSync: (rawPath) => {
     console.warn(
       `Warning: getResourcesForPathnameSync is deprecated. Use loadPageSync instead`
     )
     return instance.i.loadPageSync(rawPath)
   },
-  enqueue: rawPath => instance.prefetch(rawPath),
+  enqueue: (rawPath) => instance.prefetch(rawPath),
 
   // Real methods
-  getResourceURLsForPathname: rawPath =>
+  getResourceURLsForPathname: (rawPath) =>
     instance.getResourceURLsForPathname(rawPath),
-  loadPage: rawPath => instance.loadPage(rawPath),
-  loadPageSync: rawPath => instance.loadPageSync(rawPath),
-  prefetch: rawPath => instance.prefetch(rawPath),
-  isPageNotFound: rawPath => instance.isPageNotFound(rawPath),
-  hovering: rawPath => instance.hovering(rawPath),
+  loadPage: (rawPath) => instance.loadPage(rawPath),
+  loadPageSync: (rawPath) => instance.loadPageSync(rawPath),
+  prefetch: (rawPath) => instance.prefetch(rawPath),
+  isPageNotFound: (rawPath) => instance.isPageNotFound(rawPath),
+  hovering: (rawPath) => instance.hovering(rawPath),
   loadAppData: () => instance.loadAppData(),
 }
 

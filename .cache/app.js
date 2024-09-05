@@ -1,18 +1,18 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import domReady from "@mikaelkristiansson/domready"
-import io from "socket.io-client"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import domReady from '@mikaelkristiansson/domready'
+import io from 'socket.io-client'
 
-import socketIo from "./socketIo"
-import emitter from "./emitter"
-import { apiRunner, apiRunnerAsync } from "./api-runner-browser"
-import { setLoader, publicLoader } from "./loader"
-import { Indicator } from "./loading-indicator/indicator"
-import DevLoader from "./dev-loader"
-import syncRequires from "$virtual/sync-requires"
+import socketIo from './socketIo'
+import emitter from './emitter'
+import { apiRunner, apiRunnerAsync } from './api-runner-browser'
+import { setLoader, publicLoader } from './loader'
+import { Indicator } from './loading-indicator/indicator'
+import DevLoader from './dev-loader'
+import syncRequires from '$virtual/sync-requires'
 // Generated during bootstrap
-import matchPaths from "$virtual/match-paths.json"
-import { LoadingIndicatorEventHandler } from "./loading-indicator"
+import matchPaths from '$virtual/match-paths.json'
+import { LoadingIndicatorEventHandler } from './loading-indicator'
 
 if (process.env.GATSBY_HOT_LOADER === `fast-refresh` && module.hot) {
   module.hot.accept(`$virtual/sync-requires`, () => {
@@ -50,15 +50,15 @@ apiRunnerAsync(`onClientEntry`).then(() => {
   }
 
   fetch(`/___services`)
-    .then(res => res.json())
-    .then(services => {
+    .then((res) => res.json())
+    .then((services) => {
       if (services.developstatusserver) {
         let isRestarting = false
         const parentSocket = io(
           `${window.location.protocol}//${window.location.hostname}:${services.developstatusserver.port}`
         )
 
-        parentSocket.on(`structured-log`, msg => {
+        parentSocket.on(`structured-log`, (msg) => {
           if (
             !isRestarting &&
             msg.type === `LOG_ACTION` &&
@@ -105,7 +105,7 @@ apiRunnerAsync(`onClientEntry`).then(() => {
    * Let's warn if we find service workers in development.
    */
   if (`serviceWorker` in navigator) {
-    navigator.serviceWorker.getRegistrations().then(registrations => {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
       if (registrations.length > 0)
         console.warn(
           `Warning: found one or more service workers present.`,
@@ -155,7 +155,7 @@ apiRunnerAsync(`onClientEntry`).then(() => {
     loader.loadPage(`/404.html`),
     loader.loadPage(window.location.pathname),
   ]).then(() => {
-    const preferDefault = m => (m && m.default) || m
+    const preferDefault = (m) => (m && m.default) || m
     const Root = preferDefault(require(`./root`))
     domReady(() => {
       if (dismissLoadingIndicator) {

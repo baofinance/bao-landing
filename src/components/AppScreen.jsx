@@ -32,17 +32,20 @@ function UserIcon(props) {
 
 export function AppScreen({ children, className, ...props }) {
   return (
-    <div className={clsx('flex flex-col select-none bg-baoBlack', className)} {...props}>
-      <div className="flex px-4 pt-4 gap-24">
+    <div
+      className={clsx('flex select-none flex-col bg-baoBlack', className)}
+      {...props}
+    >
+      <div className="flex gap-24 px-4 pt-4">
         <div>
           <Logo className="h-6 flex-none" />
         </div>
 
         {/* Account Button */}
-        <div className='flex items-center gap-4'>
+        <div className="flex items-center gap-4">
           <div
-            className="relative ml-1 mr-0 flex w-fit overflow-hidden rounded-full border border-baoWhite/20
-				bg-baoWhite/5 px-2 font-bakbak text-base text-baoWhite cursor-default"
+            className="relative ml-1 mr-0 flex w-fit cursor-default overflow-hidden rounded-full border
+				border-baoWhite/20 bg-baoWhite/5 px-2 font-bakbak text-base text-baoWhite"
           >
             baofriend.eth
           </div>

@@ -1,22 +1,22 @@
-"use strict";
+'use strict'
 
-exports.__esModule = true;
-exports.default = void 0;
+exports.__esModule = true
+exports.default = void 0
 
-var _default = path => {
+var _default = (path) => {
   if (path === undefined) {
-    return path;
+    return path
   }
 
   if (path === `/`) {
-    return `/`;
+    return `/`
   }
 
   if (path.charAt(path.length - 1) === `/`) {
-    return path.slice(0, -1);
+    return path.slice(0, -1)
   }
 
-  return path;
-};
+  return path
+}
 
-exports.default = _default;
+exports.default = _default

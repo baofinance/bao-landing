@@ -1,7 +1,7 @@
-"use strict";
+'use strict'
 
-exports.__esModule = true;
-exports.RouteAnnouncerProps = void 0;
+exports.__esModule = true
+exports.RouteAnnouncerProps = void 0
 // This is extracted to separate module because it's shared
 // between browser and SSR code
 const RouteAnnouncerProps = {
@@ -15,9 +15,9 @@ const RouteAnnouncerProps = {
     overflow: `hidden`,
     clip: `rect(0, 0, 0, 0)`,
     whiteSpace: `nowrap`,
-    border: 0
+    border: 0,
   },
-  "aria-live": `assertive`,
-  "aria-atomic": `true`
-};
-exports.RouteAnnouncerProps = RouteAnnouncerProps;
+  'aria-live': `assertive`,
+  'aria-atomic': `true`,
+}
+exports.RouteAnnouncerProps = RouteAnnouncerProps

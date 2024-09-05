@@ -1,8 +1,8 @@
-import React from "react"
-import StackTrace from "stack-trace"
-import Overlay from "./overlay"
-import { prettifyStack } from "../utils"
-import CodeFrame from "./code-frame"
+import React from 'react'
+import StackTrace from 'stack-trace'
+import Overlay from './overlay'
+import { prettifyStack } from '../utils'
+import CodeFrame from './code-frame'
 
 function formatFilename(filename) {
   const htmlMatch = /^https?:\/\/(.*)\/(.*)/.exec(filename)
@@ -18,7 +18,7 @@ function formatFilename(filename) {
   return filename
 }
 
-const useFetch = url => {
+const useFetch = (url) => {
   const [response, setResponse] = React.useState({
     decoded: null,
     sourcePosition: {
@@ -45,7 +45,7 @@ const useFetch = url => {
 }
 
 function getCodeFrameInformation(stackTrace) {
-  const callSite = stackTrace.find(CallSite => CallSite.getFileName())
+  const callSite = stackTrace.find((CallSite) => CallSite.getFileName())
   if (!callSite) {
     return null
   }
@@ -65,12 +65,8 @@ function getCodeFrameInformation(stackTrace) {
 
 const RuntimeError = ({ error, open, dismiss }) => {
   const stacktrace = StackTrace.parse(error.error)
-  const {
-    moduleId,
-    lineNumber,
-    columnNumber,
-    functionName,
-  } = getCodeFrameInformation(stacktrace)
+  const { moduleId, lineNumber, columnNumber, functionName } =
+    getCodeFrameInformation(stacktrace)
 
   const res = useFetch(
     `/__original-stack-frame?moduleId=` +

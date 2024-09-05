@@ -1,20 +1,24 @@
-"use strict";
+'use strict'
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault')
 
-exports.__esModule = true;
-exports.default = void 0;
+exports.__esModule = true
+exports.default = void 0
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireDefault(require('react'))
 
 function css(strings, ...keys) {
-  const lastIndex = strings.length - 1;
-  return strings.slice(0, lastIndex).reduce((p, s, i) => p + s + keys[i], ``) + strings[lastIndex];
+  const lastIndex = strings.length - 1
+  return (
+    strings.slice(0, lastIndex).reduce((p, s, i) => p + s + keys[i], ``) +
+    strings[lastIndex]
+  )
 }
 
-const Style = () => /*#__PURE__*/_react.default.createElement("style", {
-  dangerouslySetInnerHTML: {
-    __html: css`
+const Style = () =>
+  /*#__PURE__*/ _react.default.createElement('style', {
+    dangerouslySetInnerHTML: {
+      __html: css`
         :host {
           --purple-60: #663399;
           --gatsby: var(--purple-60);
@@ -31,10 +35,10 @@ const Style = () => /*#__PURE__*/_react.default.createElement("style", {
             0px 4px 8px rgba(71, 63, 79, 0.16);
         }
 
-        [data-gatsby-loading-indicator="root"] {
-          font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-            "Segoe UI Symbol" !important;
+        [data-gatsby-loading-indicator='root'] {
+          font: 14px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+            Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+            'Segoe UI Symbol' !important;
           background: var(--white);
           color: var(--grey-90);
           position: fixed;
@@ -52,7 +56,7 @@ const Style = () => /*#__PURE__*/_react.default.createElement("style", {
           min-width: 196px;
         }
 
-        [data-gatsby-loading-indicator-visible="false"] {
+        [data-gatsby-loading-indicator-visible='false'] {
           opacity: 0;
           visibility: hidden;
           will-change: opacity, transform;
@@ -60,21 +64,21 @@ const Style = () => /*#__PURE__*/_react.default.createElement("style", {
           transition: all 0.3s ease-in-out;
         }
 
-        [data-gatsby-loading-indicator-visible="true"] {
+        [data-gatsby-loading-indicator-visible='true'] {
           opacity: 1;
           visibility: visible;
           transform: translateY(0px);
           transition: all 0.3s ease-in-out;
         }
 
-        [data-gatsby-loading-indicator="spinner"] {
+        [data-gatsby-loading-indicator='spinner'] {
           animation: spin 1s linear infinite;
           height: 18px;
           width: 18px;
           color: var(--gatsby);
         }
 
-        [data-gatsby-loading-indicator="text"] {
+        [data-gatsby-loading-indicator='text'] {
           margin-left: 0.75em;
           line-height: 18px;
         }
@@ -89,30 +93,30 @@ const Style = () => /*#__PURE__*/_react.default.createElement("style", {
         }
 
         @media (prefers-reduced-motion: reduce) {
-          [data-gatsby-loading-indicator="spinner"] {
+          [data-gatsby-loading-indicator='spinner'] {
             animation: none;
           }
-          [data-gatsby-loading-indicator-visible="false"] {
+          [data-gatsby-loading-indicator-visible='false'] {
             transition: none;
           }
 
-          [data-gatsby-loading-indicator-visible="true"] {
+          [data-gatsby-loading-indicator-visible='true'] {
             transition: none;
           }
         }
 
         @media (prefers-color-scheme: dark) {
-          [data-gatsby-loading-indicator="root"] {
+          [data-gatsby-loading-indicator='root'] {
             background: var(--grey-90);
             color: var(--white);
           }
-          [data-gatsby-loading-indicator="spinner"] {
+          [data-gatsby-loading-indicator='spinner'] {
             color: var(--purple-20);
           }
         }
-      `
-  }
-});
+      `,
+    },
+  })
 
-var _default = Style;
-exports.default = _default;
+var _default = Style
+exports.default = _default

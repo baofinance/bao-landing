@@ -1,4 +1,4 @@
-"use strict";
+'use strict'
 
 // During bootstrap, we write requires at top of this file which looks like:
 // var plugins = [
@@ -11,38 +11,36 @@
 //     options: { ... },
 //   },
 // ]
-const apis = require(`./api-ssr-docs`); // Run the specified API in any plugins that have implemented it
-
+const apis = require(`./api-ssr-docs`) // Run the specified API in any plugins that have implemented it
 
 module.exports = (api, args, defaultReturn, argTransform) => {
   if (!apis[api]) {
-    console.log(`This API doesn't exist`, api);
+    console.log(`This API doesn't exist`, api)
   } // Run each plugin in series.
   // eslint-disable-next-line no-undef
 
-
-  let results = plugins.map(plugin => {
+  let results = plugins.map((plugin) => {
     if (!plugin.plugin[api]) {
-      return undefined;
+      return undefined
     }
 
-    const result = plugin.plugin[api](args, plugin.options);
+    const result = plugin.plugin[api](args, plugin.options)
 
     if (result && argTransform) {
       args = argTransform({
         args,
-        result
-      });
+        result,
+      })
     }
 
-    return result;
-  }); // Filter out undefined results.
+    return result
+  }) // Filter out undefined results.
 
-  results = results.filter(result => typeof result !== `undefined`);
+  results = results.filter((result) => typeof result !== `undefined`)
 
   if (results.length > 0) {
-    return results;
+    return results
   } else {
-    return [defaultReturn];
+    return [defaultReturn]
   }
-};
+}

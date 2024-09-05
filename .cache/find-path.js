@@ -1,11 +1,11 @@
-import { pick } from "@reach/router/lib/utils"
-import stripPrefix from "./strip-prefix"
-import normalizePagePath from "./normalize-page-path"
+import { pick } from '@reach/router/lib/utils'
+import stripPrefix from './strip-prefix'
+import normalizePagePath from './normalize-page-path'
 
 const pathCache = new Map()
 let matchPaths = []
 
-const trimPathname = rawPathname => {
+const trimPathname = (rawPathname) => {
   const pathname = decodeURIComponent(rawPathname)
   // Remove the pathPrefix from the pathname.
   const trimmedPathname = stripPrefix(pathname, __BASE_PATH__)
@@ -39,7 +39,7 @@ function absolutify(path) {
  *
  * @param {Array<{path: string, matchPath: string}>} value collection of matchPaths
  */
-export const setMatchPaths = value => {
+export const setMatchPaths = (value) => {
   matchPaths = value
 }
 
@@ -51,7 +51,7 @@ export const setMatchPaths = value => {
  * @param {string} rawPathname A raw pathname
  * @return {string|null}
  */
-export const findMatchPath = rawPathname => {
+export const findMatchPath = (rawPathname) => {
   const trimmedPathname = cleanPath(rawPathname)
 
   const pickPaths = matchPaths.map(({ path, matchPath }) => {
@@ -79,7 +79,7 @@ export const findMatchPath = rawPathname => {
  * @param {string} rawPathname A raw pathname
  * @return {object}
  */
-export const grabMatchParams = rawPathname => {
+export const grabMatchParams = (rawPathname) => {
   const trimmedPathname = cleanPath(rawPathname)
 
   const pickPaths = matchPaths.map(({ path, matchPath }) => {
@@ -106,7 +106,7 @@ export const grabMatchParams = rawPathname => {
 //
 // Or if `match-paths.json` contains `{ "/foo*": "/page1", ...}`, then
 // `/foo?bar=far` => `/page1`
-export const findPath = rawPathname => {
+export const findPath = (rawPathname) => {
   const trimmedPathname = trimPathname(absolutify(rawPathname))
   if (pathCache.has(trimmedPathname)) {
     return pathCache.get(trimmedPathname)
@@ -130,7 +130,7 @@ export const findPath = rawPathname => {
  * @param {string} rawPathname A raw pathname
  * @return {string}
  */
-export const cleanPath = rawPathname => {
+export const cleanPath = (rawPathname) => {
   const trimmedPathname = trimPathname(absolutify(rawPathname))
 
   let foundPath = trimmedPathname

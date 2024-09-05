@@ -1,1 +1,12 @@
-{"componentChunkName":"component---src-pages-index-js","path":"/","result":{"pageContext":{}},"staticQueryHashes":["195496017","2037338169","4066764048","512065377","61758613"]}
+{
+  "componentChunkName": "component---src-pages-index-js",
+  "path": "/",
+  "result": { "pageContext": {} },
+  "staticQueryHashes": [
+    "195496017",
+    "2037338169",
+    "4066764048",
+    "512065377",
+    "61758613"
+  ]
+}

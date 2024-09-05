@@ -1,1 +1,34 @@
-{"expireTime":9007200971675947000,"key":"dab950f7cb1ff4c9f94df4c4f5b62b8b","val":{"name":"IMAGE_PROCESSING","inputPaths":["/home/haruxe/Projects/bao-landing/src/images/baoswap.png"],"outputDir":"/home/haruxe/Projects/bao-landing/public/static/25a604184b040affda0b16dcd3a26787","args":{"isLazy":false,"operations":[{"outputPath":"6d161/baoswap.png","args":{"width":150,"cropFocus":17,"toFormat":"png","fit":"cover","background":"rgba(0,0,0,1)"}}],"pluginOptions":{"base64Width":20,"forceBase64Format":"","useMozJpeg":false,"stripMetadata":true,"lazyImageGeneration":true,"defaultQuality":50,"failOnError":true,"plugins":[]}}}}
+{
+  "expireTime": 9007200971675947000,
+  "key": "dab950f7cb1ff4c9f94df4c4f5b62b8b",
+  "val": {
+    "name": "IMAGE_PROCESSING",
+    "inputPaths": ["/home/haruxe/Projects/bao-landing/src/images/baoswap.png"],
+    "outputDir": "/home/haruxe/Projects/bao-landing/public/static/25a604184b040affda0b16dcd3a26787",
+    "args": {
+      "isLazy": false,
+      "operations": [
+        {
+          "outputPath": "6d161/baoswap.png",
+          "args": {
+            "width": 150,
+            "cropFocus": 17,
+            "toFormat": "png",
+            "fit": "cover",
+            "background": "rgba(0,0,0,1)"
+          }
+        }
+      ],
+      "pluginOptions": {
+        "base64Width": 20,
+        "forceBase64Format": "",
+        "useMozJpeg": false,
+        "stripMetadata": true,
+        "lazyImageGeneration": true,
+        "defaultQuality": 50,
+        "failOnError": true,
+        "plugins": []
+      }
+    }
+  }
+}

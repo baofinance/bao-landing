@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 function css(strings, ...keys) {
   const lastIndex = strings.length - 1
@@ -45,7 +45,7 @@ const Style = () => (
           --space-lg: 2.5em;
         }
 
-        [data-gatsby-overlay="backdrop"] {
+        [data-gatsby-overlay='backdrop'] {
           background: rgba(72, 67, 79, 0.5);
           position: absolute;
           top: 0;
@@ -58,10 +58,10 @@ const Style = () => (
           backdrop-filter: blur(10px);
         }
 
-        [data-gatsby-overlay="root"] {
-          font: 18px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-            "Segoe UI Symbol" !important;
+        [data-gatsby-overlay='root'] {
+          font: 18px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+            Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+            'Segoe UI Symbol' !important;
           background: var(--color-ansi-bright-white);
           position: fixed;
           max-width: 75%;
@@ -78,7 +78,7 @@ const Style = () => (
           z-index: var(--z-index-elevated);
         }
 
-        [data-gatsby-overlay="header"] {
+        [data-gatsby-overlay='header'] {
           display: flex;
           align-items: center;
           color: var(--dimmedWhite);
@@ -88,12 +88,12 @@ const Style = () => (
           border-top-right-radius: var(--radii);
         }
 
-        [data-gatsby-overlay="body"] {
+        [data-gatsby-overlay='body'] {
           padding: var(--space);
           overflow: auto;
         }
 
-        [data-gatsby-overlay="body"] pre {
+        [data-gatsby-overlay='body'] pre {
           margin: 0;
           color: var(--color-ansi-fg);
           background: var(--color-ansi-bg);
@@ -101,21 +101,21 @@ const Style = () => (
           border-radius: var(--radii);
         }
 
-        [data-gatsby-overlay="header__cause-file"] {
+        [data-gatsby-overlay='header__cause-file'] {
           flex: 1;
         }
 
-        [data-gatsby-overlay="header__cause-file"] p {
+        [data-gatsby-overlay='header__cause-file'] p {
           margin-top: 0;
           margin-bottom: 0;
         }
 
-        [data-gatsby-overlay="header__cause-file"] span {
+        [data-gatsby-overlay='header__cause-file'] span {
           font-size: 1.25em;
           color: var(--white);
         }
 
-        [data-gatsby-overlay="header__open-in-editor"] {
+        [data-gatsby-overlay='header__open-in-editor'] {
           align-items: center;
           border-radius: var(--radii);
           justify-content: center;
@@ -131,7 +131,7 @@ const Style = () => (
           margin-left: var(--space-lg);
         }
 
-        [data-gatsby-overlay="header__close-button"] {
+        [data-gatsby-overlay='header__close-button'] {
           cursor: pointer;
           border: 0;
           padding: 0;
@@ -147,19 +147,19 @@ const Style = () => (
           margin-left: 1rem;
         }
 
-        [data-gatsby-overlay="body__error-message-header"] {
+        [data-gatsby-overlay='body__error-message-header'] {
           margin-top: 0;
           font-size: 1.2em;
           color: var(--black);
           margin-bottom: 0.25em;
         }
 
-        [data-gatsby-overlay="body__error-message"] {
+        [data-gatsby-overlay='body__error-message'] {
           margin-top: 0;
           margin-bottom: 2em;
         }
 
-        [data-font-weight="bold"] {
+        [data-font-weight='bold'] {
           font-weight: 600;
         }
       `,

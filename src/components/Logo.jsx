@@ -1,6 +1,6 @@
-import React from 'react';
-import Image from 'next/image';
-import logoSrc from '../images/logos/logo-solid-text-horizontal.svg';
+import React from 'react'
+import Image from 'next/image'
+import logoSrc from '../images/logos/logo-solid-text-horizontal.svg'
 
 export function Logo(props) {
   return (
@@ -12,7 +12,7 @@ export function Logo(props) {
       priority
       {...props}
     />
-  );
+  )
 }
 
 // If you still need the Logomark component, keep it as is

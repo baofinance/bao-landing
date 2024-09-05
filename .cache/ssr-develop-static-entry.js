@@ -1,14 +1,14 @@
-import React from "react"
-import fs from "fs"
-import { renderToString, renderToStaticMarkup } from "react-dom/server"
-import { get, merge, isObject, flatten, uniqBy, concat } from "lodash"
-import { join } from "path"
-import apiRunner from "./api-runner-ssr"
-import { grabMatchParams } from "./find-path"
-import syncRequires from "$virtual/ssr-sync-requires"
+import React from 'react'
+import fs from 'fs'
+import { renderToString, renderToStaticMarkup } from 'react-dom/server'
+import { get, merge, isObject, flatten, uniqBy, concat } from 'lodash'
+import { join } from 'path'
+import apiRunner from './api-runner-ssr'
+import { grabMatchParams } from './find-path'
+import syncRequires from '$virtual/ssr-sync-requires'
 
-import { RouteAnnouncerProps } from "./route-announcer-props"
-import { ServerLocation, Router, isRedirect } from "@reach/router"
+import { RouteAnnouncerProps } from './route-announcer-props'
+import { ServerLocation, Router, isRedirect } from '@reach/router'
 
 // import testRequireError from "./test-require-error"
 // For some extremely mysterious reason, webpack adds the above module *after*
@@ -50,58 +50,58 @@ export default (pagePath, isClientOnlyPage, callback) => {
   let bodyProps = {}
 
   const generateBodyHTML = () => {
-    const setHeadComponents = components => {
+    const setHeadComponents = (components) => {
       headComponents = headComponents.concat(components)
     }
 
-    const setHtmlAttributes = attributes => {
+    const setHtmlAttributes = (attributes) => {
       htmlAttributes = merge(htmlAttributes, attributes)
     }
 
-    const setBodyAttributes = attributes => {
+    const setBodyAttributes = (attributes) => {
       bodyAttributes = merge(bodyAttributes, attributes)
     }
 
-    const setPreBodyComponents = components => {
+    const setPreBodyComponents = (components) => {
       preBodyComponents = preBodyComponents.concat(components)
     }
 
-    const setPostBodyComponents = components => {
+    const setPostBodyComponents = (components) => {
       postBodyComponents = postBodyComponents.concat(components)
     }
 
-    const setBodyProps = props => {
+    const setBodyProps = (props) => {
       bodyProps = merge({}, bodyProps, props)
     }
 
     const getHeadComponents = () => headComponents
 
-    const replaceHeadComponents = components => {
+    const replaceHeadComponents = (components) => {
       headComponents = components
     }
 
-    const replaceBodyHTMLString = body => {
+    const replaceBodyHTMLString = (body) => {
       bodyHtml = body
     }
 
     const getPreBodyComponents = () => preBodyComponents
 
-    const replacePreBodyComponents = components => {
+    const replacePreBodyComponents = (components) => {
       preBodyComponents = components
     }
 
     const getPostBodyComponents = () => postBodyComponents
 
-    const replacePostBodyComponents = components => {
+    const replacePostBodyComponents = (components) => {
       postBodyComponents = components
     }
 
-    const getPageDataPath = path => {
+    const getPageDataPath = (path) => {
       const fixedPagePath = path === `/` ? `index` : path
       return join(`page-data`, fixedPagePath, `page-data.json`)
     }
 
-    const getPageData = pagePath => {
+    const getPageData = (pagePath) => {
       const pageDataPath = getPageDataPath(pagePath)
       const absolutePageDataPath = join(process.cwd(), `public`, pageDataPath)
       const pageDataJson = fs.readFileSync(absolutePageDataPath, `utf8`)
@@ -118,7 +118,7 @@ export default (pagePath, isClientOnlyPage, callback) => {
     const { componentChunkName, staticQueryHashes = [] } = pageData
 
     let scriptsAndStyles = flatten(
-      [`commons`].map(chunkKey => {
+      [`commons`].map((chunkKey) => {
         const fetchKey = `assetsByChunkName[${chunkKey}]`
 
         let chunks = get(stats, fetchKey)
@@ -128,14 +128,14 @@ export default (pagePath, isClientOnlyPage, callback) => {
           return null
         }
 
-        chunks = chunks.map(chunk => {
+        chunks = chunks.map((chunk) => {
           if (chunk === `/`) {
             return null
           }
           return { rel: `preload`, name: chunk }
         })
 
-        namedChunkGroups[chunkKey].assets.forEach(asset =>
+        namedChunkGroups[chunkKey].assets.forEach((asset) =>
           chunks.push({ rel: `preload`, name: asset })
         )
 
@@ -143,7 +143,7 @@ export default (pagePath, isClientOnlyPage, callback) => {
         for (const rel in childAssets) {
           chunks = concat(
             chunks,
-            childAssets[rel].map(chunk => {
+            childAssets[rel].map((chunk) => {
               return { rel, name: chunk }
             })
           )
@@ -152,19 +152,19 @@ export default (pagePath, isClientOnlyPage, callback) => {
         return chunks
       })
     )
-      .filter(s => isObject(s))
+      .filter((s) => isObject(s))
       .sort((s1, s2) => (s1.rel == `preload` ? -1 : 1)) // given priority to preload
 
-    scriptsAndStyles = uniqBy(scriptsAndStyles, item => item.name)
+    scriptsAndStyles = uniqBy(scriptsAndStyles, (item) => item.name)
 
     const styles = scriptsAndStyles.filter(
-      style => style.name && style.name.endsWith(`.css`)
+      (style) => style.name && style.name.endsWith(`.css`)
     )
 
     styles
       .slice(0)
       .reverse()
-      .forEach(style => {
+      .forEach((style) => {
         headComponents.unshift(
           <link
             data-identity={`gatsby-dev-css`}

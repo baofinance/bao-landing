@@ -35,9 +35,9 @@ module.exports = {
       },
       colors: ({ colors }) => ({
         gray: colors.neutral,
-				baoWhite: '#faf2e3',
-				baoBlack: '#1e2022',
-				baoRed: '#e53164',      
+        baoWhite: '#faf2e3',
+        baoBlack: '#1e2022',
+        baoRed: '#e53164',
         baoPink: '#e21a53', // Make sure this matches the color used in the hero section
       }),
       fontFamily: {

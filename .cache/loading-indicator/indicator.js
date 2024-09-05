@@ -1,8 +1,8 @@
-import React from "react"
-import Portal from "./portal"
-import Style from "./style"
-import { isLoadingIndicatorEnabled } from "$virtual/loading-indicator"
-import { debugLog } from "../debug-log"
+import React from 'react'
+import Portal from './portal'
+import Style from './style'
+import { isLoadingIndicatorEnabled } from '$virtual/loading-indicator'
+import { debugLog } from '../debug-log'
 
 if (typeof window === `undefined`) {
   throw new Error(

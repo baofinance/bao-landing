@@ -1,4 +1,4 @@
-import Anser from "anser"
+import Anser from 'anser'
 
 export function prettifyStack(errorInformation) {
   let txt

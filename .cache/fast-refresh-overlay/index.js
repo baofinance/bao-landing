@@ -1,11 +1,11 @@
-import React from "react"
-import client from "webpack-hot-middleware/client"
+import React from 'react'
+import client from 'webpack-hot-middleware/client'
 
-import ErrorBoundary from "./components/error-boundary"
-import Portal from "./components/portal"
-import Style from "./components/style"
-import BuildError from "./components/build-error"
-import RuntimeError from "./components/runtime-error"
+import ErrorBoundary from './components/error-boundary'
+import Portal from './components/portal'
+import Style from './components/style'
+import BuildError from './components/build-error'
+import RuntimeError from './components/runtime-error'
 
 export default class FastRefreshOverlay extends React.Component {
   state = {
@@ -21,7 +21,7 @@ export default class FastRefreshOverlay extends React.Component {
     this.setState({ errors: [], currenIndex: 0, buildError: null })
   }
 
-  addBuildError = error => {
+  addBuildError = (error) => {
     // eslint-disable-next-line no-invalid-this
     this.setState({ buildError: error })
   }
@@ -91,8 +91,8 @@ export default class FastRefreshOverlay extends React.Component {
           clearErrors={() => {
             this.setState({ errors: [], buildError: null })
           }}
-          onError={error => {
-            this.setState(prevState => {
+          onError={(error) => {
+            this.setState((prevState) => {
               const insertedError = { type: `RUNTIME_ERROR`, error }
               return {
                 errors: [...prevState.errors, insertedError],

@@ -1,5 +1,5 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 import Link, {
   withPrefix,
   withAssetPrefix,
@@ -8,10 +8,10 @@ import Link, {
   replace,
   navigateTo,
   parsePath,
-} from "gatsby-link"
-import { useScrollRestoration } from "gatsby-react-router-scroll"
-import PageRenderer from "./public-page-renderer"
-import loader from "./loader"
+} from 'gatsby-link'
+import { useScrollRestoration } from 'gatsby-react-router-scroll'
+import PageRenderer from './public-page-renderer'
+import loader from './loader'
 
 const prefetchPathname = loader.enqueue
 
@@ -30,12 +30,12 @@ function StaticQueryDataRenderer({ staticQueryData, data, query, render }) {
   )
 }
 
-const StaticQuery = props => {
+const StaticQuery = (props) => {
   const { data, query, render, children } = props
 
   return (
     <StaticQueryContext.Consumer>
-      {staticQueryData => (
+      {(staticQueryData) => (
         <StaticQueryDataRenderer
           data={data}
           query={query}
@@ -47,7 +47,7 @@ const StaticQuery = props => {
   )
 }
 
-const useStaticQuery = query => {
+const useStaticQuery = (query) => {
   if (
     typeof React.useContext !== `function` &&
     process.env.NODE_ENV === `development`

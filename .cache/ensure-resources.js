@@ -1,6 +1,6 @@
-import React from "react"
-import loader, { PageResourceStatus } from "./loader"
-import shallowCompare from "shallow-compare"
+import React from 'react'
+import loader, { PageResourceStatus } from './loader'
+import shallowCompare from 'shallow-compare'
 
 class EnsureResources extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class EnsureResources extends React.Component {
   }
 
   loadResources(rawPath) {
-    loader.loadPage(rawPath).then(pageResources => {
+    loader.loadPage(rawPath).then((pageResources) => {
       if (pageResources && pageResources.status !== PageResourceStatus.Error) {
         this.setState({
           location: { ...window.location },

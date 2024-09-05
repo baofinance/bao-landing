@@ -1,5 +1,5 @@
-import io from "socket.io-client"
-import { reportError, clearError } from "./error-overlay-handler"
+import io from 'socket.io-client'
+import { reportError, clearError } from './error-overlay-handler'
 let socket = null
 
 export default function socketIo() {
@@ -17,7 +17,7 @@ export default function socketIo() {
           socket.io.opts.transports = [`polling`, `websocket`]
         })
 
-        socket.on(`message`, msg => {
+        socket.on(`message`, (msg) => {
           if (msg.type === `overlayError`) {
             if (msg.payload.message) {
               reportError(msg.payload.id, msg.payload.message)

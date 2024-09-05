@@ -1,7 +1,7 @@
-import React from "react"
+import React from 'react'
 
-import emitter from "../emitter"
-import { Indicator } from "./indicator"
+import emitter from '../emitter'
+import { Indicator } from './indicator'
 
 // no hooks because we support react versions without hooks support
 export class LoadingIndicatorEventHandler extends React.Component {

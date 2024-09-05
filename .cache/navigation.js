@@ -1,20 +1,20 @@
-import React from "react"
-import PropTypes from "prop-types"
-import loader, { PageResourceStatus } from "./loader"
-import redirects from "./redirects.json"
-import { apiRunner } from "./api-runner-browser"
-import emitter from "./emitter"
-import { RouteAnnouncerProps } from "./route-announcer-props"
-import { navigate as reachNavigate } from "@reach/router"
-import { globalHistory } from "@reach/router/lib/history"
-import { parsePath } from "gatsby-link"
+import React from 'react'
+import PropTypes from 'prop-types'
+import loader, { PageResourceStatus } from './loader'
+import redirects from './redirects.json'
+import { apiRunner } from './api-runner-browser'
+import emitter from './emitter'
+import { RouteAnnouncerProps } from './route-announcer-props'
+import { navigate as reachNavigate } from '@reach/router'
+import { globalHistory } from '@reach/router/lib/history'
+import { parsePath } from 'gatsby-link'
 
 // Convert to a map for faster lookup in maybeRedirect()
 
 const redirectMap = new Map()
 const redirectIgnoreCaseMap = new Map()
 
-redirects.forEach(redirect => {
+redirects.forEach((redirect) => {
   if (redirect.ignoreCase) {
     redirectIgnoreCaseMap.set(redirect.fromPath, redirect)
   } else {
@@ -100,7 +100,7 @@ const navigate = (to, options = {}) => {
     })
   }, 1000)
 
-  loader.loadPage(pathname).then(pageResources => {
+  loader.loadPage(pathname).then((pageResources) => {
     // If no page resources, then refresh the page
     // Do this, rather than simply `window.location.reload()`, so that
     // pressing the back/forward buttons work - otherwise when pressing
@@ -147,7 +147,7 @@ function shouldUpdateScroll(prevRouterProps, { location }) {
     // `pathname` for backwards compatibility
     pathname,
     routerProps: { location },
-    getSavedScrollPosition: args => [
+    getSavedScrollPosition: (args) => [
       0,
       this._stateStorage.read(args, args.key),
     ],
@@ -174,12 +174,12 @@ function shouldUpdateScroll(prevRouterProps, { location }) {
 function init() {
   // The "scroll-behavior" package expects the "action" to be on the location
   // object so let's copy it over.
-  globalHistory.listen(args => {
+  globalHistory.listen((args) => {
     args.location.action = args.action
   })
 
-  window.___push = to => navigate(to, { replace: false })
-  window.___replace = to => navigate(to, { replace: true })
+  window.___push = (to) => navigate(to, { replace: false })
+  window.___replace = (to) => navigate(to, { replace: true })
   window.___navigate = (to, options) => navigate(to, options)
 
   // Check for initial page-load redirect

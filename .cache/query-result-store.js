@@ -1,12 +1,12 @@
-import React from "react"
-import { StaticQueryContext } from "gatsby"
+import React from 'react'
+import { StaticQueryContext } from 'gatsby'
 import {
   registerPath as socketRegisterPath,
   unregisterPath as socketUnregisterPath,
-} from "./socketIo"
-import PageRenderer from "./page-renderer"
-import normalizePagePath from "./normalize-page-path"
-import loader, { getStaticQueryResults } from "./loader"
+} from './socketIo'
+import PageRenderer from './page-renderer'
+import normalizePagePath from './normalize-page-path'
+import loader, { getStaticQueryResults } from './loader'
 
 if (process.env.NODE_ENV === `production`) {
   throw new Error(
@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === `production`) {
   )
 }
 
-const getPathFromProps = props =>
+const getPathFromProps = (props) =>
   props.pageResources && props.pageResources.page
     ? normalizePagePath(props.pageResources.page.path)
     : undefined
@@ -34,7 +34,7 @@ export class PageQueryStore extends React.Component {
   }
 
   handleMittEvent = () => {
-    this.setState(state => {
+    this.setState((state) => {
       return {
         page: state.path
           ? loader.loadPageSync(normalizePagePath(state.path))

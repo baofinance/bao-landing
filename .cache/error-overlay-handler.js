@@ -20,7 +20,7 @@ if (process.env.GATSBY_HOT_LOADER !== `fast-refresh`) {
     onError: () => {},
     filename: `/commons.js`,
   })
-  overlayPackage.setEditorHandler(errorLocation =>
+  overlayPackage.setEditorHandler((errorLocation) =>
     window.fetch(
       `/__open-stack-frame-in-editor?fileName=` +
         window.encodeURIComponent(errorLocation.fileName) +
@@ -41,7 +41,7 @@ const handleErrorOverlay = () => {
   let errorStringsToDisplay = []
   if (errors.length > 0) {
     errorStringsToDisplay = flat(errors)
-      .map(error => {
+      .map((error) => {
         if (typeof error === `string`) {
           return error
         } else if (typeof error === `object`) {
@@ -66,7 +66,7 @@ const handleErrorOverlay = () => {
   }
 }
 
-export const clearError = errorID => {
+export const clearError = (errorID) => {
   delete errorMap[errorID]
   handleErrorOverlay()
 }

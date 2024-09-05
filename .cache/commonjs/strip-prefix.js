@@ -1,7 +1,7 @@
-"use strict";
+'use strict'
 
-exports.__esModule = true;
-exports.default = stripPrefix;
+exports.__esModule = true
+exports.default = stripPrefix
 
 /**
  * Remove a prefix from a string. Return the input string if the given prefix
@@ -9,16 +9,16 @@ exports.default = stripPrefix;
  */
 function stripPrefix(str, prefix = ``) {
   if (!prefix) {
-    return str;
+    return str
   }
 
   if (str === prefix) {
-    return `/`;
+    return `/`
   }
 
   if (str.startsWith(`${prefix}/`)) {
-    return str.slice(prefix.length);
+    return str.slice(prefix.length)
   }
 
-  return str;
+  return str
 }

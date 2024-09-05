@@ -1,8 +1,8 @@
-import React, { createElement } from "react"
-import PropTypes from "prop-types"
-import { publicLoader } from "./loader"
-import { apiRunner } from "./api-runner-browser"
-import { grabMatchParams } from "./find-path"
+import React, { createElement } from 'react'
+import PropTypes from 'prop-types'
+import { publicLoader } from './loader'
+import { apiRunner } from './api-runner-browser'
+import { grabMatchParams } from './find-path'
 
 // Renders page
 class PageRenderer extends React.Component {

@@ -74,7 +74,9 @@ function MobileNavLink({ children, ...props }) {
 
 export function Header() {
   return (
-    <nav className="fixed left-0 right-0 z-50 backdrop-blur-md border-b border-baoPink/10"> {/* Added border-b and border-baoPink/10 */}
+    <nav className="fixed left-0 right-0 z-50 border-b border-baoPink/10 backdrop-blur-md">
+      {' '}
+      {/* Added border-b and border-baoPink/10 */}
       <Container className="flex justify-between py-6">
         <div className="relative z-10 flex items-center gap-16">
           <Link

@@ -1,11 +1,11 @@
-import { BaseLoader, PageResourceStatus } from "./loader"
-import { findPath } from "./find-path"
+import { BaseLoader, PageResourceStatus } from './loader'
+import { findPath } from './find-path'
 
-import getSocket from "./socketIo"
-import normalizePagePath from "./normalize-page-path"
+import getSocket from './socketIo'
+import normalizePagePath from './normalize-page-path'
 
 // TODO move away from lodash
-import isEqual from "lodash/isEqual"
+import isEqual from 'lodash/isEqual'
 
 function mergePageEntry(cachedPage, newPageData) {
   return {
@@ -23,7 +23,7 @@ function mergePageEntry(cachedPage, newPageData) {
 
 class DevLoader extends BaseLoader {
   constructor(syncRequires, matchPaths) {
-    const loadComponent = chunkName =>
+    const loadComponent = (chunkName) =>
       Promise.resolve(syncRequires.components[chunkName])
 
     super(loadComponent, matchPaths)
@@ -33,7 +33,7 @@ class DevLoader extends BaseLoader {
     this.notFoundPagePathsInCaches = new Set()
 
     if (socket) {
-      socket.on(`message`, msg => {
+      socket.on(`message`, (msg) => {
         if (msg.type === `staticQueryResult`) {
           this.handleStaticQueryResultHotUpdate(msg)
         } else if (msg.type === `pageQueryResult`) {
@@ -49,7 +49,7 @@ class DevLoader extends BaseLoader {
 
   loadPage(pagePath) {
     const realPath = findPath(pagePath)
-    return super.loadPage(realPath).then(result => {
+    return super.loadPage(realPath).then((result) => {
       if (this.isPageNotFound(realPath)) {
         this.notFoundPagePathsInCaches.add(realPath)
       }
@@ -59,7 +59,7 @@ class DevLoader extends BaseLoader {
   }
 
   loadPageDataJson(rawPath) {
-    return super.loadPageDataJson(rawPath).then(data => {
+    return super.loadPageDataJson(rawPath).then((data) => {
       // when we can't find a proper 404.html we fallback to dev-404-page
       // we need to make sure to mark it as not found.
       if (
@@ -69,7 +69,7 @@ class DevLoader extends BaseLoader {
         console.error(
           `404 page could not be found. Checkout https://www.gatsbyjs.org/docs/how-to/adding-common-features/add-404-page/`
         )
-        return this.loadPageDataJson(`/dev-404-page/`).then(result =>
+        return this.loadPageDataJson(`/dev-404-page/`).then((result) =>
           Object.assign({}, data, result)
         )
       }
@@ -82,7 +82,7 @@ class DevLoader extends BaseLoader {
     if (process.env.GATSBY_EXPERIMENTAL_QUERY_ON_DEMAND) {
       return Promise.resolve()
     }
-    return super.doPrefetch(pagePath).then(result => result.payload)
+    return super.doPrefetch(pagePath).then((result) => result.payload)
   }
 
   handleStaticQueryResultHotUpdate(msg) {
@@ -125,7 +125,7 @@ class DevLoader extends BaseLoader {
       // page for it, because we do store them under (normalized) path
       // user wanted to visit
       if (pageDataDbCacheKey === `/404.html`) {
-        this.notFoundPagePathsInCaches.forEach(notFoundPath => {
+        this.notFoundPagePathsInCaches.forEach((notFoundPath) => {
           const previousPageDataEntry = this.pageDataDb.get(notFoundPath)
           if (previousPageDataEntry) {
             this.pageDataDb.set(notFoundPath, {
@@ -149,7 +149,7 @@ class DevLoader extends BaseLoader {
   }
 
   handleStalePageDataMessage(msg) {
-    msg.payload.stalePageDataPaths.forEach(dirtyQueryId => {
+    msg.payload.stalePageDataPaths.forEach((dirtyQueryId) => {
       if (dirtyQueryId === `/dev-404-page/` || dirtyQueryId === `/404.html`) {
         // those pages are not on demand so skipping
         return

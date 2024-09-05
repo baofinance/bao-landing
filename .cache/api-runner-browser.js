@@ -19,7 +19,7 @@ exports.apiRunner = (api, args = {}, defaultReturn, argTransform) => {
     }
   }
 
-  let results = plugins.map(plugin => {
+  let results = plugins.map((plugin) => {
     if (!plugin.plugin[api]) {
       return undefined
     }
@@ -40,7 +40,7 @@ exports.apiRunner = (api, args = {}, defaultReturn, argTransform) => {
   })
 
   // Filter out undefined results.
-  results = results.filter(result => typeof result !== `undefined`)
+  results = results.filter((result) => typeof result !== `undefined`)
 
   if (results.length > 0) {
     return results
