@@ -4,9 +4,9 @@ import clsx from 'clsx'
 
 const baseStyles = {
   solid:
-    'inline-flex justify-center rounded-lg py-2 px-3 text-sm font-semibold outline-2 outline-offset-2 transition-colors',
+    'inline-flex justify-center rounded-lg py-2 px-3 text-sm font-inter font-normal outline-2 outline-offset-2 transition-colors',
   outline:
-    'inline-flex justify-center rounded-lg border py-[calc(theme(spacing.2)-1px)] px-[calc(theme(spacing.3)-1px)] text-sm outline-2 outline-offset-2 transition-colors',
+    'inline-flex justify-center rounded-lg border py-[calc(theme(spacing.2)-1px)] px-[calc(theme(spacing.3)-1px)] text-sm font-inter font-normal outline-2 outline-offset-2 transition-colors',
 }
 
 const variantStyles = {
@@ -22,13 +22,10 @@ const variantStyles = {
   },
 }
 
-export function Button({
-  variant = 'solid',
-  color = 'gray',
-  className,
-  href,
-  ...props
-}) {
+export const Button = forwardRef(function Button(
+  { variant = 'solid', color = 'gray', className, href, ...props },
+  ref
+) {
   className = clsx(
     baseStyles[variant],
     variantStyles[variant][color],
@@ -36,8 +33,8 @@ export function Button({
   )
 
   return href ? (
-    <Link href={href} className={className} {...props} />
+    <Link href={href} className={className} ref={ref} {...props} />
   ) : (
-    <button className={className} {...props} />
+    <button className={className} ref={ref} {...props} />
   )
-}
+})

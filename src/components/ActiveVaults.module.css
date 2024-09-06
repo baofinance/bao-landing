@@ -1,0 +1,21 @@
+.sectionContainer {
+  position: relative;
+  background-color: rgba(250, 242, 227, 0.9); /* BaoWhite with 90% opacity */
+  border-top: 12px solid #e21a53; /* BaoPink line on top */
+  border-bottom: 12px solid #e21a53; /* BaoPink line on bottom */
+  padding: 20px 0; /* Add some vertical padding */
+}
+
+.subtlePulse {
+  display: inline-block;
+  animation: subtlePulse 3s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
