@@ -50,15 +50,15 @@ export function ActiveVaults() {
 
   return (
     <div ref={containerRef} className={styles.sectionContainer}>
-      <Container className="py-16 px-8">
+      <Container className="px-8 py-16">
         <div className="flex items-center">
           {/* Left side: Lottie animation */}
           <div className="w-1/2">
-            <div className="relative w-[500px] h-[500px]">
+            <div className="relative h-[500px] w-[500px]">
               {typeof window !== 'undefined' && (
-                <Lottie 
+                <Lottie
                   lottieRef={lottieRef}
-                  animationData={yieldAnimation} 
+                  animationData={yieldAnimation}
                   loop={false}
                   autoplay={false}
                 />
@@ -67,15 +67,16 @@ export function ActiveVaults() {
           </div>
 
           {/* Right side: Text content */}
-          <div className="w-1/2 text-left space-y-2 pl-8">
-            <h1 className="font-bakbak text-6xl tracking-tight text-[#1e2022] mb-2">
+          <div className="w-1/2 space-y-2 pl-8 text-left">
+            <h1 className="mb-2 font-bakbak text-6xl tracking-tight text-[#1e2022]">
               Maximize Your Yield
             </h1>
             <p className="text-3xl font-bold text-[#1e2022]">
               Earn up to <span className={styles.subtlePulse}>50% APR</span>
             </p>
             <p className="text-xl text-[#1e2022]/80">
-              Provide liquidity in our USD and ETH pegged pools to earn high yields with low risk
+              Provide liquidity in our USD and ETH pegged pools to earn high
+              yields with low risk
             </p>
             <div className="pt-3">
               <Button href="https://app.baofinance.io/earn" color="baoPink">
@@ -88,4 +89,3 @@ export function ActiveVaults() {
     </div>
   )
 }
-

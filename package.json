@@ -8,7 +8,7 @@
     "start": "npx next start",
     "export": "npx next export",
     "lint": "npx next lint --fix",
-    "prettier": "npx prettier --write 'src/**/*.{ts,tsx}'"
+    "prettier": "npx prettier --write 'src/**/*.{js,jsx}'"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
