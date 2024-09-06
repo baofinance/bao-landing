@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    scrollRestoration: true,
-  },
-  images: { unoptimized: true },
+  output: 'export',
 }
+
+module.exports = nextConfig
