@@ -1,22 +1,314 @@
 .sectionContainer {
   position: relative;
-  background-color: rgba(250, 242, 227, 0.9); /* BaoWhite with 90% opacity */
-  border-top: 12px solid #e21a53; /* BaoPink line on top */
-  border-bottom: 12px solid #e21a53; /* BaoPink line on bottom */
-  padding: 20px 0; /* Add some vertical padding */
+  padding: 4rem 0 2rem; /* Reduced bottom padding */
+  overflow: hidden; /* To contain the background */
+}
+
+.yieldSection {
+  position: relative;
+  padding: 6rem 0 0rem; /* Reduced bottom padding from 4rem to 2rem */
+  overflow: hidden;
+}
+
+.yieldBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(250, 242, 227, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 80% 10%, rgba(30, 32, 34, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 30% 70%, rgba(250, 242, 227, 0.05) 0%, transparent 30%),
+    radial-gradient(circle at 60% 50%, rgba(30, 32, 34, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 90% 80%, rgba(250, 242, 227, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 20% 40%, rgba(30, 32, 34, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 70% 90%, rgba(250, 242, 227, 0.05) 0%, transparent 30%),
+    radial-gradient(circle at 40% 5%, rgba(250, 242, 227, 0.05) 0%, transparent 25%);
+  background-color: rgba(226, 26, 83, 0.1); /* Bao Pink with 10% opacity */
+  backdrop-filter: blur(3px);
+}
+
+.yieldContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center; /* Changed from flex-start to center */
+  justify-content: space-between;
+  min-height: 600px; /* Increased from 500px to 600px */
+  padding: 3rem 4rem 0;
+}
+
+.animationContainer {
+  flex: 0 0 50%; /* Increased back to 50% */
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.animationWrapper {
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 1 / 1;
+  position: relative;
+}
+
+.contentContainer {
+  flex: 0 0 40%;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute space evenly */
+  align-items: flex-start;
+  margin-right: 10%;
+  color: #1e2022;
+  background-color: rgba(250, 242, 227, 0.9);
+  padding: 2rem 3rem 3rem; /* Increased bottom padding to 3rem */
+  border-radius: 0.5rem;
+  min-height: 300px; /* Reduced min-height */
+  margin-top: -9rem; /* Increased negative margin to move the box up */
+}
+
+.contentText {
+  margin-bottom: 1rem; /* Add some space after the content text */
+}
+
+.buttonWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1rem; /* Reduced top margin */
+}
+
+.yieldHeading {
+  font-size: 3rem;
+  font-family: 'Bakbak One', sans-serif;
+  font-weight: bold;
+  color: #1e2022; /* Bao Black */
+  text-align: left;
+  text-shadow: 0 0 10px rgba(226, 26, 83, 0.5); /* Bao Pink haze effect */
+  margin-bottom: 0.5rem;
+}
+
+.borrowHeading {
+  font-family: 'Bakbak One', sans-serif;  
+  font-size: 3rem; /* Adjust this value as needed */
+  font-weight: bold;
+  color: #faf2e3; /* Bao White for "Borrow at the Best Rates" */
+  text-align: center;
+  text-shadow: 
+    0 0 10px rgba(226, 26, 83, 0.7),
+    0 0 20px rgba(226, 26, 83, 0.5),
+    0 0 30px rgba(226, 26, 83, 0.3); /* Increased Bao Pink haze effect */
+}
+
+.contentContainer p {
+  text-align: left;
+  width: 100%;
+  max-width: 100%; /* Adjusted to allow text to use full width of container */
+}
+
+.highlightText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #e21a53; /* Bao Pink */
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.highlightText::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: #e21a53;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.highlightText:hover::after {
+  transform: scaleX(1);
 }
 
 .subtlePulse {
   display: inline-block;
-  animation: subtlePulse 3s ease-in-out infinite;
+  animation: subtlePulse 2s ease-in-out infinite;
+  margin-left: 0.25rem; /* Add left margin to ensure space */
 }
 
 @keyframes subtlePulse {
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.03);
+    transform: scale(1.05);
+  }
+}
+
+.borrowingSection {
+  position: relative;
+  color: #faf2e3;
+  padding: 7rem 0; /* Increased padding top and bottom from 4rem to 6rem */
+  overflow: hidden;
+}
+
+.borrowingBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(226, 26, 83, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 80% 10%, rgba(250, 242, 227, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 30% 70%, rgba(255, 159, 243, 0.05) 0%, transparent 30%),
+    radial-gradient(circle at 60% 50%, rgba(226, 26, 83, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 90% 80%, rgba(250, 242, 227, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 20% 40%, rgba(255, 159, 243, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 70% 90%, rgba(226, 26, 83, 0.05) 0%, transparent 30%),
+    radial-gradient(circle at 40% 5%, rgba(250, 242, 227, 0.05) 0%, transparent 25%);
+  background-color: rgba(30, 32, 34, 0.6); /* Bao black with 60% opacity */
+  backdrop-filter: blur(3px);
+}
+
+.borrowingContent {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 4rem; /* Added vertical padding */
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.borrowingHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.borrowingHeader h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.borrowingHeader p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+.borrowOptions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.borrowItem {
+  background-color: rgba(250, 242, 227, 0.9); /* Bao White */
+  border-radius: 0.5rem;
+  padding: 2rem;
+  color: #1e2022; /* Bao Black */
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure all items have the same height */
+  text-align: center; /* Center-align all text content */
+  justify-content: space-between; /* This will push the button to the bottom */
+}
+
+.borrowItem h3 {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1e2022; /* Bao Black */
+  text-align: center; /* Ensure heading is center-aligned */
+}
+
+.borrowItem ul {
+  list-style-type: none; /* Remove default bullets */
+  padding-left: 1.5rem; /* Add some left padding for the custom bullets */
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Allow the list to grow and push the button to the bottom */
+  text-align: left; /* Keep list items left-aligned */
+  display: inline-block; /* Allow the list to be centered */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.borrowItem li {
+  position: relative; /* For positioning the pseudo-element */
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem; /* Space for the custom bullet */
+}
+
+.borrowItem li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em; /* Adjust this value to align with the text */
+  width: 0.5rem; /* Size of the custom bullet */
+  height: 0.5rem;
+  background-color: #e21a53; /* Bao Pink */
+  border-radius: 50%; /* Make it circular */
+}
+
+/* Optional: Add a subtle animation on hover */
+.borrowItem li:hover::before {
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
+
+/* New global button style */
+.baoButton {
+  background-color: #e21a53; /* Bao Pink */
+  color: #faf2e3; /* Bao White text */
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Inter', sans-serif; /* Assuming 'Inter' is the font used in the borrow item buttons */
+  font-size: 0.875rem; /* Adjust this value to match the desired font size */
+  text-transform: uppercase; /* If the text is uppercase in the borrow item buttons */
+  letter-spacing: 0.05em; /* Adjust this value for desired letter spacing */
+}
+
+.baoButton:hover {
+  background-color: #faf2e3; /* Bao White */
+  color: #e21a53; /* Bao Pink */
+}
+
+/* Add this to ensure buttons are centered at the bottom of borrowItem */
+.borrowItem > :last-child {
+  align-self: center;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .borrowingSection {
+    padding: 3rem 0;
+  }
+
+  .borrowingHeader h2 {
+    font-size: 2.5rem;
+  }
+
+  .borrowOptions {
+    grid-template-columns: 1fr;
   }
 }

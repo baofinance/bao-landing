@@ -1,91 +1,97 @@
-import { Container } from '@/components/Container'
+import React from 'react';
 import { Button } from '@/components/Button'
 import styles from './ActiveVaults.module.css'
-import dynamic from 'next/dynamic'
 import yieldAnimation from '@/images/JSON/yield.json'
-import { useEffect, useRef, useState } from 'react'
+import dynamic from 'next/dynamic'
 
 // Dynamically import Lottie with SSR disabled
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
 export function ActiveVaults() {
-  const [isInView, setIsInView] = useState(false)
-  const [hasPlayed, setHasPlayed] = useState(false)
-  const containerRef = useRef(null)
-  const lottieRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true)
-        } else {
-          setIsInView(false)
-          setHasPlayed(false)
-          if (lottieRef.current) {
-            lottieRef.current.goToAndStop(0, true)
-          }
-        }
-      },
-      { threshold: 1.0 }
-    )
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current)
-    }
-
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current)
-      }
-    }
-  }, [])
-
-  useEffect(() => {
-    if (isInView && !hasPlayed && lottieRef.current) {
-      lottieRef.current.play()
-      setHasPlayed(true)
-    }
-  }, [isInView, hasPlayed])
-
   return (
-    <div ref={containerRef} className={styles.sectionContainer}>
-      <Container className="px-8 py-16">
-        <div className="flex items-center">
-          {/* Left side: Lottie animation */}
-          <div className="w-1/2">
-            <div className="relative h-[500px] w-[500px]">
-              {typeof window !== 'undefined' && (
-                <Lottie
-                  lottieRef={lottieRef}
-                  animationData={yieldAnimation}
-                  loop={false}
-                  autoplay={false}
-                />
-              )}
+    <>
+      <section className={styles.yieldSection}>
+        <div className={styles.yieldBackground}></div>
+        <div className={styles.yieldContent}>
+          <div className={styles.animationContainer}>
+            <div className={styles.animationWrapper}>
+              <Lottie animationData={yieldAnimation} loop={true} />
             </div>
           </div>
-
-          {/* Right side: Text content */}
-          <div className="w-1/2 space-y-2 pl-8 text-left">
-            <h1 className="mb-2 font-bakbak text-6xl tracking-tight text-[#1e2022]">
-              Maximize Your Yield
-            </h1>
-            <p className="text-3xl font-bold text-[#1e2022]">
-              Earn up to <span className={styles.subtlePulse}>50% APR</span>
-            </p>
-            <p className="text-xl text-[#1e2022]/80">
-              Provide liquidity in our USD and ETH pegged pools to earn high
-              yields with low risk
-            </p>
-            <div className="pt-3">
-              <Button href="https://app.baofinance.io/earn" color="baoPink">
+          
+          <div className={styles.contentContainer}>
+            <div>
+              <h2 className={styles.yieldHeading}>Maximize Your Yield</h2>
+              <div className={styles.contentText}>
+                <p>
+                  Provide liquidity in our USD and ETH pegged pools to earn high
+                  yields with low risk
+                </p>
+              </div>
+            </div>
+            <div className={styles.buttonWrapper}>
+              <span className={styles.highlightText}>
+                Up to&nbsp;<span className={styles.subtlePulse}>50% vAPR</span>
+              </span>
+              <Button href="https://app.baofinance.io/earn" color="baoPink" className={styles.baoButton}>
                 Start Earning
               </Button>
             </div>
           </div>
         </div>
-      </Container>
-    </div>
+      </section>
+      
+      <div className={styles.borrowingSection}>
+        <div className={styles.borrowingBackground}></div>
+        <div className={styles.borrowingContent}>
+          <div className={styles.borrowingHeader}>
+            <h2 className={styles.borrowHeading}>Borrow at the Best Rates</h2>
+            <p>Deposit yield-bearing collaterals and borrow pegged tokens to unlock new DeFi strategies</p>
+            <Button href="#strategies" variant="solid" color="baoPink">
+              Explore strategies
+            </Button>
+          </div>
+          
+          <div className={styles.borrowOptions}>
+            <div className={styles.borrowItem}>
+              <h3>baoUSD</h3>
+              <ul>
+                <li>Dollar Pegged token</li>
+                <li>Battle tested since 2022</li>
+                <li>Borrow from just 0.2% APR!</li>
+              </ul>
+              <Button color="baoPink">Borrow baoUSD</Button>
+            </div>
+            <div className={styles.borrowItem}>
+              <h3>baoETH</h3>
+              <ul>
+                <li>ETH pegged token</li>
+                <li>Resiliently pegged since 2023</li>
+                <li>Borrow from just 0.2% APR!</li>
+              </ul>
+              <Button color="baoPink">Borrow baoETH</Button>
+            </div>
+            <div className={styles.borrowItem}>
+              <h3>Coming soon</h3>
+              <ul>
+                <li>More pegged tokens!</li>
+                <li>From RWA to new markets</li>
+                <li>Tokens linked to any data feed</li>
+              </ul>
+              <Button color="baoPink" disabled>Coming Soon</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
+
+
+
+
+
+
+
+
+
