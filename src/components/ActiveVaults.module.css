@@ -1,12 +1,13 @@
 .sectionContainer {
   position: relative;
-  padding: 4rem 0 2rem; /* Reduced bottom padding */
+  padding: 2rem 0 2rem; /* Reduced bottom padding */
   overflow: hidden; /* To contain the background */
 }
 
 .yieldSection {
   position: relative;
-  padding: 6rem 0 0rem; /* Reduced bottom padding from 4rem to 2rem */
+  padding: 0rem 0;
+  background-color: #faf2e3; /* Bao White base color */
   overflow: hidden;
 }
 
@@ -17,32 +18,22 @@
   right: 0;
   bottom: 0;
   z-index: 0;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(250, 242, 227, 0.05) 0%, transparent 20%),
-    radial-gradient(circle at 80% 10%, rgba(30, 32, 34, 0.05) 0%, transparent 25%),
-    radial-gradient(circle at 30% 70%, rgba(250, 242, 227, 0.05) 0%, transparent 30%),
-    radial-gradient(circle at 60% 50%, rgba(30, 32, 34, 0.05) 0%, transparent 35%),
-    radial-gradient(circle at 90% 80%, rgba(250, 242, 227, 0.05) 0%, transparent 20%),
-    radial-gradient(circle at 20% 40%, rgba(30, 32, 34, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 70% 90%, rgba(250, 242, 227, 0.05) 0%, transparent 30%),
-    radial-gradient(circle at 40% 5%, rgba(250, 242, 227, 0.05) 0%, transparent 25%);
-  background-color: rgba(226, 26, 83, 0.1); /* Bao Pink with 10% opacity */
-  backdrop-filter: blur(3px);
+ 
 }
 
 .yieldContent {
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: center; /* Changed from flex-start to center */
+  align-items: center;
   justify-content: space-between;
-  min-height: 600px; /* Increased from 500px to 600px */
-  padding: 3rem 4rem 0;
+  min-height: 600px; /* Increased to allow more space */
+  padding: 2rem 0; /* Remove horizontal padding */
 }
 
 .animationContainer {
-  flex: 0 0 50%; /* Increased back to 50% */
-  max-width: 50%;
+  flex: 0 0 40%; /* Changed from 33.333% to 40% */
+  max-width: 40%; /* Changed from 33.333% to 40% */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,97 +42,139 @@
 
 .animationWrapper {
   width: 100%;
-  max-width: 450px;
+  max-width: 400px; /* Increased from 350px to take advantage of the extra space */
   aspect-ratio: 1 / 1;
   position: relative;
 }
 
 .contentContainer {
-  flex: 0 0 40%;
-  max-width: 40%;
+  flex: 0 0 60%; /* Changed from 66.666% to 60% */
+  max-width: 60%; /* Changed from 66.666% to 60% */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribute space evenly */
+  justify-content: center;
   align-items: flex-start;
-  margin-right: 10%;
+  padding-left: 12rem; /* Increased from 4rem to 8rem */
+  padding-right: 4rem; /* Add padding to the right for the separator */
   color: #1e2022;
-  background-color: rgba(250, 242, 227, 0.9);
-  padding: 2rem 3rem 3rem; /* Increased bottom padding to 3rem */
-  border-radius: 0.5rem;
-  min-height: 300px; /* Reduced min-height */
-  margin-top: -9rem; /* Increased negative margin to move the box up */
+  position: relative; /* Add this for absolute positioning of the separator */
 }
 
-.contentText {
-  margin-bottom: 1rem; /* Add some space after the content text */
-}
-
-.buttonWrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 1rem; /* Reduced top margin */
+.verticalSeparator {
+  position: absolute;
+  top: 0%; /* Reduced from 15% to start higher */
+  bottom: 0%; /* Reduced from 15% to end lower */
+  right: 0; /* Move to the right edge of the contentContainer */
+  width: 1px;
+  background: linear-gradient(to bottom, 
+    rgba(226, 26, 83, 0) 0%,
+    rgba(226, 26, 83, 0.5) 10%,
+    rgba(226, 26, 83, 0.5) 90%,
+    rgba(226, 26, 83, 0) 100%
+  );
+  box-shadow: 0 0 8px 1px rgba(226, 26, 83, 0.3); /* Bao Pink haze */
 }
 
 .yieldHeading {
-  font-size: 3rem;
   font-family: 'Bakbak One', sans-serif;
-  font-weight: bold;
-  color: #1e2022; /* Bao Black */
   text-align: left;
-  text-shadow: 0 0 10px rgba(226, 26, 83, 0.5); /* Bao Pink haze effect */
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  color: #1e2022; /* Bao Black */
+}
+
+.yieldHeadingSmall {
+  display: block;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.yieldHeadingLarge {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.contentText {
+  margin-bottom: 2rem; /* Increased margin to push features down */
+}
+
+.contentText p {
+  margin-bottom: 1rem; /* Added margin to the bottom of the paragraph */
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 2rem; /* Increased margin to push features down */
+  margin-bottom: 0.5rem; /* Reduced margin to bring button closer */
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem; /* Slightly reduced space between feature items */
+}
+
+.featureItem:last-child {
+  margin-bottom: 0.25rem; /* Reduced space after the last feature item */
+}
+
+.featureIcon {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  color: #e21a53; /* Bao Pink */
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+.featureItem span {
+  font-size: 0.9rem;
+  color: #1e2022;
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
 
-.borrowHeading {
-  font-family: 'Bakbak One', sans-serif;  
-  font-size: 3rem; /* Adjust this value as needed */
-  font-weight: bold;
-  color: #faf2e3; /* Bao White for "Borrow at the Best Rates" */
+.baoButton {
+  display: inline-block;
+  background-color: #e21a53;
+  color: #faf2e3;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
   text-align: center;
-  text-shadow: 
-    0 0 10px rgba(226, 26, 83, 0.7),
-    0 0 20px rgba(226, 26, 83, 0.5),
-    0 0 30px rgba(226, 26, 83, 0.3); /* Increased Bao Pink haze effect */
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.contentContainer p {
-  text-align: left;
-  width: 100%;
-  max-width: 100%; /* Adjusted to allow text to use full width of container */
+.baoButton:hover {
+  background-color: #c0164a;
 }
 
 .highlightText {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #e21a53; /* Bao Pink */
-  margin-bottom: 0.5rem;
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-}
-
-.highlightText::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 2px;
-  background-color: #e21a53;
-  transform: scaleX(0);
-  transition: transform 0.3s ease-in-out;
-}
-
-.highlightText:hover::after {
-  transform: scaleX(1);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e21a53;
+  margin-left: 1rem;
 }
 
 .subtlePulse {
   display: inline-block;
-  animation: subtlePulse 2s ease-in-out infinite;
-  margin-left: 0.25rem; /* Add left margin to ensure space */
+  animation: subtlePulse 3s ease-in-out infinite;
 }
 
 @keyframes subtlePulse {
@@ -155,8 +188,8 @@
 
 .borrowingSection {
   position: relative;
-  color: #faf2e3;
-  padding: 7rem 0; /* Increased padding top and bottom from 4rem to 6rem */
+  color: #faf2e3; /* Bao White */
+  padding: 6rem 0;
   overflow: hidden;
 }
 
@@ -167,17 +200,9 @@
   right: 0;
   bottom: 0;
   z-index: 0;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(226, 26, 83, 0.05) 0%, transparent 20%),
-    radial-gradient(circle at 80% 10%, rgba(250, 242, 227, 0.05) 0%, transparent 25%),
-    radial-gradient(circle at 30% 70%, rgba(255, 159, 243, 0.05) 0%, transparent 30%),
-    radial-gradient(circle at 60% 50%, rgba(226, 26, 83, 0.05) 0%, transparent 35%),
-    radial-gradient(circle at 90% 80%, rgba(250, 242, 227, 0.05) 0%, transparent 20%),
-    radial-gradient(circle at 20% 40%, rgba(255, 159, 243, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 70% 90%, rgba(226, 26, 83, 0.05) 0%, transparent 30%),
-    radial-gradient(circle at 40% 5%, rgba(250, 242, 227, 0.05) 0%, transparent 25%);
-  background-color: rgba(30, 32, 34, 0.6); /* Bao black with 60% opacity */
-  backdrop-filter: blur(3px);
+
+
+  backdrop-filter: blur(2px);
 }
 
 .borrowingContent {
@@ -185,7 +210,7 @@
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 4rem; /* Added vertical padding */
+  padding: 2rem 4rem;
   min-height: 500px;
   display: flex;
   flex-direction: column;
@@ -198,105 +223,109 @@
 }
 
 .borrowingHeader h2 {
-  font-size: 3rem;
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 3.5rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: -1rem;
 }
 
 .borrowingHeader p {
-  font-size: 1.25rem;
+  font-size: 1rem; /* Reduced from 1.25rem */
+  font-family: 'Inter', sans-serif; /* Ensure Inter font is used */
+  font-weight: 400; /* Regular weight */
   max-width: 600px;
-  margin: 0 auto 1.5rem;
+  margin: 1rem auto;
+  color: #faf2e3; /* Bao White */
+  line-height: 1.5; /* Adjust line height for better readability */
 }
 
 .borrowOptions {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
   gap: 2rem;
-  margin-bottom: 1rem;
+  margin-top: 2rem;
+  position: relative; /* Add this to establish a positioning context */
 }
 
 .borrowItem {
-  background-color: rgba(250, 242, 227, 0.9); /* Bao White */
-  border-radius: 0.5rem;
-  padding: 2rem;
-  color: #1e2022; /* Bao Black */
-  backdrop-filter: blur(5px);
+  flex: 1;
+  color: #faf2e3; /* Bao White */
+  padding: 2rem 0;
   display: flex;
   flex-direction: column;
-  height: 100%; /* Ensure all items have the same height */
-  text-align: center; /* Center-align all text content */
-  justify-content: space-between; /* This will push the button to the bottom */
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.borrowItem:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  right: -1rem;
+  width: 1px;
+  background: linear-gradient(to bottom, 
+    rgba(226, 26, 83, 0) 0%,
+    rgba(226, 26, 83, 0.5) 20%,
+    rgba(226, 26, 83, 0.5) 80%,
+    rgba(226, 26, 83, 0) 100%
+  );
+  box-shadow: 0 0 8px 1px rgba(226, 26, 83, 0.3); /* Bao Pink haze */
+}
+
+/* Add this new rule to create a more visible separator */
+.borrowItem:not(:last-child)::before {
+  content: none;
 }
 
 .borrowItem h3 {
   font-family: 'Bakbak One', sans-serif;
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #1e2022; /* Bao Black */
-  text-align: center; /* Ensure heading is center-aligned */
+  color: #faf2e3; /* Bao White */
+  width: 100%;
 }
 
 .borrowItem ul {
-  list-style-type: none; /* Remove default bullets */
-  padding-left: 1.5rem; /* Add some left padding for the custom bullets */
+  list-style-type: none;
+  padding: 0;
   margin-bottom: 1.5rem;
-  flex-grow: 1; /* Allow the list to grow and push the button to the bottom */
-  text-align: left; /* Keep list items left-aligned */
-  display: inline-block; /* Allow the list to be centered */
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
 }
 
 .borrowItem li {
-  position: relative; /* For positioning the pseudo-element */
   margin-bottom: 0.5rem;
-  padding-left: 1.5rem; /* Space for the custom bullet */
+  color: #faf2e3; /* Bao White */
+  position: relative;
 }
 
 .borrowItem li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.5em; /* Adjust this value to align with the text */
-  width: 0.5rem; /* Size of the custom bullet */
-  height: 0.5rem;
-  background-color: #e21a53; /* Bao Pink */
-  border-radius: 50%; /* Make it circular */
+  content: '✓';
+  color: #e21a53; /* Bao Pink */
+  margin-right: 0.5rem;
+  font-weight: bold;
 }
 
-/* Optional: Add a subtle animation on hover */
-.borrowItem li:hover::before {
-  transform: scale(1.2);
-  transition: transform 0.2s ease;
-}
-
-/* New global button style */
-.baoButton {
+.borrowItem .baoButton {
+  margin-top: auto;
   background-color: #e21a53; /* Bao Pink */
-  color: #faf2e3; /* Bao White text */
+  color: #faf2e3; /* Bao White */
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 0.25rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: 'Inter', sans-serif; /* Assuming 'Inter' is the font used in the borrow item buttons */
-  font-size: 0.875rem; /* Adjust this value to match the desired font size */
-  text-transform: uppercase; /* If the text is uppercase in the borrow item buttons */
-  letter-spacing: 0.05em; /* Adjust this value for desired letter spacing */
+  transition: background-color 0.3s ease;
 }
 
-.baoButton:hover {
-  background-color: #faf2e3; /* Bao White */
-  color: #e21a53; /* Bao Pink */
+.borrowItem .baoButton:hover {
+  background-color: #c0164a; /* Darker Bao Pink for hover state */
 }
 
-/* Add this to ensure buttons are centered at the bottom of borrowItem */
-.borrowItem > :last-child {
-  align-self: center;
-  margin-top: auto;
+.borrowItem .baoButton:disabled {
+  background-color: rgba(108, 117, 125, 0.8);
+  cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
@@ -311,4 +340,247 @@
   .borrowOptions {
     grid-template-columns: 1fr;
   }
+}
+
+.mintSection {
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+  background-color: #faf2e3; /* Bao White */
+}
+
+.mintContent {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.mintIntroContainer {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.mintHeading {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #e21a53; /* Bao Pink */
+  margin-bottom: 0.5rem;
+}
+
+.mintSubheading {
+  font-size: 1.5rem;
+  color: #1e2022; /* Bao Black */
+  margin-bottom: 1rem;
+}
+
+.mintDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #1e2022; /* Bao Black */
+}
+
+.mintExplainerContainer {
+  flex: 0 0 55%;
+  max-width: 55%;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 1rem;
+  padding-left: 2rem;
+  position: relative; /* Add this for absolute positioning of the separator */
+}
+
+.mintVerticalSeparator {
+  position: absolute;
+  top: 0%; /* Reduced from 15% to start higher */
+  bottom: 0%; /* Reduced from 15% to end lower */
+  left: 0; /* Position on the left side */
+  width: 1px;
+  background: linear-gradient(to bottom, 
+    rgba(226, 26, 83, 0) 0%,
+    rgba(226, 26, 83, 0.5) 10%,
+    rgba(226, 26, 83, 0.5) 90%,
+    rgba(226, 26, 83, 0) 100%
+  );
+  box-shadow: 0 0 8px 1px rgba(226, 26, 83, 0.3); /* Bao Pink haze */
+}
+
+.explainerStep {
+  margin-bottom: 2rem;
+}
+
+.explainerStep h4 {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 1.2rem;
+  color: #e21a53; /* Bao Pink */
+  margin-bottom: 0.5rem;
+}
+
+.explainerStep p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1e2022; /* Bao Black */
+}
+
+/* Add a custom scrollbar for webkit browsers */
+.mintExplainerContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.mintExplainerContainer::-webkit-scrollbar-track {
+  background: #faf2e3; /* Bao White */
+}
+
+.mintExplainerContainer::-webkit-scrollbar-thumb {
+  background-color: #e21a53; /* Bao Pink */
+  border-radius: 4px;
+}
+
+.comingSoonContainer {
+  background-color: rgba(226, 26, 83, 0.1); /* Bao Pink with low opacity */
+  border: 2px solid #e21a53; /* Solid Bao Pink border */
+  border-radius: 8px; /* Increased border radius */
+  padding: 0.5rem 1rem;
+  margin-top: 1.5rem;
+  display: inline-block;
+  min-width: 180px; /* Set a minimum width */
+  text-align: center; /* Center the text */
+}
+
+.comingSoonText {
+  color: #e21a53; /* Bao Pink text */
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the text and cursor */
+  height: 1.5em; /* Set a fixed height */
+  overflow: hidden; /* Hide overflow */
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: #e21a53; /* Bao Pink cursor */
+  margin-left: 2px;
+  animation: blink 0.7s infinite;
+}
+
+.blinking {
+  opacity: 0;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.mintSection {
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+  background-color: #faf2e3; /* Bao White */
+}
+
+.mintContent {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.mintIntroContainer {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.mintHeading {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #e21a53; /* Bao Pink */
+  margin-bottom: 0.5rem;
+}
+
+.mintSubheading {
+  font-size: 1.5rem;
+  color: #1e2022; /* Bao Black */
+  margin-bottom: 1rem;
+}
+
+.mintDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #1e2022; /* Bao Black */
+}
+
+.mintExplainerContainer {
+  flex: 0 0 55%;
+  max-width: 55%;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 1rem;
+  padding-left: 2rem;
+  position: relative; /* Add this for absolute positioning of the separator */
+}
+
+.mintVerticalSeparator {
+  position: absolute;
+  top: 0%; /* Reduced from 15% to start higher */
+  bottom: 0%; /* Reduced from 15% to end lower */
+  left: 0; /* Position on the left side */
+  width: 1px;
+  background: linear-gradient(to bottom, 
+    rgba(226, 26, 83, 0) 0%,
+    rgba(226, 26, 83, 0.5) 10%,
+    rgba(226, 26, 83, 0.5) 90%,
+    rgba(226, 26, 83, 0) 100%
+  );
+  box-shadow: 0 0 8px 1px rgba(226, 26, 83, 0.3); /* Bao Pink haze */
+}
+
+.explainerStep {
+  margin-bottom: 2rem;
+}
+
+.explainerStep h4 {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 1.2rem;
+  color: #e21a53; /* Bao Pink */
+  margin-bottom: 0.5rem;
+}
+
+.explainerStep p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1e2022; /* Bao Black */
+}
+
+/* Add a custom scrollbar for webkit browsers */
+.mintExplainerContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.mintExplainerContainer::-webkit-scrollbar-track {
+  background: #faf2e3; /* Bao White */
+}
+
+.mintExplainerContainer::-webkit-scrollbar-thumb {
+  background-color: #e21a53; /* Bao Pink */
+  border-radius: 4px;
 }
