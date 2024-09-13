@@ -238,7 +238,7 @@ export function ActiveVaults() {
               <div className={styles.explainerStep}>
                 <FaShieldAlt className={styles.explainerIcon} />
                 <h3>Stability Pools</h3>
-                <p>The system is kept stable through Stability Pools. Pegged token holders can deposit their tokens into these pools to earn a share of the collateral's yield in exchange for securing the system.</p>
+                <p>The system is kept stable through Stability Pools. Pegged token holders can deposit their tokens into these pools to earn a share of the collateral&apos;s yield in exchange for securing the system.</p>
               </div>
               <div className={styles.explainerStep}>
                 <FaRocket className={styles.explainerIcon} />
