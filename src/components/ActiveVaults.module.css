@@ -37,14 +37,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 2rem;
+  height: 400px; /* Adjust this value as needed */
 }
 
 .animationWrapper {
   width: 100%;
-  max-width: 400px; /* Increased from 350px to take advantage of the extra space */
-  aspect-ratio: 1 / 1;
-  position: relative;
+  height: 100%;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.animationWrapper:not(.animating) {
+  opacity: 1;
 }
 
 .contentContainer {
@@ -96,46 +99,42 @@
   font-weight: bold;
 }
 
-.contentText {
-  margin-bottom: 2rem; /* Increased margin to push features down */
+.yieldBanner {
+  background-color: #e21a53; /* Bao Pink */
+  height: 2rem; /* Fixed height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%; /* This will make it match the width of its parent */
 }
 
-.contentText p {
-  margin-bottom: 1rem; /* Added margin to the bottom of the paragraph */
+.yieldBannerText {
+  color: #faf2e3; /* Bao White */
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.contentText {
+  margin-bottom: 1rem; /* Reduced from 2rem */
 }
 
 .features {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 2rem; /* Increased margin to push features down */
-  margin-bottom: 0.5rem; /* Reduced margin to bring button closer */
+  margin-top: 0.5rem; /* Add a small top margin */
 }
 
 .featureItem {
   display: flex;
   align-items: center;
-  margin-bottom: 0.75rem; /* Slightly reduced space between feature items */
-}
-
-.featureItem:last-child {
-  margin-bottom: 0.25rem; /* Reduced space after the last feature item */
+  margin-bottom: 0.5rem; /* Reduce space between feature items if needed */
 }
 
 .featureIcon {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 0.5rem;
-  color: #e21a53; /* Bao Pink */
-  font-size: 1.2rem;
-  line-height: 1.5rem;
-  text-align: center;
-}
-
-.featureItem span {
-  font-size: 0.9rem;
-  color: #1e2022;
+  margin-right: 0.5rem; /* Space between icon and text */
 }
 
 .buttonWrapper {
@@ -166,24 +165,11 @@
 }
 
 .highlightText {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #e21a53;
-  margin-left: 1rem;
+  display: none;
 }
 
 .subtlePulse {
-  display: inline-block;
-  animation: subtlePulse 3s ease-in-out infinite;
-}
-
-@keyframes subtlePulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+  display: none;
 }
 
 .borrowingSection {
@@ -344,9 +330,22 @@
 
 .mintSection {
   position: relative;
+  color: #1e2022; /* Bao Black */
   padding: 6rem 0;
   overflow: hidden;
   background-color: #faf2e3; /* Bao White */
+  display: flex;
+  align-items: center;
+}
+
+.mintBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  /* Add any background patterns or gradients here if needed */
 }
 
 .mintContent {
@@ -356,119 +355,71 @@
   margin: 0 auto;
   padding: 2rem 4rem;
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
+  align-items: stretch; /* Changed from center to stretch */
+  min-height: 400px; /* Add a minimum height */
 }
 
 .mintIntroContainer {
-  flex: 0 0 40%;
-  max-width: 40%;
+  flex: 0 0 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-right: 6rem; /* Increased padding to the right */
+  position: relative;
+}
+
+.headingBannerContainer {
+  width: 100%;
+  max-width: 400px; /* Adjust this value as needed */
+  margin: 0 auto;
 }
 
 .mintHeading {
   font-family: 'Bakbak One', sans-serif;
   font-size: 3.5rem;
   font-weight: bold;
-  color: #e21a53; /* Bao Pink */
+  color: #1e2022; /* Bao Black */
   margin-bottom: 0.5rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
 }
 
-.mintSubheading {
-  font-size: 1.5rem;
-  color: #1e2022; /* Bao Black */
-  margin-bottom: 1rem;
-}
-
-.mintDescription {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #1e2022; /* Bao Black */
-}
-
-.mintExplainerContainer {
-  flex: 0 0 55%;
-  max-width: 55%;
-  max-height: 400px;
-  overflow-y: auto;
-  padding-right: 1rem;
-  padding-left: 2rem;
-  position: relative; /* Add this for absolute positioning of the separator */
-}
-
-.mintVerticalSeparator {
-  position: absolute;
-  top: 0%; /* Reduced from 15% to start higher */
-  bottom: 0%; /* Reduced from 15% to end lower */
-  left: 0; /* Position on the left side */
-  width: 1px;
-  background: linear-gradient(to bottom, 
-    rgba(226, 26, 83, 0) 0%,
-    rgba(226, 26, 83, 0.5) 10%,
-    rgba(226, 26, 83, 0.5) 90%,
-    rgba(226, 26, 83, 0) 100%
-  );
-  box-shadow: 0 0 8px 1px rgba(226, 26, 83, 0.3); /* Bao Pink haze */
-}
-
-.explainerStep {
-  margin-bottom: 2rem;
-}
-
-.explainerStep h4 {
-  font-family: 'Bakbak One', sans-serif;
-  font-size: 1.2rem;
-  color: #e21a53; /* Bao Pink */
-  margin-bottom: 0.5rem;
-}
-
-.explainerStep p {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #1e2022; /* Bao Black */
-}
-
-/* Add a custom scrollbar for webkit browsers */
-.mintExplainerContainer::-webkit-scrollbar {
-  width: 8px;
-}
-
-.mintExplainerContainer::-webkit-scrollbar-track {
-  background: #faf2e3; /* Bao White */
-}
-
-.mintExplainerContainer::-webkit-scrollbar-thumb {
+.comingSoonBanner {
   background-color: #e21a53; /* Bao Pink */
-  border-radius: 4px;
+  height: 2rem; /* Fixed height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
-.comingSoonContainer {
-  background-color: rgba(226, 26, 83, 0.1); /* Bao Pink with low opacity */
-  border: 2px solid #e21a53; /* Solid Bao Pink border */
-  border-radius: 8px; /* Increased border radius */
-  padding: 0.5rem 1rem;
-  margin-top: 1.5rem;
-  display: inline-block;
-  min-width: 180px; /* Set a minimum width */
-  text-align: center; /* Center the text */
+.comingSoonTextContainer {
+  width: 100%;
+  text-align: center;
 }
 
 .comingSoonText {
-  color: #e21a53; /* Bao Pink text */
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center the text and cursor */
-  height: 1.5em; /* Set a fixed height */
-  overflow: hidden; /* Hide overflow */
+  color: #faf2e3; /* Bao White */
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+  white-space: nowrap; /* Prevent text from wrapping */
+  padding: 0 1rem; /* Add some padding to the text */
 }
 
 .cursor {
   display: inline-block;
   width: 2px;
   height: 1em;
-  background-color: #e21a53; /* Bao Pink cursor */
+  background-color: #faf2e3; /* Bao White */
   margin-left: 2px;
   animation: blink 0.7s infinite;
 }
@@ -478,72 +429,23 @@
 }
 
 @keyframes blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-.mintSection {
-  position: relative;
-  padding: 6rem 0;
-  overflow: hidden;
-  background-color: #faf2e3; /* Bao White */
-}
-
-.mintContent {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 4rem;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.mintIntroContainer {
-  flex: 0 0 40%;
-  max-width: 40%;
-}
-
-.mintHeading {
-  font-family: 'Bakbak One', sans-serif;
-  font-size: 3.5rem;
-  font-weight: bold;
-  color: #e21a53; /* Bao Pink */
-  margin-bottom: 0.5rem;
-}
-
-.mintSubheading {
-  font-size: 1.5rem;
-  color: #1e2022; /* Bao Black */
-  margin-bottom: 1rem;
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .mintDescription {
-  font-size: 1.1rem;
-  line-height: 1.6;
   color: #1e2022; /* Bao Black */
-}
-
-.mintExplainerContainer {
-  flex: 0 0 55%;
-  max-width: 55%;
-  max-height: 400px;
-  overflow-y: auto;
-  padding-right: 1rem;
-  padding-left: 2rem;
-  position: relative; /* Add this for absolute positioning of the separator */
+  margin-top: 1rem;
+  font-size: 1rem;
+  max-width: 100%; /* Allow the description to take full width of its container */
+  padding-right: 1rem; /* Add extra padding to the right */
 }
 
 .mintVerticalSeparator {
   position: absolute;
-  top: 0%; /* Reduced from 15% to start higher */
-  bottom: 0%; /* Reduced from 15% to end lower */
-  left: 0; /* Position on the left side */
+  top: 0%;
+  bottom: 0%;
+  right: 0; /* Move to the right edge of the mintIntroContainer */
   width: 1px;
   background: linear-gradient(to bottom, 
     rgba(226, 26, 83, 0) 0%,
@@ -554,33 +456,100 @@
   box-shadow: 0 0 8px 1px rgba(226, 26, 83, 0.3); /* Bao Pink haze */
 }
 
+.mintExplainerWrapper {
+  flex: 0 0 55%;
+  display: flex;
+  position: relative;
+}
+
+.mintExplainerContainer {
+  flex: 1;
+  padding-left: 6rem;
+  padding-right:6rem;
+  overflow-y: auto;
+  max-height: 400px;
+  padding-bottom: 40px; /* Add space for the scroll hint */
+}
+
 .explainerStep {
+  position: relative;
+  padding: 1.5rem 0;
   margin-bottom: 2rem;
 }
 
-.explainerStep h4 {
+.explainerStep:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, 
+    rgba(226, 26, 83, 0) 0%,
+    rgba(226, 26, 83, 0.5) 20%,
+    rgba(226, 26, 83, 0.5) 80%,
+    rgba(226, 26, 83, 0) 100%
+  );
+  box-shadow: 0 0 8px 1px rgba(226, 26, 83, 0.3); /* Bao Pink haze */
+}
+
+.explainerStep h3 {
   font-family: 'Bakbak One', sans-serif;
-  font-size: 1.2rem;
-  color: #e21a53; /* Bao Pink */
-  margin-bottom: 0.5rem;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #1e2022; /* Bao Black */
+  margin-bottom: 0rem;
+  line-height: 1.1;
+  padding-left: 5rem; /* Space for the icon */
+  padding-top: 2rem;
 }
 
 .explainerStep p {
   font-size: 1rem;
-  line-height: 1.5;
   color: #1e2022; /* Bao Black */
+  margin-bottom: 4rem;
+  padding-left: 5rem; /* Space for the icon */
 }
 
-/* Add a custom scrollbar for webkit browsers */
-.mintExplainerContainer::-webkit-scrollbar {
-  width: 8px;
+.explainerIcon {
+  position: absolute;
+  top: 6rem;
+  left: 0;
+  font-size: 3rem;
+  color: rgba(226, 26, 83, 0.1); /* Bao Pink with low opacity */
 }
 
-.mintExplainerContainer::-webkit-scrollbar-track {
-  background: #faf2e3; /* Bao White */
+@keyframes scrollHint {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
 }
 
-.mintExplainerContainer::-webkit-scrollbar-thumb {
-  background-color: #e21a53; /* Bao Pink */
-  border-radius: 4px;
+.scrollHintContainer {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 20px;
+  height: 30px;
+  pointer-events: none;
+}
+
+.scrollHint {
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(226, 26, 83, 0.5);
+  border-radius: 10px;
+  animation: scrollHint 2s infinite;
+}
+
+.scrollHint::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  background-color: rgba(226, 26, 83, 0.5);
+  border-radius: 2px;
+  transform: translateX(-50%);
 }
