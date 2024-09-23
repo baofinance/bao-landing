@@ -1,0 +1,110 @@
+.derivativesSection {
+  padding: 4rem 2rem;
+  background-color: #e21a53; /* BaoPink background */
+  color: #faf2e3; /* BaoWhite text */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: clamp(50px, 12vw, 150px);
+  font-weight: bold;
+  color: #faf2e3; /* BaoWhite */
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 0rem;
+}
+
+.banner {
+  background-color: #faf2e3; /* BaoWhite background */
+padding: 0.5rem 1rem;
+  border-radius: 4px;
+  width: 100%; /* Match the width of the EARN header */
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0.5rem 0;
+  height: 2.5rem; /* Reduced height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.bannerText {
+  color: #e21a53; /* BaoPink text */
+  font-size: clamp(12px, 1.5vw, 18px); /* Reduced font size */
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1; /* Ensure text is vertically centered */
+}
+
+.subheader {
+  font-size: clamp(18px, 2vw, 28px);
+  font-family: 'Bakbak One', sans-serif;
+  color: #faf2e3; /* BaoWhite */
+  margin-bottom: 2rem;
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.box {
+  background-color: #faf2e3; /* BaoBlack background */
+ 
+  border-radius: 8px;
+  padding: 2rem;
+  width: 300px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
+
+  color: #e21a53; /* BaoWhite text */
+}
+
+
+.boxHeader {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e21a53; /* BaoWhite */
+  margin-bottom: 1rem;
+}
+
+.boxList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.boxList li {
+  font-size: 1rem;
+  color: #faf2e3; /* BaoWhite */
+  margin-bottom: 0.5rem;
+}
+
+.benefits {
+  margin-top: 4rem;
+  background-color: #faf2e3; /* BaoWhite background */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.benefitsList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+  color: #1e2022; /* BaoBlack */
+}
+
+.benefitsList li {
+  margin-bottom: 1rem;
+  text-align: left;
+}

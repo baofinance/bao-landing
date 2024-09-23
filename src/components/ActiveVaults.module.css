@@ -1,14 +1,10 @@
-.sectionContainer {
-  position: relative;
-  padding: 2rem 0 2rem; /* Reduced bottom padding */
-  overflow: hidden; /* To contain the background */
-}
-
 .yieldSection {
   position: relative;
-  padding: 0rem 0;
-  background-color: #faf2e3; /* Bao White base color */
-  overflow: hidden;
+  padding: 4rem 2rem;
+  background-color: #faf2e3; /* Bao White background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .yieldBackground {
@@ -18,150 +14,301 @@
   right: 0;
   bottom: 0;
   z-index: 0;
+  /* Add any additional background styles here if needed */
+}
+
+.yieldTextBox {
+  background-color: rgba(30, 32, 34, 0.9); /* Dark, semi-transparent background */
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  color: #faf2e3; /* Bao White */
+  width: 40%; /* Increase width, adjust as needed */
+  max-width: 400px; /* Adjust if necessary */
+  margin-left: auto; /* Center the box */
+  margin-right: auto;
+  box-sizing: border-box;
+  padding-top: 4rem;
+  padding-left: 4rem;
+}
+
+.yieldTextBox h3 {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #faf2e3; /* Bao White */
+  margin-bottom: 1rem;
+}
+
+.featureList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Reduced gap between feature boxes */
+  margin-bottom: 2rem; /* Add space between feature list and button */
+}
+
+.featureItem {
+  position: relative;
+  background-color: rgba(30, 32, 34, 1);
+  border-radius: 8px;
+  padding: 1.5rem 3.5rem 1.5rem 5rem;
+  overflow: visible; /* Allow icons to overflow the box */
+  text-overflow: ellipsis;
+  white-space: normal; /* Allow text to wrap onto a new line */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25), 0 12px 40px rgba(0, 0, 0, 0.25);/* Add shadow for hovering effect */
+  
  
 }
 
-.yieldContent {
-  position: relative;
-  z-index: 1;
+
+.featureIconWrapper {
+  position: absolute;
+  left: -2rem; /* Adjust this value to control the overlap */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #e21a53;
+  border-radius: 50%;
+  padding: 1rem; /* Increase padding to make the icon background larger */
+  width: 4rem; /* Ensure the icon wrapper is large enough */
+  height: 4rem; /* Ensure the icon wrapper is large enough */
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  min-height: 600px; /* Increased to allow more space */
-  padding: 2rem 0; /* Remove horizontal padding */
-}
-
-.animationContainer {
-  flex: 0 0 40%; /* Changed from 33.333% to 40% */
-  max-width: 40%; /* Changed from 33.333% to 40% */
-  display: flex;
   justify-content: center;
+}
+
+.featureIcon {
+  width: 4rem; /* Increase icon size */
+  height: 4rem; /* Increase icon size */
+  color: #faf2e3;
+  display: flex;
   align-items: center;
-  height: 400px; /* Adjust this value as needed */
+  justify-content: center;
 }
 
-.animationWrapper {
-  width: 100%;
-  height: 100%;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.animationWrapper:not(.animating) {
-  opacity: 1;
-}
-
-.contentContainer {
-  flex: 0 0 60%; /* Changed from 66.666% to 60% */
-  max-width: 60%; /* Changed from 66.666% to 60% */
+.featureContent {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding-left: 12rem; /* Increased from 4rem to 8rem */
-  padding-right: 4rem; /* Add padding to the right for the separator */
-  color: #1e2022;
-  position: relative; /* Add this for absolute positioning of the separator */
+  gap: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* Allow text to wrap onto a new line */
 }
 
-.verticalSeparator {
-  position: absolute;
-  top: 0%; /* Reduced from 15% to start higher */
-  bottom: 0%; /* Reduced from 15% to end lower */
-  right: 0; /* Move to the right edge of the contentContainer */
-  width: 1px;
-  background: linear-gradient(to bottom, 
-    rgba(226, 26, 83, 0) 0%,
-    rgba(226, 26, 83, 0.5) 10%,
-    rgba(226, 26, 83, 0.5) 90%,
-    rgba(226, 26, 83, 0) 100%
-  );
-  box-shadow: 0 0 8px 1px rgba(226, 26, 83, 0.3); /* Bao Pink haze */
+.featureHeader {
+  color: #faf2e3; /* Bao White */
+  font-size: 1.2rem;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* Allow text to wrap onto a new line */
+}
+
+.featureSubtext {
+  color: #faf2e3; /* Bao White */
+  font-size: 0.9rem;
+  opacity: 0.8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* Allow text to wrap onto a new line */
+}
+
+.baoButton {
+  background-color: #e21a53; /* Bao Pink */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem; /* Reduced vertical padding */
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  width: auto; /* Allow button to size to content */
+  min-width: 120px; /* Set a minimum width */
+  max-width: 200px; /* Set a maximum width */
+}
+
+.baoButton:hover {
+  background-color: #c0164a; /* Darker shade of Bao Pink */
+}
+
+.inactiveButton {
+  background-color: #888888; /* Grey color for inactive buttons */
+  cursor: not-allowed;
+}
+
+.inactiveButton:hover {
+  background-color: #888888; /* Prevent color change on hover for inactive buttons */
+}
+
+.yieldContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Changed from flex-start to center */
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.leftContent {
+  flex: 0 0 45%;
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.headingBannerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
 
 .yieldHeading {
   font-family: 'Bakbak One', sans-serif;
-  text-align: left;
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  line-height: 1.1;
-  color: #1e2022; /* Bao Black */
-}
-
-.yieldHeadingSmall {
-  display: block;
-  font-size: 2rem;
-  font-weight: normal;
-}
-
-.yieldHeadingLarge {
-  display: block;
-  font-size: 3.5rem;
+  font-size: clamp(50px, 12vw, 150px);
   font-weight: bold;
+  color: #1e2022;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: -0.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.yieldSubheading {
+  font-size: clamp(18px, 2vw, 28px); /* Slightly increased */
+  font-family: 'Bakbak One', sans-serif;
+  color: #1e2022;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: -0.5rem;
 }
 
 .yieldBanner {
-  background-color: #e21a53; /* Bao Pink */
-  height: 2rem; /* Fixed height */
+  background-color: #1e2022;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  width: 100%; /* Match the width of the EARN header */
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0.5rem 0;
+  height: 2.5rem; /* Reduced height */
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  width: 100%; /* This will make it match the width of its parent */
+  justify-content: center;
 }
 
 .yieldBannerText {
-  color: #faf2e3; /* Bao White */
-  font-size: 0.9rem;
-  font-weight: bold;
-  margin: 0;
-  text-transform: uppercase;
-  white-space: nowrap; /* Prevent text from wrapping */
-}
-
-.contentText {
-  margin-bottom: 1rem; /* Reduced from 2rem */
-}
-
-.features {
-  margin-top: 0.5rem; /* Add a small top margin */
-}
-
-.featureItem {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem; /* Reduce space between feature items if needed */
-}
-
-.featureIcon {
-  margin-right: 0.5rem; /* Space between icon and text */
-}
-
-.buttonWrapper {
-  display: flex;
-  align-items: center;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.baoButton {
-  display: inline-block;
-  background-color: #e21a53;
   color: #faf2e3;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.25rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: clamp(12px, 1.5vw, 18px); /* Reduced font size */
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1; /* Ensure text is vertically centered */
 }
 
-.baoButton:hover {
-  background-color: #c0164a;
+.animationsContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.animationWrapper {
+  width: 32%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.rightContent {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+}
+
+@media (max-width: 1024px) {
+  .yieldContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .leftContent,
+  .rightContent {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 0;
+    margin-bottom: 2rem;
+  }
+
+  .rightContent {
+    align-items: center;
+  }
+
+  .featureList {
+    width: 100%;
+  }
+
+  .baoButton {
+    align-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .animationsContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .animationWrapper {
+    width: 30%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 0;
+  }
+
+  .yieldHeading {
+    font-size: clamp(50px, 20vw, 120px); /* Adjusted for mobile */
+  }
+
+  .yieldSubheading {
+    font-size: clamp(16px, 3vw, 24px); /* Adjusted for mobile */
+  }
+
+  .yieldBanner {
+    height: 2rem; /* Even smaller on mobile */
+  }
+
+  .yieldBannerText {
+    font-size: clamp(10px, 2.5vw, 16px); /* Adjusted for mobile */
+  }
+
+  .leftContent {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .yieldBanner {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .animationWrapper {
+    width: 28%;
+  }
 }
 
 .highlightText {
@@ -174,7 +321,7 @@
 
 .borrowingSection {
   position: relative;
-  color: #faf2e3; /* Bao White */
+  color: #faf2e3;
   padding: 6rem 0;
   overflow: hidden;
 }
@@ -209,67 +356,54 @@
 }
 
 .borrowingHeader h2 {
+  
   font-family: 'Bakbak One', sans-serif;
-  font-size: 3.5rem;
+  font-size: clamp(50px, 12vw, 150px);
   font-weight: bold;
-  margin-bottom: -1rem;
+  color: #faf2e3;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: -0.5rem;
+  text-align: center;
+  width: 100%;
 }
 
 .borrowingHeader p {
-  font-size: 1rem; /* Reduced from 1.25rem */
-  font-family: 'Inter', sans-serif; /* Ensure Inter font is used */
-  font-weight: 400; /* Regular weight */
-  max-width: 600px;
-  margin: 1rem auto;
-  color: #faf2e3; /* Bao White */
-  line-height: 1.5; /* Adjust line height for better readability */
+  font-size: clamp(18px, 2vw, 28px); /* Slightly increased */
+  font-family: 'Bakbak One', sans-serif;
+  color: #faf2e3;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: -0.5rem;
 }
 
 .borrowOptions {
   display: flex;
   justify-content: space-between;
-  gap: 2rem;
-  margin-top: 2rem;
-  position: relative; /* Add this to establish a positioning context */
+  gap: 1rem;
 }
 
 .borrowItem {
   flex: 1;
-  color: #faf2e3; /* Bao White */
-  padding: 2rem 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  text-align: center;
-}
-
-.borrowItem:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 0%;
-  bottom: 0%;
-  right: -1rem;
-  width: 1px;
-  background: linear-gradient(to bottom, 
-    rgba(226, 26, 83, 0) 0%,
-    rgba(226, 26, 83, 0.5) 20%,
-    rgba(226, 26, 83, 0.5) 80%,
-    rgba(226, 26, 83, 0) 100%
-  );
-  box-shadow: 0 0 8px 1px rgba(226, 26, 83, 0.3); /* Bao Pink haze */
-}
-
-/* Add this new rule to create a more visible separator */
-.borrowItem:not(:last-child)::before {
-  content: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .borrowItem h3 {
   font-family: 'Bakbak One', sans-serif;
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #faf2e3; /* Bao White */
+  color: #faf2e3;
+  text-align: center;
   width: 100%;
 }
 
@@ -282,35 +416,36 @@
 
 .borrowItem li {
   margin-bottom: 0.5rem;
-  color: #faf2e3; /* Bao White */
+  color: #faf2e3;
   position: relative;
 }
 
 .borrowItem li::before {
   content: '✓';
-  color: #e21a53; /* Bao Pink */
+  color: #e21a53;
   margin-right: 0.5rem;
   font-weight: bold;
 }
 
 .borrowItem .baoButton {
   margin-top: auto;
-  background-color: #e21a53; /* Bao Pink */
-  color: #faf2e3; /* Bao White */
+  background-color: #e21a53;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.25rem;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
   font-weight: bold;
+  text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .borrowItem .baoButton:hover {
-  background-color: #c0164a; /* Darker Bao Pink for hover state */
+  background-color: #c0164a;
 }
 
 .borrowItem .baoButton:disabled {
-  background-color: rgba(108, 117, 125, 0.8);
+  background-color: rgba(226, 26, 83, 0.5);
   cursor: not-allowed;
 }
 
@@ -330,10 +465,10 @@
 
 .mintSection {
   position: relative;
-  color: #1e2022; /* Bao Black */
+  
   padding: 6rem 0;
   overflow: hidden;
-  background-color: #faf2e3; /* Bao White */
+  background-color: #faf2e3;
   display: flex;
   align-items: center;
 }
@@ -345,7 +480,6 @@
   right: 0;
   bottom: 0;
   z-index: 0;
-  /* Add any background patterns or gradients here if needed */
 }
 
 .mintContent {
@@ -356,8 +490,8 @@
   padding: 2rem 4rem;
   display: flex;
   justify-content: space-between;
-  align-items: stretch; /* Changed from center to stretch */
-  min-height: 400px; /* Add a minimum height */
+  align-items: stretch;
+  min-height: 400px;
 }
 
 .mintIntroContainer {
@@ -367,59 +501,50 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-right: 6rem; /* Increased padding to the right */
+  padding-right: 6rem;
   position: relative;
 }
 
 .headingBannerContainer {
-  width: 100%;
-  max-width: 400px; /* Adjust this value as needed */
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
 }
 
 .mintHeading {
   font-family: 'Bakbak One', sans-serif;
-  font-size: 3.5rem;
+  font-size: clamp(60px, 15vw, 180px);
   font-weight: bold;
-  color: #1e2022; /* Bao Black */
-  margin-bottom: 0.5rem;
-  line-height: 1.1;
+  color: #1e2022; /* BaoWhite */
+  line-height: 1;
   text-transform: uppercase;
-  width: 100%;
-  text-align: center;
+  margin-bottom: 0rem;
 }
 
 .comingSoonBanner {
-  background-color: #e21a53; /* Bao Pink */
-  height: 2rem; /* Fixed height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  background-color: #e21a53;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
   width: 100%;
-}
-
-.comingSoonTextContainer {
-  width: 100%;
-  text-align: center;
+  box-sizing: border-box;
 }
 
 .comingSoonText {
-  color: #faf2e3; /* Bao White */
+  color: #faf2e3;
   font-size: 0.9rem;
   font-weight: bold;
-  margin: 0;
   text-transform: uppercase;
-  white-space: nowrap; /* Prevent text from wrapping */
-  padding: 0 1rem; /* Add some padding to the text */
+  white-space: nowrap;
+  display: block;
+  text-align: center;
 }
 
 .cursor {
   display: inline-block;
   width: 2px;
   height: 1em;
-  background-color: #faf2e3; /* Bao White */
+  background-color: #faf2e3;
   margin-left: 2px;
   animation: blink 0.7s infinite;
 }
@@ -434,26 +559,15 @@
 }
 
 .mintDescription {
-  color: #1e2022; /* Bao Black */
-  margin-top: 1rem;
+  color: #1e2022;
+  margin-top: -0.5rem;
   font-size: 1rem;
-  max-width: 100%; /* Allow the description to take full width of its container */
-  padding-right: 1rem; /* Add extra padding to the right */
+  max-width: 100%;
+  padding-right: 1rem;
 }
 
 .mintVerticalSeparator {
-  position: absolute;
-  top: 0%;
-  bottom: 0%;
-  right: 0; /* Move to the right edge of the mintIntroContainer */
-  width: 1px;
-  background: linear-gradient(to bottom, 
-    rgba(226, 26, 83, 0) 0%,
-    rgba(226, 26, 83, 0.5) 10%,
-    rgba(226, 26, 83, 0.5) 90%,
-    rgba(226, 26, 83, 0) 100%
-  );
-  box-shadow: 0 0 8px 1px rgba(226, 26, 83, 0.3); /* Bao Pink haze */
+  display: none;
 }
 
 .mintExplainerWrapper {
@@ -468,55 +582,60 @@
   padding-right:6rem;
   overflow-y: auto;
   max-height: 400px;
-  padding-bottom: 40px; /* Add space for the scroll hint */
+  padding-bottom: 40px;
 }
 
 .explainerStep {
   position: relative;
-  padding: 1.5rem 0;
-  margin-bottom: 2rem;
+  background-color: rgba(30, 32, 34, 1);
+  border-radius: 8px;
+  padding: 1.5rem 2.5rem 1.5rem 5rem;
+  margin-bottom: 1rem;
 }
 
-.explainerStep:not(:last-child)::after {
-  content: '';
+.explainerIconContainer {
   position: absolute;
-  bottom: -0.5rem;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(to right, 
-    rgba(226, 26, 83, 0) 0%,
-    rgba(226, 26, 83, 0.5) 20%,
-    rgba(226, 26, 83, 0.5) 80%,
-    rgba(226, 26, 83, 0) 100%
-  );
-  box-shadow: 0 0 8px 1px rgba(226, 26, 83, 0.3); /* Bao Pink haze */
-}
-
-.explainerStep h3 {
-  font-family: 'Bakbak One', sans-serif;
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #1e2022; /* Bao Black */
-  margin-bottom: 0rem;
-  line-height: 1.1;
-  padding-left: 5rem; /* Space for the icon */
-  padding-top: 2rem;
-}
-
-.explainerStep p {
-  font-size: 1rem;
-  color: #1e2022; /* Bao Black */
-  margin-bottom: 4rem;
-  padding-left: 5rem; /* Space for the icon */
+  left: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4rem;
+  height: 4rem;
+  background-color: #e21a53;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .explainerIcon {
-  position: absolute;
-  top: 6rem;
-  left: 0;
-  font-size: 3rem;
-  color: rgba(226, 26, 83, 0.1); /* Bao Pink with low opacity */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explainerIcon > * {
+  color: #faf2e3 !important;
+  fill: #faf2e3 !important;
+  width: 65%;
+  height: 65%;
+}
+
+.explainerContent h3 {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #faf2e3;
+  margin-bottom: 0.5rem;
+  padding-right: 2rem;
+  text-transform: uppercase;
+}
+
+.explainerContent p {
+  color: #faf2e3;
+  opacity: 0.9;
+  padding-right: 1.5rem;
 }
 
 @keyframes scrollHint {

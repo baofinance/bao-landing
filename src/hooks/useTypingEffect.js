@@ -1,46 +1,38 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
-export function useTypingEffect(
-  words,
-  typingSpeed = 100,
-  delayBetweenWords = 1000
-) {
-  const [currentWordIndex, setCurrentWordIndex] = useState(0)
-  const [currentText, setCurrentText] = useState('')
-  const [isDeleting, setIsDeleting] = useState(false)
+export function useTypingEffect(words, typingSpeed = 150, pauseDuration = 1000) {
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
-    const currentWord = words[currentWordIndex]
-
-    const timer = setTimeout(
-      () => {
-        if (!isDeleting && currentText === currentWord) {
-          // Word is fully typed, wait before deleting
-          setTimeout(() => setIsDeleting(true), delayBetweenWords)
-        } else if (isDeleting && currentText === '') {
-          // Word is fully deleted, move to next word
-          setIsDeleting(false)
-          setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length)
-        } else if (isDeleting) {
-          // Deleting the word
-          setCurrentText(currentWord.substring(0, currentText.length - 1))
-        } else {
-          // Typing the word
-          setCurrentText(currentWord.substring(0, currentText.length + 1))
+    const word = words[currentWordIndex];
+    
+    const timer = setTimeout(() => {
+      setCurrentText(prev => {
+        if (!isDeleting && prev === word) {
+          setIsTyping(false);
+          setTimeout(() => {
+            setIsDeleting(true);
+            setIsTyping(true);
+          }, pauseDuration);
+          return prev;
         }
-      },
-      isDeleting ? typingSpeed / 2 : typingSpeed
-    )
+        if (isDeleting && prev === '') {
+          setIsDeleting(false);
+          setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+          return '';
+        }
+        if (isDeleting) {
+          return prev.slice(0, -1);
+        }
+        return word.slice(0, prev.length + 1);
+      });
+    }, isDeleting ? typingSpeed / 2 : typingSpeed);
 
-    return () => clearTimeout(timer)
-  }, [
-    currentText,
-    isDeleting,
-    currentWordIndex,
-    words,
-    typingSpeed,
-    delayBetweenWords,
-  ])
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, currentWordIndex, words, typingSpeed, pauseDuration]);
 
-  return { text: currentText, isTyping: !isDeleting || currentText !== '' }
+  return { text: currentText, isTyping };
 }

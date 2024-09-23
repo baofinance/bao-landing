@@ -1,11 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/Button'
 import styles from './ActiveVaults.module.css'
 import yieldAnimation from '@/images/JSON/yield.json'
-import mintAnimation from '@/images/JSON/mint.json' // Add this line
+import mintAnimation from '@/images/JSON/mint.json'
 import dynamic from 'next/dynamic'
-import { FaChartLine, FaShieldAlt, FaCoins, FaQuestion, FaCogs, FaRocket } from 'react-icons/fa'; // Import icons
-import { useTypingEffect } from '../hooks/useTypingEffect'
+import { FaQuestion, FaCoins, FaChartLine, FaCogs, FaShieldAlt, FaRocket, FaExchangeAlt, FaHandHoldingUsd } from 'react-icons/fa';
 
 // Dynamically import Lottie with SSR disabled
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
@@ -37,12 +36,60 @@ const LowComplexityIcon = () => (
 );
 
 export function ActiveVaults() {
-  const lottieRef = useRef();
+  const lottieRef = React.useRef(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [LottieComponent, setLottieComponent] = useState(null);
   const [animationData, setAnimationData] = useState(null);
-  const { text: yieldText, isTyping: isYieldTyping } = useTypingEffect(['Up to 50% vAPR'], 100, 1000);
-  const { text: comingSoonText, isTyping: isComingSoonTyping } = useTypingEffect(['Coming soon'], 100, 2000);
+  const [yieldText, setYieldText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  const fullText = 'Up to 50% vAPR';
+
+  const [hoveredAnimation, setHoveredAnimation] = useState(null);
+
+  const headingRef = useRef(null);
+  const bannerRef = useRef(null);
+
+  useEffect(() => {
+    const adjustBannerWidth = () => {
+      if (headingRef.current && bannerRef.current) {
+        const headingWidth = headingRef.current.offsetWidth;
+        bannerRef.current.style.width = `${headingWidth}px`;
+      }
+    };
+
+    adjustBannerWidth(); // Initial adjustment
+    window.addEventListener('resize', adjustBannerWidth);
+
+    return () => {
+      window.removeEventListener('resize', adjustBannerWidth);
+    };
+  }, []);
+
+  useEffect(() => {
+    let timer;
+    if (isTyping) {
+      if (yieldText !== fullText) {
+        timer = setTimeout(() => {
+          setYieldText(fullText.slice(0, yieldText.length + 1));
+        }, 50);
+      } else {
+        timer = setTimeout(() => {
+          setIsTyping(false);
+        }, 2000);
+      }
+    } else {
+      if (yieldText) {
+        timer = setTimeout(() => {
+          setYieldText(yieldText.slice(0, -1));
+        }, 30);
+      } else {
+        timer = setTimeout(() => {
+          setIsTyping(true);
+        }, 1000);
+      }
+    }
+    return () => clearTimeout(timer);
+  }, [yieldText, isTyping]);
 
   useEffect(() => {
     Promise.all([
@@ -54,92 +101,124 @@ export function ActiveVaults() {
     });
   }, []);
 
-  const handleMouseEnter = () => {
-    setIsAnimating(true);
-    lottieRef.current?.goToAndPlay(0);
+  useEffect(() => {
+    if (lottieRef.current) {
+      if (hoveredAnimation !== null) {
+        lottieRef.current.play();
+        setIsAnimating(true);
+      } else if (isAnimating) {
+        // Allow the current loop to complete
+        const currentFrame = lottieRef.current.currentFrame;
+        const totalFrames = lottieRef.current.totalFrames;
+        
+        if (currentFrame < totalFrames - 1) {
+          const completeAnimation = () => {
+            lottieRef.current.pause();
+            setIsAnimating(false);
+            lottieRef.current.removeEventListener('complete', completeAnimation);
+          };
+          
+          lottieRef.current.addEventListener('complete', completeAnimation);
+        } else {
+          lottieRef.current.pause();
+          setIsAnimating(false);
+        }
+      }
+    }
+  }, [hoveredAnimation, isAnimating]);
+
+  const handleMouseEnter = (index) => {
+    setHoveredAnimation(index);
   };
 
   const handleMouseLeave = () => {
-    setIsAnimating(false);
-    lottieRef.current?.pause();
+    setHoveredAnimation(null);
   };
 
-  const handleAnimationComplete = () => {
-    setIsAnimating(false);
-    lottieRef.current?.pause();
-  };
+  const renderFeatureItem = (icon, header, subtext, buttonText, buttonHref, isDisabled = false) => (
+    <div
+      className={`${styles.featureItem} cursor-pointer flex-col items-center justify-center shadow-2xl`}
+    >
+      <div className={styles.featureIconWrapper}>
+        <div className={styles.featureIcon}>
+          {icon}
+        </div>
+      </div>
+      <div className={styles.featureContent}>
+        <div className={styles.featureHeader}>{header}</div>
+        <div className={styles.featureSubtext}>{subtext}</div>
+        {isDisabled ? (
+          <button className={`${styles.baoButton} ${styles.inactiveButton}`} disabled>{buttonText}</button>
+        ) : (
+          <a href={buttonHref} className={styles.baoButton}>{buttonText}</a>
+        )}
+      </div>
+    </div>
+  );
 
   return (
     <>
       <div className={styles.yieldSection}>
-        <div className={styles.yieldBackground}></div>
         <div className={styles.yieldContent}>
-          <div className={styles.contentContainer}>
-            <div className={styles.headingWrapper}>
-              <h2 className={styles.yieldHeading}>
-                <span className={styles.yieldHeadingSmall}></span>
-                <span className={styles.yieldHeadingLarge}>MAXIMIZE YOUR YIELD</span>
-              </h2>
-              <div className={styles.yieldBanner}>
-                <p className={styles.yieldBannerText}>
-                  {yieldText}
-                  <span className={`${styles.cursor} ${isYieldTyping ? styles.blinking : ''}`}>|</span>
-                </p>
-              </div>
+          <div className={styles.leftContent}>
+            <div className={styles.headingBannerContainer}>
+              <h2 className={styles.yieldHeading}>EARN</h2>
+              <p className={styles.yieldSubheading}>BY PROVIDING DERIVATIVE LIQUIDITY.</p>
             </div>
-            <div className={styles.contentText}>
-              <p>Provide liquidity into our ETH or USD pegged pools.</p>
+            <div className={styles.yieldBanner}>
+              <span className={styles.yieldBannerText}>
+                UP TO 50% vAPR
+              </span>
             </div>
-            <div className={styles.features}>
-              <div className={styles.featureItem}>
-                <LowImpermanentLossIcon className={styles.featureIcon} />
-                <span>&nbsp;Low Impermanent Loss</span>
-              </div>
-              <div className={styles.featureItem}>
-                <HighYieldIcon className={styles.featureIcon} />
-                <span>&nbsp;High Yield</span>
-              </div>
-              <div className={styles.featureItem}>
-                <LowComplexityIcon className={styles.featureIcon} />
-                <span>&nbsp;Low Complexity</span>
-              </div>
+            <div className={styles.animationsContainer}>
+              {[0, 1, 2].map((index) => (
+                <div 
+                  key={index}
+                  className={styles.animationWrapper}
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {animationData && (
+                    <Lottie
+                      animationData={animationData}
+                      loop={hoveredAnimation === index}
+                      style={{ width: '100%', height: '100%' }}
+                      rendererSettings={{
+                        preserveAspectRatio: 'xMidYMid slice'
+                      }}
+                    />
+                  )}
+                </div>
+              ))}
             </div>
-            <div className={styles.buttonWrapper}>
-              <a href="https://app.baofinance.io/earn" className={styles.baoButton}>
-                Start Earning
-              </a>
-            </div>
-            <div className={styles.verticalSeparator}></div>
           </div>
           
-          <div 
-            className={styles.animationContainer} 
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <div className={`${styles.animationWrapper} ${isAnimating ? styles.animating : ''}`}>
-              {LottieComponent && animationData && (
-                <LottieComponent 
-                  lottieRef={lottieRef}
-                  animationData={animationData}
-                  loop={false}
-                  autoplay={false}
-                  onComplete={handleAnimationComplete}
-                  style={{ width: '100%', height: '100%' }}
-                />
+          <div className={styles.rightContent}>
+            <ul className={styles.featureList}>
+              {renderFeatureItem(
+                <FaExchangeAlt size={32} />, // Adjust the size here
+                "AMM liquidity",
+                "Deposit into ETH or USD pegged pools providing swap liquidity and earn AURA and BAL tokens",
+                "Deposit",
+                "#"
               )}
-            </div>
-          </div>
-          
-        
-          
-          <div className={styles.buttonWrapper}>
-            <a href="https://app.baofinance.io/earn" className={styles.baoButton}>
-              Start Earning
-            </a>
-            <span className={styles.highlightText}>
-              &nbsp; Up to &nbsp;<span className={styles.subtlePulse}>50% vAPR</span>
-            </span>
+              {renderFeatureItem(
+                <FaShieldAlt size={32} />, // Adjust the size here
+                "Stability pools",
+                "Deposit derivatives and earn ETH for securing the protocol",
+                "Coming Soon",
+                "#",
+                true
+              )}
+              {renderFeatureItem(
+                <FaHandHoldingUsd size={32} />, // Adjust the size here
+                "MultiLend",
+                "Lend in multiple markets simultaneously with a single deposit.",
+                "Coming Soon",
+                "#",
+                true
+              )}
+            </ul>
           </div>
         </div>
       </div>
@@ -148,8 +227,9 @@ export function ActiveVaults() {
         <div className={styles.borrowingBackground}></div>
         <div className={styles.borrowingContent}>
           <div className={styles.borrowingHeader}>
-            <h2 className={styles.borrowHeading}>BORROW AT THE BEST RATES</h2>
-            <p>Deposit yield-bearing collaterals and borrow pegged tokens to unlock new DeFi strategies</p>
+            <h2 className={styles.borrowHeading}>BORROW </h2>
+            <p className={styles.borrowingHeader}>AT THE BEST RATES.</p>
+           
             <a href="#strategies" className={styles.baoButton}>
               Explore strategies
             </a>
@@ -198,52 +278,84 @@ export function ActiveVaults() {
         <div className={styles.mintContent}>
           <div className={styles.mintIntroContainer}>
             <div className={styles.headingBannerContainer}>
-              <h2 className={styles.mintHeading}>THE MINTER</h2>
+              <h2 className={styles.mintHeading}>MINT</h2>
               <div className={styles.comingSoonBanner}>
-                <div className={styles.comingSoonTextContainer}>
-                  <p className={styles.comingSoonText}>
-                    {comingSoonText}
-                    <span className={`${styles.cursor} ${isComingSoonTyping ? styles.blinking : ''}`}>|</span>
-                  </p>
-                </div>
+                <span className={styles.comingSoonText}>
+                  Coming Soon
+                </span>
               </div>
             </div>
             <p className={styles.mintDescription}>
               Swap ETH for pegged or leverage tokens
             </p>
-            <div className={styles.mintVerticalSeparator}></div>
           </div>
           <div className={styles.mintExplainerWrapper}>
             <div className={styles.mintExplainerContainer}>
               <div className={styles.explainerStep}>
-                <FaQuestion className={styles.explainerIcon} />
-                <h3>What is the Minter?</h3>
-                <p>The Minter is a tool that allows you to create either Pegged tokens or Leveraged tokens using your ETH as collateral.</p>
+                <div className={styles.explainerIconContainer}>
+                  <div className={styles.explainerIcon}>
+                    <FaQuestion />
+                  </div>
+                </div>
+                <div className={styles.explainerContent}>
+                  <h3>What is the Minter?</h3>
+                  <p>The Minter is a tool that allows you to create either Pegged tokens or Leveraged tokens using your ETH as collateral.</p>
+                </div>
               </div>
               <div className={styles.explainerStep}>
-                <FaCoins className={styles.explainerIcon} />
-                <h3>Pegged Tokens</h3>
-                <p>These tokens are designed to maintain a stable value, fixed to a specific price feed. </p>
+                <div className={styles.explainerIconContainer}>
+                  <div className={styles.explainerIcon}>
+                    <FaCoins />
+                  </div>
+                </div>
+                <div className={styles.explainerContent}>
+                  <h3>Pegged Tokens</h3>
+                  <p>These tokens are designed to maintain a stable value, fixed to a specific price feed. </p>
+                </div>
               </div>
               <div className={styles.explainerStep}>
-                <FaChartLine className={styles.explainerIcon} />
-                <h3>Leveraged Tokens</h3>
-                <p>These tokens amplify the price movements of ETH. If ETH goes up, these go up even more. However, losses are also amplified, so they carry higher risk.</p>
+                <div className={styles.explainerIconContainer}>
+                  <div className={styles.explainerIcon}>
+                    <FaChartLine />
+                  </div>
+                </div>
+                <div className={styles.explainerContent}>
+                  <h3>Leveraged Tokens</h3>
+                  <p>These tokens amplify the price movements of ETH. If ETH goes up, these go up even more. However, losses are also amplified, so they carry higher risk.</p>
+                </div>
               </div>
               <div className={styles.explainerStep}>
-                <FaCogs className={styles.explainerIcon} />
-                <h3>How It Works</h3>
-                <p>When you deposit ETH, you choose to mint either Pegged tokens or Leveraged tokens. The system uses your ETH as collateral to back the newly created tokens.</p>
+                <div className={styles.explainerIconContainer}>
+                  <div className={styles.explainerIcon}>
+                    <FaCogs />
+                  </div>
+                </div>
+                <div className={styles.explainerContent}>
+                  <h3>How It Works</h3>
+                  <p>When you deposit ETH, you choose to mint either Pegged tokens or Leveraged tokens. The system uses your ETH as collateral to back the newly created tokens.</p>
+                </div>
               </div>
               <div className={styles.explainerStep}>
-                <FaShieldAlt className={styles.explainerIcon} />
-                <h3>Stability Pools</h3>
-                <p>The system is kept stable through Stability Pools. Pegged token holders can deposit their tokens into these pools to earn a share of the collateral&apos;s yield in exchange for securing the system.</p>
+                <div className={styles.explainerIconContainer}>
+                  <div className={styles.explainerIcon}>
+                    <FaShieldAlt />
+                  </div>
+                </div>
+                <div className={styles.explainerContent}>
+                  <h3>Stability Pools</h3>
+                  <p>The system is kept stable through Stability Pools. Pegged token holders can deposit their tokens into these pools to earn a share of the collateral&apos;s yield in exchange for securing the system.</p>
+                </div>
               </div>
               <div className={styles.explainerStep}>
-                <FaRocket className={styles.explainerIcon} />
-                <h3>Why Use It?</h3>
-                <p>You can create stable assets or leveraged positions directly on the blockchain. This reduces reliance on traditional finance and centralized entities, potentially offering more control and transparency.</p>
+                <div className={styles.explainerIconContainer}>
+                  <div className={styles.explainerIcon}>
+                    <FaRocket />
+                  </div>
+                </div>
+                <div className={styles.explainerContent}>
+                  <h3>Why Use It?</h3>
+                  <p>You can create stable assets or leveraged positions directly on the blockchain. This reduces reliance on traditional finance and centralized entities, potentially offering more control and transparency.</p>
+                </div>
               </div>
               <div className={styles.scrollHintContainer}>
                 <div className={styles.scrollHint}></div>

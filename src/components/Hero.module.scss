@@ -38,24 +38,7 @@
   }
 }
 
-.shimmerBackground {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(30, 32, 34, 1) 0%,
-    rgba(30, 32, 34, 0.95) 20%,
-    rgba(226, 26, 83, 0.2) 40%,
-    rgba(250, 242, 227, 0.2) 60%,
-    rgba(226, 26, 83, 0.2) 80%,
-    rgba(30, 32, 34, 0.95) 90%,
-    rgba(30, 32, 34, 1) 100%
-  );
-  animation: shimmer 25s ease-in-out infinite alternate;
-}
+
 
 // Remove or comment out the .highlightedText style if it's no longer needed
 // .highlightedText {
@@ -131,3 +114,56 @@
 }
 
 // ... (keep other existing styles)
+
+.font-bakbak {
+  font-family: 'Bakbak One', sans-serif;
+}
+
+
+
+@media (min-width: 1024px) {
+  .lg\:text-7xl {
+    font-size: 4.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:text-8xl {
+    font-size: 6rem;
+  }
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.text-baoWhite {
+  color: #faf2e3;
+}
+
+.heroheader {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: clamp(60px, 15vw, 180px);
+  font-weight: bold;
+  color: #faf2e3; /* BaoWhite */
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.taglineText {
+  color: #faf2e3; /* BaoWhite */
+  font-size: 1.25rem;
+  margin-top: 0;
+}
+
+@media (min-width: 1024px) {
+  .taglineText {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .taglineText {
+    font-size: 1.75rem;
+  }
+}
