@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import styles from './BaoDerivatives.module.css'
 import backgroundStyles from './BaoDerivativesBackground.module.css'
-import baoUSDLogo from '../images/logos/baousd.svg'
-import baoETHLogo from '../images/logos/baoeth.svg'
 
 const BaoDerivatives = () => {
   const [squares, setSquares] = useState([])
@@ -85,7 +83,11 @@ const BaoDerivatives = () => {
         <div className={styles.boxes}>
           <div className={styles.box}>
             <div className={styles.logoContainer}>
-              <img src={baoUSDLogo} alt="baoUSD Logo" className={styles.logo} />
+              <img
+                src={'/tokens/baoUSD.png'}
+                alt="baoUSD Logo"
+                className={styles.logo}
+              />
             </div>
             <h3 className={styles.boxTitle}>baoUSD</h3>
             <p className={styles.boxDescription}>
@@ -95,7 +97,11 @@ const BaoDerivatives = () => {
           </div>
           <div className={styles.box}>
             <div className={styles.logoContainer}>
-              <img src={baoETHLogo} alt="baoETH Logo" className={styles.logo} />
+              <img
+                src={'/tokens/baoETH.png'}
+                alt="baoETH Logo"
+                className={styles.logo}
+              />
             </div>
             <h3 className={styles.boxTitle}>baoETH</h3>
             <p className={styles.boxDescription}>

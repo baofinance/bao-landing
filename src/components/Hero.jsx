@@ -16,7 +16,7 @@ export function Hero() {
         <div className="w-full">
           <div className="max-w-2xl lg:max-w-none">
             <div className="flex flex-col space-y-6">
-              <p className="font-heading flex h-[1.2em] items-center text-3xl leading-tight text-baoWhite lg:text-5xl">
+              <p className="font-heading flex h-[1.2em] items-center text-xl leading-tight text-baoWhite lg:text-5xl">
                 {text}
                 <span
                   className={`${styles.cursor} ${
@@ -26,7 +26,7 @@ export function Hero() {
                   |
                 </span>
               </p>
-              <div className={styles.heroheader}>
+              <div className={`${styles.heroheader}`}>
                 <p>TOKENIZED</p>
                 <p>DERIVATIVES</p>
               </div>

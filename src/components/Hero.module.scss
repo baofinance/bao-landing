@@ -38,8 +38,6 @@
   }
 }
 
-
-
 // Remove or comment out the .highlightedText style if it's no longer needed
 // .highlightedText {
 //   color: transparent;
@@ -119,8 +117,6 @@
   font-family: 'Bakbak One', sans-serif;
 }
 
-
-
 @media (min-width: 1024px) {
   .lg\:text-7xl {
     font-size: 4.5rem;
@@ -143,7 +139,7 @@
 
 .heroheader {
   font-family: 'Bakbak One', sans-serif;
-  font-size: clamp(60px, 15vw, 180px);
+  font-size: clamp(60px, 15vw, 90px);
   font-weight: bold;
   color: #faf2e3; /* BaoWhite */
   line-height: 0.9;
@@ -152,7 +148,7 @@
 
 .taglineText {
   color: #faf2e3; /* BaoWhite */
-  font-size: 1.25rem;
+  font-size: 0.1rem;
   margin-top: 0;
 }
 
