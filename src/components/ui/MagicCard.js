@@ -1,5 +1,5 @@
-import { Card } from "@vercel/examples-ui";
+import { Card } from '@vercel/examples-ui'
 
-const MagicCard = Card;
+const MagicCard = Card
 
-export default MagicCard;
+export default MagicCard

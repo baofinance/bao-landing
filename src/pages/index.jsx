@@ -5,7 +5,7 @@ import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { ActiveVaults } from '@/components/ActiveVaults'
-import BaoDerivatives from '@/components/BaoDerivatives';
+import BaoDerivatives from '@/components/BaoDerivatives'
 
 export default function Home() {
   return (
