@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/Button'
 import styles from './ActiveVaults.module.css'
 import yieldAnimation from '@/images/JSON/yield.json'
@@ -34,6 +34,58 @@ const LowComplexityIcon = () => (
     <line x1="15" y1="9" x2="15.01" y2="9" />
   </svg>
 );
+
+const BorrowingBackground = () => {
+  const generateSquares = useCallback(() => {
+    const squareSize = 14; // 12px square + 2px gap
+    const numSquaresX = Math.ceil(window.innerWidth / squareSize);
+    const numSquaresY = Math.ceil(500 / squareSize); // Adjust this value based on your section height
+    const totalSquares = numSquaresX * numSquaresY;
+
+    return Array.from({ length: totalSquares }, (_, i) => {
+      const baseOpacity = Math.random() * 0.3 + 0.05; // Random opacity between 0.05 and 0.35
+      const shouldTwinkle = Math.random() < 0.3; // 30% chance of twinkling
+      const twinkleClass = shouldTwinkle ? styles.twinkle : '';
+      const animationDelay = Math.random() * 5; // Random delay up to 5 seconds
+
+      return {
+        key: i,
+        baseOpacity,
+        twinkleClass,
+        animationDelay,
+        style: {
+          gridColumn: (i % numSquaresX) + 1,
+          gridRow: Math.floor(i / numSquaresX) + 1,
+        }
+      };
+    });
+  }, []);
+
+  const [squares, setSquares] = useState([]);
+
+  useEffect(() => {
+    setSquares(generateSquares());
+    const handleResize = () => setSquares(generateSquares());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [generateSquares]);
+
+  return (
+    <div className={styles.borrowingBackground}>
+      {squares.map(square => (
+        <div
+          key={square.key}
+          className={`${styles.borrowingSquare} ${square.twinkleClass}`}
+          style={{
+            ...square.style,
+            backgroundColor: `rgba(226, 26, 83, ${square.baseOpacity})`,
+            animationDelay: `${square.animationDelay}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 export function ActiveVaults() {
   const lottieRef = React.useRef(null);
@@ -147,11 +199,14 @@ export function ActiveVaults() {
       <div className={styles.featureContent}>
         <div className={styles.featureHeader}>{header}</div>
         <div className={styles.featureSubtext}>{subtext}</div>
-        {isDisabled ? (
-          <button className={`${styles.baoButton} ${styles.inactiveButton}`} disabled>{buttonText}</button>
-        ) : (
-          <a href={buttonHref} className={styles.baoButton}>{buttonText}</a>
-        )}
+        <div className={styles.buttonContainer}>
+          {isDisabled ? (
+            <button className={`${styles.baoButton} ${styles.inactiveButton}`} disabled>{buttonText}</button>
+          ) : (
+            <a href={buttonHref} className={styles.baoButton}>{buttonText}</a>
+          )}
+          <a href="#" className={`${styles.baoButton} ${styles.learnMoreButton}`}>Learn More</a>
+        </div>
       </div>
     </div>
   );
@@ -224,7 +279,7 @@ export function ActiveVaults() {
       </div>
       
       <section className={styles.borrowingSection}>
-        <div className={styles.borrowingBackground}></div>
+        <BorrowingBackground />
         <div className={styles.borrowingContent}>
           <div className={styles.borrowingHeader}>
             <h2 className={styles.borrowHeading}>BORROW </h2>
@@ -278,16 +333,16 @@ export function ActiveVaults() {
         <div className={styles.mintContent}>
           <div className={styles.mintIntroContainer}>
             <div className={styles.headingBannerContainer}>
-              <h2 className={styles.mintHeading}>MINT</h2>
-              <div className={styles.comingSoonBanner}>
+              <h2 className={styles.mintHeading} ref={headingRef}>MINT</h2>
+              <p className={styles.mintSubheader}>
+                PEGGED OR LEVERAGE TOKENS WITH ETH
+              </p>
+              <div className={styles.comingSoonBanner} ref={bannerRef}>
                 <span className={styles.comingSoonText}>
                   Coming Soon
                 </span>
               </div>
             </div>
-            <p className={styles.mintDescription}>
-              Swap ETH for pegged or leverage tokens
-            </p>
           </div>
           <div className={styles.mintExplainerWrapper}>
             <div className={styles.mintExplainerContainer}>

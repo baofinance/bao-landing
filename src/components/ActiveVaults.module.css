@@ -130,6 +130,33 @@
   min-width: 120px; /* Set a minimum width */
   max-width: 200px; /* Set a maximum width */
 }
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin-top: 1rem;
+  gap: 1rem; /* Increase the gap between buttons */
+}
+
+.learnMoreButton {
+  background-color: #faf2e3; /* Bao White */
+  color: #1e2022; /* Dark color for contrast */
+}
+
+.learnMoreButton:hover {
+  background-color: #e6dfd0; /* Slightly darker shade for hover effect */
+}
+
+/* Adjust the main action button styles */
+.baoButton:not(.learnMoreButton) {
+  background-color: #e21a53;
+  color: #ffffff;
+}
+
+.baoButton:not(.learnMoreButton):hover {
+  background-color: #c0164a;
+}
 
 .baoButton:hover {
   background-color: #c0164a; /* Darker shade of Bao Pink */
@@ -333,14 +360,43 @@
   right: 0;
   bottom: 0;
   z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 12px);
+  grid-gap: 4px;
+  background-color: transparent;
+  padding: 0px;
+}
 
+.borrowingSquare {
+  width: 12px;
+  height: 12px;
+  transition: background-color 0.3s ease;
+}
 
-  backdrop-filter: blur(2px);
+/* Target the first 10 rows with decreasing opacity */
+.borrowingBackground .borrowingSquare:nth-child(-n+80) { opacity: 1; }
+.borrowingBackground .borrowingSquare:nth-child(n+81):nth-child(-n+160) { opacity: 0.7; }
+.borrowingBackground .borrowingSquare:nth-child(n+161):nth-child(-n+240) { opacity: 0.6; }
+.borrowingBackground .borrowingSquare:nth-child(n+241):nth-child(-n+320) { opacity: 0.4; }
+.borrowingBackground .borrowingSquare:nth-child(n+321):nth-child(-n+400) { opacity: 0.2; }
+.borrowingBackground .borrowingSquare:nth-child(n+401) { opacity: 0.1; }
+
+.twinkle {
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 
 .borrowingContent {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 4rem;
@@ -388,14 +444,14 @@
 
 .borrowItem {
   flex: 1;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #1e2022;
   border-radius: 12px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  box-shadow: 0 2px 4px rgba(226, 26, 83, 0.2); /* Changed to Bao Pink with some transparency */
 }
 
 .borrowItem h3 {
@@ -508,7 +564,7 @@
 .headingBannerContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
@@ -516,9 +572,22 @@
   font-family: 'Bakbak One', sans-serif;
   font-size: clamp(60px, 15vw, 180px);
   font-weight: bold;
-  color: #1e2022; /* BaoWhite */
+  color: #1e2022; /* Dark color for contrast */
   line-height: 1;
   text-transform: uppercase;
+  margin-bottom: -1rem;
+}
+
+.mintSubheader {
+  font-size: clamp(18px, 2vw, 28px);
+  font-family: 'Bakbak One', sans-serif;
+  color: #1e2022; /* Dark color for contrast */
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0rem;
   margin-bottom: 0rem;
 }
 
@@ -528,6 +597,7 @@
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
+  margin-top: 0.5rem;
 }
 
 .comingSoonText {

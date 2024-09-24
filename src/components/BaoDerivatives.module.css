@@ -1,7 +1,7 @@
 .derivativesSection {
-  padding: 4rem 2rem;
-  background-color: #e21a53; /* BaoPink background */
-  color: #faf2e3; /* BaoWhite text */
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0;
 }
 
 .container {
@@ -10,37 +10,48 @@
   text-align: center;
 }
 
+.headerBannerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the header and banner */
+  margin-bottom: 0rem;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: center; /* Center the header and icon */
+}
+
 .header {
   font-family: 'Bakbak One', sans-serif;
   font-size: clamp(50px, 12vw, 150px);
   font-weight: bold;
-  color: #faf2e3; /* BaoWhite */
+  color: #faf2e3; /* baopink */
   line-height: 1;
   text-transform: uppercase;
   margin-bottom: 0rem;
+  padding-top: 6rem;
+  margin-right: 1rem;
 }
 
 .banner {
-  background-color: #faf2e3; /* BaoWhite background */
-padding: 0.5rem 1rem;
-  border-radius: 4px;
-  width: 100%; /* Match the width of the EARN header */
-  box-sizing: border-box;
-  text-align: center;
-  margin: 0.5rem 0;
-  height: 2.5rem; /* Reduced height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
+  background-color: #faf2e3; /* baopink */
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  width: auto; /* Adjust this value to make the banner wider */
+  max-width: 100%; /* Ensure the banner doesn't get too wide */
+  text-align: center; /* Center the text inside the banner */
 }
 
 .bannerText {
-  color: #e21a53; /* BaoPink text */
+  color: #1e2022; /* baoblack */
   font-size: clamp(12px, 1.5vw, 18px); /* Reduced font size */
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1; /* Ensure text is vertically centered */
+  margin: 0;
 }
 
 .subheader {
@@ -52,40 +63,71 @@ padding: 0.5rem 1rem;
 
 .boxes {
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+  margin-top: 0rem;
+  padding-bottom: 2rem;
 }
 
 .box {
-  background-color: #faf2e3; /* BaoBlack background */
- 
+  background-color: #1e2022; /* baoblack */
+  color:  #faf2e3; /* baowhite */
   border-radius: 8px;
-  padding: 2rem;
-  width: 300px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
-
-  color: #e21a53; /* BaoWhite text */
+  padding: 2.5rem 1.5rem 1.5rem; /* Increased top padding to accommodate logo */
+  margin: 4rem 1rem 1rem; /* Increased top margin to accommodate logo */
+  width: calc(33.333% - 2rem);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  position: relative;
 }
 
+.box:hover {
+  transform: translateY(-5px);
+}
 
-.boxHeader {
+.boxTitle {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #e21a53; /* BaoWhite */
   margin-bottom: 1rem;
+  color: #faf2e3; /* baopink */
 }
 
-.boxList {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.boxList li {
+.boxDescription {
   font-size: 1rem;
-  color: #faf2e3; /* BaoWhite */
-  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.logoContainer {
+  position: absolute;
+  top: -2rem; /* Adjust this value to position the logo higher or lower */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e21a53; /* baopink */
+  border-radius: 50%;
+  width: 4rem; /* Fixed width */
+  height: 4rem; /* Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ensure the logo doesn't overflow the circle */
+}
+
+.logo {
+  width: 60%; /* Adjust this value to fit the logo properly within the circle */
+  height: 60%; /* Adjust this value to fit the logo properly within the circle */
+  object-fit: contain; /* Ensure the logo maintains its aspect ratio */
+}
+
+@media (max-width: 768px) {
+  .box {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    width: 100%;
+  }
 }
 
 .benefits {
@@ -101,10 +143,33 @@ padding: 0.5rem 1rem;
   padding: 0;
   margin: 0;
   font-size: 1.2rem;
-  color: #1e2022; /* BaoBlack */
+  color: #faf2e3; /* BaoBlack */
 }
 
 .benefitsList li {
   margin-bottom: 1rem;
   text-align: left;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 6rem; /* Add padding to the left and right */
+  
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  height: 8rem; /* This should match the font-size of the header */
+  width: auto; /* This maintains the aspect ratio */
+  margin-right: 0.75rem;
+  color: #faf2e3; /* baowhite */
+}
+
+.icon:last-child {
+  margin-right: 0;
 }
