@@ -70,34 +70,46 @@
 }
 
 .box {
-  background-color: #1e2022; /* baoblack */
-  color:  #faf2e3; /* baowhite */
-  border-radius: 8px;
-  padding: 2.5rem 1.5rem 1.5rem; /* Increased top padding to accommodate logo */
-  margin: 4rem 1rem 1rem; /* Increased top margin to accommodate logo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  color: #faf2e3; /* baowhite */
+  background-color: #1e2022; /* Assuming this is your desired background color */
+  border-radius: 8px; /* Add some border radius for rounded corners */
+  box-shadow: 0 4px 6px rgba(226, 58, 82, 0.3), 0 2px 4px rgba(226, 58, 82, 0.2);
+  transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+  position: relative;
   width: calc(33.333% - 2rem);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
-  position: relative;
 }
 
 .box:hover {
   transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(226, 58, 82, 0.15),
+    0 3px 6px rgba(226, 58, 82, 0.1);
 }
 
 .boxTitle {
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem; /* Reduced from 1rem */
+  margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 1rem;
   color: #faf2e3; /* baopink */
 }
 
 .boxDescription {
-  font-size: 1rem;
-  line-height: 1.5;
+  text-align: center;
 }
 
 .logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem; /* Reduced from 1rem */
   position: absolute;
   top: -2rem; /* Adjust this value to position the logo higher or lower */
   left: 50%;
@@ -106,9 +118,6 @@
   border-radius: 50%;
   width: 4rem; /* Fixed width */
   height: 4rem; /* Fixed height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden; /* Ensure the logo doesn't overflow the circle */
 }
 
@@ -155,7 +164,6 @@
   position: relative;
   z-index: 2;
   padding: 2rem 6rem; /* Add padding to the left and right */
-  
 }
 
 .iconContainer {

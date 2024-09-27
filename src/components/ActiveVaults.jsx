@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Button } from '@/components/Button'
 import styles from './ActiveVaults.module.css'
 import yieldAnimation from '@/images/JSON/yield.json'
-import mintAnimation from '@/images/JSON/mint.json'
 import dynamic from 'next/dynamic'
 import {
   FaQuestion,
@@ -15,10 +14,8 @@ import {
   FaHandHoldingUsd,
 } from 'react-icons/fa'
 
-// Dynamically import Lottie with SSR disabled
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
-// Custom icon components
 const LowImpermanentLossIcon = () => (
   <svg
     viewBox="0 0 24 24"
@@ -69,7 +66,7 @@ const BorrowingBackground = () => {
   const generateSquares = useCallback(() => {
     const squareSize = 14 // 12px square + 2px gap
     const numSquaresX = Math.ceil(window.innerWidth / squareSize)
-    const numSquaresY = Math.ceil(500 / squareSize) // Adjust this value based on your section height
+    const numSquaresY = Math.ceil(window.innerHeight / squareSize) // Use window.innerHeight instead of a fixed value
     const totalSquares = numSquaresX * numSquaresY
 
     return Array.from({ length: totalSquares }, (_, i) => {
@@ -130,6 +127,29 @@ export function ActiveVaults() {
 
   const headingRef = useRef(null)
   const bannerRef = useRef(null)
+
+  const mintLottieRef1 = useRef(null)
+  const mintLottieRef2 = useRef(null)
+  const mintLottieRef3 = useRef(null)
+  const mintLottieRef4 = useRef(null)
+  const mintLottieRef5 = useRef(null)
+  const [mintAnimationData, setMintAnimationData] = useState(null)
+  const [hoveredMintAnimation, setHoveredMintAnimation] = useState(null)
+
+  const handleMintMouseEnter = (index) => {
+    setHoveredMintAnimation(index)
+  }
+
+  const handleMintMouseLeave = () => {
+    setHoveredMintAnimation(null)
+  }
+
+  useEffect(() => {
+    fetch('/images/mint.json')
+      .then((response) => response.json())
+      .then((data) => setMintAnimationData(data))
+      .catch((error) => console.error('Error loading mint animation:', error))
+  }, [])
 
   useEffect(() => {
     const adjustBannerWidth = () => {
@@ -258,6 +278,39 @@ export function ActiveVaults() {
     </div>
   )
 
+  const borrowOptions = [
+    {
+      title: 'Leverage Yield',
+      features: [
+        'Use yield-bearing collateral like wstETH',
+        'Borrow pegged assets (e.g., baoETH)',
+        'Leverage yield with minimal liquidation risk',
+        'Collateral value increases vs debt over time',
+      ],
+      buttonText: 'Leverage Yield',
+    },
+    {
+      title: 'Leverage Price',
+      features: [
+        'Borrow synths not linked to collateral price',
+        'Sell borrowed asset for more collateral',
+        'Create leveraged long position on collateral',
+        'Or create leveraged short on debt token',
+      ],
+      buttonText: 'Leverage Price',
+    },
+    {
+      title: 'Yield Farming',
+      features: [
+        'Keep exposure to LST tokens (e.g., wstETH)',
+        'Borrow baoUSD against LST collateral',
+        'Deposit into incentivized liquidity pools',
+        'Earn additional rewards',
+      ],
+      buttonText: 'Start Farming',
+    },
+  ]
+
   return (
     <>
       <div className={styles.yieldSection}>
@@ -269,8 +322,10 @@ export function ActiveVaults() {
                 BY PROVIDING DERIVATIVE LIQUIDITY.
               </p>
             </div>
-            <div className={styles.yieldBanner}>
-              <span className={styles.yieldBannerText}>UP TO 50% vAPR</span>
+            <div className={styles.yieldBannerContainer}>
+              <div className={styles.yieldBanner}>
+                <span className={styles.yieldBannerText}>UP TO 50% vAPR</span>
+              </div>
             </div>
             <div className={styles.animationsContainer}>
               {[0, 1, 2].map((index) => (
@@ -338,39 +393,19 @@ export function ActiveVaults() {
           </div>
 
           <div className={styles.borrowOptions}>
-            <div className={styles.borrowItem}>
-              <h3>baoUSD</h3>
-              <ul>
-                <li>Dollar Pegged token</li>
-                <li>Battle tested since 2022</li>
-                <li>Borrow from just 0.2% APR!</li>
-              </ul>
-              <a href="#" className={styles.baoButton}>
-                Borrow baoUSD
-              </a>
-            </div>
-            <div className={styles.borrowItem}>
-              <h3>baoETH</h3>
-              <ul>
-                <li>ETH pegged token</li>
-                <li>Resiliently pegged since 2023</li>
-                <li>Borrow from just 0.2% APR!</li>
-              </ul>
-              <a href="#" className={styles.baoButton}>
-                Borrow baoETH
-              </a>
-            </div>
-            <div className={styles.borrowItem}>
-              <h3>Coming soon</h3>
-              <ul>
-                <li>More pegged tokens!</li>
-                <li>From RWA to new markets</li>
-                <li>Tokens linked to any data feed</li>
-              </ul>
-              <a href="#" className={styles.baoButton} disabled>
-                Find out more
-              </a>
-            </div>
+            {borrowOptions.map((option, index) => (
+              <div key={index} className={styles.borrowItem}>
+                <h3>{option.title}</h3>
+                <ul>
+                  {option.features.map((feature, featureIndex) => (
+                    <li key={featureIndex}>{feature}</li>
+                  ))}
+                </ul>
+                <button className={styles.baoButton}>
+                  {option.buttonText}
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -383,13 +418,35 @@ export function ActiveVaults() {
               <h2 className={styles.mintHeading} ref={headingRef}>
                 MINT
               </h2>
-              <p className={styles.mintSubheader}>
-                PEGGED OR LEVERAGE TOKENS WITH ETH
-              </p>
-              <div className={styles.comingSoonBanner} ref={bannerRef}>
-                <span className={styles.comingSoonText}>Coming Soon</span>
+              <p className={styles.mintSubheader}>PEGGED OR LEVERAGE TOKENS</p>
+            </div>
+            <div className={styles.mintBannerContainer}>
+              <div className={styles.mintBanner}>
+                <span className={styles.mintBannerText}>Coming Soon</span>
               </div>
             </div>
+            {mintAnimationData && (
+              <div className={styles.animationsContainer}>
+                {[0, 1, 2].map((index) => (
+                  <div
+                    key={index}
+                    className={styles.animationWrapper}
+                    onMouseEnter={() => handleMintMouseEnter(index)}
+                    onMouseLeave={handleMintMouseLeave}
+                  >
+                    <Lottie
+                      animationData={mintAnimationData}
+                      loop={hoveredMintAnimation === index}
+                      autoplay={hoveredMintAnimation === index}
+                      style={{ width: '100%', height: '100%' }}
+                      rendererSettings={{
+                        preserveAspectRatio: 'xMidYMid slice',
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <div className={styles.mintExplainerWrapper}>
             <div className={styles.mintExplainerContainer}>

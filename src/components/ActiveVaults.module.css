@@ -1,10 +1,10 @@
 .yieldSection {
   position: relative;
-  padding: 4rem 2rem;
-  background-color: #faf2e3; /* Bao White background */
+  padding: 6rem 0; /* Increase padding to give more vertical space */
+  background-color: #faf2e3;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: center; /* Center content vertically */
+  min-height: 100vh; /* Ensure full viewport height */
 }
 
 .yieldBackground {
@@ -18,7 +18,12 @@
 }
 
 .yieldTextBox {
-  background-color: rgba(30, 32, 34, 0.9); /* Dark, semi-transparent background */
+  background-color: rgba(
+    30,
+    32,
+    34,
+    0.9
+  ); /* Dark, semi-transparent background */
   border-radius: 8px;
   padding: 1.5rem 2rem;
   color: #faf2e3; /* Bao White */
@@ -55,11 +60,8 @@
   overflow: visible; /* Allow icons to overflow the box */
   text-overflow: ellipsis;
   white-space: normal; /* Allow text to wrap onto a new line */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25), 0 12px 40px rgba(0, 0, 0, 0.25);/* Add shadow for hovering effect */
-  
- 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25), 0 12px 40px rgba(0, 0, 0, 0.25); /* Add shadow for hovering effect */
 }
-
 
 .featureIconWrapper {
   position: absolute;
@@ -174,10 +176,11 @@
 .yieldContent {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Changed from flex-start to center */
+  align-items: center; /* Center content vertically */
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 2rem;
+  width: 100%;
 }
 
 .leftContent {
@@ -186,7 +189,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* Center content vertically */
 }
 
 .headingBannerContainer {
@@ -221,15 +224,20 @@
   margin-bottom: -0.5rem;
 }
 
+.yieldBannerContainer {
+  width: 100%;
+  max-width: 500px; /* Increased from 400px to make it wider */
+  margin: 0.5rem auto;
+}
+
 .yieldBanner {
   background-color: #1e2022;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  width: 100%; /* Match the width of the EARN header */
+  width: 100%;
   box-sizing: border-box;
   text-align: center;
-  margin: 0.5rem 0;
-  height: 2.5rem; /* Reduced height */
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,10 +245,20 @@
 
 .yieldBannerText {
   color: #faf2e3;
-  font-size: clamp(12px, 1.5vw, 18px); /* Reduced font size */
+  font-size: clamp(14px, 1.8vw, 20px); /* Slightly increased font size */
   font-weight: bold;
   text-transform: uppercase;
-  line-height: 1; /* Ensure text is vertically centered */
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .yieldBanner {
+    height: 2.25rem; /* Slightly increased height for mobile */
+  }
+
+  .yieldBannerText {
+    font-size: clamp(12px, 2.8vw, 18px); /* Adjusted for mobile */
+  }
 }
 
 .animationsContainer {
@@ -359,27 +377,41 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 12px);
-  grid-gap: 4px;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
   background-color: transparent;
   padding: 0px;
+  line-height: 0; /* Add this line */
 }
 
 .borrowingSquare {
   width: 12px;
   height: 12px;
   transition: background-color 0.3s ease;
+  flex: 0 0 auto; /* Change this line */
 }
 
 /* Target the first 10 rows with decreasing opacity */
-.borrowingBackground .borrowingSquare:nth-child(-n+80) { opacity: 1; }
-.borrowingBackground .borrowingSquare:nth-child(n+81):nth-child(-n+160) { opacity: 0.7; }
-.borrowingBackground .borrowingSquare:nth-child(n+161):nth-child(-n+240) { opacity: 0.6; }
-.borrowingBackground .borrowingSquare:nth-child(n+241):nth-child(-n+320) { opacity: 0.4; }
-.borrowingBackground .borrowingSquare:nth-child(n+321):nth-child(-n+400) { opacity: 0.2; }
-.borrowingBackground .borrowingSquare:nth-child(n+401) { opacity: 0.1; }
+.borrowingBackground .borrowingSquare:nth-child(-n + 80) {
+  opacity: 1;
+}
+.borrowingBackground .borrowingSquare:nth-child(n + 81):nth-child(-n + 160) {
+  opacity: 0.7;
+}
+.borrowingBackground .borrowingSquare:nth-child(n + 161):nth-child(-n + 240) {
+  opacity: 0.6;
+}
+.borrowingBackground .borrowingSquare:nth-child(n + 241):nth-child(-n + 320) {
+  opacity: 0.5;
+}
+.borrowingBackground .borrowingSquare:nth-child(n + 321):nth-child(-n + 400) {
+  opacity: 0.3;
+}
+.borrowingBackground .borrowingSquare:nth-child(n + 401) {
+  opacity: 0.1;
+}
 
 .twinkle {
   animation: twinkle 3s ease-in-out infinite alternate;
@@ -412,7 +444,6 @@
 }
 
 .borrowingHeader h2 {
-  
   font-family: 'Bakbak One', sans-serif;
   font-size: clamp(50px, 12vw, 150px);
   font-weight: bold;
@@ -450,7 +481,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   box-shadow: 0 2px 4px rgba(226, 26, 83, 0.2); /* Changed to Bao Pink with some transparency */
 }
 
@@ -521,7 +552,7 @@
 
 .mintSection {
   position: relative;
-  
+
   padding: 6rem 0;
   overflow: hidden;
   background-color: #faf2e3;
@@ -543,7 +574,7 @@
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 4rem;
+  padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -552,36 +583,38 @@
 
 .mintIntroContainer {
   flex: 0 0 45%;
+  max-width: 45%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  padding-right: 6rem;
-  position: relative;
+  justify-content: center;
+  padding-right: 2rem;
 }
 
 .headingBannerContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
 }
 
 .mintHeading {
   font-family: 'Bakbak One', sans-serif;
   font-size: clamp(60px, 15vw, 180px);
   font-weight: bold;
-  color: #1e2022; /* Dark color for contrast */
+  color: #1e2022;
   line-height: 1;
   text-transform: uppercase;
   margin-bottom: -1rem;
+  text-align: center;
+  width: 100%;
 }
 
 .mintSubheader {
   font-size: clamp(18px, 2vw, 28px);
   font-family: 'Bakbak One', sans-serif;
-  color: #1e2022; /* Dark color for contrast */
+  color: #1e2022;
   text-align: center;
   width: 100%;
   white-space: nowrap;
@@ -591,23 +624,41 @@
   margin-bottom: 0rem;
 }
 
-.comingSoonBanner {
-  background-color: #e21a53;
+.mintBannerContainer {
+  width: 100%;
+  max-width: 500px;
+  margin: 0.5rem auto;
+}
+
+.mintBanner {
+  background-color: #1e2022;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
-  margin-top: 0.5rem;
+  text-align: center;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.comingSoonText {
+.mintBannerText {
   color: #faf2e3;
-  font-size: 0.9rem;
+  font-size: clamp(14px, 1.8vw, 20px);
   font-weight: bold;
   text-transform: uppercase;
-  white-space: nowrap;
-  display: block;
-  text-align: center;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .mintBanner {
+    height: 2.25rem;
+  }
+
+  .mintBannerText {
+    font-size: clamp(12px, 2.8vw, 18px);
+  }
 }
 
 .cursor {
@@ -624,8 +675,13 @@
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .mintDescription {
@@ -644,12 +700,13 @@
   flex: 0 0 55%;
   display: flex;
   position: relative;
+  padding-left: 2rem;
 }
 
 .mintExplainerContainer {
   flex: 1;
-  padding-left: 6rem;
-  padding-right:6rem;
+  padding-left: 2rem;
+  padding-right: 0;
   overflow-y: auto;
   max-height: 400px;
   padding-bottom: 40px;
@@ -709,9 +766,15 @@
 }
 
 @keyframes scrollHint {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .scrollHintContainer {

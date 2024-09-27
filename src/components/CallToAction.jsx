@@ -1,4 +1,4 @@
-import { DiscordLink } from '@/components/DiscordLink'
+import DiscordLink from '@/components/DiscordLink'
 import { CircleBackground } from '@/components/CircleBackground'
 import { Container } from '@/components/Container'
 import logoAura from '@/images/logos/aura.svg'

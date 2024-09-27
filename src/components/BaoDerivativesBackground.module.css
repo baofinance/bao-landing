@@ -1,46 +1,58 @@
 .backgroundContainer {
-    position: relative;
+  position: relative;
 }
 
 .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 12px);
-    grid-gap: 4px;
-    background-color: transparent;
-    padding: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 12px);
+  grid-gap: 4px;
+  background-color: transparent;
+  padding: 0px;
 }
 
 .square {
-    width: 12px;
-    height: 12px;
-    transition: background-color 0.3s ease;
-    background-color: rgba(30, 32, 34, 0.3);
-    opacity: 0;
+  width: 12px;
+  height: 12px;
+  transition: background-color 0.3s ease;
+  background-color: rgba(30, 32, 34, 0.3);
+  opacity: 0;
 }
 
 /* Target the first 10 rows with increasing opacity */
-.background .square:nth-child(-n+80) { opacity: 0.025; }
-.background .square:nth-child(n+81):nth-child(-n+160) { opacity: 0.05; }
-.background .square:nth-child(n+161):nth-child(-n+240) { opacity: 0.15; }
-.background .square:nth-child(n+241):nth-child(-n+320) { opacity: 0.3; }
-.background .square:nth-child(n+321):nth-child(-n+400) { opacity: 0.5; }
-.background .square:nth-child(n+401) { opacity: 0.7; }
+.background .square:nth-child(-n + 80) {
+  opacity: 0.025;
+}
+.background .square:nth-child(n + 81):nth-child(-n + 160) {
+  opacity: 0.05;
+}
+.background .square:nth-child(n + 161):nth-child(-n + 240) {
+  opacity: 0.1;
+}
+.background .square:nth-child(n + 241):nth-child(-n + 320) {
+  opacity: 0.2;
+}
+.background .square:nth-child(n + 321):nth-child(-n + 400) {
+  opacity: 0.35;
+}
+.background .square:nth-child(n + 401) {
+  opacity: 0.6;
+}
 
 .twinkle {
-    animation: twinkle 3s ease-in-out infinite alternate;
+  animation: twinkle 3s ease-in-out infinite alternate;
 }
 
 @keyframes twinkle {
-     0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0.6;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }
