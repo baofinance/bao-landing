@@ -1048,9 +1048,3 @@
 .exploreMarketsButton:hover {
   background-color: #c0164a;
 }
-
-/* Remove the following styles if they exist */
-.exploreMarketsButton,
-.exploreButton {
-  /* Remove any specific styles for these buttons */
-}
