@@ -23,7 +23,7 @@ export function Hero() {
     }, 2000)
 
     return () => clearInterval(interval)
-  }, [currentWordIndex])
+  }, [currentWordIndex, words.length])
 
   return (
     <div>

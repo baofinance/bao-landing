@@ -26,91 +26,45 @@ export function CallToAction() {
             {[
               [
                 'Chainlink',
-                <Image
-                  src="/images/logos/chainlink.svg"
-                  alt="Chainlink Logo"
-                  width={100}
-                  height={100}
-                />,
+                '/images/logos/chainlink.svg',
                 'https://chain.link',
               ],
-              [
-                'Balancer',
-                <Image
-                  src="/images/logos/balancer.svg"
-                  alt="Balancer Logo"
-                  width={100}
-                  height={100}
-                />,
-                'https://balancer.fi',
-              ],
+              ['Balancer', '/images/logos/balancer.svg', 'https://balancer.fi'],
               [
                 'Liquity',
-                <Image
-                  src="/images/logos/liquity.svg"
-                  alt="Liquity Logo"
-                  width={100}
-                  height={100}
-                />,
+                '/images/logos/liquity.svg',
                 'https://www.liquity.org',
               ],
-              [
-                'Aura',
-                <Image
-                  src="/images/logos/aura.svg"
-                  alt="Aura Logo"
-                  width={100}
-                  height={100}
-                />,
-                'https://aura.finance',
-              ],
+              ['Aura', '/images/logos/aura.svg', 'https://aura.finance'],
               [
                 'Curve',
-                <Image
-                  src="/images/logos/curve.svg"
-                  alt="Curve Logo"
-                  width={100}
-                  height={100}
-                />,
+                '/images/logos/curve.svg',
                 'https://curve.fi/#/ethereum/swap',
               ],
               [
                 'StakeDAO',
-                <Image
-                  src="/images/logos/stake-dao.svg"
-                  alt="StakeDAO Logo"
-                  width={100}
-                  height={100}
-                />,
+                '/images/logos/stake-dao.svg',
                 'https://stakedao.org/',
               ],
               [
                 'BProtocol',
-                <Image
-                  src="/images/logos/b-protocol.svg"
-                  alt="B Protocol Logo"
-                  width={100}
-                  height={100}
-                />,
+                '/images/logos/b-protocol.svg',
                 'https://www.bprotocol.org',
               ],
               [
                 'Paladin',
-                <Image
-                  src="/images/logos/paladin.png"
-                  alt="Paladin Logo"
-                  width={100}
-                  height={100}
-                />,
+                '/images/logos/paladin.png',
                 'https://paladin.vote/#/',
               ],
-            ].map(([name, logo, href]) => (
+            ].map(([name, src, href]) => (
               <li key={name} className={clsx('flex')}>
                 <Link href={href}>
                   <Image
-                    src={logo}
+                    src={src}
                     alt={name}
                     className="h-14 w-14 rounded-full bg-baoWhite/5 p-2 outline outline-1 outline-baoWhite/30"
+                    width={100}
+                    height={100}
                     unoptimized
                   />
                 </Link>

@@ -15,6 +15,7 @@ export function XLink() {
           width="36"
           height="36"
           className="-mx-2 invert"
+          alt="X (formerly Twitter) icon"
         />
         <span className="inline justify-center align-middle font-bold text-white">
           Follow X
