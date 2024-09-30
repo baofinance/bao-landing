@@ -13,6 +13,7 @@ import {
   FaExchangeAlt,
   FaHandHoldingUsd,
 } from 'react-icons/fa'
+import Image from 'next/image'
 
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
@@ -63,15 +64,17 @@ const LowComplexityIcon = () => (
 )
 
 const BorrowingBackground = () => {
+  const [squares, setSquares] = useState([])
+
   const generateSquares = useCallback(() => {
     const squareSize = 14 // 12px square + 2px gap
     const numSquaresX = Math.ceil(window.innerWidth / squareSize)
-    const numSquaresY = Math.ceil(window.innerHeight / squareSize) // Use window.innerHeight instead of a fixed value
+    const numSquaresY = Math.ceil(window.innerHeight / squareSize)
     const totalSquares = numSquaresX * numSquaresY
 
     return Array.from({ length: totalSquares }, (_, i) => {
-      const baseOpacity = Math.random() * 0.3 + 0.05 // Random opacity between 0.05 and 0.35
-      const shouldTwinkle = Math.random() < 0.3 // 30% chance of twinkling
+      const baseOpacity = Math.random() * 0.15 + 0.05 // Random opacity between 0.05 and 0.2
+      const shouldTwinkle = Math.random() < 0.2 // 20% chance of twinkling
       const twinkleClass = shouldTwinkle ? styles.twinkle : ''
       const animationDelay = Math.random() * 5 // Random delay up to 5 seconds
 
@@ -88,8 +91,6 @@ const BorrowingBackground = () => {
     })
   }, [])
 
-  const [squares, setSquares] = useState([])
-
   useEffect(() => {
     setSquares(generateSquares())
     const handleResize = () => setSquares(generateSquares())
@@ -104,7 +105,6 @@ const BorrowingBackground = () => {
           key={square.key}
           className={`${styles.borrowingSquare} ${square.twinkleClass}`}
           style={{
-            ...square.style,
             backgroundColor: `rgba(226, 26, 83, ${square.baseOpacity})`,
             animationDelay: `${square.animationDelay}s`,
           }}
@@ -113,6 +113,27 @@ const BorrowingBackground = () => {
     </div>
   )
 }
+
+const supplyTokens = [
+  { name: 'wstETH', imageSrc: '/tokens/wstETH.png' },
+  { name: 'rETH', imageSrc: '/tokens/rETH.png' },
+  { name: 'ETH', imageSrc: '/tokens/ETH.png' },
+  { name: 'weETH', imageSrc: '/tokens/weETH.webp' }, // Changed to .webp
+  { name: 'sUSDe', imageSrc: '/tokens/sUSDe.webp' }, // Changed to .webp
+]
+
+const borrowTokens = [
+  { name: 'baoUSD', imageSrc: '/tokens/baoUSD-pinksvg.svg' },
+  { name: 'baoETH', imageSrc: '/tokens/baoETH-pink.svg' },
+  { name: 'baoBTC', imageSrc: '/tokens/baoBTC-pink.svg' },
+]
+
+const borrowStrategies = [
+  'Leverage Yield',
+  'Leverage Long',
+  'Spend while you earn',
+  'Leverage Short',
+]
 
 export function ActiveVaults() {
   const lottieRef = React.useRef(null)
@@ -124,6 +145,7 @@ export function ActiveVaults() {
   const fullText = 'Up to 50% vAPR'
 
   const [hoveredAnimation, setHoveredAnimation] = useState(null)
+  const animationRefs = useRef([])
 
   const headingRef = useRef(null)
   const bannerRef = useRef(null)
@@ -135,6 +157,29 @@ export function ActiveVaults() {
   const mintLottieRef5 = useRef(null)
   const [mintAnimationData, setMintAnimationData] = useState(null)
   const [hoveredMintAnimation, setHoveredMintAnimation] = useState(null)
+
+  const [currentStrategyIndex, setCurrentStrategyIndex] = useState(0)
+  const [previousStrategyIndex, setPreviousStrategyIndex] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+
+  useEffect(() => {
+    // Initialize previousStrategyIndex after component mount
+    setPreviousStrategyIndex(borrowStrategies.length - 1)
+
+    const interval = setInterval(() => {
+      setIsTransitioning(true)
+      setPreviousStrategyIndex(currentStrategyIndex)
+      setCurrentStrategyIndex(
+        (prevIndex) => (prevIndex + 1) % borrowStrategies.length
+      )
+
+      setTimeout(() => {
+        setIsTransitioning(false)
+      }, 500)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [currentStrategyIndex])
 
   const handleMintMouseEnter = (index) => {
     setHoveredMintAnimation(index)
@@ -237,6 +282,27 @@ export function ActiveVaults() {
     setHoveredAnimation(null)
   }
 
+  useEffect(() => {
+    const checkMousePosition = (event) => {
+      const { clientX, clientY } = event
+      let isOverAnimation = false
+
+      animationRefs.current.forEach((ref, index) => {
+        if (ref && ref.contains(document.elementFromPoint(clientX, clientY))) {
+          isOverAnimation = true
+          setHoveredAnimation(index)
+        }
+      })
+
+      if (!isOverAnimation) {
+        setHoveredAnimation(null)
+      }
+    }
+
+    window.addEventListener('mousemove', checkMousePosition)
+    return () => window.removeEventListener('mousemove', checkMousePosition)
+  }, [])
+
   const renderFeatureItem = (
     icon,
     header,
@@ -278,39 +344,6 @@ export function ActiveVaults() {
     </div>
   )
 
-  const borrowOptions = [
-    {
-      title: 'Leverage Yield',
-      features: [
-        'Use yield-bearing collateral like wstETH',
-        'Borrow pegged assets (e.g., baoETH)',
-        'Leverage yield with minimal liquidation risk',
-        'Collateral value increases vs debt over time',
-      ],
-      buttonText: 'Leverage Yield',
-    },
-    {
-      title: 'Leverage Price',
-      features: [
-        'Borrow synths not linked to collateral price',
-        'Sell borrowed asset for more collateral',
-        'Create leveraged long position on collateral',
-        'Or create leveraged short on debt token',
-      ],
-      buttonText: 'Leverage Price',
-    },
-    {
-      title: 'Yield Farming',
-      features: [
-        'Keep exposure to LST tokens (e.g., wstETH)',
-        'Borrow baoUSD against LST collateral',
-        'Deposit into incentivized liquidity pools',
-        'Earn additional rewards',
-      ],
-      buttonText: 'Start Farming',
-    },
-  ]
-
   return (
     <>
       <div className={styles.yieldSection}>
@@ -334,11 +367,13 @@ export function ActiveVaults() {
                   className={styles.animationWrapper}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
+                  ref={(el) => (animationRefs.current[index] = el)}
                 >
                   {animationData && (
                     <Lottie
                       animationData={animationData}
                       loop={hoveredAnimation === index}
+                      autoplay={hoveredAnimation === index}
                       style={{ width: '100%', height: '100%' }}
                       rendererSettings={{
                         preserveAspectRatio: 'xMidYMid slice',
@@ -384,29 +419,65 @@ export function ActiveVaults() {
         <BorrowingBackground />
         <div className={styles.borrowingContent}>
           <div className={styles.borrowingHeader}>
-            <h2 className={styles.borrowHeading}>BORROW </h2>
-            <p className={styles.borrowingHeader}>AT THE BEST RATES.</p>
-
-            <a href="#strategies" className={styles.baoButton}>
-              Explore strategies
-            </a>
+            <h2 className={styles.activeVaultsHeading}>BORROW</h2>
+            <p className={styles.activeVaultsSubheading}>AT THE BEST RATES</p>
+            <Button href="#" className={styles.baoButton}>
+              EXPLORE MARKETS
+            </Button>
           </div>
-
-          <div className={styles.borrowOptions}>
-            {borrowOptions.map((option, index) => (
-              <div key={index} className={styles.borrowItem}>
-                <h3>{option.title}</h3>
-                <ul>
-                  {option.features.map((feature, featureIndex) => (
-                    <li key={featureIndex}>{feature}</li>
-                  ))}
-                </ul>
-                <button className={styles.baoButton}>
-                  {option.buttonText}
-                </button>
+          <div className={styles.borrowBoxesContainer}>
+            <div className={styles.borrowBox}>
+              <h3>Supply</h3>
+              <div className={styles.tokenGrid}>
+                {supplyTokens.map((token, index) => (
+                  <div key={index} className={styles.tokenItem}>
+                    <Image
+                      src={token.imageSrc}
+                      alt={`${token.name} Logo`}
+                      width={50}
+                      height={50}
+                    />
+                    <h4>{token.name}</h4>
+                  </div>
+                ))}
               </div>
+            </div>
+            <div className={styles.borrowBox}>
+              <h3>Borrow</h3>
+              <div className={styles.tokenGrid}>
+                {borrowTokens.map((token, index) => (
+                  <div key={index} className={styles.tokenItem}>
+                    <Image
+                      src={token.imageSrc}
+                      alt={`${token.name} Logo`}
+                      width={50}
+                      height={50}
+                    />
+                    <h4>{token.name}</h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className={styles.strategyContainer}>
+            {borrowStrategies.map((strategy, index) => (
+              <p
+                key={strategy}
+                className={`${styles.strategy} ${
+                  index === currentStrategyIndex
+                    ? styles.active
+                    : index === previousStrategyIndex && isTransitioning
+                    ? styles.previous
+                    : ''
+                }`}
+              >
+                {strategy}
+              </p>
             ))}
           </div>
+          <Button href="#" className={styles.baoButton}>
+            EXPLORE STRATEGIES
+          </Button>
         </div>
       </section>
 

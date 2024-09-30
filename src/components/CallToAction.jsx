@@ -1,14 +1,6 @@
 import DiscordLink from '@/components/DiscordLink'
 import { CircleBackground } from '@/components/CircleBackground'
 import { Container } from '@/components/Container'
-import logoAura from '@/images/logos/aura.svg'
-import logoBProtocol from '@/images/logos/b-protocol.svg'
-import logoBalancer from '@/images/logos/balancer.svg'
-import logoChainlink from '@/images/logos/chainlink.svg'
-import logoCurve from '@/images/logos/curve.svg'
-import logoLiquity from '@/images/logos/liquity.svg'
-import logoPaladin from '@/images/logos/paladin.png'
-import logoStakeDAO from '@/images/logos/stake-dao.svg'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -32,14 +24,86 @@ export function CallToAction() {
             className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-4 lg:mx-0"
           >
             {[
-              ['Chainlink', logoChainlink, 'https://chain.link'],
-              ['Balancer', logoBalancer, 'https://balancer.fi'],
-              ['Liquity', logoLiquity, 'https://www.liquity.org'],
-              ['Aura', logoAura, 'https://aura.finance'],
-              ['Curve', logoCurve, 'https://curve.fi/#/ethereum/swap'],
-              ['StakeDAO', logoStakeDAO, 'https://stakedao.org/'],
-              ['BProtocol', logoBProtocol, 'https://www.bprotocol.org'],
-              ['Paladin', logoPaladin, 'https://paladin.vote/#/'],
+              [
+                'Chainlink',
+                <Image
+                  src="/images/logos/chainlink.svg"
+                  alt="Chainlink Logo"
+                  width={100}
+                  height={100}
+                />,
+                'https://chain.link',
+              ],
+              [
+                'Balancer',
+                <Image
+                  src="/images/logos/balancer.svg"
+                  alt="Balancer Logo"
+                  width={100}
+                  height={100}
+                />,
+                'https://balancer.fi',
+              ],
+              [
+                'Liquity',
+                <Image
+                  src="/images/logos/liquity.svg"
+                  alt="Liquity Logo"
+                  width={100}
+                  height={100}
+                />,
+                'https://www.liquity.org',
+              ],
+              [
+                'Aura',
+                <Image
+                  src="/images/logos/aura.svg"
+                  alt="Aura Logo"
+                  width={100}
+                  height={100}
+                />,
+                'https://aura.finance',
+              ],
+              [
+                'Curve',
+                <Image
+                  src="/images/logos/curve.svg"
+                  alt="Curve Logo"
+                  width={100}
+                  height={100}
+                />,
+                'https://curve.fi/#/ethereum/swap',
+              ],
+              [
+                'StakeDAO',
+                <Image
+                  src="/images/logos/stake-dao.svg"
+                  alt="StakeDAO Logo"
+                  width={100}
+                  height={100}
+                />,
+                'https://stakedao.org/',
+              ],
+              [
+                'BProtocol',
+                <Image
+                  src="/images/logos/b-protocol.svg"
+                  alt="B Protocol Logo"
+                  width={100}
+                  height={100}
+                />,
+                'https://www.bprotocol.org',
+              ],
+              [
+                'Paladin',
+                <Image
+                  src="/images/logos/paladin.png"
+                  alt="Paladin Logo"
+                  width={100}
+                  height={100}
+                />,
+                'https://paladin.vote/#/',
+              ],
             ].map(([name, logo, href]) => (
               <li key={name} className={clsx('flex')}>
                 <Link href={href}>

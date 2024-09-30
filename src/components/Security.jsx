@@ -2,7 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import styles from './Security.module.css'
 
+// Remove the import for immunefiLogo
+
 const SecurityBackground = () => {
+  const [squares, setSquares] = useState([])
+
   const generateSquares = useCallback(() => {
     const squareSize = 14 // 12px square + 2px gap
     const numSquaresX = Math.ceil(window.innerWidth / squareSize)
@@ -10,10 +14,10 @@ const SecurityBackground = () => {
     const totalSquares = numSquaresX * numSquaresY
 
     return Array.from({ length: totalSquares }, (_, i) => {
-      const baseOpacity = Math.random() * 0.3 + 0.05
-      const shouldTwinkle = Math.random() < 0.3
+      const baseOpacity = Math.random() * 0.15 + 0 // Random opacity between 0.05 and 0.2
+      const shouldTwinkle = Math.random() < 0.7 // 20% chance of twinkling
       const twinkleClass = shouldTwinkle ? styles.twinkle : ''
-      const animationDelay = Math.random() * 5
+      const animationDelay = Math.random() * 5 // Random delay up to 5 seconds
 
       return {
         key: i,
@@ -27,8 +31,6 @@ const SecurityBackground = () => {
       }
     })
   }, [])
-
-  const [squares, setSquares] = useState([])
 
   useEffect(() => {
     setSquares(generateSquares())
@@ -60,7 +62,7 @@ export function Security() {
       <SecurityBackground />
       <div className={styles.securityContent}>
         <div className={styles.securityHeadingContainer}>
-          <h2 className={styles.securityHeading}>SECURE</h2>
+          <h2 className={styles.securityHeading}>SECURED</h2>
           <p className={styles.securitySubheading}>FROM ALL ANGLES</p>
         </div>
         <div className={styles.securityGrid}>
@@ -71,7 +73,7 @@ export function Security() {
               since 2021.
             </p>
             <Image
-              src="/path/to/immunefi-logo.png"
+              src="/images/logos/immunefi.svg" // Updated to use the correct path and file format
               alt="Immunefi Logo"
               width={100}
               height={100}

@@ -86,84 +86,54 @@ const BaoUSDLogo = () => (
 
 const BaoDerivatives = () => {
   const [squares, setSquares] = useState([])
-  const [hoveredIndex, setHoveredIndex] = useState(null)
 
   const generateSquares = useCallback(() => {
-    const squareSize = 14 // 6px square + 6px gap
+    const squareSize = 14 // 12px square + 2px gap
     const numSquaresX = Math.ceil(window.innerWidth / squareSize)
-    const numSquaresY = Math.ceil(500 / squareSize) // Adjust this value based on your section height
+    const numSquaresY = Math.ceil(window.innerHeight / squareSize)
     const totalSquares = numSquaresX * numSquaresY
 
     return Array.from({ length: totalSquares }, (_, i) => {
-      const baseOpacity = Math.random() * 0.3 + 0.05 // Random opacity between 0.1 and 0.6
+      const baseOpacity = Math.random() * 0.3 + 0.05 // Random opacity between 0.05 and 0.35
       const shouldTwinkle = Math.random() < 0.3 // 30% chance of twinkling
       const twinkleClass = shouldTwinkle ? backgroundStyles.twinkle : ''
       const animationDelay = Math.random() * 5 // Random delay up to 5 seconds
 
       return {
+        key: i,
         baseOpacity,
         twinkleClass,
         animationDelay,
-        x: i % numSquaresX,
-        y: Math.floor(i / numSquaresX),
+        style: {
+          gridColumn: (i % numSquaresX) + 1,
+          gridRow: Math.floor(i / numSquaresX) + 1,
+        },
       }
     })
   }, [])
 
   useEffect(() => {
     setSquares(generateSquares())
-
-    const handleResize = () => {
-      setSquares(generateSquares())
-    }
-
+    const handleResize = () => setSquares(generateSquares())
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [generateSquares])
-
-  const calculateDistance = (index, hoveredIndex, numSquaresX) => {
-    if (hoveredIndex === null) return Infinity
-    const x1 = index % numSquaresX
-    const y1 = Math.floor(index / numSquaresX)
-    const x2 = hoveredIndex % numSquaresX
-    const y2 = Math.floor(hoveredIndex / numSquaresX)
-    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))
-  }
-
-  const calculateOpacity = (distance, maxDistance = 10) => {
-    if (distance === Infinity) return 1
-    const opacity = distance / maxDistance
-    return Math.min(Math.max(opacity, 0), 1)
-  }
 
   return (
     <section
       className={`${styles.derivativesSection} ${backgroundStyles.backgroundContainer}`}
     >
       <div className={backgroundStyles.background}>
-        {squares.map((square, index) => {
-          const distance = calculateDistance(
-            index,
-            hoveredIndex,
-            Math.ceil(window.innerWidth / 12)
-          )
-          const opacity = calculateOpacity(distance)
-          return (
-            <div
-              key={index}
-              className={`${backgroundStyles.square} ${square.twinkleClass}`}
-              style={{
-                backgroundColor: `rgba(226, 26, 83, ${
-                  square.baseOpacity * opacity
-                })`,
-                animationDelay: `${square.animationDelay}s`,
-                transition: 'background-color 0.3s ease',
-              }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            />
-          )
-        })}
+        {squares.map((square, index) => (
+          <div
+            key={index}
+            className={`${backgroundStyles.square} ${square.twinkleClass}`}
+            style={{
+              backgroundColor: `rgba(226, 26, 83, ${square.baseOpacity})`,
+              animationDelay: `${square.animationDelay}s`,
+            }}
+          />
+        ))}
       </div>
       <div className={styles.content}>
         <div className={styles.headerBannerContainer}>

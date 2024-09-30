@@ -119,7 +119,7 @@
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  padding: 0.5rem 1rem; /* Reduced vertical padding */
+  padding: 0.5rem 1rem;
   font-size: 0.9rem;
   font-weight: bold;
   text-align: center;
@@ -128,10 +128,15 @@
   text-decoration: none;
   display: inline-block;
   margin-top: 1rem;
-  width: auto; /* Allow button to size to content */
-  min-width: 120px; /* Set a minimum width */
-  max-width: 200px; /* Set a maximum width */
+  width: auto;
+  min-width: 120px;
+  max-width: 200px;
 }
+
+.baoButton:hover {
+  background-color: #c0164a; /* Darker shade of Bao Pink */
+}
+
 .buttonContainer {
   display: flex;
   justify-content: space-between;
@@ -158,10 +163,6 @@
 
 .baoButton:not(.learnMoreButton):hover {
   background-color: #c0164a;
-}
-
-.baoButton:hover {
-  background-color: #c0164a; /* Darker shade of Bao Pink */
 }
 
 .inactiveButton {
@@ -422,7 +423,7 @@
     opacity: 0;
   }
   100% {
-    opacity: 0.5;
+    opacity: 1;
   }
 }
 
@@ -436,14 +437,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .borrowingHeader {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.borrowingHeader h2 {
+.activeVaultsHeading {
   font-family: 'Bakbak One', sans-serif;
   font-size: clamp(50px, 12vw, 150px);
   font-weight: bold;
@@ -455,8 +460,8 @@
   width: 100%;
 }
 
-.borrowingHeader p {
-  font-size: clamp(18px, 2vw, 28px); /* Slightly increased */
+.activeVaultsSubheading {
+  font-size: clamp(18px, 2vw, 28px);
   font-family: 'Bakbak One', sans-serif;
   color: #faf2e3;
   text-align: center;
@@ -464,7 +469,65 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-bottom: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+.borrowBoxesContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.strategyContainer {
+  position: relative;
+  height: 40px;
+  overflow: hidden;
+  margin: 2rem 0;
+  width: 100%;
+  text-align: center;
+}
+
+.strategy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s, transform 0.5s;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #faf2e3;
+}
+
+.strategy.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.strategy.previous {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.exploreButton {
+  background-color: #e21a53;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.exploreButton:hover {
+  background-color: #c0164a;
 }
 
 .borrowOptions {
@@ -505,12 +568,16 @@
   margin-bottom: 0.5rem;
   color: #faf2e3;
   position: relative;
+  padding-left: 1.5rem; /* Add some padding to the left for the arrow */
 }
 
 .borrowItem li::before {
-  content: '✓';
+  content: '→'; /* Change from '✓' to '→' */
   color: #e21a53;
-  margin-right: 0.5rem;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   font-weight: bold;
 }
 
@@ -804,4 +871,186 @@
   background-color: rgba(226, 26, 83, 0.5);
   border-radius: 2px;
   transform: translateX(-50%);
+}
+
+/* Add these new styles for the token grid */
+.tokenGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tokenItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.tokenItem h4 {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.vaultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.vaultItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.vaultItem h3 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Add media queries if needed */
+@media (min-width: 768px) {
+  .tokenGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .tokenGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .vaultsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .vaultsGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.borrowBoxesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.borrowBox {
+  background-color: rgba(30, 32, 34, 0.8);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25), 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.borrowBox h3 {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 1.5rem;
+  color: #faf2e3;
+  margin-bottom: 1rem;
+}
+
+.tokenGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.tokenItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.tokenItem h4 {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #faf2e3;
+}
+
+@media (max-width: 768px) {
+  .borrowBoxesContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.strategyContainer {
+  position: relative;
+  height: 40px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.strategy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s, transform 0.5s;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #faf2e3;
+}
+
+.strategy.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.strategy.previous {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.borrowingHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.baoButton {
+  margin-top: 1rem;
+}
+
+.exploreMarketsButton {
+  background-color: #e21a53;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  margin-bottom: 2rem; /* Add space between the button and the boxes */
+}
+
+.exploreMarketsButton:hover {
+  background-color: #c0164a;
+}
+
+/* Remove the following styles if they exist */
+.exploreMarketsButton,
+.exploreButton {
+  /* Remove any specific styles for these buttons */
 }

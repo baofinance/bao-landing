@@ -1,8 +1,8 @@
 .securitySection {
   position: relative;
+  color: #faf2e3;
   padding: 6rem 0;
   overflow: hidden;
-  color: #faf2e3;
 }
 
 .securityBackground {
@@ -33,10 +33,17 @@
 
 @keyframes twinkle {
   0% {
-    opacity: 0;
+    opacity: 0.05;
   }
   100% {
-    opacity: 0.5;
+    opacity: 0.25;
+  }
+}
+
+/* Add this new rule */
+@media (prefers-reduced-motion: reduce) {
+  .securitySquare {
+    animation: none;
   }
 }
 
@@ -57,49 +64,68 @@
   font-family: 'Bakbak One', sans-serif;
   font-size: clamp(50px, 12vw, 150px);
   font-weight: bold;
-  color: #faf2e3;
+  color: #faf2e3; /* Changed to BaoWhite */
   line-height: 1;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
+  text-align: center; /* Ensure it's centered */
 }
 
 .securitySubheading {
   font-size: clamp(18px, 2vw, 28px);
   font-family: 'Bakbak One', sans-serif;
-  color: #faf2e3;
+  color: #faf2e3; /* Changed to BaoWhite */
   text-transform: uppercase;
+  text-align: center; /* Ensure it's centered */
 }
 
 .securityGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
   gap: 2rem;
+  max-width: 1200px; /* Add max-width to control overall width */
+  margin: 0 auto; /* Center the grid */
 }
 
 .securityItem {
-  background-color: rgba(30, 32, 34, 0.8);
+  background-color: #1e2022; /* BaoBlack color */
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem; /* Increase padding */
   box-shadow: 0 2px 4px rgba(226, 26, 83, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px; /* Set a minimum height */
 }
 
 .securityItem h3 {
   font-family: 'Bakbak One', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   margin-bottom: 1rem;
-  color: #e21a53;
+  color: #faf2e3; /* Changed to BaoWhite */
+  text-align: center;
 }
 
 .securityItem p {
   margin-bottom: 1rem;
+  font-size: 1.1rem; /* Increase font size */
+  line-height: 1.5;
+  color: #faf2e3; /* Ensure paragraph text is BaoWhite */
+  text-align: center; /* Center the paragraph text */
+}
+
+@media (max-width: 1024px) {
+  .securityGrid {
+    grid-template-columns: 1fr; /* Switch to single column on smaller screens */
+  }
 }
 
 @media (max-width: 768px) {
-  .securityGrid {
-    grid-template-columns: 1fr;
+  .securityContent {
+    padding: 2rem 1rem; /* Reduce padding on smaller screens */
   }
 
-  .securityContent {
-    padding: 2rem;
+  .securityItem {
+    padding: 1.5rem; /* Reduce padding on smaller screens */
   }
 }

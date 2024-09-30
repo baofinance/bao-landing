@@ -11,9 +11,12 @@ import logoPaladin from '@/images/logos/paladin.png'
 import logoStakeDAO from '@/images/logos/stake-dao.svg'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { Logo } from '@/components/Logo'
+import Image from 'next/image' // Add this import
+
+// Remove the Logo import if it's not being used
+// import { Logo } from '@/components/Logo'
+
 import clsx from 'clsx'
-import Image from 'next/image'
 
 function MenuIcon(props) {
   return (
@@ -84,7 +87,13 @@ export function Header() {
             className="flex place-items-center space-x-4 px-2 py-2"
             aria-label="Home"
           >
-            <Logo className="h-10 w-auto" /> {/* Reduced from h-16 to h-10 */}
+            <Image
+              src="/images/logos/BaoLogoFull.svg"
+              alt="BAO Logo"
+              width={100} // Adjust this value as needed
+              height={40} // Adjust this value as needed
+              className="h-10 w-auto" // This keeps the original class from the Logo component
+            />
           </Link>
         </div>
 
