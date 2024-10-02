@@ -17,7 +17,7 @@ import styles from './SecondaryFeatures.module.css'
 
 const features = [
   {
-    name: 'Community Funded', // Changed from 'VC Free' to 'Community Funded'
+    name: 'Community Funded',
     description:
       'During our distribution phase, Bao raised funds from over 200 DeFi communities, freeing us from the shackles of Venture Capitalists primarily interested in extracting value.',
     icon: AutomatedIcon,
@@ -31,7 +31,7 @@ const features = [
   {
     name: 'Grassroots',
     description:
-      "Anyone can contribute to Bao's success. All of the core team were regular community members at one time. We are focused on mass participation from anyone who supports our mission.",
+      'Anyone can contribute to Bao&apos;s success. All of the core team were regular community members at one time. We are focused on mass participation from anyone who supports our mission.',
     icon: YieldIcon,
   },
   {
@@ -88,8 +88,8 @@ export function SecondaryFeatures() {
             <p className={styles.bannerText}>Dream and build with us!</p>
           </div>
           <p className={styles.subheading}>
-            Get involved with Bao Finance's governance! Join our community on
-            Discord for discussions and updates. Vote on key proposals on
+            Get involved with Bao Finance&apos;s governance! Join our community
+            on Discord for discussions and updates. Vote on key proposals on
             Snapshot and stay informed on X. Your participation is crucial.
           </p>
           <div className={styles.links}>
