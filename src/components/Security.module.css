@@ -62,45 +62,84 @@
 
 .securityHeading {
   font-family: 'Bakbak One', sans-serif;
-  font-size: clamp(50px, 12vw, 150px);
+  font-size: clamp(30px, 8vw, 100px);
   font-weight: bold;
-  color: #faf2e3; /* Changed to BaoWhite */
+  color: #faf2e3; /* BaoWhite */
   line-height: 1;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
-  text-align: center; /* Ensure it's centered */
+  text-align: center;
+  width: 100%;
 }
 
 .securitySubheading {
-  font-size: clamp(18px, 2vw, 28px);
+  font-size: clamp(14px, 1.5vw, 22px);
   font-family: 'Bakbak One', sans-serif;
-  color: #faf2e3; /* Changed to BaoWhite */
   text-transform: uppercase;
-  text-align: center; /* Ensure it's centered */
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em; /* Reduced from 0.05em to 0.02em */
+  color: #faf2e3;
 }
 
 .securityGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
-  gap: 2rem;
-  max-width: 1200px; /* Add max-width to control overall width */
-  margin: 0 auto; /* Center the grid */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem 2rem; /* Increased vertical gap from 2rem to 4rem */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .securityItem {
-  background-color: #1e2022; /* BaoBlack color */
+  background-color: #1e2022;
   border-radius: 12px;
-  padding: 2rem; /* Increase padding */
+  padding: 2rem;
   box-shadow: 0 2px 4px rgba(226, 26, 83, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 250px; /* Set a minimum height */
+  min-height: 250px;
+  position: relative; /* Add this */
+  padding-top: 3rem; /* Reduced from 4rem to 3rem to bring content closer to icon */
+}
+
+.securityIconContainer {
+  position: absolute;
+  left: 50%;
+  top: -2rem;
+  transform: translateX(-50%);
+  width: 4rem;
+  height: 4rem;
+  background-color: #e21a53;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.securityIcon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.securityIcon > * {
+  color: #faf2e3 !important;
+  fill: #faf2e3 !important;
+  width: 65%;
+  height: 65%;
 }
 
 .securityItem h3 {
   font-family: 'Bakbak One', sans-serif;
   font-size: 1.75rem;
+  margin-top: 0.5rem; /* Added margin-top to reduce space between icon and header */
   margin-bottom: 1rem;
   color: #faf2e3; /* Changed to BaoWhite */
   text-align: center;
@@ -116,7 +155,8 @@
 
 @media (max-width: 1024px) {
   .securityGrid {
-    grid-template-columns: 1fr; /* Switch to single column on smaller screens */
+    grid-template-columns: 1fr;
+    gap: 5rem; /* Increased gap for single column layout */
   }
 }
 
@@ -127,5 +167,6 @@
 
   .securityItem {
     padding: 1.5rem; /* Reduce padding on smaller screens */
+    padding-top: 2.5rem; /* Adjusted for smaller screens */
   }
 }

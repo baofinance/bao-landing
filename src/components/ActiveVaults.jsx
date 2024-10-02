@@ -351,9 +351,7 @@ export function ActiveVaults() {
           <div className={styles.leftContent}>
             <div className={styles.headingBannerContainer}>
               <h2 className={styles.yieldHeading}>EARN</h2>
-              <p className={styles.yieldSubheading}>
-                BY PROVIDING DERIVATIVE LIQUIDITY.
-              </p>
+              <p className={styles.yieldSubheading}>BY PROVIDING LIQUIDITY.</p>
             </div>
             <div className={styles.yieldBannerContainer}>
               <div className={styles.yieldBanner}>
@@ -489,7 +487,7 @@ export function ActiveVaults() {
               <h2 className={styles.mintHeading} ref={headingRef}>
                 MINT
               </h2>
-              <p className={styles.mintSubheader}>PEGGED OR LEVERAGE TOKENS</p>
+              <p className={styles.mintSubheading}>PEGGED OR LEVERAGE TOKENS</p>
             </div>
             <div className={styles.mintBannerContainer}>
               <div className={styles.mintBanner}>

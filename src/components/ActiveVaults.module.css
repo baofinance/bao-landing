@@ -201,34 +201,70 @@
   text-align: center;
 }
 
-.yieldHeading {
+.yieldHeading,
+.activeVaultsHeading,
+.mintHeading {
   font-family: 'Bakbak One', sans-serif;
-  font-size: clamp(50px, 12vw, 150px);
+  font-size: clamp(30px, 8vw, 100px);
   font-weight: bold;
-  color: #1e2022;
   line-height: 1;
   text-transform: uppercase;
-  margin-bottom: -0.5rem;
+  margin-bottom: 0.25rem; /* Reduced from 0.5rem to 0.25rem */
   text-align: center;
   width: 100%;
 }
 
+/* Specific color adjustments */
+.yieldHeading,
 .yieldSubheading {
-  font-size: clamp(18px, 2vw, 28px); /* Slightly increased */
+  color: #1e2022; /* For the EARN section */
+}
+
+.activeVaultsHeading,
+.activeVaultsSubheading {
+  color: #faf2e3; /* For the BORROW section */
+}
+
+.mintHeading,
+.mintSubheading {
+  color: #1e2022; /* For the MINT section */
+}
+
+/* Add this new class for all subheaders */
+.sectionSubheading {
+  font-size: clamp(14px, 1.5vw, 22px);
   font-family: 'Bakbak One', sans-serif;
-  color: #1e2022;
+  text-transform: uppercase;
   text-align: center;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-bottom: -0.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* Update these classes to use the new .sectionSubheading class */
+.yieldSubheading,
+.activeVaultsSubheading,
+.mintSubheading {
+  font-size: clamp(14px, 1.5vw, 22px);
+  font-family: 'Bakbak One', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.25rem; /* Reduced from 1rem to 0.5rem */
+  letter-spacing: 0.02em;
+  color: #1e2022; /* For the EARN section */
 }
 
 .yieldBannerContainer {
   width: 100%;
-  max-width: 500px; /* Increased from 400px to make it wider */
-  margin: 0.5rem auto;
+  max-width: 300px;
+  margin: 0.25rem auto; /* Reduced from 0.5rem to 0.25rem */
 }
 
 .yieldBanner {
@@ -246,18 +282,20 @@
 
 .yieldBannerText {
   color: #faf2e3;
-  font-size: clamp(14px, 1.8vw, 20px); /* Slightly increased font size */
+  font-size: clamp(12px, 1.5vw, 18px);
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1;
 }
 
 @media (max-width: 768px) {
-  .yieldBanner {
+  .yieldBanner,
+  .mintBanner {
     height: 2.25rem; /* Slightly increased height for mobile */
   }
 
-  .yieldBannerText {
+  .yieldBannerText,
+  .mintBannerText {
     font-size: clamp(12px, 2.8vw, 18px); /* Adjusted for mobile */
   }
 }
@@ -266,11 +304,12 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 1rem;
+  max-width: 400px; /* Match the width of the EARN header */
+  margin: 1rem auto 0;
 }
 
 .animationWrapper {
-  width: 32%;
+  width: 30%; /* Slightly reduced from 32% */
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
@@ -333,11 +372,13 @@
     font-size: clamp(16px, 3vw, 24px); /* Adjusted for mobile */
   }
 
-  .yieldBanner {
+  .yieldBanner,
+  .mintBanner {
     height: 2rem; /* Even smaller on mobile */
   }
 
-  .yieldBannerText {
+  .yieldBannerText,
+  .mintBannerText {
     font-size: clamp(10px, 2.5vw, 16px); /* Adjusted for mobile */
   }
 
@@ -346,7 +387,8 @@
     max-width: 100%;
   }
 
-  .yieldBanner {
+  .yieldBanner,
+  .mintBanner {
     width: 100%; /* Full width on smaller screens */
   }
 }
@@ -450,18 +492,18 @@
 
 .activeVaultsHeading {
   font-family: 'Bakbak One', sans-serif;
-  font-size: clamp(50px, 12vw, 150px);
+  font-size: clamp(30px, 8vw, 100px); /* Matches the EARN header size */
   font-weight: bold;
   color: #faf2e3;
   line-height: 1;
   text-transform: uppercase;
-  margin-bottom: -0.5rem;
+  margin-bottom: 0.5rem;
   text-align: center;
   width: 100%;
 }
 
 .activeVaultsSubheading {
-  font-size: clamp(18px, 2vw, 28px);
+  font-size: clamp(14px, 1.5vw, 22px); /* Matches the EARN subheading size */
   font-family: 'Bakbak One', sans-serif;
   color: #faf2e3;
   text-align: center;
@@ -668,32 +710,38 @@
 
 .mintHeading {
   font-family: 'Bakbak One', sans-serif;
-  font-size: clamp(60px, 15vw, 180px);
+  font-size: clamp(30px, 8vw, 100px); /* Matches the size of other headers */
   font-weight: bold;
-  color: #1e2022;
+  color: #1e2022; /* Adjust this color if needed for the MINT section */
   line-height: 1;
   text-transform: uppercase;
-  margin-bottom: -1rem;
+  margin-bottom: 0.1rem; /* Reduced from 0.25rem to 0.1rem */
   text-align: center;
   width: 100%;
 }
 
-.mintSubheader {
-  font-size: clamp(18px, 2vw, 28px);
+.mintSubheading {
+  font-size: clamp(
+    14px,
+    1.5vw,
+    22px
+  ); /* Matches the size of other subheadings */
   font-family: 'Bakbak One', sans-serif;
-  color: #1e2022;
+  text-transform: uppercase;
   text-align: center;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 0rem;
-  margin-bottom: 0rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+  color: #1e2022; /* For the MINT section */
 }
 
 .mintBannerContainer {
   width: 100%;
-  max-width: 500px;
+  max-width: 300px; /* Reduced from 500px to 300px */
   margin: 0.5rem auto;
 }
 
@@ -1048,3 +1096,40 @@
 .exploreMarketsButton:hover {
   background-color: #c0164a;
 }
+
+.yieldHeading {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: clamp(30px, 8vw, 100px);
+  font-weight: bold;
+  color: #1e2022; /* Adjust this color if needed */
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: -0.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.yieldSubheading {
+  font-size: clamp(
+    14px,
+    1.5vw,
+    22px
+  ); /* Increased from 14px to match BORROW subheader */
+  font-family: 'Bakbak One', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  color: #1e2022; /* For the EARN section */
+}
+
+/* Remove the .subheader class if it's no longer needed */
+/* .subheader {
+  font-size: 14px !important;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+} */

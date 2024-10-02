@@ -139,41 +139,46 @@
 
 .heroheader {
   font-family: 'Bakbak One', sans-serif;
-  font-size: clamp(40px, 9.5vw, 140px); // Reduced from clamp(50px, 10vw, 150px)
+  font-size: clamp(30px, 8vw, 100px);
   font-weight: bold;
   color: #faf2e3; /* BaoWhite */
-  line-height: 0.9;
+  line-height: 1;
   text-transform: uppercase;
-  margin-top: 0.5rem; // Added a small top margin
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
+  text-align: left;
+  width: 100%;
+  padding-left: 0; // Remove any left padding
 }
 
 .taglineText {
   color: #faf2e3; /* BaoWhite */
-  font-size: 1.25rem;
+  font-size: 1rem; // Reduced from 1.25rem
   margin-top: 0;
   font-family: 'Inter', sans-serif; // Ensure this is also Inter
   font-weight: 400; // Regular weight
+  text-align: left; // Align the subheader to the left
 }
 
 @media (min-width: 1024px) {
   .taglineText {
-    font-size: 1.5rem;
+    font-size: 1.25rem; // Reduced from 1.5rem
   }
 }
 
 @media (min-width: 1280px) {
   .taglineText {
-    font-size: 1.75rem;
+    font-size: 1.5rem; // Reduced from 1.75rem
   }
 }
 
 .wordContainer {
   position: relative;
-  height: 2.2em; // Increased height to prevent cut-off
+  height: 1.8em; // Slightly reduced height
   overflow: hidden;
-  margin-bottom: 0.5rem; // Reduced from 1rem to 0.5rem
+  margin-bottom: 0.3rem; // Reduced margin
   line-height: 1.2;
+  text-align: left; // Align the scrolling text to the left
 }
 
 .word {
@@ -183,7 +188,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  font-size: clamp(20px, 3vw, 36px);
+  font-size: clamp(16px, 2.5vw, 30px); // Reduced font size
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   color: #faf2e3;
@@ -191,7 +196,7 @@
   transform: translateY(100%);
   transition: opacity 0.5s, transform 0.5s;
   text-transform: none;
-  padding: 0.2em 0; // Add padding to prevent cut-off
+  padding: 0.1em 0; // Reduced padding
 
   &.active {
     opacity: 1;
@@ -206,8 +211,71 @@
 
 @media (min-width: 1024px) {
   .word {
-    font-size: clamp(24px, 4vw, 48px);
+    font-size: clamp(20px, 3.5vw, 40px); // Slightly reduced for larger screens
   }
 }
 
 // ... (keep other existing styles)
+
+.yieldSubheading {
+  font-size: clamp(14px, 1.5vw, 22px); // Reduced font size
+  font-family: 'Bakbak One', sans-serif;
+  color: #1e2022;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.5rem; // Adjusted margin
+}
+
+.yieldBannerContainer {
+  width: 100%;
+  max-width: 400px; // Reduced from 500px to make it narrower
+  margin: 0.5rem auto;
+}
+
+.yieldBanner {
+  background-color: #1e2022;
+  padding: 0.4rem 0.8rem; // Slightly reduced padding
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  height: 2.2rem; // Slightly reduced height
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yieldBannerText {
+  color: #faf2e3;
+  font-size: clamp(12px, 1.5vw, 18px); // Reduced font size
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.animationsContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px; // Match the width of the EARN header
+  margin: 1rem auto 0; // Center the animations and add some top margin
+}
+
+.animationWrapper {
+  width: 30%; // Slightly reduced from 32%
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+// ... (rest of the styles remain unchanged)
+
+.heroheaderContainer {
+  width: 100%;
+  max-width: 1200px; // Adjust this value as needed
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}

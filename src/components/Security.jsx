@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import styles from './Security.module.css'
+import { FaShieldAlt, FaCoins, FaUsers, FaBalanceScale } from 'react-icons/fa' // Import icons
 
 // Remove the import for immunefiLogo
 
@@ -67,19 +68,29 @@ export function Security() {
         </div>
         <div className={styles.securityGrid}>
           <div className={styles.securityItem}>
+            <div className={styles.securityIconContainer}>
+              <div className={styles.securityIcon}>
+                <FaShieldAlt />
+              </div>
+            </div>
             <h3>Audits</h3>
             <p>
               All contracts are continuously monitored by white hat hackers
               since 2021.
             </p>
             <Image
-              src="/images/logos/immunefi.svg" // Updated to use the correct path and file format
+              src="/images/logos/immunefi.svg"
               alt="Immunefi Logo"
               width={100}
               height={100}
             />
           </div>
           <div className={styles.securityItem}>
+            <div className={styles.securityIconContainer}>
+              <div className={styles.securityIcon}>
+                <FaCoins />
+              </div>
+            </div>
             <h3>Collateral</h3>
             <p>
               Bao only allows ETH and ETH-backed tokens with the highest
@@ -89,6 +100,11 @@ export function Security() {
             </p>
           </div>
           <div className={styles.securityItem}>
+            <div className={styles.securityIconContainer}>
+              <div className={styles.securityIcon}>
+                <FaUsers />
+              </div>
+            </div>
             <h3>Decentralization</h3>
             <p>
               While there are some centralized aspects initially, with
@@ -98,6 +114,11 @@ export function Security() {
             </p>
           </div>
           <div className={styles.securityItem}>
+            <div className={styles.securityIconContainer}>
+              <div className={styles.securityIcon}>
+                <FaBalanceScale />
+              </div>
+            </div>
             <h3>Pegging</h3>
             <p>
               baoUSD and baoETH maintain strong pegs through various mechanisms

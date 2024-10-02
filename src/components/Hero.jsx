@@ -28,7 +28,7 @@ export function Hero() {
   return (
     <div>
       <AnimatedBackground />
-      <Container className="relative flex h-screen items-center">
+      <Container className="relative flex h-screen items-center px-4 sm:px-6 lg:px-8">
         <div className="w-full">
           <div className="max-w-2xl lg:max-w-none">
             <div className="flex flex-col space-y-6">
@@ -48,9 +48,11 @@ export function Hero() {
                   </p>
                 ))}
               </div>
-              <div className={styles.heroheader}>
-                <p>TOKENIZED</p>
-                <p>DERIVATIVES</p>
+              <div className={styles.heroheaderContainer}>
+                <div className={styles.heroheader}>
+                  <p>TOKENIZED</p>
+                  <p>DERIVATIVES</p>
+                </div>
               </div>
               <p className={styles.taglineText}>
                 For the rebels, builders, and dreamers of tomorrow&apos;s
