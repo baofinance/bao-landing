@@ -1,10 +1,11 @@
 .yieldSection {
   position: relative;
-  padding: 6rem 0; /* Increase padding to give more vertical space */
+  padding: 6rem 0;
   background-color: #faf2e3;
   display: flex;
-  align-items: center; /* Center content vertically */
-  min-height: 100vh; /* Ensure full viewport height */
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .yieldBackground {
@@ -45,80 +46,70 @@
 }
 
 .featureList {
-  width: 100%;
+  position: relative;
+  z-index: 3; /* Ensure the feature list is above the background but below the content */
   display: flex;
-  flex-direction: column;
-  gap: 1rem; /* Reduced gap between feature boxes */
-  margin-bottom: 2rem; /* Add space between feature list and button */
+  justify-content: flex-start; /* Changed from flex-start to center */
+  gap: 2rem;
+  width: 100%;
+  margin-top: 2rem;
+  padding-left: 2rem; /* Add padding to align with the header */
 }
 
 .featureItem {
-  position: relative;
+  flex: 1;
+  max-width: 400px; /* Adjust this value to match your design */
   background-color: rgba(30, 32, 34, 1);
-  border-radius: 8px;
-  padding: 1.5rem 3.5rem 1.5rem 5rem;
-  overflow: visible; /* Allow icons to overflow the box */
-  text-overflow: ellipsis;
-  white-space: normal; /* Allow text to wrap onto a new line */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25), 0 12px 40px rgba(0, 0, 0, 0.25); /* Add shadow for hovering effect */
-}
-
-.featureIconWrapper {
-  position: absolute;
-  left: -2rem; /* Adjust this value to control the overlap */
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #e21a53;
-  border-radius: 50%;
-  padding: 1rem; /* Increase padding to make the icon background larger */
-  width: 4rem; /* Ensure the icon wrapper is large enough */
-  height: 4rem; /* Ensure the icon wrapper is large enough */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.featureIcon {
-  width: 4rem; /* Increase icon size */
-  height: 4rem; /* Increase icon size */
-  color: #faf2e3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.featureContent {
+  border-radius: 0;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  position: relative;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal; /* Allow text to wrap onto a new line */
+}
+
+.featureItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(226, 58, 82, 0.15),
+    0 3px 6px rgba(226, 58, 82, 0.1);
 }
 
 .featureHeader {
-  color: #faf2e3; /* Bao White */
-  font-size: 1.2rem;
-  font-weight: bold;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal; /* Allow text to wrap onto a new line */
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #faf2e3;
+  text-align: center;
 }
 
 .featureSubtext {
-  color: #faf2e3; /* Bao White */
-  font-size: 0.9rem;
-  opacity: 0.8;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal; /* Allow text to wrap onto a new line */
+  color: #faf2e3;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-.baoButton {
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  gap: 1rem;
+}
+
+.baoButton,
+.exploreButton {
   background-color: #e21a53; /* Bao Pink */
   color: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
   font-weight: bold;
@@ -126,24 +117,17 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-decoration: none;
-  display: inline-block;
-  margin-top: 1rem;
-  width: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 120px;
   max-width: 200px;
+  height: 40px;
 }
 
-.baoButton:hover {
+.baoButton:hover,
+.exploreButton:hover {
   background-color: #c0164a; /* Darker shade of Bao Pink */
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 60%;
-  margin-top: 1rem;
-  gap: 1rem; /* Increase the gap between buttons */
 }
 
 .learnMoreButton {
@@ -155,14 +139,14 @@
   background-color: #e6dfd0; /* Slightly darker shade for hover effect */
 }
 
-/* Adjust the main action button styles */
-.baoButton:not(.learnMoreButton) {
-  background-color: #e21a53;
-  color: #ffffff;
+.disabledButton {
+  background-color: #888888; /* Grey color for disabled buttons */
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
-.baoButton:not(.learnMoreButton):hover {
-  background-color: #c0164a;
+.disabledButton:hover {
+  background-color: #888888; /* Prevent color change on hover for disabled buttons */
 }
 
 .inactiveButton {
@@ -175,102 +159,84 @@
 }
 
 .yieldContent {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Center content vertically */
-  max-width: 1300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 2rem;
   width: 100%;
 }
 
-.leftContent {
+.yieldHeader {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.featureList {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.featureItem:nth-child(1) {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.featureItem:nth-child(2) {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.featureItem:nth-child(3) {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.yieldHeaderRight {
   flex: 0 0 45%;
-  max-width: 45%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center content vertically */
 }
 
-.headingBannerContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-}
-
-.yieldHeading,
-.activeVaultsHeading,
-.mintHeading {
+.yieldHeading {
   font-family: 'Bakbak One', sans-serif;
   font-size: clamp(30px, 8vw, 100px);
   font-weight: bold;
+  color: #1e2022;
   line-height: 1;
   text-transform: uppercase;
-  margin-bottom: 0.25rem; /* Reduced from 0.5rem to 0.25rem */
-  text-align: center;
-  width: 100%;
+  margin-bottom: 0.25rem;
+  text-align: left; /* Added to ensure left alignment */
 }
 
-/* Specific color adjustments */
-.yieldHeading,
 .yieldSubheading {
-  color: #1e2022; /* For the EARN section */
-}
-
-.activeVaultsHeading,
-.activeVaultsSubheading {
-  color: #faf2e3; /* For the BORROW section */
-}
-
-.mintHeading,
-.mintSubheading {
-  color: #1e2022; /* For the MINT section */
-}
-
-/* Add this new class for all subheaders */
-.sectionSubheading {
   font-size: clamp(14px, 1.5vw, 22px);
   font-family: 'Bakbak One', sans-serif;
   text-transform: uppercase;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 1rem;
-  letter-spacing: 0.05em;
-}
-
-/* Update these classes to use the new .sectionSubheading class */
-.yieldSubheading,
-.activeVaultsSubheading,
-.mintSubheading {
-  font-size: clamp(14px, 1.5vw, 22px);
-  font-family: 'Bakbak One', sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 0.25rem; /* Reduced from 1rem to 0.5rem */
-  letter-spacing: 0.02em;
-  color: #1e2022; /* For the EARN section */
+  color: #1e2022;
+  margin-bottom: 0.5rem;
+  text-align: left; /* Added to ensure left alignment */
 }
 
 .yieldBannerContainer {
   width: 100%;
   max-width: 300px;
-  margin: 0.25rem auto; /* Reduced from 0.5rem to 0.25rem */
+  margin: 1rem 0; /* Changed from margin: 1rem auto to align left */
 }
 
 .yieldBanner {
   background-color: #1e2022;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 0;
   width: 100%;
   box-sizing: border-box;
   text-align: center;
@@ -288,6 +254,39 @@
   line-height: 1;
 }
 
+.yieldDescription {
+  font-size: 1.1rem;
+  color: #1e2022;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .yieldHeader {
+    flex-direction: column;
+  }
+
+  .yieldHeaderLeft {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .featureList {
+    grid-template-columns: 1fr;
+  }
+
+  .featureItem:first-child {
+    grid-column: 1;
+    grid-row: auto;
+    height: auto;
+  }
+
+  .earningBackground {
+    top: 0;
+    height: 100%;
+    opacity: 0.2;
+  }
+}
+
 @media (max-width: 768px) {
   .yieldBanner,
   .mintBanner {
@@ -298,104 +297,29 @@
   .mintBannerText {
     font-size: clamp(12px, 2.8vw, 18px); /* Adjusted for mobile */
   }
-}
 
-.animationsContainer {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 400px; /* Match the width of the EARN header */
-  margin: 1rem auto 0;
-}
-
-.animationWrapper {
-  width: 30%; /* Slightly reduced from 32% */
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-}
-
-.rightContent {
-  flex: 0 0 50%;
-  max-width: 50%;
-  padding-left: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center content vertically */
-}
-
-@media (max-width: 1024px) {
-  .yieldContent {
-    flex-direction: column;
-    align-items: center;
+  .yieldHeader {
+    align-items: center; /* Center align on mobile */
+    text-align: center;
+    padding-left: 0; /* Remove padding on mobile */
   }
 
-  .leftContent,
-  .rightContent {
-    flex: 0 0 100%;
-    max-width: 100%;
-    padding-left: 0;
-    margin-bottom: 2rem;
+  .yieldHeaderLeft {
+    text-align: center;
   }
 
-  .rightContent {
-    align-items: center;
+  .yieldBannerContainer {
+    margin: 1rem auto; /* Center on mobile */
   }
 
   .featureList {
-    width: 100%;
-  }
-
-  .baoButton {
-    align-self: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .animationsContainer {
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center; /* Center items on mobile */
+    padding-left: 0;
     align-items: center;
-    width: 100%;
   }
 
-  .animationWrapper {
-    width: 30%;
-    aspect-ratio: 1 / 1;
-    margin-bottom: 0;
-  }
-
-  .yieldHeading {
-    font-size: clamp(50px, 20vw, 120px); /* Adjusted for mobile */
-  }
-
-  .yieldSubheading {
-    font-size: clamp(16px, 3vw, 24px); /* Adjusted for mobile */
-  }
-
-  .yieldBanner,
-  .mintBanner {
-    height: 2rem; /* Even smaller on mobile */
-  }
-
-  .yieldBannerText,
-  .mintBannerText {
-    font-size: clamp(10px, 2.5vw, 16px); /* Adjusted for mobile */
-  }
-
-  .leftContent {
-    flex: 0 0 100%;
+  .yieldHeaderLeft {
     max-width: 100%;
-  }
-
-  .yieldBanner,
-  .mintBanner {
-    width: 100%; /* Full width on smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .animationWrapper {
-    width: 28%;
   }
 }
 
@@ -412,123 +336,47 @@
   color: #faf2e3;
   padding: 6rem 0;
   overflow: hidden;
-}
-
-.borrowingBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  background-color: transparent;
-  padding: 0px;
-  line-height: 0; /* Add this line */
-}
-
-.borrowingSquare {
-  width: 12px;
-  height: 12px;
-  transition: background-color 0.3s ease;
-  flex: 0 0 auto; /* Change this line */
-}
-
-/* Target the first 10 rows with decreasing opacity */
-.borrowingBackground .borrowingSquare:nth-child(-n + 80) {
-  opacity: 1;
-}
-.borrowingBackground .borrowingSquare:nth-child(n + 81):nth-child(-n + 160) {
-  opacity: 0.7;
-}
-.borrowingBackground .borrowingSquare:nth-child(n + 161):nth-child(-n + 240) {
-  opacity: 0.6;
-}
-.borrowingBackground .borrowingSquare:nth-child(n + 241):nth-child(-n + 320) {
-  opacity: 0.5;
-}
-.borrowingBackground .borrowingSquare:nth-child(n + 321):nth-child(-n + 400) {
-  opacity: 0.3;
-}
-.borrowingBackground .borrowingSquare:nth-child(n + 401) {
-  opacity: 0.1;
-}
-
-.twinkle {
-  animation: twinkle 3s ease-in-out infinite alternate;
-}
-
-@keyframes twinkle {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  background-color: #1e2022; /* Add this line to match the earn section background */
 }
 
 .borrowingContent {
   position: relative;
   z-index: 2;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 4rem;
-  min-height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+}
+
+.borrowBox:first-child {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
 
 .borrowingHeader {
-  text-align: center;
-  margin-bottom: 2rem;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.activeVaultsHeading {
-  font-family: 'Bakbak One', sans-serif;
-  font-size: clamp(30px, 8vw, 100px); /* Matches the EARN header size */
-  font-weight: bold;
-  color: #faf2e3;
-  line-height: 1;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  width: 100%;
-}
-
-.activeVaultsSubheading {
-  font-size: clamp(14px, 1.5vw, 22px); /* Matches the EARN subheading size */
-  font-family: 'Bakbak One', sans-serif;
-  color: #faf2e3;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 1rem;
-}
-
-.borrowBoxesContainer {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  width: 100%;
+.borrowBox:nth-child(3) {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
 }
 
 .strategyContainer {
-  position: relative;
-  height: 40px;
-  overflow: hidden;
-  margin: 2rem 0;
-  width: 100%;
-  text-align: center;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end; /* Align content to the right */
 }
 
 .strategy {
@@ -558,7 +406,7 @@
   background-color: #e21a53;
   color: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 0; /* Changed from 8px to 0 */
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: bold;
@@ -627,7 +475,7 @@
   margin-top: auto;
   background-color: #e21a53;
   border: none;
-  border-radius: 8px;
+  border-radius: 0; /* Changed from 8px to 0 */
   padding: 0.75rem 1rem;
   color: #ffffff;
   font-weight: bold;
@@ -661,98 +509,200 @@
 
 .mintSection {
   position: relative;
-
   padding: 6rem 0;
   overflow: hidden;
   background-color: #faf2e3;
-  display: flex;
-  align-items: center;
 }
 
-.mintBackground {
+.mintBackgroundOverlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 1;
+}
+
+.mintBackgroundOverlay::before,
+.mintBackgroundOverlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 20px 20px;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mintBackgroundOverlay::before {
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.2) 1px, transparent 1px);
+  animation: flicker1 8s infinite;
+}
+
+.mintBackgroundOverlay::after {
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.2) 1px, transparent 1px);
+  animation: flicker2 8s infinite;
+}
+
+@keyframes flicker1 {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  10%,
+  12% {
+    opacity: 0.4;
+    clip-path: inset(20% 35% 45% 35%);
+  }
+  14%,
+  16% {
+    opacity: 0;
+  }
+  50%,
+  52% {
+    opacity: 0.4;
+    clip-path: inset(60% 10% 10% 70%);
+  }
+  54%,
+  56% {
+    opacity: 0;
+  }
+  70%,
+  72% {
+    opacity: 0.4;
+    clip-path: inset(10% 60% 60% 10%);
+  }
+  74%,
+  76% {
+    opacity: 0;
+  }
+}
+
+@keyframes flicker2 {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  20%,
+  22% {
+    opacity: 0.4;
+    clip-path: inset(40% 15% 40% 55%);
+  }
+  24%,
+  26% {
+    opacity: 0;
+  }
+  60%,
+  62% {
+    opacity: 0.4;
+    clip-path: inset(5% 75% 80% 5%);
+  }
+  64%,
+  66% {
+    opacity: 0;
+  }
+  80%,
+  82% {
+    opacity: 0.4;
+    clip-path: inset(70% 5% 5% 65%);
+  }
+  84%,
+  86% {
+    opacity: 0;
+  }
 }
 
 .mintContent {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  min-height: 400px;
-}
-
-.mintIntroContainer {
-  flex: 0 0 45%;
-  max-width: 45%;
-  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding-right: 2rem;
 }
 
-.headingBannerContainer {
+.mintHeaderContainer {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-bottom: 2rem;
+}
+
+.tokenCycleContainer {
+  flex: 0 0 30%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mintHeaderCenter {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .mintHeading {
   font-family: 'Bakbak One', sans-serif;
-  font-size: clamp(30px, 8vw, 100px); /* Matches the size of other headers */
+  font-size: clamp(
+    30px,
+    8vw,
+    100px
+  ); /* Changed from 6vw to 8vw, max from 80px to 100px */
   font-weight: bold;
-  color: #1e2022; /* Adjust this color if needed for the MINT section */
+  color: #1e2022;
   line-height: 1;
   text-transform: uppercase;
-  margin-bottom: 0.1rem; /* Reduced from 0.25rem to 0.1rem */
-  text-align: center;
-  width: 100%;
+  margin-bottom: 0.25rem;
 }
 
 .mintSubheading {
-  font-size: clamp(
-    14px,
-    1.5vw,
-    22px
-  ); /* Matches the size of other subheadings */
+  font-size: clamp(14px, 1.5vw, 22px); /* Changed max from 18px to 22px */
   font-family: 'Bakbak One', sans-serif;
   text-transform: uppercase;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.02em;
-  color: #1e2022; /* For the MINT section */
+  color: #1e2022;
+  margin-bottom: 1rem;
 }
 
 .mintBannerContainer {
   width: 100%;
-  max-width: 300px; /* Reduced from 500px to 300px */
-  margin: 0.5rem auto;
+  max-width: 300px; /* Changed from 250px to 300px to match Earn section */
+  margin: 1rem auto; /* Added margin to match Earn section */
 }
 
 .mintBanner {
   background-color: #1e2022;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
-  width: 100%;
-  box-sizing: border-box;
+  border-radius: 0;
   text-align: center;
-  height: 2.5rem;
+  height: 2.5rem; /* Added fixed height to match Earn section */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -760,376 +710,574 @@
 
 .mintBannerText {
   color: #faf2e3;
-  font-size: clamp(14px, 1.8vw, 20px);
+  font-size: clamp(
+    12px,
+    1.5vw,
+    18px
+  ); /* Changed from 1.8vw to 1.5vw, max from 20px to 18px */
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1;
 }
 
-@media (max-width: 768px) {
-  .mintBanner {
-    height: 2.25rem;
-  }
-
-  .mintBannerText {
-    font-size: clamp(12px, 2.8vw, 18px);
-  }
-}
-
-.cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1em;
-  background-color: #faf2e3;
-  margin-left: 2px;
-  animation: blink 0.7s infinite;
-}
-
-.blinking {
+.tokenItem {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  width: 100%;
+  height: 100%;
 }
 
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
+.tokenItem.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tokenItem img {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 4px 6px rgba(226, 26, 83, 0.3));
+  transition: transform 0.5s ease;
+}
+
+.tokenItem.active img {
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
   50% {
-    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
-.mintDescription {
-  color: #1e2022;
-  margin-top: -0.5rem;
-  font-size: 1rem;
-  max-width: 100%;
-  padding-right: 1rem;
+.mintProcessContainer {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto 0; /* Reduced top margin */
+  position: relative;
 }
 
-.mintVerticalSeparator {
-  display: none;
-}
-
-.mintExplainerWrapper {
-  flex: 0 0 55%;
+.mintProcessList {
+  list-style-type: none;
+  padding: 0;
   display: flex;
+  justify-content: space-between;
+  gap: 2rem;
   position: relative;
-  padding-left: 2rem;
 }
 
-.mintExplainerContainer {
-  flex: 1;
-  padding-left: 2rem;
-  padding-right: 0;
-  overflow-y: auto;
-  max-height: 400px;
-  padding-bottom: 40px;
-}
-
-.explainerStep {
-  position: relative;
-  background-color: rgba(30, 32, 34, 1);
-  border-radius: 8px;
-  padding: 1.5rem 2.5rem 1.5rem 5rem;
-  margin-bottom: 1rem;
-}
-
-.explainerIconContainer {
+.mintProcessList::before {
+  content: '';
   position: absolute;
-  left: -2rem;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 2rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e21a53;
+  z-index: 0;
+}
+
+.mintProcessList li {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stepNumber {
   width: 4rem;
   height: 4rem;
   background-color: #e21a53;
-  border-radius: 50%;
+  color: #faf2e3;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  z-index: 1;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
 }
 
-.explainerIcon {
-  width: 100%;
+.stepContent {
+  background-color: rgba(30, 32, 34, 1);
+  box-shadow: 0 2px 4px rgba(250, 242, 227, 0.05),
+    0 1px 3px rgba(250, 242, 227, 0.05);
+  padding: 2rem 1rem;
+  color: #faf2e3;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border: 1px solid rgba(250, 242, 227, 0.05);
 }
 
-.explainerIcon > * {
-  color: #faf2e3 !important;
-  fill: #faf2e3 !important;
-  width: 65%;
-  height: 65%;
-}
-
-.explainerContent h3 {
-  font-family: 'Bakbak One', sans-serif;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #faf2e3;
-  margin-bottom: 0.5rem;
-  padding-right: 2rem;
-  text-transform: uppercase;
-}
-
-.explainerContent p {
-  color: #faf2e3;
-  opacity: 0.9;
-  padding-right: 1.5rem;
-}
-
-@keyframes scrollHint {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.scrollHintContainer {
+.stepContent::before,
+.stepContent::after {
+  content: '';
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 20px;
-  height: 30px;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to right, #000 20px, transparent 20px),
+    linear-gradient(to bottom, #000 20px, transparent 20px);
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
+}
+
+.stepContent::after {
+  mask-image: linear-gradient(
+      to right,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px)
+    ),
+    linear-gradient(
+      to bottom,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px)
+    );
+}
+
+.stepContent:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(250, 242, 227, 0.2),
+    0 3px 6px rgba(250, 242, 227, 0.15);
+}
+
+/* Add this new style for random opacity squares */
+.randomOpacitySquares {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
   pointer-events: none;
 }
 
-.scrollHint {
-  width: 100%;
-  height: 100%;
-  border: 2px solid rgba(226, 26, 83, 0.5);
-  border-radius: 10px;
-  animation: scrollHint 2s infinite;
-}
-
-.scrollHint::before {
+.randomOpacitySquares::before {
   content: '';
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  width: 4px;
-  height: 8px;
-  background-color: rgba(226, 26, 83, 0.5);
-  border-radius: 2px;
-  transform: translateX(-50%);
-}
-
-/* Add these new styles for the token grid */
-.tokenGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.tokenItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.tokenItem h4 {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.vaultsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.vaultItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.vaultItem h3 {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-}
-
-/* Add media queries if needed */
-@media (min-width: 768px) {
-  .tokenGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .tokenGrid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-@media (min-width: 768px) {
-  .vaultsGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .vaultsGrid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-.borrowBoxesContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.borrowBox {
-  background-color: rgba(30, 32, 34, 0.8);
-  border-radius: 12px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25), 0 12px 40px rgba(0, 0, 0, 0.25);
-}
-
-.borrowBox h3 {
-  font-family: 'Bakbak One', sans-serif;
-  font-size: 1.5rem;
-  color: #faf2e3;
-  margin-bottom: 1rem;
-}
-
-.tokenGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: 1rem;
-  width: 100%;
-}
-
-.tokenItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.tokenItem h4 {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #faf2e3;
-}
-
-@media (max-width: 768px) {
-  .borrowBoxesContainer {
-    grid-template-columns: 1fr;
-  }
-}
-
-.strategyContainer {
-  position: relative;
-  height: 40px;
-  overflow: hidden;
-  margin: 1rem 0;
-}
-
-.strategy {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: opacity 0.5s, transform 0.5s;
-  text-align: center;
-  font-size: 1.5rem;
+  bottom: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, var(--opacity)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(226, 26, 83, var(--opacity)) 1px,
+      transparent 1px
+    );
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to right, #000 20px, transparent 20px),
+    linear-gradient(to bottom, #000 20px, transparent 20px),
+    linear-gradient(to left, #000 20px, transparent 20px),
+    linear-gradient(to top, #000 20px, transparent 20px);
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
+  animation: changeOpacity 3s infinite;
+}
+
+@keyframes changeOpacity {
+  0%,
+  100% {
+    --opacity: 0.05;
+  }
+  25% {
+    --opacity: 0.1;
+  }
+  50% {
+    --opacity: 0.15;
+  }
+  75% {
+    --opacity: 0.2;
+  }
+}
+
+.stepTitle {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
   color: #faf2e3;
 }
 
-.strategy.active {
-  opacity: 1;
-  transform: translateY(0);
+.stepDescription {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-.strategy.previous {
-  opacity: 0;
-  transform: translateY(-100%);
+@media (max-width: 768px) {
+  .mintProcessList {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .mintProcessList::before {
+    display: none;
+  }
+
+  .stepContent {
+    height: auto;
+  }
+
+  .mintHeaderContainer {
+    flex-direction: column;
+  }
+
+  .tokenCycleContainer {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .mintHeaderCenter {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }
 
-.borrowingHeader {
-  text-align: center;
-  margin-bottom: 2rem;
+.staticTokenGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1rem;
+}
+
+.staticTokenItem {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
-.baoButton {
-  margin-top: 1rem;
+.staticTokenItem img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
 }
 
-.exploreMarketsButton {
-  background-color: #e21a53;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
+.staticTokenItem h4 {
+  font-size: 0.9rem;
+  color: #faf2e3;
+  margin-top: 0.5rem;
+}
+
+.twinklingBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 14px);
+  grid-template-rows: repeat(auto-fill, 14px);
+  gap: 2px;
+  background-color: transparent;
+}
+
+.twinklingSquare {
+  width: 12px;
+  height: 12px;
   transition: background-color 0.3s ease;
-  margin-top: 1rem;
-  margin-bottom: 2rem; /* Add space between the button and the boxes */
 }
 
-.exploreMarketsButton:hover {
-  background-color: #c0164a;
+.twinkle {
+  animation: twinkle 3s ease-in-out infinite alternate;
 }
 
-.yieldHeading {
-  font-family: 'Bakbak One', sans-serif;
-  font-size: clamp(30px, 8vw, 100px);
-  font-weight: bold;
-  color: #1e2022; /* Adjust this color if needed */
-  line-height: 1;
-  text-transform: uppercase;
-  margin-bottom: -0.5rem;
-  text-align: center;
-  width: 100%;
+@keyframes twinkle {
+  0% {
+    opacity: 0.05;
+  }
+  100% {
+    opacity: 0.2;
+  }
 }
 
-.yieldSubheading {
-  font-size: clamp(
-    14px,
-    1.5vw,
-    22px
-  ); /* Increased from 14px to match BORROW subheader */
-  font-family: 'Bakbak One', sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
+/* Add this to your existing section styles */
+.yieldSection,
+.mintSection {
+  position: relative;
   overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 1rem;
-  letter-spacing: 0.05em;
-  color: #1e2022; /* For the EARN section */
 }
 
-/* Remove the .subheader class if it's no longer needed */
-/* .subheader {
-  font-size: 14px !important;
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
-} */
+.yieldContent,
+.mintContent {
+  position: relative;
+  z-index: 2;
+}
+
+.exploreStrategiesButtonContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.comingSoonStamp {
+  position: absolute;
+  top: 2rem;
+  right: -4rem;
+  background-color: #e21a53;
+  color: #faf2e3;
+  padding: 0.5rem 4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transform: rotate(45deg);
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .comingSoonStamp {
+    top: 1rem;
+    right: -3rem;
+    font-size: 1.2rem;
+    padding: 0.4rem 3rem;
+  }
+}
+
+.earnHeaderContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.yieldAnimationContainer {
+  flex: 0 0 20%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headingBannerContainer {
+  flex: 0 0 60%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .earnHeaderContainer {
+    flex-direction: column;
+  }
+
+  .yieldAnimationContainer {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .headingBannerContainer {
+    width: 100%;
+  }
+}
+
+/* Add this new style for any other buttons or elements that might have rounded corners */
+.button,
+.banner {
+  border-radius: 0;
+}
+
+.earningImage {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(226, 26, 83, 0.1);
+  position: relative;
+  margin-right: 2rem;
+}
+
+.earningImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.2) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.earningImage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(226, 26, 83, 0.2);
+  clip-path: polygon(
+    0% 100%,
+    0% 80%,
+    20% 80%,
+    20% 60%,
+    40% 60%,
+    40% 40%,
+    60% 40%,
+    60% 20%,
+    80% 20%,
+    80% 0%,
+    100% 0%,
+    100% 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .yieldHeader {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .yieldHeaderLeft {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .earningImage {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .yieldContent {
+    padding: 1rem;
+  }
+
+  .featureItem {
+    padding: 2rem;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .yieldContent {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+
+  .yieldHeader {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    align-items: center;
+    text-align: center;
+  }
+
+  .featureList {
+    grid-column: 1 / 2;
+    grid-template-columns: 1fr;
+  }
+
+  .featureItem:nth-child(1),
+  .featureItem:nth-child(2),
+  .featureItem:nth-child(3) {
+    grid-column: 1 / 2;
+  }
+
+  .featureItem:nth-child(1) {
+    grid-row: 2 / 3;
+  }
+
+  .featureItem:nth-child(2) {
+    grid-row: 3 / 4;
+  }
+
+  .featureItem:nth-child(3) {
+    grid-row: 4 / 5;
+  }
+}
+
+@media (max-width: 768px) {
+  .mintHeaderContainer {
+    flex-direction: column;
+  }
+
+  .tokenCycleContainer {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .mintHeaderCenter {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .borrowingContent {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+
+  .borrowBox:first-child,
+  .borrowBox:nth-child(3),
+  .borrowingHeader,
+  .strategyContainer {
+    grid-column: 1 / 2;
+  }
+
+  .borrowBox:first-child {
+    grid-row: 1 / 2;
+  }
+
+  .borrowingHeader {
+    grid-row: 2 / 3;
+    align-items: center;
+  }
+
+  .borrowBox:nth-child(3) {
+    grid-row: 3 / 4;
+  }
+
+  .strategyContainer {
+    grid-row: 4 / 5;
+    align-items: center; /* Center content on mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .comingSoonStamp {
+    top: 1rem;
+    right: -1rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 1.5rem;
+  }
+}

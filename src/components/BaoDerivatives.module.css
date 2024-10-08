@@ -1,7 +1,7 @@
 .derivativesSection {
   position: relative;
+  padding: 6rem 0 8rem; /* Increased bottom padding from 4rem to 8rem */
   overflow: hidden;
-  padding: 2rem 0;
 }
 
 .container {
@@ -61,40 +61,155 @@
   margin-bottom: 2rem;
 }
 
+.boxesContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 4rem; /* Added margin to the bottom of the boxes container */
+}
+
 .boxes {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 0rem;
-  padding-bottom: 2rem;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1400px; /* Increased from 1200px to allow more space */
+  width: 100%;
 }
 
 .box {
+  background-color: rgba(30, 32, 34, 1);
+  box-shadow: 0 2px 4px rgba(250, 242, 227, 0.05),
+    0 1px 3px rgba(250, 242, 227, 0.05);
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
-  color: #faf2e3; /* baowhite */
-  background-color: #1e2022; /* Assuming this is your desired background color */
-  border-radius: 8px; /* Add some border radius for rounded corners */
-  box-shadow: 0 4px 6px rgba(226, 58, 82, 0.3), 0 2px 4px rgba(226, 58, 82, 0.2);
-  transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+  text-align: center;
+  width: calc(33.33% - 1.33rem);
+  max-width: 380px;
+  min-width: 250px;
+  backdrop-filter: blur(2px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  width: calc(33.333% - 2rem);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
+  margin-top: 3rem;
+  height: 100%;
+  border: 1px solid rgba(250, 242, 227, 0.05); /* Changed to 20% opacity */
+}
+
+.box::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to right, #000 20px, transparent 20px),
+    linear-gradient(to bottom, #000 20px, transparent 20px);
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
+}
+
+.box::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(
+      to right,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px)
+    ),
+    linear-gradient(
+      to bottom,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px)
+    );
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
 }
 
 .box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(226, 58, 82, 0.15),
-    0 3px 6px rgba(226, 58, 82, 0.1);
+  box-shadow: 0 6px 12px rgba(250, 242, 227, 0.2),
+    0 3px 6px rgba(250, 242, 227, 0.15);
+}
+
+/* Add this new style for random opacity squares */
+.randomOpacitySquares {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.randomOpacitySquares::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, var(--opacity)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(226, 26, 83, var(--opacity)) 1px,
+      transparent 1px
+    );
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to right, #000 20px, transparent 20px),
+    linear-gradient(to bottom, #000 20px, transparent 20px),
+    linear-gradient(to left, #000 20px, transparent 20px),
+    linear-gradient(to top, #000 20px, transparent 20px);
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
+  animation: changeOpacity 3s infinite;
+}
+
+@keyframes changeOpacity {
+  0%,
+  100% {
+    --opacity: 0.05;
+  }
+  25% {
+    --opacity: 0.1;
+  }
+  50% {
+    --opacity: 0.15;
+  }
+  75% {
+    --opacity: 0.2;
+  }
 }
 
 .boxTitle {
   text-align: center;
   width: 100%;
-  margin-top: 1rem; /* Reduced from 1rem */
+  margin-top: 0.5rem; /* Reduced from 1rem */
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: bold;
@@ -103,81 +218,105 @@
 
 .boxDescription {
   text-align: center;
+  font-size: 1rem;
+  color: #faf2e3;
+  flex-grow: 1; /* Allow description to grow and push buttons to bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the description vertically */
 }
 
 .logoContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0.5rem; /* Reduced from 1rem */
   position: absolute;
-  top: -2rem; /* Adjust this value to position the logo higher or lower */
+  top: -2.5rem; /* Adjusted to move the logo up slightly */
   left: 50%;
   transform: translateX(-50%);
   background-color: #e21a53; /* baopink */
   border-radius: 50%;
-  width: 4rem; /* Fixed width */
-  height: 4rem; /* Fixed height */
-  overflow: hidden; /* Ensure the logo doesn't overflow the circle */
+  width: 5rem; /* Increased size */
+  height: 5rem; /* Increased size */
+  overflow: visible; /* Changed from hidden to visible */
+  z-index: 1; /* Ensure logo is above the box */
+  margin-bottom: 1rem;
 }
 
 .logo {
-  width: 60%; /* Adjust this value to fit the logo properly within the circle */
-  height: 60%; /* Adjust this value to fit the logo properly within the circle */
+  width: 100%; /* Changed from 60% to 100% */
+  height: 100%; /* Changed from 60% to 100% */
   object-fit: contain; /* Ensure the logo maintains its aspect ratio */
 }
 
-@media (max-width: 768px) {
-  .box {
-    width: calc(50% - 2rem);
-  }
+/* Add this new style for SVG logos */
+.logoContainer svg {
+  width: 100%;
+  height: 100%;
 }
 
-@media (max-width: 480px) {
-  .box {
-    width: 100%;
-  }
+/* ... (previous styles remain the same) */
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 1rem;
+  gap: 1rem;
 }
 
-.benefits {
-  margin-top: 4rem;
-  background-color: #faf2e3; /* BaoWhite background */
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.benefitsList {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  font-size: 1.2rem;
-  color: #faf2e3; /* BaoBlack */
-}
-
-.benefitsList li {
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-.content {
-  position: relative;
-  z-index: 2;
-  padding: 2rem 6rem; /* Add padding to the left and right */
-}
-
-.iconContainer {
+.button {
+  background-color: #faf2e3; /* Bao White */
+  color: #1e2022; /* Dark color for contrast */
+  border: none;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex: 1;
+  min-width: 120px;
+  max-width: 200px;
+  height: 40px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.icon {
-  height: 8rem; /* This should match the font-size of the header */
-  width: auto; /* This maintains the aspect ratio */
-  margin-right: 0.75rem;
-  color: #faf2e3; /* baowhite */
+.button:hover {
+  background-color: #e6dfd0; /* Slightly darker shade for hover effect */
 }
 
-.icon:last-child {
-  margin-right: 0;
+/* Style for the primary action button (e.g., "Get baoUSD", "Get baoETH") */
+.button:first-child {
+  background-color: #e21a53; /* Bao Pink */
+  color: #ffffff;
+}
+
+.button:first-child:hover {
+  background-color: #c0164a; /* Darker shade of Bao Pink */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .buttonContainer {
+    flex-direction: column;
+  }
+
+  .button {
+    margin: 0.5rem 0;
+    width: 100%;
+    max-width: none;
+  }
+
+  .derivativesSection {
+    padding: 4rem 0 6rem; /* Adjusted padding for mobile devices */
+  }
+
+  .boxesContainer {
+    margin-bottom: 3rem; /* Slightly reduced margin for mobile devices */
+  }
 }

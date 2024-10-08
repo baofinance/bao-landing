@@ -4,9 +4,18 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
+import { Borrow } from '@/components/Borrow'
 import { ActiveVaults } from '@/components/ActiveVaults'
 import BaoDerivatives from '@/components/BaoDerivatives'
-import { Security } from '@/components/Security' // Add this import
+import { Earn } from '@/components/Earn'
+import { Vision } from '@/components/Vision'
+import { Integrations } from '@/components/Integrations'
+import React, { Suspense } from 'react'
+import dynamic from 'next/dynamic'
+
+const Security = dynamic(() => import('@/components/Security'), {
+  loading: () => <div>Loading...</div>,
+})
 
 export default function Home() {
   return (
@@ -22,10 +31,14 @@ export default function Home() {
       <main>
         <Hero />
         <BaoDerivatives />
+        <Earn />
+        <Vision />
         <ActiveVaults />
-        <Security /> {/* Add the Security component here */}
+        <Borrow />
+
         <SecondaryFeatures />
-        <CallToAction />
+        <Security />
+        <Integrations />
       </main>
       <Footer />
     </>

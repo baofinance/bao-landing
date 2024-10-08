@@ -64,7 +64,7 @@ export function Hero() {
                     href="https://info.bao.finance/docs"
                     variant="solid"
                     color="baoWhite"
-                    className="font-inter bg-baoWhite px-8 py-4 text-xl font-normal text-baoBlack transition-colors duration-300 hover:bg-opacity-90"
+                    className="font-inter rounded-none bg-baoWhite px-8 py-4 text-xl font-normal text-baoBlack transition-colors duration-300 hover:bg-opacity-90" // Added rounded-none
                   >
                     Learn More
                   </Button>
@@ -72,7 +72,7 @@ export function Hero() {
                     href="https://app.baofinance.io"
                     variant="solid"
                     color="baoPink"
-                    className="font-inter px-8 py-4 text-xl font-normal"
+                    className="font-inter rounded-none px-8 py-4 text-xl font-normal" // Added rounded-none
                   >
                     Launch App
                   </Button>

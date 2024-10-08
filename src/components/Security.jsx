@@ -1,77 +1,27 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import styles from './Security.module.css'
-import { FaShieldAlt, FaCoins, FaUsers, FaBalanceScale } from 'react-icons/fa' // Import icons
-
-// Remove the import for immunefiLogo
-
-const SecurityBackground = () => {
-  const [squares, setSquares] = useState([])
-
-  const generateSquares = useCallback(() => {
-    const squareSize = 14 // 12px square + 2px gap
-    const numSquaresX = Math.ceil(window.innerWidth / squareSize)
-    const numSquaresY = Math.ceil(window.innerHeight / squareSize)
-    const totalSquares = numSquaresX * numSquaresY
-
-    return Array.from({ length: totalSquares }, (_, i) => {
-      const baseOpacity = Math.random() * 0.15 + 0 // Random opacity between 0.05 and 0.2
-      const shouldTwinkle = Math.random() < 0.7 // 20% chance of twinkling
-      const twinkleClass = shouldTwinkle ? styles.twinkle : ''
-      const animationDelay = Math.random() * 5 // Random delay up to 5 seconds
-
-      return {
-        key: i,
-        baseOpacity,
-        twinkleClass,
-        animationDelay,
-        style: {
-          gridColumn: (i % numSquaresX) + 1,
-          gridRow: Math.floor(i / numSquaresX) + 1,
-        },
-      }
-    })
-  }, [])
-
-  useEffect(() => {
-    setSquares(generateSquares())
-    const handleResize = () => setSquares(generateSquares())
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [generateSquares])
-
-  return (
-    <div className={styles.securityBackground}>
-      {squares.map((square) => (
-        <div
-          key={square.key}
-          className={`${styles.securitySquare} ${square.twinkleClass}`}
-          style={{
-            ...square.style,
-            backgroundColor: `rgba(226, 26, 83, ${square.baseOpacity})`,
-            animationDelay: `${square.animationDelay}s`,
-          }}
-        />
-      ))}
-    </div>
-  )
-}
+import { FaShieldAlt, FaCoins, FaUsers, FaBalanceScale } from 'react-icons/fa'
+import { TwinklingBackground } from './TwinklingBackground'
 
 export function Security() {
   return (
     <div className={styles.securitySection}>
-      <SecurityBackground />
+      <TwinklingBackground
+        color="rgba(226, 26, 83, 0.1)"
+        squareSize={20}
+        coverage={0.4}
+      />
       <div className={styles.securityContent}>
         <div className={styles.securityHeadingContainer}>
           <h2 className={styles.securityHeading}>SECURED</h2>
-          <p className={styles.securitySubheading}>FROM ALL ANGLES</p>
+          <p className={styles.securitySubheading}>BY DESIGN</p>
         </div>
         <div className={styles.securityGrid}>
           <div className={styles.securityItem}>
+            <div className={styles.randomOpacitySquares}></div>
             <div className={styles.securityIconContainer}>
-              <div className={styles.securityIcon}>
-                <FaShieldAlt />
-              </div>
+              <FaShieldAlt className={styles.securityIcon} />
             </div>
             <h3>Audits</h3>
             <p>
@@ -82,14 +32,14 @@ export function Security() {
               src="/images/logos/immunefi.svg"
               alt="Immunefi Logo"
               width={100}
-              height={100}
+              height={30}
+              className={styles.immunefiLogo}
             />
           </div>
           <div className={styles.securityItem}>
+            <div className={styles.randomOpacitySquares}></div>
             <div className={styles.securityIconContainer}>
-              <div className={styles.securityIcon}>
-                <FaCoins />
-              </div>
+              <FaCoins className={styles.securityIcon} />
             </div>
             <h3>Collateral</h3>
             <p>
@@ -100,10 +50,9 @@ export function Security() {
             </p>
           </div>
           <div className={styles.securityItem}>
+            <div className={styles.randomOpacitySquares}></div>
             <div className={styles.securityIconContainer}>
-              <div className={styles.securityIcon}>
-                <FaUsers />
-              </div>
+              <FaUsers className={styles.securityIcon} />
             </div>
             <h3>Decentralization</h3>
             <p>
@@ -114,10 +63,9 @@ export function Security() {
             </p>
           </div>
           <div className={styles.securityItem}>
+            <div className={styles.randomOpacitySquares}></div>
             <div className={styles.securityIconContainer}>
-              <div className={styles.securityIcon}>
-                <FaBalanceScale />
-              </div>
+              <FaBalanceScale className={styles.securityIcon} />
             </div>
             <h3>Pegging</h3>
             <p>
@@ -131,3 +79,5 @@ export function Security() {
     </div>
   )
 }
+
+export default Security
