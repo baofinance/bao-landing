@@ -48,12 +48,12 @@ export function Integrations() {
   return (
     <section className={styles.integrationsSection}>
       <TwinklingBackground
-        color="rgba(30, 32, 34, 0.1)"
+        color="rgba(226, 26, 83, 0.1)"
         squareSize={20}
         coverage={0.4}
       />
       <div className={styles.integrationsContent}>
-        <h2 className={styles.integrationsHeading}>INTEGRATED WITH THE BEST</h2>
+        <h2 className={styles.integrationsHeading}>Integrated with the Best</h2>
         <div className={styles.integrationsGrid}>
           <div className={styles.logoGrid}>
             {partners.map((partner) => (
