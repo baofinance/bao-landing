@@ -62,8 +62,8 @@ export function SecondaryFeatures() {
             </p>
           </div>
           <p className={styles.subheading}>
-            Get involved with Bao Finance's governance! Join our community on
-            Discord for discussions and updates. Vote on key proposals on
+            Get involved with Bao Finance&apos;s governance! Join our community
+            on Discord for discussions and updates. Vote on key proposals on
             Snapshot and stay informed on X. Your participation is crucial.
           </p>
           <div className={styles.links}>
