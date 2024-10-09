@@ -7,7 +7,7 @@ export function DiscordLink() {
       <Link
         href="https://discord.gg/BW3P62vJXT"
         aria-label="Join Bao Finance on Discord"
-        className="rounded-3xl bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-baoWhite shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="rounded-3xl bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-baoWhite shadow-sm duration-200 hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       >
         <svg
           viewBox="0 0 127.14 96.36"
@@ -20,7 +20,7 @@ export function DiscordLink() {
           />
         </svg>
         <span className="inline justify-center align-middle font-bold">
-          Join Us!
+          Join Discord
         </span>
       </Link>
     </div>

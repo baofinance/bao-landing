@@ -76,7 +76,7 @@ export const Faqs = () => {
                       <div className="w-full rounded-lg border border-baoWhite p-4 text-baoWhite">
                         <dt>
                           <Disclosure.Button className="flex w-full items-start justify-between text-left">
-                            <span className="text-lg font-bakbak leading-7">
+                            <span className="font-bakbak text-lg leading-7">
                               {faq.question}
                             </span>
                             <span className="ml-6 flex h-7 items-center">

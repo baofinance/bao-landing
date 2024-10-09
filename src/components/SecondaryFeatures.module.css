@@ -1,0 +1,187 @@
+.secondaryFeatures {
+  background-color: #faf2e3; /* baoWhite */
+  color: #1e2022; /* baoBlack */
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.heading {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: clamp(30px, 8vw, 100px);
+  font-weight: bold;
+  color: #1e2022; /* baoBlack */
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.banner {
+  background-color: #e21a53; /* baoPink */
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  margin: 1rem auto;
+  max-width: none; /* Remove max-width to allow full width */
+  width: fit-content; /* Adjust width to fit content */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.bannerText {
+  color: #faf2e3; /* baoWhite */
+  font-size: clamp(14px, 1.5vw, 20px); /* Adjust font size if needed */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.subheading {
+  font-size: clamp(14px, 1.5vw, 22px);
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.featureList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.featureItem {
+  position: relative;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  background-color: rgba(30, 32, 34, 0.97); /* Updated to match earn boxes */
+  border-radius: 0; /* Keeping the sharp corners */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featureItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(226, 58, 82, 0.15),
+    0 3px 6px rgba(226, 58, 82, 0.1);
+}
+
+.iconContainer {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e21a53;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.icon {
+  color: #faf2e3;
+  font-size: 2rem;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #faf2e3;
+}
+
+.featureDescription {
+  font-size: 1rem;
+  color: #faf2e3;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .secondaryFeatures {
+    padding: 4rem 0;
+  }
+
+  .featureList {
+    grid-template-columns: 1fr;
+  }
+
+  .banner {
+    padding: 0.5rem;
+    width: 100%; /* Full width on mobile */
+  }
+
+  .bannerText {
+    font-size: clamp(12px, 3vw, 16px); /* Smaller font size on mobile */
+  }
+}
+
+.secondaryFeatures {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure the content is above the twinkling background */
+.header,
+.featureList {
+  position: relative;
+  z-index: 2;
+}
+
+.twinklingBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 14px);
+  grid-template-rows: repeat(auto-fill, 14px);
+  gap: 2px;
+  background-color: transparent;
+}
+
+.twinklingSquare {
+  width: 12px;
+  height: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.twinkle {
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.05;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.banner {
+  border-radius: 0;
+}
+
+.links a {
+  border-radius: 0;
+}

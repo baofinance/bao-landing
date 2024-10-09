@@ -1,0 +1,204 @@
+.securitySection {
+  position: relative;
+  padding: 6rem 0 8rem;
+  overflow: hidden;
+  background-color: #1e2022;
+}
+
+.securityContent {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.securityHeadingContainer {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.securityHeading {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: clamp(30px, 8vw, 100px);
+  font-weight: bold;
+  color: #faf2e3;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.securitySubheading {
+  font-size: clamp(14px, 1.5vw, 22px);
+  font-family: 'Bakbak One', sans-serif;
+  text-transform: uppercase;
+  color: #faf2e3;
+}
+
+.securityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.securityItem {
+  background-color: rgba(30, 32, 34, 0.9);
+  box-shadow: 0 2px 4px rgba(250, 242, 227, 0.05),
+    0 1px 3px rgba(250, 242, 227, 0.05);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(2px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  height: 100%;
+  border: 1px solid rgba(250, 242, 227, 0.05);
+}
+
+.securityItem::before,
+.securityItem::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to right, #000 20px, transparent 20px),
+    linear-gradient(to bottom, #000 20px, transparent 20px);
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
+}
+
+.securityItem::after {
+  mask-image: linear-gradient(
+      to right,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px)
+    ),
+    linear-gradient(
+      to bottom,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px)
+    );
+}
+
+.securityItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(250, 242, 227, 0.2),
+    0 3px 6px rgba(250, 242, 227, 0.15);
+}
+
+.securityIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e21a53;
+  width: 5rem;
+  height: 5rem;
+  overflow: visible;
+  z-index: 1;
+  margin-bottom: 1rem;
+}
+
+.securityIcon {
+  color: #faf2e3;
+  font-size: 2.5rem;
+}
+
+.securityItem h3 {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  color: #faf2e3;
+}
+
+.securityItem p {
+  font-size: 1rem;
+  color: #faf2e3;
+  margin-bottom: 1.5rem;
+}
+
+.immunefiLogo {
+  margin-top: auto;
+}
+
+.randomOpacitySquares {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.randomOpacitySquares::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, var(--opacity)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(226, 26, 83, var(--opacity)) 1px,
+      transparent 1px
+    );
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to right, #000 20px, transparent 20px),
+    linear-gradient(to bottom, #000 20px, transparent 20px),
+    linear-gradient(to left, #000 20px, transparent 20px),
+    linear-gradient(to top, #000 20px, transparent 20px);
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
+  animation: changeOpacity 3s infinite;
+}
+
+@keyframes changeOpacity {
+  0%,
+  100% {
+    --opacity: 0.05;
+  }
+  25% {
+    --opacity: 0.1;
+  }
+  50% {
+    --opacity: 0.15;
+  }
+  75% {
+    --opacity: 0.2;
+  }
+}
+
+@media (max-width: 768px) {
+  .securitySection {
+    padding: 4rem 0 6rem;
+  }
+
+  .securityGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .securityItem {
+    margin-top: 4rem;
+  }
+}
