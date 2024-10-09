@@ -10,6 +10,7 @@ import BaoDerivatives from '@/components/BaoDerivatives'
 import { Earn } from '@/components/Earn'
 import { Vision } from '@/components/Vision'
 import { Integrations } from '@/components/Integrations'
+import { DerivativeUseCases } from '@/components/DerivativeUseCases'
 import React, { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 
@@ -35,10 +36,10 @@ export default function Home() {
         <Vision />
         <ActiveVaults />
         <Borrow />
-
         <SecondaryFeatures />
         <Security />
         <Integrations />
+        <DerivativeUseCases />
       </main>
       <Footer />
     </>

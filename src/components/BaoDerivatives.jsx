@@ -85,6 +85,62 @@ const BaoUSDLogo = () => (
   </svg>
 )
 
+const BaoBTCLogo = () => (
+  <svg
+    id="a"
+    xmlns="http://www.w3.org/2000/svg"
+    width="100"
+    height="100"
+    viewBox="0 0 734.05 734.05"
+  >
+    <defs>
+      <clipPath id="b">
+        <circle cx="367.02" cy="367.02" r="360.39" fill="none" />
+      </clipPath>
+    </defs>
+    <circle cx="367.02" cy="367.02" r="360.39" fill="#e23a52" />
+    <g clipPath="url(#b)">
+      <path
+        d="M107.5,626.55l96.82-96.82M626.55,107.5l-98.5,98.5M107.5,107.5l99.82,99.82m419.23,419.23l-99.82-99.82M367.02,0V141.16m0,451.72v141.16M0,367.02H141.16m592.88,0h-141.16m-225.86-225.86c-124.74,0-225.86,101.12-225.86,225.86s101.12,225.86,225.86,225.86,225.86-101.12,225.86-225.86-101.12-225.86-225.86-225.86Z"
+        fill="none"
+        stroke="#faf2e3"
+        strokeMiterlimit="10"
+        strokeWidth="12"
+      />
+    </g>
+    <path
+      d="M507.89,333.27c-5.1-51.47-48.86-68.61-104.81-74.9l0-75.71-43.53-.11,0,73.92c-11.45-.26-23.18-.26-34.86-.25l0-73.89-43.52-.11,0,75.68c-9.43,0-18.69.18-27.74.18l-.06-120.28-58.04-.15.16,63.22c0,0-32.17-.73-31.71-.68,17.67.46,25.69,10.46,27.39,19.61l0,85.52c1.35,0,3.1,0,5.07.21-.02.03-5.05-.21-5.07-.21l.01,119.89c-.93,6.73-5.08,17.47-19.84,17.09.46.07,31.72-1.02,31.72-1.02l-.08,70.22,58.04-.16-.06-116.57c9.22.17,18.14.24,26.89.22l-.05,116.33,43.53-.12-.05-117.01c11.96.23,23.57.23,34.84.11l.05,116.84,43.53-.12-.05-116.99c72.65-4.13,124.35-22.2,130.93-89.6,5.3-54.25-20.41-78.31-61.1-88.1,25.55-12.53,41.23-35.12,37.63-71.13Zm-96.93,155.09c0,59.11-101.33,52.35-133.75,52.38l-.05-104.88c32.41-.04,133.84-9.35,133.8,52.5Zm-22.27-146.84c0,53.8-84.63,47.69-111.44,47.72l-.05-95.59c26.81-.04,111.52-7.7,111.49,47.87Z"
+      fill="#faf2e3"
+    />
+  </svg>
+)
+
+const BaoQuestionLogo = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="100"
+    height="100"
+    viewBox="0 0 734.05 734.05"
+  >
+    <circle cx="367.02" cy="367.02" r="360.39" fill="#e23a52" />
+    <g fill="none" stroke="#faf2e3" strokeMiterlimit="10" strokeWidth="12">
+      <path d="M107.5 626.55l96.82-96.82M626.55 107.5l-98.5 98.5M107.5 107.5l99.82 99.82m419.23 419.23l-99.82-99.82M367.02 0v141.16m0 451.72v141.16M0 367.02h141.16m592.88 0h-141.16m-225.86-225.86c-124.74 0-225.86 101.12-225.86 225.86s101.12 225.86 225.86 225.86 225.86-101.12 225.86-225.86-101.12-225.86-225.86-225.86z" />
+    </g>
+    <text
+      x="50%"
+      y="50%"
+      dominantBaseline="middle"
+      textAnchor="middle"
+      fill="#faf2e3"
+      fontSize="300"
+      fontWeight="bold"
+      fontFamily="Arial, sans-serif"
+    >
+      ?
+    </text>
+  </svg>
+)
+
 const BaoDerivatives = () => {
   return (
     <section className={styles.derivativesSection}>
@@ -135,26 +191,47 @@ const BaoDerivatives = () => {
             <div className={styles.box}>
               <div className={styles.randomOpacitySquares}></div>
               <div className={styles.logoContainer}>
-                <svg
-                  className={styles.logo}
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                >
-                  <path
-                    fill="#faf2e3"
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"
-                  />
-                </svg>
+                <BaoBTCLogo />
               </div>
-              <h3 className={styles.boxTitle}>Coming Soon</h3>
+              <h3 className={styles.boxTitle}>baoBTC</h3>
               <p className={styles.boxDescription}>
-                More data feeds turned into tokens!
+                A decentralized, Bitcoin-pegged token on Ethereum, backed by
+                ETH. Unlike wBTC and other alternatives, it avoids centralized
+                control, offering a secure and transparent option for using
+                Bitcoin in DeFi applications.
               </p>
               <div className={styles.buttonContainer}>
-                <button className={styles.button}>Dream with us</button>
-                <button className={styles.button}>Build with us</button>
+                <button className={styles.button} disabled>
+                  Get baoBTC
+                </button>
+                <button className={styles.button} disabled>
+                  Borrow baoBTC
+                </button>
               </div>
+              <div className={styles.comingSoonStamp}>Coming Soon</div>
+            </div>
+            <div className={styles.box}>
+              <div className={styles.randomOpacitySquares}></div>
+              <div className={styles.logoContainer}>
+                <BaoQuestionLogo />
+              </div>
+              <h3 className={styles.boxTitle}>bao???</h3>
+              <p className={styles.boxDescription}>
+                Imagine the possibilities: tokenized weather derivatives, real
+                estate indices, or even sentiment analysis tokens. By leveraging
+                diverse data feeds, we can create innovative financial
+                instruments that reflect real-world events and trends, opening
+                up new horizons for decentralized finance.
+              </p>
+              <div className={styles.buttonContainer}>
+                <button className={styles.button} disabled>
+                  Explore Ideas
+                </button>
+                <button className={styles.button} disabled>
+                  Suggest a Derivative
+                </button>
+              </div>
+              <div className={styles.comingSoonStamp}>Coming Soon</div>
             </div>
           </div>
         </div>

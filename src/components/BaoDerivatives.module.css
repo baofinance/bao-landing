@@ -320,3 +320,33 @@
     margin-bottom: 3rem; /* Slightly reduced margin for mobile devices */
   }
 }
+
+/* ... (new styles added) ... */
+
+.comingSoonStamp {
+  position: absolute;
+  top: 1rem;
+  right: -2rem;
+  background-color: #e21a53;
+  color: #faf2e3;
+  padding: 0.25rem 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transform: rotate(45deg);
+  z-index: 2;
+}
+
+.box {
+  /* ... (existing styles) ... */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Disable buttons for coming soon items */
+.box .comingSoonStamp ~ .buttonContainer .button {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ... (rest of the styles remain unchanged) ... */
