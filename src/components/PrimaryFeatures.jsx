@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
+  faChain,
   faChartColumn,
   faChartLineUp,
   faChartPieSimpleCircleCurrency,
@@ -9,6 +10,8 @@ import {
   faCogs,
   faDroplet,
   faHandHolding,
+  faLock,
+  faPeople,
   faRobot,
   faScaleBalanced,
   faTools,
@@ -31,63 +34,58 @@ const MotionAppScreenBody = motion(AppScreen.Body)
 
 const features = [
   {
-    name: 'Borrow price stable derivatives on your terms',
+    name: 'Safety and Security Measures',
     description:
-      'borrow on-chain derivatives while using the safest Liquid Staked ETH tokens as collateral. Options for borrowing are continually expanding. baoUSD and baoETH markets are available now!',
-    icon: DeviceUserIcon,
+      'Ensuring the safety of user funds and data integrity is paramount at Bao Finance. We implement rigorous security protocols to safeguard against vulnerabilities, providing peace of mind to our users in an increasingly digital financial landscape.',
+    icon: IconOne,
     screen: VaultsScreen,
   },
   {
-    name: 'Swap protocol tokens built into the app',
+    name: 'Differentiation Through True Decentralization',
     description:
-      'Seamlessly swap your favorite protocol tokens directly within the app. Enjoy fast, secure, and efficient token exchanges without ever leaving the platform.',
-    icon: DeviceNotificationIcon,
+      'Unlike traditional financial systems, Bao operates on principles of decentralization, eliminating single points of failure and enhancing resilience. By empowering community governance and avoiding dependence on venture capital, Bao remains true to its decentralized ethos.',
+    icon: IconTwo,
     screen: SwapScreen,
   },
   {
-    name: 'Earn protocol revenue and governance rights',
+    name: 'Partner Ecosystem for Enhanced Capabilities',
     description:
-      'Lock governance tokens, amplifying voting power to influence gauge weights and direct incentives within the ecosystem.',
-    icon: DeviceTouchIcon,
+      'Through strategic partnerships with leading DeFi platforms like Chainlink, Balancer, and Liquity, Bao integrates cutting-edge technologies to enhance protocol functionalities and expand market opportunities for users.',
+    icon: IconThree,
     screen: VoteScreen,
   },
 ]
 
-function DeviceUserIcon(props) {
+function IconOne(props) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <circle cx={16} cy={16} r={16} className="fill-baoRed/20" />
-      <FontAwesomeIcon height={32} width={32} icon={faVault} color="#e53164" />
+      <FontAwesomeIcon height={32} width={32} icon={faLock} color="#e53164" />
     </svg>
   )
 }
 
-function DeviceNotificationIcon(props) {
+function IconTwo(props) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <circle cx={16} cy={16} r={16} className="fill-baoRed/20" />
       <FontAwesomeIcon
         height={32}
         width={32}
-        icon={faChartColumn}
+        icon={faChain}
         color="#e53164"
       />{' '}
     </svg>
   )
 }
 
-function DeviceTouchIcon(props) {
+function IconThree(props) {
   let id = useId()
 
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
       <circle cx={16} cy={16} r={16} className="fill-baoRed/20" />
-      <FontAwesomeIcon
-        height={32}
-        width={32}
-        icon={faCheckToSlot}
-        color="#e53164"
-      />
+      <FontAwesomeIcon height={32} width={32} icon={faPeople} color="#e53164" />
     </svg>
   )
 }
@@ -245,29 +243,6 @@ function FeaturesDesktop() {
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <CircleBackground color="#e53164" className="animate-spin-slower" />
         </div>
-        <PhoneFrame className="z-10 mx-auto w-full max-w-[366px]">
-          <Tab.Panels as={Fragment}>
-            <AnimatePresence
-              initial={false}
-              custom={{ isForwards, changeCount }}
-            >
-              {features.map((feature, featureIndex) =>
-                selectedIndex === featureIndex ? (
-                  <Tab.Panel
-                    static
-                    key={feature.name + changeCount}
-                    className="col-start-1 row-start-1 flex focus:outline-offset-[32px] [&:not(:focus-visible)]:focus:outline-none"
-                  >
-                    <feature.screen
-                      animated
-                      custom={{ isForwards, changeCount }}
-                    />
-                  </Tab.Panel>
-                ) : null
-              )}
-            </AnimatePresence>
-          </Tab.Panels>
-        </PhoneFrame>
       </div>
     </Tab.Group>
   )
@@ -370,7 +345,7 @@ export function PrimaryFeatures() {
     <section
       id="features"
       aria-label="Features for investing all your money"
-      className="bg-gray-900 py-20 sm:py-32"
+      className="py-20 sm:pb-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
@@ -383,10 +358,7 @@ export function PrimaryFeatures() {
             Bao is building new on-chain markets with tokens priced by data
             feeds, designed to disrupt and expand on the staggering $2.5
             quadrillion centralized derivative market. With use cases including
-            RWAs, Stocks, Currencies, commodities, Interest rates and yields,
-            indexes, economic indicators, AI performance, Weather data, Energy
-            prices, social media trends, and more, the power of data-backed
-            derivatives is vast.
+            RWAs, stocks, currencies, commodities, and much more.
           </p>
         </div>
       </Container>

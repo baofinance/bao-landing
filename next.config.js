@@ -1,9 +1,18 @@
 /** @type {import('next').NextConfig} */
 
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    scrollRestoration: true,
+  images: {
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  images: { unoptimized: true },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    })
+    return config
+  },
 }
+
+module.exports = nextConfig

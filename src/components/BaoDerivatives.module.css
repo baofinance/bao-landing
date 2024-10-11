@@ -1,0 +1,339 @@
+.derivativesSection {
+  position: relative;
+  padding: 6rem 0 8rem; /* Increased bottom padding from 4rem to 8rem */
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.headerBannerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the header and banner */
+  margin-bottom: 0rem;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: center; /* Center the header and icon */
+}
+
+.header {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: clamp(50px, 12vw, 150px);
+  font-weight: bold;
+  color: #faf2e3; /* baopink */
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 0rem;
+  padding-top: 6rem;
+  margin-right: 1rem;
+}
+
+.banner {
+  background-color: #faf2e3; /* baopink */
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  width: auto; /* Adjust this value to make the banner wider */
+  max-width: 100%; /* Ensure the banner doesn't get too wide */
+  text-align: center; /* Center the text inside the banner */
+}
+
+.bannerText {
+  color: #1e2022; /* baoblack */
+  font-size: clamp(12px, 1.5vw, 18px); /* Reduced font size */
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1; /* Ensure text is vertically centered */
+  margin: 0;
+}
+
+.subheader {
+  font-size: clamp(18px, 2vw, 28px);
+  font-family: 'Bakbak One', sans-serif;
+  color: #faf2e3; /* BaoWhite */
+  margin-bottom: 2rem;
+}
+
+.boxesContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.box {
+  background-color: rgba(30, 32, 34, 1);
+  box-shadow: 0 2px 4px rgba(250, 242, 227, 0.05),
+    0 1px 3px rgba(250, 242, 227, 0.05);
+  padding: 6rem 1rem 2rem; /* Increased top padding to make room for the icon */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(2px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  height: 100%;
+  border: 1px solid rgba(250, 242, 227, 0.05);
+  overflow: visible; /* Ensure content can overflow */
+  margin-top: 3rem; /* Added margin to make room for the icon */
+}
+
+.box::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to right, #000 20px, transparent 20px),
+    linear-gradient(to bottom, #000 20px, transparent 20px);
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
+}
+
+.box::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(
+      to right,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px)
+    ),
+    linear-gradient(
+      to bottom,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px)
+    );
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(250, 242, 227, 0.2),
+    0 3px 6px rgba(250, 242, 227, 0.15);
+}
+
+/* Add this new style for random opacity squares */
+.randomOpacitySquares {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.randomOpacitySquares::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, var(--opacity)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(226, 26, 83, var(--opacity)) 1px,
+      transparent 1px
+    );
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to right, #000 20px, transparent 20px),
+    linear-gradient(to bottom, #000 20px, transparent 20px),
+    linear-gradient(to left, #000 20px, transparent 20px),
+    linear-gradient(to top, #000 20px, transparent 20px);
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
+  animation: changeOpacity 3s infinite;
+}
+
+@keyframes changeOpacity {
+  0%,
+  100% {
+    --opacity: 0.05;
+  }
+  25% {
+    --opacity: 0.1;
+  }
+  50% {
+    --opacity: 0.15;
+  }
+  75% {
+    --opacity: 0.2;
+  }
+}
+
+.boxTitle {
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #faf2e3;
+}
+
+.boxDescription {
+  text-align: center;
+  font-size: 1rem;
+  color: #faf2e3;
+  flex-grow: 1; /* Allow description to grow and push buttons to bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the description vertically */
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 1rem;
+  gap: 1rem;
+}
+
+.button {
+  background-color: #faf2e3; /* Bao White */
+  color: #1e2022; /* Dark color for contrast */
+  border: none;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex: 1;
+  min-width: 120px;
+  max-width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background-color: #e6dfd0; /* Slightly darker shade for hover effect */
+}
+
+/* Style for the primary action button (e.g., "Get baoUSD", "Get baoETH") */
+.button:first-child {
+  background-color: #e21a53; /* Bao Pink */
+  color: #ffffff;
+}
+
+.button:first-child:hover {
+  background-color: #c0164a; /* Darker shade of Bao Pink */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .buttonContainer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 0.5rem;
+  }
+
+  .derivativesSection {
+    padding: 4rem 0 6rem; /* Adjusted padding for mobile devices */
+  }
+
+  .boxesContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .box {
+    margin-bottom: 2rem;
+  }
+}
+
+/* ... (new styles added) ... */
+
+.box {
+  /* ... (existing styles) ... */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Disable buttons for coming soon items */
+.box .comingSoonStamp ~ .buttonContainer .button {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ... (rest of the styles remain unchanged) ... */
+
+@media (max-width: 768px) {
+  .boxesContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .box {
+    width: 100%;
+    max-width: none;
+    margin-top: 4rem; /* Increased margin for mobile to ensure icon visibility */
+  }
+
+  .iconContainer {
+    top: -2.5rem; /* Adjust for mobile */
+  }
+}
+
+.iconContainer {
+  position: absolute;
+  top: -2.5rem; /* Moved up slightly more */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e21a53;
+  width: 5rem; /* Increased size */
+  height: 5rem; /* Increased size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.icon {
+  color: #faf2e3;
+  font-size: 2.5rem; /* Increased size */
+}

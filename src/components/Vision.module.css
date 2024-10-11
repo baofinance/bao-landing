@@ -1,0 +1,119 @@
+.visionSection {
+  position: relative;
+  padding: 6rem 0;
+  background-color: #1e2022;
+  color: #faf2e3;
+  overflow: hidden;
+}
+
+.visionContent {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.visionHeading {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: clamp(30px, 6vw, 80px);
+  font-weight: bold;
+  color: #faf2e3;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.visionSubheading {
+  font-size: clamp(18px, 2vw, 24px);
+  font-family: 'Bakbak One', sans-serif;
+  text-align: center;
+  color: #faf2e3;
+  margin-bottom: 3rem;
+}
+
+.visionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.visionItem {
+  background-color: #faf2e3;
+  padding: 2rem;
+  border-radius: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  padding-top: 4rem; /* Make space for the icon */
+}
+
+.visionItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(250, 242, 227, 0.2);
+}
+
+.iconContainer {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e21a53;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.icon {
+  color: #faf2e3;
+  font-size: 2rem;
+}
+
+.visionItem h3 {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 1.5rem;
+  color: #1e2022;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.visionItem p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1e2022;
+}
+
+.callToAction {
+  text-align: center;
+}
+
+.callToAction p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #faf2e3;
+}
+
+.joinButton {
+  background-color: #e21a53;
+  color: #faf2e3;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.joinButton:hover {
+  background-color: #c0164a;
+}
+
+@media (max-width: 768px) {
+  .visionGrid {
+    grid-template-columns: 1fr;
+  }
+}

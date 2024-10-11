@@ -1,0 +1,124 @@
+.revolutionSection {
+  position: relative;
+  padding: 6rem 0;
+  background-color: #1e2022;
+  overflow: hidden;
+}
+
+.revolutionBackgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 1;
+}
+
+.revolutionBackgroundOverlay::before,
+.revolutionBackgroundOverlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 20px 20px;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.revolutionBackgroundOverlay::before {
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.2) 1px, transparent 1px);
+  animation: flicker1 8s infinite;
+}
+
+.revolutionBackgroundOverlay::after {
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.2) 1px, transparent 1px);
+  animation: flicker2 8s infinite;
+}
+
+@keyframes flicker1 {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  10%,
+  12% {
+    opacity: 0.4;
+    clip-path: inset(20% 35% 45% 35%);
+  }
+  14%,
+  16% {
+    opacity: 0;
+  }
+  50%,
+  52% {
+    opacity: 0.4;
+    clip-path: inset(60% 10% 10% 70%);
+  }
+  54%,
+  56% {
+    opacity: 0;
+  }
+  70%,
+  72% {
+    opacity: 0.4;
+    clip-path: inset(10% 60% 60% 10%);
+  }
+  74%,
+  76% {
+    opacity: 0;
+  }
+}
+
+@keyframes flicker2 {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  20%,
+  22% {
+    opacity: 0.4;
+    clip-path: inset(40% 15% 40% 55%);
+  }
+  24%,
+  26% {
+    opacity: 0;
+  }
+  60%,
+  62% {
+    opacity: 0.4;
+    clip-path: inset(5% 75% 80% 5%);
+  }
+  64%,
+  66% {
+    opacity: 0;
+  }
+  80%,
+  82% {
+    opacity: 0.4;
+    clip-path: inset(70% 5% 5% 65%);
+  }
+  84%,
+  86% {
+    opacity: 0;
+  }
+}

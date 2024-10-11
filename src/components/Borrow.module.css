@@ -1,0 +1,333 @@
+/* src/components/Borrow.module.css */
+
+.borrowSection {
+  position: relative;
+  padding: 6rem 0;
+  background-color: #1e2022;
+  color: #faf2e3;
+  overflow: hidden;
+}
+
+.borrowContent {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'header strategy'
+    'supply borrow';
+  gap: 2rem;
+  height: 100%;
+}
+
+.borrowHeader {
+  grid-area: header;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  text-align: center; /* Center text */
+  padding: 2rem;
+  height: 100%; /* Ensure full height of the grid area */
+}
+
+.supplyBox,
+.borrowBox {
+  background-color: rgba(30, 32, 34, 0.9);
+  box-shadow: 0 2px 4px rgba(250, 242, 227, 0.05),
+    0 1px 3px rgba(250, 242, 227, 0.05);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(2px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  border: 1px solid rgba(250, 242, 227, 0.05);
+  height: 100%;
+}
+
+.supplyBox {
+  grid-area: supply;
+}
+
+.borrowBox {
+  grid-area: borrow;
+}
+
+.strategyContainer {
+  grid-area: strategy;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.tokenGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.tokenItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.tokenItem img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+}
+
+.tokenItem h4 {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.supplyBox::before,
+.borrowBox::before,
+.strategyContainer::before,
+.supplyBox::after,
+.borrowBox::after,
+.strategyContainer::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(226, 26, 83, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to right, #000 20px, transparent 20px),
+    linear-gradient(to bottom, #000 20px, transparent 20px);
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
+}
+
+.supplyBox::after,
+.borrowBox::after,
+.strategyContainer::after {
+  mask-image: linear-gradient(
+      to right,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px)
+    ),
+    linear-gradient(
+      to bottom,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px)
+    );
+}
+
+.supplyBox:hover,
+.borrowBox:hover,
+.strategyContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(250, 242, 227, 0.2),
+    0 3px 6px rgba(250, 242, 227, 0.15);
+}
+
+/* Add this new style for random opacity squares */
+.randomOpacitySquares {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.randomOpacitySquares::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 26, 83, var(--opacity)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(226, 26, 83, var(--opacity)) 1px,
+      transparent 1px
+    );
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to right, #000 20px, transparent 20px),
+    linear-gradient(to bottom, #000 20px, transparent 20px),
+    linear-gradient(to left, #000 20px, transparent 20px),
+    linear-gradient(to top, #000 20px, transparent 20px);
+  mask-size: calc(100% + 40px) calc(100% + 40px);
+  mask-position: -20px -20px;
+  animation: changeOpacity 3s infinite;
+}
+
+@keyframes changeOpacity {
+  0%,
+  100% {
+    --opacity: 0.05;
+  }
+  25% {
+    --opacity: 0.1;
+  }
+  50% {
+    --opacity: 0.15;
+  }
+  75% {
+    --opacity: 0.2;
+  }
+}
+
+.borrowHeading {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: clamp(30px, 8vw, 100px);
+  font-weight: bold;
+  color: #faf2e3;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.borrowSubheading {
+  font-size: clamp(14px, 1.5vw, 22px);
+  font-family: 'Bakbak One', sans-serif;
+  text-transform: uppercase;
+  color: #faf2e3;
+  margin-bottom: 1rem;
+}
+
+.strategyTextContainer {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.strategy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(100%);
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #faf2e3;
+  width: 100%;
+}
+
+.strategy.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+}
+
+.strategy.previous {
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(-100%);
+}
+
+/* Remove any hover effects or additional styling for the strategyContainer */
+.strategyContainer:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Remove the random opacity squares for this container */
+.strategyContainer .randomOpacitySquares {
+  display: none;
+}
+
+.exploreButton {
+  background-color: #e21a53;
+  color: #faf2e3;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.exploreButton:hover {
+  background-color: #c0164a;
+}
+
+@media (max-width: 1200px) {
+  .borrowContent {
+    padding: 2rem 1rem;
+  }
+
+  .borrowHeader,
+  .strategyContainer {
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .borrowContent {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'header'
+      'strategy'
+      'supply'
+      'borrow';
+  }
+
+  .supplyBox,
+  .borrowBox {
+    height: auto;
+  }
+
+  .borrowHeader,
+  .strategyContainer,
+  .supplyBox,
+  .borrowBox {
+    padding: 1rem;
+  }
+}
+
+.supplyBox h3,
+.borrowBox h3 {
+  font-family: 'Bakbak One', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #faf2e3;
+  text-align: center;
+  width: 100%;
+}
+
+.supplyBox,
+.borrowBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
