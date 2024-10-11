@@ -62,38 +62,30 @@
 }
 
 .boxesContainer {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 4rem; /* Added margin to the bottom of the boxes container */
-}
-
-.boxes {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  max-width: 1400px; /* Increased from 1200px to allow more space */
+  max-width: 1400px;
   width: 100%;
+  margin: 0 auto;
 }
 
 .box {
   background-color: rgba(30, 32, 34, 1);
   box-shadow: 0 2px 4px rgba(250, 242, 227, 0.05),
     0 1px 3px rgba(250, 242, 227, 0.05);
-  padding: 2rem 1rem;
+  padding: 6rem 1rem 2rem; /* Increased top padding to make room for the icon */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: calc(33.33% - 1.33rem);
-  max-width: 380px;
-  min-width: 250px;
   backdrop-filter: blur(2px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  margin-top: 3rem;
   height: 100%;
-  border: 1px solid rgba(250, 242, 227, 0.05); /* Changed to 20% opacity */
+  border: 1px solid rgba(250, 242, 227, 0.05);
+  overflow: visible; /* Ensure content can overflow */
+  margin-top: 3rem; /* Added margin to make room for the icon */
 }
 
 .box::before {
@@ -209,11 +201,11 @@
 .boxTitle {
   text-align: center;
   width: 100%;
-  margin-top: 0.5rem; /* Reduced from 1rem */
+  margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #faf2e3; /* baopink */
+  color: #faf2e3;
 }
 
 .boxDescription {
@@ -226,40 +218,9 @@
   justify-content: center; /* Center the description vertically */
 }
 
-.logoContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: -2.5rem; /* Adjusted to move the logo up slightly */
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #e21a53; /* baopink */
-  border-radius: 50%;
-  width: 5rem; /* Increased size */
-  height: 5rem; /* Increased size */
-  overflow: visible; /* Changed from hidden to visible */
-  z-index: 1; /* Ensure logo is above the box */
-  margin-bottom: 1rem;
-}
-
-.logo {
-  width: 100%; /* Changed from 60% to 100% */
-  height: 100%; /* Changed from 60% to 100% */
-  object-fit: contain; /* Ensure the logo maintains its aspect ratio */
-}
-
-/* Add this new style for SVG logos */
-.logoContainer svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* ... (previous styles remain the same) */
-
 .buttonContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   margin-top: auto;
   padding-top: 1rem;
@@ -304,12 +265,13 @@
 @media (max-width: 768px) {
   .buttonContainer {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .button {
-    margin: 0.5rem 0;
     width: 100%;
     max-width: none;
+    margin-bottom: 0.5rem;
   }
 
   .derivativesSection {
@@ -317,25 +279,15 @@
   }
 
   .boxesContainer {
-    margin-bottom: 3rem; /* Slightly reduced margin for mobile devices */
+    grid-template-columns: 1fr;
+  }
+
+  .box {
+    margin-bottom: 2rem;
   }
 }
 
 /* ... (new styles added) ... */
-
-.comingSoonStamp {
-  position: absolute;
-  top: 1rem;
-  right: -2rem;
-  background-color: #e21a53;
-  color: #faf2e3;
-  padding: 0.25rem 1rem;
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  transform: rotate(45deg);
-  z-index: 2;
-}
 
 .box {
   /* ... (existing styles) ... */
@@ -350,3 +302,38 @@
 }
 
 /* ... (rest of the styles remain unchanged) ... */
+
+@media (max-width: 768px) {
+  .boxesContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .box {
+    width: 100%;
+    max-width: none;
+    margin-top: 4rem; /* Increased margin for mobile to ensure icon visibility */
+  }
+
+  .iconContainer {
+    top: -2.5rem; /* Adjust for mobile */
+  }
+}
+
+.iconContainer {
+  position: absolute;
+  top: -2.5rem; /* Moved up slightly more */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e21a53;
+  width: 5rem; /* Increased size */
+  height: 5rem; /* Increased size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.icon {
+  color: #faf2e3;
+  font-size: 2.5rem; /* Increased size */
+}
