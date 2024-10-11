@@ -1,14 +1,10 @@
 import React from 'react'
-import styles from './BaoDerivatives.module.css'
-import { TwinklingBackground } from './TwinklingBackground'
-import backgroundStyles from './BaoDerivativesBackground.module.css'
 
-const BaoETHLogo = () => (
+export const BaoETHLogo = () => (
   <svg
-    id="a"
     xmlns="http://www.w3.org/2000/svg"
-    width="100"
-    height="100"
+    width="100%"
+    height="100%"
     viewBox="0 0 734.05 734.05"
   >
     <defs>
@@ -55,12 +51,11 @@ const BaoETHLogo = () => (
   </svg>
 )
 
-const BaoUSDLogo = () => (
+export const BaoUSDLogo = () => (
   <svg
-    id="a"
     xmlns="http://www.w3.org/2000/svg"
-    width="100"
-    height="100"
+    width="100%"
+    height="100%"
     viewBox="0 0 734.05 755.33"
   >
     <defs>
@@ -85,12 +80,11 @@ const BaoUSDLogo = () => (
   </svg>
 )
 
-const BaoBTCLogo = () => (
+export const BaoBTCLogo = () => (
   <svg
-    id="a"
     xmlns="http://www.w3.org/2000/svg"
-    width="100"
-    height="100"
+    width="100%"
+    height="100%"
     viewBox="0 0 734.05 734.05"
   >
     <defs>
@@ -115,11 +109,11 @@ const BaoBTCLogo = () => (
   </svg>
 )
 
-const BaoQuestionLogo = () => (
+export const BaoQuestionLogo = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="100"
-    height="100"
+    width="100%"
+    height="100%"
     viewBox="0 0 734.05 734.05"
   >
     <circle cx="367.02" cy="367.02" r="360.39" fill="#e23a52" />
@@ -140,104 +134,3 @@ const BaoQuestionLogo = () => (
     </text>
   </svg>
 )
-
-const BaoDerivatives = () => {
-  return (
-    <section className={styles.derivativesSection}>
-      <TwinklingBackground
-        color="rgba(226, 26, 83, 0.2)"
-        squareSize={20}
-        coverage={0.4}
-      />
-      <div className={styles.content}>
-        <div className={styles.headerBannerContainer}>
-          <div className={styles.headerContainer}></div>
-        </div>
-
-        <div className={styles.boxesContainer}>
-          <div className={styles.boxes}>
-            <div className={styles.box}>
-              <div className={styles.randomOpacitySquares}></div>
-              <div className={styles.logoContainer}>
-                <BaoUSDLogo />
-              </div>
-              <h3 className={styles.boxTitle}>baoUSD</h3>
-              <p className={styles.boxDescription}>
-                Backed by ETH and other ETH backed tokens. A safe haven for
-                those that favor decentralization and transparency.
-              </p>
-              <div className={styles.buttonContainer}>
-                <button className={styles.button}>Get baoUSD</button>
-                <button className={styles.button}>Borrow baoUSD</button>
-              </div>
-            </div>
-            <div className={styles.box}>
-              <div className={styles.randomOpacitySquares}></div>
-              <div className={styles.logoContainer}>
-                <BaoETHLogo />
-              </div>
-              <h3 className={styles.boxTitle}>baoETH</h3>
-              <p className={styles.boxDescription}>
-                Backed by ETH. baoETH solves high borrow rates for ETH. Unlike
-                traditional markets, baoETH does not need to be deposited before
-                it is borrowed unlocking greater capital efficiency for
-                borrowers.
-              </p>
-              <div className={styles.buttonContainer}>
-                <button className={styles.button}>Get baoETH</button>
-                <button className={styles.button}>Borrow baoETH</button>
-              </div>
-            </div>
-            <div className={styles.box}>
-              <div className={styles.randomOpacitySquares}></div>
-              <div className={styles.logoContainer}>
-                <BaoBTCLogo />
-              </div>
-              <h3 className={styles.boxTitle}>baoBTC</h3>
-              <p className={styles.boxDescription}>
-                A decentralized, Bitcoin-pegged token on Ethereum, backed by
-                ETH. Unlike wBTC and other alternatives, it avoids centralized
-                control, offering a secure and transparent option for using
-                Bitcoin in DeFi applications.
-              </p>
-              <div className={styles.buttonContainer}>
-                <button className={styles.button} disabled>
-                  Get baoBTC
-                </button>
-                <button className={styles.button} disabled>
-                  Borrow baoBTC
-                </button>
-              </div>
-              <div className={styles.comingSoonStamp}>Coming Soon</div>
-            </div>
-            <div className={styles.box}>
-              <div className={styles.randomOpacitySquares}></div>
-              <div className={styles.logoContainer}>
-                <BaoQuestionLogo />
-              </div>
-              <h3 className={styles.boxTitle}>bao???</h3>
-              <p className={styles.boxDescription}>
-                Imagine the possibilities: tokenized weather derivatives, real
-                estate indices, or even sentiment analysis tokens. By leveraging
-                diverse data feeds, we can create innovative financial
-                instruments that reflect real-world events and trends, opening
-                up new horizons for decentralized finance.
-              </p>
-              <div className={styles.buttonContainer}>
-                <button className={styles.button} disabled>
-                  Explore Ideas
-                </button>
-                <button className={styles.button} disabled>
-                  Suggest a Derivative
-                </button>
-              </div>
-              <div className={styles.comingSoonStamp}>Coming Soon</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-export default BaoDerivatives

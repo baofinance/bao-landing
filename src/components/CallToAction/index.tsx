@@ -1,4 +1,4 @@
-import DiscordLink from '@/components/DiscordLink'
+import React from 'react'
 import { CircleBackground } from '@/components/CircleBackground'
 import { Container } from '@/components/Container'
 import clsx from 'clsx'
