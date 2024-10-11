@@ -2,72 +2,43 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    fontSize: {
-      xs: ['0.75rem', { lineHeight: '1rem' }],
-      sm: ['0.875rem', { lineHeight: '1.5rem' }],
-      base: ['1rem', { lineHeight: '1.5rem' }],
-      lg: ['1.125rem', { lineHeight: '2rem' }],
-      xl: ['1.25rem', { lineHeight: '1.75rem' }],
-      '2xl': ['1.5rem', { lineHeight: '2rem' }],
-      '3xl': ['2rem', { lineHeight: '3rem' }],
-      '4xl': ['2.5rem', { lineHeight: '3rem' }],
-      '5xl': ['3rem', { lineHeight: '1' }],
-      '6xl': ['3.75rem', { lineHeight: '1' }],
-      '7xl': ['4.5rem', { lineHeight: '1' }],
-      '8xl': ['6rem', { lineHeight: '1' }],
-      '9xl': ['8rem', { lineHeight: '1' }],
-    },
     extend: {
-      animation: {
-        'fade-in': 'fade-in 0.5s linear forwards',
-        marquee: 'marquee var(--marquee-duration) linear infinite',
-        'spin-slow': 'spin 4s linear infinite',
-        'spin-slower': 'spin 6s linear infinite',
-        'spin-reverse': 'spin-reverse 1s linear infinite',
-        'spin-reverse-slow': 'spin-reverse 4s linear infinite',
-        'spin-reverse-slower': 'spin-reverse 6s linear infinite',
-      },
-      borderRadius: {
-        '4xl': '2rem',
-        '5xl': '2.5rem',
-      },
-      colors: ({ colors }) => ({
-        gray: colors.neutral,
+      colors: {
         baoWhite: '#faf2e3',
         baoBlack: '#1e2022',
-        baoRed: '#e53164',
-        baoPink: '#e21a53', // Make sure this matches the color used in the hero section
-      }),
+        baoPink: '#e21a53',
+      },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
         bakbak: ['Bakbak One', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+      },
+      animation: {
+        flicker1: 'flicker1 8s infinite',
+        flicker2: 'flicker2 8s infinite',
       },
       keyframes: {
-        'fade-in': {
-          from: {
-            opacity: 0,
-          },
-          to: {
-            opacity: 1,
-          },
+        flicker1: {
+          '0%, 100%': { opacity: '0' },
+          '10%, 12%': { opacity: '0.4', clipPath: 'inset(20% 35% 45% 35%)' },
+          '14%, 16%': { opacity: '0' },
+          '50%, 52%': { opacity: '0.4', clipPath: 'inset(60% 10% 10% 70%)' },
+          '54%, 56%': { opacity: '0' },
+          '70%, 72%': { opacity: '0.4', clipPath: 'inset(10% 60% 60% 10%)' },
+          '74%, 76%': { opacity: '0' },
         },
-        marquee: {
-          '100%': {
-            transform: 'translateY(-50%)',
-          },
+        flicker2: {
+          '0%, 100%': { opacity: '0' },
+          '20%, 22%': { opacity: '0.4', clipPath: 'inset(40% 15% 40% 55%)' },
+          '24%, 26%': { opacity: '0' },
+          '60%, 62%': { opacity: '0.4', clipPath: 'inset(5% 75% 80% 5%)' },
+          '64%, 66%': { opacity: '0' },
+          '80%, 82%': { opacity: '0.4', clipPath: 'inset(70% 5% 5% 65%)' },
+          '84%, 86%': { opacity: '0' },
         },
-        'spin-reverse': {
-          to: {
-            transform: 'rotate(-360deg)',
-          },
-        },
-      },
-      maxWidth: {
-        '2xl': '40rem',
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [],
 }

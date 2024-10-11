@@ -1,3 +1,4 @@
+import React from 'react'
 import { Popover } from '@headlessui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
@@ -11,88 +12,24 @@ import logoPaladin from '@/images/logos/paladin.png'
 import logoStakeDAO from '@/images/logos/stake-dao.svg'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import Image from 'next/image' // Add this import
-
-// Remove the Logo import if it's not being used
-// import { Logo } from '@/components/Logo'
-
-import clsx from 'clsx'
-
-function MenuIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M5 6h14M5 18h14M5 12h14"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function ChevronUpIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M17 14l-5-5-5 5"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function ExternalLinkIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M18 6L6 18"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <path
-        d="M8 6L18 6L18 16"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  )
-}
-
-function MobileNavLink({ children, ...props }) {
-  return (
-    <Popover.Button
-      as={Link}
-      className="block text-base leading-7 tracking-tight text-baoWhite hover:text-baoRed"
-      {...props}
-    >
-      {children}
-    </Popover.Button>
-  )
-}
+import Image from 'next/image'
 
 export function Header() {
   return (
     <nav className="fixed left-0 right-0 z-50 border-b border-baoPink/10 backdrop-blur-md">
-      {' '}
-      {/* Added border-b and border-baoPink/10 */}
-      <Container className="flex justify-between py-6">
+      <Container className="flex justify-between py-3">
         <div className="relative z-10 flex items-center gap-16">
           <Link
             href="/"
-            className="flex place-items-center space-x-4 px-2 py-2"
+            className="flex place-items-center space-x-4 px-2"
             aria-label="Home"
           >
             <Image
               src="/images/logos/BaoLogoFull.svg"
               alt="BAO Logo"
-              width={100} // Adjust this value as needed
-              height={40} // Adjust this value as needed
-              className="h-10 w-auto" // This keeps the original class from the Logo component
+              width={100 * 0.6}
+              height={40 * 0.6}
+              className="h-10 w-auto"
             />
           </Link>
         </div>
@@ -102,7 +39,7 @@ export function Header() {
             variant="solid"
             color="baoPink"
             href="https://app.baofinance.io"
-            className="hidden lg:block"
+            className="hidden !px-3 !py-2 lg:block"
           >
             Launch App
           </Button>

@@ -1,6 +1,4 @@
 import React from 'react'
-import styles from './DerivativeUseCases.module.css'
-import { TwinklingBackground } from './TwinklingBackground'
 import {
   FaChartLine,
   FaGlobeAmericas,
@@ -9,6 +7,7 @@ import {
   FaRobot,
   FaLeaf,
 } from 'react-icons/fa'
+import { Button } from '../Button'
 
 const useCases = [
   {
@@ -59,38 +58,49 @@ const useCases = [
 
 export function DerivativeUseCases() {
   return (
-    <section className={styles.useCasesSection}>
-      <TwinklingBackground
-        color="rgba(226, 26, 83, 0.1)"
-        squareSize={20}
-        coverage={0.4}
-      />
-      <div className={styles.content}>
-        <h2 className={styles.heading}>REVOLUTIONIZING FINANCE</h2>
-        <p className={styles.subheading}>
+    <section className="relative overflow-hidden border-t-2 border-baoPink/50 bg-baoBlack py-24 text-baoWhite">
+      <div className="relative z-10 mx-auto max-w-7xl px-8">
+        <h2 className="mb-4 text-center font-bakbak text-[clamp(30px,6vw,80px)] font-bold leading-tight">
+          REVOLUTIONIZING FINANCE
+        </h2>
+        <p className="mb-12 text-center font-bakbak text-[clamp(18px,2vw,24px)] text-baoPink">
           Explore the Endless Possibilities of Tokenized Derivatives
         </p>
 
-        <div className={styles.useCasesGrid}>
+        <div className="mb-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {useCases.map((useCase, index) => (
-            <div key={index} className={styles.useCaseItem}>
-              <div className={styles.iconContainer}>
-                <useCase.icon className={styles.icon} />
+            <div
+              key={index}
+              className="flex flex-col rounded-lg bg-baoWhite bg-opacity-10 p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-baoPink/20"
+            >
+              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-baoPink">
+                <useCase.icon className="text-3xl text-baoWhite" />
               </div>
-              <h3>{useCase.title}</h3>
-              <p>{useCase.description}</p>
-              <div className={styles.example}>
+              <h3 className="mb-4 font-bakbak text-2xl text-baoWhite">
+                {useCase.title}
+              </h3>
+              <p className="mb-4 text-sm leading-relaxed text-baoWhite">
+                {useCase.description}
+              </p>
+              <div className="mt-auto text-sm italic text-baoPink">
                 <strong>Example:</strong> {useCase.example}
               </div>
             </div>
           ))}
         </div>
 
-        <div className={styles.callToAction}>
-          <p>The future of finance is limited only by our imagination.</p>
-          <button className={styles.exploreButton}>
+        <div className="text-center">
+          <p className="mb-4 text-xl">
+            The future of finance is limited only by our imagination.
+          </p>
+          <Button
+            variant="solid"
+            color="baoPink"
+            href="https://app.baofinance.io"
+            className="text-xl"
+          >
             Explore More Use Cases
-          </button>
+          </Button>
         </div>
       </div>
     </section>

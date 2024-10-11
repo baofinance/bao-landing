@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import styles from './Integrations.module.css'
-import { TwinklingBackground } from './TwinklingBackground'
 
 const partners = [
   {
@@ -46,20 +44,17 @@ export function Integrations() {
   const [activePartner, setActivePartner] = useState(partners[0])
 
   return (
-    <section className={styles.integrationsSection}>
-      <TwinklingBackground
-        color="rgba(226, 26, 83, 0.1)"
-        squareSize={20}
-        coverage={0.4}
-      />
-      <div className={styles.integrationsContent}>
-        <h2 className={styles.integrationsHeading}>Integrated with the Best</h2>
-        <div className={styles.integrationsGrid}>
-          <div className={styles.logoGrid}>
+    <section className="relative overflow-hidden bg-baoWhite py-24 text-baoBlack">
+      <div className="relative z-10 mx-auto max-w-7xl px-8">
+        <h2 className="mb-12 text-center font-bakbak text-[clamp(30px,6vw,80px)] font-bold leading-tight">
+          Integrated with the Best
+        </h2>
+        <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {partners.map((partner) => (
               <div
                 key={partner.name}
-                className={styles.logoContainer}
+                className="flex cursor-pointer items-center justify-center bg-baoBlack bg-opacity-10 p-4 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
                 onMouseEnter={() => setActivePartner(partner)}
               >
                 <Image
@@ -67,14 +62,14 @@ export function Integrations() {
                   alt={`${partner.name} logo`}
                   width={100}
                   height={100}
-                  className={styles.partnerLogo}
+                  className="h-auto max-w-full"
                 />
               </div>
             ))}
           </div>
-          <div className={styles.explainerContainer}>
-            <h3 className={styles.partnerName}>{activePartner.name}</h3>
-            <p className={styles.partnerDescription}>
+          <div className="bg-baoBlack p-8 text-baoWhite">
+            <h3 className="mb-4 font-bakbak text-3xl">{activePartner.name}</h3>
+            <p className="text-base leading-relaxed">
               {activePartner.description}
             </p>
           </div>

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { CallToAction } from '../components/CallToAction'
+import { CallToAction } from '@/components/CallToAction'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
@@ -31,14 +31,16 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <BaoDerivatives />
         <Earn />
+        <BaoDerivatives />
+        <SecondaryFeatures />
+
         <Vision />
         <ActiveVaults />
         <Borrow />
-        <SecondaryFeatures />
-        <Security />
         <Integrations />
+        <Security />
+
         <DerivativeUseCases />
       </main>
       <Footer />

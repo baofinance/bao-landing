@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Container } from '@/components/Container'
-import styles from './Hero.module.scss'
-import { AnimatedBackground } from './AnimatedBackground'
-import { Button } from '@/components/Button' // Add this line
+import { AnimatedBackground } from '../AnimatedBackground'
+import { Button } from '@/components/Button'
 
 export function Hero() {
   const words = ['Decentralized', 'Transparent', 'Secure', 'On-Chain']
@@ -16,45 +15,44 @@ export function Hero() {
       setPreviousWordIndex(currentWordIndex)
       setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length)
 
-      // Reset transition state after animation completes
       setTimeout(() => {
         setIsTransitioning(false)
-      }, 500) // This should match the transition duration in CSS
+      }, 500)
     }, 2000)
 
     return () => clearInterval(interval)
   }, [currentWordIndex, words.length])
 
   return (
-    <div>
+    <div className="relative min-h-screen overflow-hidden">
       <AnimatedBackground />
       <Container className="relative flex h-screen items-center px-4 sm:px-6 lg:px-8">
         <div className="w-full">
           <div className="max-w-2xl lg:max-w-none">
             <div className="flex flex-col space-y-6">
-              <div className={styles.wordContainer}>
+              <div className="relative mb-1 h-[1.8em] overflow-hidden text-left">
                 {words.map((word, index) => (
                   <p
                     key={word}
-                    className={`${styles.word} ${
+                    className={`absolute left-0 flex h-full w-full items-center font-inter text-[clamp(16px,2.5vw,30px)] font-normal text-baoWhite transition-all duration-500 ${
                       index === currentWordIndex
-                        ? styles.active
+                        ? 'translate-y-0 opacity-100'
                         : index === previousWordIndex && isTransitioning
-                        ? styles.previous
-                        : ''
+                        ? '-translate-y-full opacity-0'
+                        : 'translate-y-full opacity-0'
                     }`}
                   >
                     {word}
                   </p>
                 ))}
               </div>
-              <div className={styles.heroheaderContainer}>
-                <div className={styles.heroheader}>
+              <div className="w-full max-w-[1200px] p-0 text-left">
+                <div className=" mt-2 font-bakbak text-[clamp(30px,8vw,100px)] font-bold uppercase leading-none text-baoWhite">
                   <p>TOKENIZED</p>
                   <p>DERIVATIVES</p>
                 </div>
               </div>
-              <p className={styles.taglineText}>
+              <p className="!text-md !mt-2 text-left font-inter font-normal text-baoWhite lg:text-xl xl:text-2xl">
                 For the rebels, builders, and dreamers of tomorrow&apos;s
                 economy.
               </p>
@@ -64,7 +62,7 @@ export function Hero() {
                     href="https://info.bao.finance/docs"
                     variant="solid"
                     color="baoWhite"
-                    className="font-inter rounded-none bg-baoWhite px-8 py-4 text-xl font-normal text-baoBlack transition-colors duration-300 hover:bg-opacity-90" // Added rounded-none
+                    className="text-lg"
                   >
                     Learn More
                   </Button>
@@ -72,7 +70,7 @@ export function Hero() {
                     href="https://app.baofinance.io"
                     variant="solid"
                     color="baoPink"
-                    className="font-inter rounded-none px-8 py-4 text-xl font-normal" // Added rounded-none
+                    className="text-lg"
                   >
                     Launch App
                   </Button>
