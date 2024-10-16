@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { AnimatedBackground } from '../AnimatedBackground'
+import { Button } from '../Button'
 
 const supplyTokens = [
   { name: 'wstETH', imageSrc: '/tokens/wstETH.png' },
@@ -48,83 +48,165 @@ export function Borrow() {
 
   return (
     <section className="relative overflow-hidden bg-baoBlack py-24 text-baoWhite">
-      <div className="absolute inset-0">
-        <AnimatedBackground />
+      {/* Background with animated lines */}
+      <div className="absolute inset-x-0 bottom-0 h-1/2">
+        <svg
+          width="100%"
+          height="100%"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#e23a52" stopOpacity="0.1" />
+              <stop offset="100%" stopColor="#e23a52" stopOpacity="0.05" />
+            </linearGradient>
+            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#e23a52" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="#e23a52" stopOpacity="0.1" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M0 100 Q 400 0, 800 100 T 1600 100"
+            fill="none"
+            stroke="#e23a52"
+            strokeWidth="2"
+            strokeOpacity="0.4"
+            className="animate-flow-1"
+          />
+          <path
+            d="M0 100 Q 400 0, 800 100 T 1600 100"
+            fill="url(#grad1)"
+            className="animate-flow-1"
+          />
+          <path
+            d="M0 200 Q 600 100, 1200 200 T 1600 200"
+            fill="none"
+            stroke="#e23a52"
+            strokeWidth="2"
+            strokeOpacity="0.4"
+            className="animate-flow-2"
+          />
+          <path
+            d="M0 200 Q 600 100, 1200 200 T 1600 200"
+            fill="url(#grad2)"
+            className="animate-flow-2"
+          />
+          <path
+            d="M0 300 Q 300 200, 800 300 T 1600 300"
+            fill="none"
+            stroke="#e23a52"
+            strokeWidth="2"
+            strokeOpacity="0.4"
+            className="animate-flow-3"
+          />
+          <path
+            d="M0 300 Q 300 200, 800 300 T 1600 300"
+            fill="url(#grad1)"
+            className="animate-flow-3"
+          />
+        </svg>
       </div>
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-8 px-8 md:grid-cols-2 md:grid-rows-[auto,1fr]">
-        <div className="flex flex-col items-center justify-center text-center md:col-span-2">
-          <h2 className="font-bakbak text-[clamp(30px,8vw,100px)] font-bold uppercase leading-none">
-            BORROW
-          </h2>
-          <p className="mb-4 font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase">
-            AT THE BEST RATES
-          </p>
-          <button className="bg-baoPink px-6 py-3 font-bold uppercase text-baoWhite transition-colors duration-300 hover:bg-baoPink/80">
-            EXPLORE MARKETS
-          </button>
-        </div>
 
-        <div className="flex flex-col items-center justify-between">
-          <div className="relative h-24 w-full overflow-hidden">
-            {borrowStrategies.map((strategy, index) => (
-              <p
-                key={strategy}
-                className={`absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-2xl transition-all duration-500 ${
-                  index === currentStrategyIndex
-                    ? 'translate-y-0 opacity-100'
-                    : index === previousStrategyIndex && isTransitioning
-                    ? '-translate-y-full opacity-0'
-                    : 'translate-y-full opacity-0'
-                }`}
+      <div className="relative z-10 mx-auto max-w-7xl px-8">
+        <div className="grid gap-8 md:grid-cols-2">
+          <div className="relative flex flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <h2 className="mb-4 font-bakbak text-[clamp(30px,8vw,100px)] font-bold uppercase leading-none">
+              BORROW
+            </h2>
+            <p className="mb-6 font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase">
+              💎 AT THE BEST RATES 🚀
+            </p>
+            <div className="relative mb-8 h-24 w-full overflow-hidden">
+              {borrowStrategies.map((strategy, index) => (
+                <p
+                  key={strategy}
+                  className={`absolute left-0 top-0 w-full text-center text-2xl transition-all duration-500 ${
+                    index === currentStrategyIndex
+                      ? 'translate-y-0 opacity-100'
+                      : index === previousStrategyIndex && isTransitioning
+                      ? '-translate-y-full opacity-0'
+                      : 'translate-y-full opacity-0'
+                  }`}
+                >
+                  {strategy}
+                </p>
+              ))}
+            </div>
+            <div className="flex w-full justify-center gap-4">
+              <Button
+                variant="solid"
+                color="baoPink"
+                href="https://app.baofinance.io/vaults"
               >
-                {strategy}
-              </p>
-            ))}
+                BORROW NOW
+              </Button>
+              <Button
+                variant="solid"
+                color="baoWhite"
+                href="https://info.bao.finance/docs/protocol/borrow-vaults"
+              >
+                EXPLORE STRATEGIES
+              </Button>
+            </div>
           </div>
-          <button className="mt-4 bg-baoPink px-6 py-3 font-bold uppercase text-baoWhite transition-colors duration-300 hover:bg-baoPink/80">
-            EXPLORE STRATEGIES
-          </button>
-        </div>
 
-        <div className="relative flex flex-col items-center bg-baoBlack p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e21a53_1px,transparent_1px),linear-gradient(to_bottom,#e21a53_1px,transparent_1px)] bg-[size:20px_20px] opacity-10"></div>
-          <h3 className="relative z-10 mb-4 font-bakbak text-2xl">Supply</h3>
-          <div className="relative z-10 grid grid-cols-3 gap-4 sm:grid-cols-5">
-            {supplyTokens.map((token, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <Image
-                  src={token.imageSrc}
-                  alt={`${token.name} Logo`}
-                  width={50}
-                  height={50}
-                  loading={index < 2 ? 'eager' : 'lazy'}
-                />
-                <h4 className="mt-2 text-sm">{token.name}</h4>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="relative flex flex-col items-center bg-baoBlack p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e21a53_1px,transparent_1px),linear-gradient(to_bottom,#e21a53_1px,transparent_1px)] bg-[size:20px_20px] opacity-10"></div>
-          <h3 className="relative z-10 mb-4 font-bakbak text-2xl">Borrow</h3>
-          <div className="relative z-10 grid grid-cols-3 gap-4">
-            {borrowTokens.map((token, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <Image
-                  src={token.imageSrc}
-                  alt={`${token.name} Logo`}
-                  width={50}
-                  height={50}
-                  loading={index < 2 ? 'eager' : 'lazy'}
-                />
-                <h4 className="mt-2 text-sm">{token.name}</h4>
-              </div>
-            ))}
+          <div className="grid gap-8">
+            <TokenBox title="Supply" tokens={supplyTokens} />
+            <TokenBox title="Borrow" tokens={borrowTokens} />
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes flowAnimation {
+          0% {
+            d: path(M0 100 Q 400 0, 800 100 T 1600 100);
+          }
+          50% {
+            d: path(M0 150 Q 450 50, 850 150 T 1600 150);
+          }
+          100% {
+            d: path(M0 100 Q 400 0, 800 100 T 1600 100);
+          }
+        }
+        .animate-flow-1 {
+          animation: flowAnimation 20s ease-in-out infinite;
+        }
+        .animate-flow-2 {
+          animation: flowAnimation 25s ease-in-out infinite;
+        }
+        .animate-flow-3 {
+          animation: flowAnimation 30s ease-in-out infinite;
+        }
+      `}</style>
     </section>
+  )
+}
+
+function TokenBox({ title, tokens }) {
+  return (
+    <div className="relative flex flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <h3 className="mb-6 font-bakbak text-2xl">{title}</h3>
+      <div className="relative z-10 flex w-full justify-center">
+        <div className="grid grid-cols-3 gap-6 sm:grid-cols-5">
+          {tokens.map((token, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <div className="flex h-16 w-16 items-center justify-center">
+                <Image
+                  src={token.imageSrc}
+                  alt={`${token.name} Logo`}
+                  width={50}
+                  height={50}
+                  loading={index < 2 ? 'eager' : 'lazy'}
+                />
+              </div>
+              <h4 className="mt-2 text-center text-sm">{token.name}</h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   )
 }
 

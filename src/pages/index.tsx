@@ -31,17 +31,16 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Earn />
         <BaoDerivatives />
-        <SecondaryFeatures />
 
+        <Earn />
         <Vision />
         <ActiveVaults />
         <Borrow />
+        <SecondaryFeatures />
+        <DerivativeUseCases />
         <Integrations />
         <Security />
-
-        <DerivativeUseCases />
       </main>
       <Footer />
     </>

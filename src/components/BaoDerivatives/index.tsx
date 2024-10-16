@@ -2,16 +2,97 @@ import React from 'react'
 import { BaoETHLogo, BaoUSDLogo, BaoBTCLogo, BaoQuestionLogo } from './Logos'
 import { Button } from '../Button'
 
-const BaoDerivatives = () => {
+const BaoDerivatives: React.FC = () => {
+  const DISCORD_INVITE_LINK = 'https://discord.gg/BW3P62vJXT'
+
   return (
     <section className="relative overflow-hidden bg-baoBlack py-24 lg:py-32">
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 font-bakbak text-[clamp(50px,12vw,150px)] font-bold uppercase leading-none text-baoWhite">
-            BAO DERIVATIVES
-          </h2>
-        </div>
+      {/* Background with animated lines */}
+      <div className="absolute inset-0">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#e23a52" stopOpacity="0.1" />
+              <stop offset="100%" stopColor="#e23a52" stopOpacity="0.05" />
+            </linearGradient>
+            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#e23a52" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="#e23a52" stopOpacity="0.1" />
+            </linearGradient>
+            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#e23a52" stopOpacity="0.08" />
+              <stop offset="100%" stopColor="#e23a52" stopOpacity="0.03" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M0 50 Q 400 0, 800 100 T 1600 50"
+            fill="none"
+            stroke="#e23a52"
+            strokeWidth="2"
+            strokeOpacity="0.4"
+            className="animate-flow-1"
+          />
+          <path
+            d="M0 50 Q 400 0, 800 100 T 1600 50"
+            fill="url(#grad1)"
+            className="animate-flow-1"
+          />
+          <path
+            d="M0 150 Q 500 50, 1000 200 T 1600 150"
+            fill="none"
+            stroke="#e23a52"
+            strokeWidth="2"
+            strokeOpacity="0.4"
+            className="animate-flow-2"
+          />
+          <path
+            d="M0 150 Q 500 50, 1000 200 T 1600 150"
+            fill="url(#grad2)"
+            className="animate-flow-2"
+          />
+          <path
+            d="M0 250 Q 600 150, 1200 300 T 1600 250"
+            fill="none"
+            stroke="#e23a52"
+            strokeWidth="2"
+            strokeOpacity="0.4"
+            className="animate-flow-3"
+          />
+          <path
+            d="M0 250 Q 600 150, 1200 300 T 1600 250"
+            fill="url(#grad1)"
+            className="animate-flow-3"
+          />
+          <path
+            d="M0 350 Q 400 250, 800 400 T 1600 350"
+            fill="none"
+            stroke="#e23a52"
+            strokeWidth="2"
+            strokeOpacity="0.4"
+            className="animate-flow-4"
+          />
+          <path
+            d="M0 350 Q 400 250, 800 400 T 1600 350"
+            fill="url(#grad3)"
+            className="animate-flow-4"
+          />
+          <path
+            d="M0 450 Q 700 350, 1400 500 T 1600 450"
+            fill="none"
+            stroke="#e23a52"
+            strokeWidth="2"
+            strokeOpacity="0.4"
+            className="animate-flow-5"
+          />
+          <path
+            d="M0 450 Q 700 350, 1400 500 T 1600 450"
+            fill="url(#grad2)"
+            className="animate-flow-5"
+          />
+        </svg>
+      </div>
 
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
@@ -42,19 +123,23 @@ const BaoDerivatives = () => {
               logo: <BaoQuestionLogo />,
               title: 'bao???',
               description:
-                'Imagine the possibilities: tokenized weather derivatives, real estate indices, or even sentiment analysis tokens. By leveraging diverse data feeds, we can create innovative financial instruments that reflect real-world events and trends, opening up new horizons for decentralized finance.',
+                "Unleash the future: Weather-proof your portfolio, tokenize real estate, or trade sentiment. With diverse data feeds, we're crafting financial instruments that pulse with real-world rhythms. Welcome to DeFi's new frontier.",
               buttons: ['Explore Ideas', 'Suggest a Derivative'],
               comingSoon: true,
+              specialLinks: [
+                'https://info.bao.finance/docs/synth-use-cases',
+                DISCORD_INVITE_LINK,
+              ],
             },
           ].map((item, index) => (
             <div
               key={index}
-              className="relative flex flex-col items-center rounded-xl p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="relative flex flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="absolute -top-10 left-1/2 flex h-[4.5rem] w-[4.5rem] -translate-x-1/2 items-center justify-center overflow-hidden rounded-full bg-baoPink">
                 {item.logo}
               </div>
-              <h3 className="mb-4 mt-12 font-bakbak text-2xl font-bold text-baoWhite">
+              <h3 className="mb-4 mt-8 font-bakbak text-2xl font-bold text-baoWhite">
                 {item.title}
               </h3>
               <p className="mb-8 flex-grow text-sm text-baoWhite">
@@ -64,13 +149,23 @@ const BaoDerivatives = () => {
                 {item.buttons.map((button, buttonIndex) => (
                   <Button
                     key={buttonIndex}
-                    className={`w-full px-4 py-2  ${
+                    href={
+                      !item.comingSoon
+                        ? item.specialLinks
+                          ? item.specialLinks[buttonIndex]
+                          : buttonIndex === 0
+                          ? 'https://app.baofinance.io/swap'
+                          : 'https://app.baofinance.io/vaults'
+                        : undefined
+                    }
+                    className={`w-full px-4 py-2 ${
                       buttonIndex === 0
                         ? 'bg-baoPink text-baoWhite hover:bg-baoPink/80'
                         : 'bg-baoWhite text-baoBlack hover:bg-baoWhite/80'
                     } ${
                       item.comingSoon ? 'cursor-not-allowed opacity-50' : ''
                     }`}
+                    disabled={item.comingSoon}
                   >
                     {button}
                   </Button>
