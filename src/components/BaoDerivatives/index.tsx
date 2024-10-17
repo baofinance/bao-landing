@@ -1,9 +1,23 @@
 import React from 'react'
 import { BaoETHLogo, BaoUSDLogo, BaoBTCLogo, BaoQuestionLogo } from './Logos'
-import { Button } from '../Button'
+import { Button, ButtonProps } from '../Button' // Updated import path
 
 const BaoDerivatives: React.FC = () => {
   const DISCORD_INVITE_LINK = 'https://discord.gg/BW3P62vJXT'
+
+  const buttonProps = (
+    buttonIndex: number,
+    children: React.ReactNode,
+    specialLinks?: string[]
+  ): Omit<ButtonProps, 'children'> => ({
+    href: specialLinks
+      ? specialLinks[buttonIndex]
+      : buttonIndex === 0
+      ? 'https://app.baofinance.io/swap'
+      : 'https://app.baofinance.io/vaults',
+    className: `w-full px-4 py-2`,
+    color: buttonIndex === 0 ? 'baoPink' : 'baoWhite',
+  })
 
   return (
     <section className="relative overflow-hidden bg-baoBlack py-24 lg:py-32">
@@ -76,19 +90,6 @@ const BaoDerivatives: React.FC = () => {
             fill="url(#grad3)"
             className="animate-flow-4"
           />
-          <path
-            d="M0 450 Q 700 350, 1400 500 T 1600 450"
-            fill="none"
-            stroke="#e23a52"
-            strokeWidth="2"
-            strokeOpacity="0.4"
-            className="animate-flow-5"
-          />
-          <path
-            d="M0 450 Q 700 350, 1400 500 T 1600 450"
-            fill="url(#grad2)"
-            className="animate-flow-5"
-          />
         </svg>
       </div>
 
@@ -146,30 +147,31 @@ const BaoDerivatives: React.FC = () => {
                 {item.description}
               </p>
               <div className="flex w-full flex-col gap-4">
-                {item.buttons.map((button, buttonIndex) => (
-                  <Button
-                    key={buttonIndex}
-                    href={
-                      !item.comingSoon
-                        ? item.specialLinks
-                          ? item.specialLinks[buttonIndex]
-                          : buttonIndex === 0
-                          ? 'https://app.baofinance.io/swap'
-                          : 'https://app.baofinance.io/vaults'
-                        : undefined
-                    }
-                    className={`w-full px-4 py-2 ${
-                      buttonIndex === 0
-                        ? 'bg-baoPink text-baoWhite hover:bg-baoPink/80'
-                        : 'bg-baoWhite text-baoBlack hover:bg-baoWhite/80'
-                    } ${
-                      item.comingSoon ? 'cursor-not-allowed opacity-50' : ''
-                    }`}
-                    disabled={item.comingSoon}
-                  >
-                    {button}
-                  </Button>
-                ))}
+                {item.buttons.map((button, buttonIndex) => {
+                  if (item.comingSoon) {
+                    return (
+                      <div
+                        key={buttonIndex}
+                        className={`w-full rounded-md px-4 py-2 text-center font-medium ${
+                          buttonIndex === 0
+                            ? 'bg-baoPink/50 text-baoWhite'
+                            : 'bg-baoWhite/50 text-baoBlack'
+                        } cursor-not-allowed opacity-50`}
+                      >
+                        {button}
+                      </div>
+                    )
+                  }
+
+                  return (
+                    <Button
+                      key={buttonIndex}
+                      {...buttonProps(buttonIndex, button, item.specialLinks)}
+                    >
+                      {button}
+                    </Button>
+                  )
+                })}
               </div>
               {item.comingSoon && (
                 <div className="absolute right-3 top-3 rounded-sm bg-baoPink px-2 py-1 text-[.7rem] font-bold uppercase text-baoWhite">

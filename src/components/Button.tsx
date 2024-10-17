@@ -2,10 +2,10 @@ import React from 'react'
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 
-type ButtonVariant = 'solid' | 'outline'
-type ButtonColor = 'baoPink' | 'baoWhite' | 'gray'
+export type ButtonVariant = 'solid' | 'outline'
+export type ButtonColor = 'baoPink' | 'baoWhite' | 'gray'
 
-interface ButtonProps {
+export interface ButtonProps {
   href?: string
   variant?: ButtonVariant
   color?: ButtonColor

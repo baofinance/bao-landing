@@ -54,12 +54,6 @@ const partners = [
       'Rocket Pool integration offers decentralized Ethereum staking, expanding the range of staking options available to Bao users.',
   },
   {
-    name: 'Snapshot',
-    logo: '/images/logos/Snapshot.htm',
-    description:
-      'Bao uses Snapshot for decentralized governance voting, allowing BAO token holders to participate in decision-making.',
-  },
-  {
     name: 'StakeDAO',
     logo: '/images/logos/stakedao.webp',
     description:

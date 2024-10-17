@@ -1,16 +1,18 @@
 import React from 'react'
 import Link from 'next/link'
 
-export interface ButtonProps {
+type ButtonColor = 'baoPink' | 'baoWhite' | 'baoBlack'
+
+interface ButtonProps {
   variant?: 'solid' | 'outline'
-  color?: 'baoPink' | 'baoWhite' | 'baoBlack'
+  color?: ButtonColor
   href?: string
   className?: string
   children: React.ReactNode
   disabled?: boolean
 }
 
-export function Button({
+export const Button: React.FC<ButtonProps> = ({
   variant = 'solid',
   color = 'baoPink',
   href,
@@ -18,10 +20,13 @@ export function Button({
   children,
   disabled = false,
   ...props
-}: ButtonProps) {
+}) => {
   const baseStyles =
     'inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2'
-  const variantStyles = {
+  const variantStyles: Record<
+    'solid' | 'outline',
+    Record<ButtonColor, string>
+  > = {
     solid: {
       baoPink:
         'bg-baoPink text-baoWhite hover:bg-baoPink/80 focus:ring-baoPink',
@@ -56,3 +61,6 @@ export function Button({
     </button>
   )
 }
+
+// Export ButtonProps explicitly
+export type { ButtonProps }
