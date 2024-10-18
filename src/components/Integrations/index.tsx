@@ -153,7 +153,7 @@ export function Integrations() {
           </div>
           <div className="flex flex-col">
             <div
-              className="bg-baoBlack p-8 text-baoWhite"
+              className="bg-baoBlack bg-opacity-80 p-8 text-baoWhite"
               style={{ minHeight: '300px' }}
             >
               <h3 className="mb-4 font-bakbak text-3xl">

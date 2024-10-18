@@ -1,6 +1,6 @@
 import React from 'react'
 import { BaoETHLogo, BaoUSDLogo, BaoBTCLogo, BaoQuestionLogo } from './Logos'
-import { Button, ButtonProps } from '../Button' // Updated import path
+import { Button, ButtonProps } from '../Button'
 
 const BaoDerivatives: React.FC = () => {
   const DISCORD_INVITE_LINK = 'https://discord.gg/BW3P62vJXT'
@@ -23,7 +23,12 @@ const BaoDerivatives: React.FC = () => {
     <section className="relative overflow-hidden bg-baoBlack py-24 lg:py-32">
       {/* Background with animated lines */}
       <div className="absolute inset-0">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="100%"
+          height="100%"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
           <defs>
             <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#e23a52" stopOpacity="0.1" />
@@ -93,6 +98,32 @@ const BaoDerivatives: React.FC = () => {
         </svg>
       </div>
 
+      <style jsx>{`
+        @keyframes flowAnimation {
+          0% {
+            d: path(M0 50 Q 400 0, 800 100 T 1600 50);
+          }
+          50% {
+            d: path(M0 75 Q 400 25, 800 125 T 1600 75);
+          }
+          100% {
+            d: path(M0 50 Q 400 0, 800 100 T 1600 50);
+          }
+        }
+        .animate-flow-1 {
+          animation: flowAnimation 20s ease-in-out infinite;
+        }
+        .animate-flow-2 {
+          animation: flowAnimation 23s ease-in-out infinite;
+        }
+        .animate-flow-3 {
+          animation: flowAnimation 26s ease-in-out infinite;
+        }
+        .animate-flow-4 {
+          animation: flowAnimation 29s ease-in-out infinite;
+        }
+      `}</style>
+
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {[
@@ -126,7 +157,7 @@ const BaoDerivatives: React.FC = () => {
               description:
                 "Unleash the future: Weather-proof your portfolio, tokenize real estate, or trade sentiment. With diverse data feeds, we're crafting financial instruments that pulse with real-world rhythms. Welcome to DeFi's new frontier.",
               buttons: ['Explore Ideas', 'Suggest a Derivative'],
-              comingSoon: true,
+              comingSoon: false,
               specialLinks: [
                 'https://info.bao.finance/docs/synth-use-cases',
                 DISCORD_INVITE_LINK,
@@ -137,7 +168,7 @@ const BaoDerivatives: React.FC = () => {
               key={index}
               className="relative flex flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="absolute -top-10 left-1/2 flex h-[4.5rem] w-[4.5rem] -translate-x-1/2 items-center justify-center overflow-hidden rounded-full bg-baoPink">
+              <div className="absolute -top-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center overflow-hidden rounded-full bg-baoPink">
                 {item.logo}
               </div>
               <h3 className="mb-4 mt-8 font-bakbak text-2xl font-bold text-baoWhite">
@@ -173,8 +204,8 @@ const BaoDerivatives: React.FC = () => {
                   )
                 })}
               </div>
-              {item.comingSoon && (
-                <div className="absolute right-3 top-3 rounded-sm bg-baoPink px-2 py-1 text-[.7rem] font-bold uppercase text-baoWhite">
+              {item.comingSoon && item.title !== 'bao???' && (
+                <div className="absolute right-2 top-2 rounded-sm bg-baoPink px-2 py-0.5 text-[.6rem] font-bold uppercase text-baoWhite">
                   Coming Soon
                 </div>
               )}

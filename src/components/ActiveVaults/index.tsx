@@ -83,7 +83,7 @@ export function ActiveVaults() {
             </div>
           </div>
           <div className="lg:w-3/5">
-            <div className="mx-auto max-w-2xl rounded-lg bg-baoBlack p-6 shadow-lg">
+            <div className="mx-auto max-w-2xl rounded-lg bg-baoBlack bg-opacity-80 p-6 shadow-lg">
               <ul className="space-y-4">
                 {features.map((feature, index) => (
                   <li key={index} className="flex items-center">
@@ -123,8 +123,6 @@ export function ActiveVaults() {
                   {index + 1}
                 </div>
                 <div className="group relative flex h-full flex-col rounded-lg bg-baoBlack p-8 text-center text-baoWhite transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-baoPink/15">
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#e21a53_1px,transparent_1px),linear-gradient(to_bottom,#e21a53_1px,transparent_1px)] bg-[size:20px_20px] opacity-10"></div>
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#e21a53_1px,transparent_1px),linear-gradient(to_bottom,#e21a53_1px,transparent_1px)] bg-[size:20px_20px] opacity-0 transition-opacity duration-300 group-hover:opacity-20"></div>
                   <h3 className="relative z-10 mb-4 font-bakbak text-2xl">
                     {step.title}
                   </h3>

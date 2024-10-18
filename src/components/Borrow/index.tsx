@@ -13,7 +13,7 @@ const supplyTokens = [
 const borrowTokens = [
   { name: 'baoUSD', imageSrc: '/tokens/baoUSD-pinksvg.svg' },
   { name: 'baoETH', imageSrc: '/tokens/baoETH-pink.svg' },
-  { name: 'baoBTC', imageSrc: '/tokens/baoBTC-pink.svg' },
+  { name: 'baoBTC', imageSrc: '/tokens/baoBTC-pink.svg', comingSoon: true },
 ]
 
 const borrowStrategies = [
@@ -192,7 +192,7 @@ function TokenBox({ title, tokens }) {
         <div className="grid grid-cols-3 gap-6 sm:grid-cols-5">
           {tokens.map((token, index) => (
             <div key={index} className="flex flex-col items-center">
-              <div className="flex h-16 w-16 items-center justify-center">
+              <div className="relative flex h-16 w-16 items-center justify-center">
                 <Image
                   src={token.imageSrc}
                   alt={`${token.name} Logo`}
@@ -200,6 +200,13 @@ function TokenBox({ title, tokens }) {
                   height={50}
                   loading={index < 2 ? 'eager' : 'lazy'}
                 />
+                {token.comingSoon && (
+                  <div className="absolute inset-0 flex items-center justify-center rounded-full bg-baoPink bg-opacity-80">
+                    <span className="text-xs font-bold text-white">
+                      COMING SOON
+                    </span>
+                  </div>
+                )}
               </div>
               <h4 className="mt-2 text-center text-sm">{token.name}</h4>
             </div>

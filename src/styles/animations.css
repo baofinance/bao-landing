@@ -1,0 +1,24 @@
+@keyframes flowAnimation {
+  0% {
+    d: path(M0 50 Q 400 0, 800 100 T 1600 50);
+  }
+  50% {
+    d: path(M0 75 Q 400 25, 800 125 T 1600 75);
+  }
+  100% {
+    d: path(M0 50 Q 400 0, 800 100 T 1600 50);
+  }
+}
+
+.animate-flow-1 {
+  animation: flowAnimation 20s ease-in-out infinite;
+}
+.animate-flow-2 {
+  animation: flowAnimation 23s ease-in-out infinite;
+}
+.animate-flow-3 {
+  animation: flowAnimation 26s ease-in-out infinite;
+}
+.animate-flow-4 {
+  animation: flowAnimation 29s ease-in-out infinite;
+}

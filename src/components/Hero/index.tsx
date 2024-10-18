@@ -1,61 +1,68 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Container } from '@/components/Container'
 import { AnimatedBackground } from '../AnimatedBackground'
 import { Button } from '@/components/Button'
 
 export function Hero() {
-  const words = ['Decentralized', 'Transparent', 'Secure', 'On-Chain']
-  const [currentWordIndex, setCurrentWordIndex] = useState(0)
-  const [previousWordIndex, setPreviousWordIndex] = useState(words.length - 1)
-  const [isTransitioning, setIsTransitioning] = useState(false)
+  const roles = useMemo(() => ['REBELS', 'BUILDERS', 'DREAMERS'], [])
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
+  const [displayedText, setDisplayedText] = useState('')
+  const [isTyping, setIsTyping] = useState(true)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIsTransitioning(true)
-      setPreviousWordIndex(currentWordIndex)
-      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length)
+    let timer: NodeJS.Timeout
 
-      setTimeout(() => {
-        setIsTransitioning(false)
-      }, 500)
-    }, 2000)
+    if (isTyping) {
+      if (displayedText.length < roles[currentRoleIndex].length) {
+        timer = setTimeout(() => {
+          setDisplayedText(
+            roles[currentRoleIndex].slice(0, displayedText.length + 1)
+          )
+        }, 100)
+      } else {
+        timer = setTimeout(() => {
+          setIsTyping(false)
+        }, 2000)
+      }
+    } else {
+      if (displayedText.length > 0) {
+        timer = setTimeout(() => {
+          setDisplayedText(displayedText.slice(0, -1))
+        }, 50)
+      } else {
+        setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length)
+        setIsTyping(true)
+      }
+    }
 
-    return () => clearInterval(interval)
-  }, [currentWordIndex, words.length])
+    return () => clearTimeout(timer)
+  }, [currentRoleIndex, displayedText, isTyping, roles])
 
   return (
     <div className="relative min-h-screen overflow-hidden">
       <AnimatedBackground />
       <Container className="relative flex h-screen items-center px-4 sm:px-6 lg:px-8">
         <div className="w-full">
-          <div className="max-w-2xl lg:max-w-none">
+          <div className="max-w-4xl lg:max-w-none">
             <div className="flex flex-col space-y-6">
-              <div className="relative mb-1 h-[1.8em] overflow-hidden text-left">
-                {words.map((word, index) => (
-                  <p
-                    key={word}
-                    className={`absolute left-0 flex h-full w-full items-center font-inter text-[clamp(16px,2.5vw,30px)] font-normal text-baoWhite transition-all duration-500 ${
-                      index === currentWordIndex
-                        ? 'translate-y-0 opacity-100'
-                        : index === previousWordIndex && isTransitioning
-                        ? '-translate-y-full opacity-0'
-                        : 'translate-y-full opacity-0'
-                    }`}
-                  >
-                    {word}
-                  </p>
-                ))}
-              </div>
               <div className="w-full max-w-[1200px] p-0 text-left">
-                <div className=" mt-2 font-bakbak text-[clamp(30px,8vw,100px)] font-bold uppercase leading-none text-baoWhite">
-                  <p>TOKENIZED</p>
-                  <p>DERIVATIVES</p>
+                <div className="flex items-center font-bakbak text-[clamp(18px,2.5vw,36px)] font-bold uppercase leading-none text-baoWhite">
+                  TOKENIZED DERIVATIVES
                 </div>
               </div>
-              <p className="!text-md !mt-2 text-left font-inter font-normal text-baoWhite lg:text-xl xl:text-2xl">
-                For the rebels, builders, and dreamers of tomorrow&apos;s
-                economy.
-              </p>
+              <div className="w-full max-w-[1200px] p-0 text-left">
+                <h1 className="font-bakbak text-[clamp(36px,5.5vw,80px)] font-bold uppercase leading-tight text-baoWhite">
+                  For the{' '}
+                  <span className="relative inline-block align-bottom">
+                    <span className="invisible">{roles[currentRoleIndex]}</span>
+                    <span className="absolute left-0 top-0">
+                      {displayedText}
+                    </span>
+                  </span>
+                  <br />
+                  of tomorrow&apos;s economy.
+                </h1>
+              </div>
               <div className="flex flex-wrap items-end gap-x-12 gap-y-8">
                 <div className="flex gap-x-6">
                   <Button
