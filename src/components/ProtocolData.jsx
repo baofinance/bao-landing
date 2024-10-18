@@ -52,25 +52,25 @@ export const ProtocolData = () => {
     >
       <div className="grid grid-cols-4 gap-16 px-6 py-6">
         <div className="col-span-1 break-words text-center">
-          <p className="font-bakbak text-lg text-baoRed">Total Value Locked</p>
+          <p className="text-baoRed font-bakbak text-lg">Total Value Locked</p>
           <p className="inline-block font-bakbak !text-2xl leading-5 text-baoWhite">
             ${tvl ? getDisplayBalance(tvl) : '-'}
           </p>
         </div>
         <div className="col-span-1 break-words text-center">
-          <p className="font-bakbak text-lg text-baoRed">Total Holders</p>
+          <p className="text-baoRed font-bakbak text-lg">Total Holders</p>
           <p className="inline-block font-bakbak !text-2xl leading-5 text-baoWhite">
             16K
           </p>
         </div>
         <div className="col-span-1 break-words text-center">
-          <p className="font-bakbak text-lg text-baoRed">BAO Price</p>
+          <p className="text-baoRed font-bakbak text-lg">BAO Price</p>
           <p className="inline-block font-bakbak !text-2xl leading-5 text-baoWhite">
             ${price ? getDisplayBalance(price) : '-'}
           </p>
         </div>
         <div className="col-span-1 break-words text-center">
-          <p className="font-bakbak text-lg text-baoRed">Market Cap</p>
+          <p className="text-baoRed font-bakbak text-lg">Market Cap</p>
           <p className="inline-block font-bakbak !text-2xl leading-5 text-baoWhite">
             ${mcap ? getDisplayBalance(mcap) : '-'}
           </p>

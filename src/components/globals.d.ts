@@ -1,0 +1,1 @@
+declare module '@vercel/examples-ui/globals.css'
