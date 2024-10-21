@@ -47,6 +47,8 @@ export const Button: React.FC<ButtonProps> = ({
 
   const styles = `${baseStyles} ${variantStyles[variant][color]} ${className}`
 
+  console.log('Button styles:', styles)
+
   if (href) {
     return (
       <Link href={href} className={styles} {...props}>

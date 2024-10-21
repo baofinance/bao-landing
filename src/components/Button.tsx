@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 
 export type ButtonVariant = 'solid' | 'outline'
-export type ButtonColor = 'baoPink' | 'baoWhite' | 'gray'
+export type ButtonColor = 'baoPink' | 'baoWhite' | 'baoBlack' | 'gray'
 
 export interface ButtonProps {
   href?: string
@@ -24,7 +24,8 @@ const variantStyles: Record<ButtonVariant, string> = {
 
 const colorStyles: Record<ButtonColor, string> = {
   baoPink: 'bg-baoPink text-white hover:bg-opacity-90',
-  baoWhite: 'bg-white text-cyan-900 hover:bg-opacity-90',
+  baoWhite: 'bg-baoWhite text-baoBlack hover:bg-opacity-90',
+  baoBlack: 'bg-baoBlack text-white hover:bg-opacity-90',
   gray: 'bg-gray-800 text-white hover:bg-gray-700',
 }
 

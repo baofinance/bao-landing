@@ -40,6 +40,13 @@ export function Vision() {
 
   return (
     <section className="relative overflow-hidden bg-baoBlack py-24 text-baoWhite">
+      {/* Spotlight background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="spotlight spotlight-1"></div>
+        <div className="spotlight spotlight-2"></div>
+        <div className="spotlight spotlight-3"></div>
+      </div>
+
       <div className="relative z-10 mx-auto max-w-7xl px-8">
         <h2 className="mb-4 text-center font-bakbak text-[clamp(30px,6vw,80px)] font-bold leading-tight">
           WHY ONCHAIN DERIVATIVES?
@@ -88,102 +95,50 @@ export function Vision() {
         </div>
       </div>
 
-      {/* Updated background with less blur and more similar to BaoDerivatives */}
-      <div className="absolute inset-0">
-        <svg
-          width="100%"
-          height="100%"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#e23a52" stopOpacity="0.1" />
-              <stop offset="100%" stopColor="#e23a52" stopOpacity="0.05" />
-            </linearGradient>
-            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#e23a52" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="#e23a52" stopOpacity="0.1" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M0 50 Q 400 0, 800 100 T 1600 50"
-            fill="none"
-            stroke="#e23a52"
-            strokeWidth="2"
-            strokeOpacity="0.4"
-            className="animate-flow-1"
-          />
-          <path
-            d="M0 50 Q 400 0, 800 100 T 1600 50"
-            fill="url(#grad1)"
-            className="animate-flow-1"
-          />
-          <path
-            d="M0 150 Q 500 50, 1000 200 T 1600 150"
-            fill="none"
-            stroke="#e23a52"
-            strokeWidth="2"
-            strokeOpacity="0.4"
-            className="animate-flow-2"
-          />
-          <path
-            d="M0 150 Q 500 50, 1000 200 T 1600 150"
-            fill="url(#grad2)"
-            className="animate-flow-2"
-          />
-          <path
-            d="M0 250 Q 600 150, 1200 300 T 1600 250"
-            fill="none"
-            stroke="#e23a52"
-            strokeWidth="2"
-            strokeOpacity="0.4"
-            className="animate-flow-3"
-          />
-          <path
-            d="M0 250 Q 600 150, 1200 300 T 1600 250"
-            fill="url(#grad1)"
-            className="animate-flow-3"
-          />
-          <path
-            d="M0 350 Q 400 250, 800 400 T 1600 350"
-            fill="none"
-            stroke="#e23a52"
-            strokeWidth="2"
-            strokeOpacity="0.4"
-            className="animate-flow-4"
-          />
-          <path
-            d="M0 350 Q 400 250, 800 400 T 1600 350"
-            fill="url(#grad2)"
-            className="animate-flow-4"
-          />
-        </svg>
-      </div>
-
       <style jsx>{`
-        @keyframes flowAnimation {
+        .spotlight {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          opacity: 0.1;
+          filter: blur(80px);
+          animation: rotate 20s infinite;
+        }
+
+        .spotlight-1 {
+          background: radial-gradient(
+            circle at 20% 20%,
+            #e23a52,
+            transparent 50%
+          );
+          animation-delay: 0s;
+        }
+
+        .spotlight-2 {
+          background: radial-gradient(
+            circle at 60% 60%,
+            #e23a52,
+            transparent 50%
+          );
+          animation-delay: -5s;
+        }
+
+        .spotlight-3 {
+          background: radial-gradient(
+            circle at 80% 20%,
+            #e23a52,
+            transparent 50%
+          );
+          animation-delay: -10s;
+        }
+
+        @keyframes rotate {
           0% {
-            d: path(M0 50 Q 400 0, 800 100 T 1600 50);
-          }
-          50% {
-            d: path(M0 75 Q 400 25, 800 125 T 1600 75);
+            transform: rotate(0deg);
           }
           100% {
-            d: path(M0 50 Q 400 0, 800 100 T 1600 50);
+            transform: rotate(360deg);
           }
-        }
-        .animate-flow-1 {
-          animation: flowAnimation 20s ease-in-out infinite;
-        }
-        .animate-flow-2 {
-          animation: flowAnimation 23s ease-in-out infinite;
-        }
-        .animate-flow-3 {
-          animation: flowAnimation 26s ease-in-out infinite;
-        }
-        .animate-flow-4 {
-          animation: flowAnimation 29s ease-in-out infinite;
         }
       `}</style>
     </section>

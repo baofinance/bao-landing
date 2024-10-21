@@ -21,108 +21,19 @@ const BaoDerivatives: React.FC = () => {
 
   return (
     <section className="relative overflow-hidden bg-baoBlack py-24 lg:py-32">
-      {/* Background with animated lines */}
-      <div className="absolute inset-0">
-        <svg
-          width="100%"
-          height="100%"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#e23a52" stopOpacity="0.1" />
-              <stop offset="100%" stopColor="#e23a52" stopOpacity="0.05" />
-            </linearGradient>
-            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#e23a52" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="#e23a52" stopOpacity="0.1" />
-            </linearGradient>
-            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#e23a52" stopOpacity="0.08" />
-              <stop offset="100%" stopColor="#e23a52" stopOpacity="0.03" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M0 50 Q 400 0, 800 100 T 1600 50"
-            fill="none"
-            stroke="#e23a52"
-            strokeWidth="2"
-            strokeOpacity="0.4"
-            className="animate-flow-1"
-          />
-          <path
-            d="M0 50 Q 400 0, 800 100 T 1600 50"
-            fill="url(#grad1)"
-            className="animate-flow-1"
-          />
-          <path
-            d="M0 150 Q 500 50, 1000 200 T 1600 150"
-            fill="none"
-            stroke="#e23a52"
-            strokeWidth="2"
-            strokeOpacity="0.4"
-            className="animate-flow-2"
-          />
-          <path
-            d="M0 150 Q 500 50, 1000 200 T 1600 150"
-            fill="url(#grad2)"
-            className="animate-flow-2"
-          />
-          <path
-            d="M0 250 Q 600 150, 1200 300 T 1600 250"
-            fill="none"
-            stroke="#e23a52"
-            strokeWidth="2"
-            strokeOpacity="0.4"
-            className="animate-flow-3"
-          />
-          <path
-            d="M0 250 Q 600 150, 1200 300 T 1600 250"
-            fill="url(#grad1)"
-            className="animate-flow-3"
-          />
-          <path
-            d="M0 350 Q 400 250, 800 400 T 1600 350"
-            fill="none"
-            stroke="#e23a52"
-            strokeWidth="2"
-            strokeOpacity="0.4"
-            className="animate-flow-4"
-          />
-          <path
-            d="M0 350 Q 400 250, 800 400 T 1600 350"
-            fill="url(#grad3)"
-            className="animate-flow-4"
-          />
-        </svg>
+      {/* Light beams */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="light-beam light-beam-1"></div>
+        <div className="light-beam light-beam-2"></div>
+        <div className="light-beam light-beam-3"></div>
       </div>
 
-      <style jsx>{`
-        @keyframes flowAnimation {
-          0% {
-            d: path(M0 50 Q 400 0, 800 100 T 1600 50);
-          }
-          50% {
-            d: path(M0 75 Q 400 25, 800 125 T 1600 75);
-          }
-          100% {
-            d: path(M0 50 Q 400 0, 800 100 T 1600 50);
-          }
-        }
-        .animate-flow-1 {
-          animation: flowAnimation 20s ease-in-out infinite;
-        }
-        .animate-flow-2 {
-          animation: flowAnimation 23s ease-in-out infinite;
-        }
-        .animate-flow-3 {
-          animation: flowAnimation 26s ease-in-out infinite;
-        }
-        .animate-flow-4 {
-          animation: flowAnimation 29s ease-in-out infinite;
-        }
-      `}</style>
+      {/* Spotlight background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="spotlight spotlight-1"></div>
+        <div className="spotlight spotlight-2"></div>
+        <div className="spotlight spotlight-3"></div>
+      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -213,6 +124,89 @@ const BaoDerivatives: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        .light-beam {
+          position: absolute;
+          width: 0;
+          height: 0;
+          opacity: 0.1;
+          filter: blur(20px);
+          animation: rotate 30s infinite;
+        }
+
+        .light-beam-1 {
+          top: -50%;
+          left: 20%;
+          border-left: 100px solid transparent;
+          border-right: 100px solid transparent;
+          border-bottom: 1000px solid #e23a52;
+          transform-origin: bottom;
+        }
+
+        .light-beam-2 {
+          top: -50%;
+          right: 30%;
+          border-left: 80px solid transparent;
+          border-right: 80px solid transparent;
+          border-bottom: 800px solid #e23a52;
+          transform-origin: bottom;
+        }
+
+        .light-beam-3 {
+          top: -50%;
+          left: 60%;
+          border-left: 120px solid transparent;
+          border-right: 120px solid transparent;
+          border-bottom: 1200px solid #e23a52;
+          transform-origin: bottom;
+        }
+
+        .spotlight {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          opacity: 0.1;
+          filter: blur(80px);
+          animation: rotate 20s infinite;
+        }
+
+        .spotlight-1 {
+          background: radial-gradient(
+            circle at 20% 20%,
+            #e23a52,
+            transparent 50%
+          );
+          animation-delay: 0s;
+        }
+
+        .spotlight-2 {
+          background: radial-gradient(
+            circle at 60% 60%,
+            #e23a52,
+            transparent 50%
+          );
+          animation-delay: -5s;
+        }
+
+        .spotlight-3 {
+          background: radial-gradient(
+            circle at 80% 20%,
+            #e23a52,
+            transparent 50%
+          );
+          animation-delay: -10s;
+        }
+
+        @keyframes rotate {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </section>
   )
 }
