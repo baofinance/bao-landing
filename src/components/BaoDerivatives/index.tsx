@@ -21,18 +21,13 @@ const BaoDerivatives: React.FC = () => {
 
   return (
     <section className="relative overflow-hidden bg-baoBlack py-24 lg:py-32">
-      {/* Light beams */}
+      {/* Coordinated light beam effect */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="light-beam light-beam-1"></div>
         <div className="light-beam light-beam-2"></div>
         <div className="light-beam light-beam-3"></div>
-      </div>
-
-      {/* Spotlight background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="spotlight spotlight-1"></div>
-        <div className="spotlight spotlight-2"></div>
-        <div className="spotlight spotlight-3"></div>
+        <div className="light-beam light-beam-4"></div>
+        <div className="light-beam light-beam-5"></div>
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -131,79 +126,41 @@ const BaoDerivatives: React.FC = () => {
           width: 0;
           height: 0;
           opacity: 0.1;
-          filter: blur(20px);
-          animation: rotate 30s infinite;
+          border-left: 75px solid transparent;
+          border-right: 75px solid transparent;
+          border-top: 1000px solid #e23a52;
+          transform-origin: top;
+          animation: moveBeam 10s infinite ease-in-out;
         }
 
         .light-beam-1 {
-          top: -50%;
-          left: 20%;
-          border-left: 100px solid transparent;
-          border-right: 100px solid transparent;
-          border-bottom: 1000px solid #e23a52;
-          transform-origin: bottom;
-        }
-
-        .light-beam-2 {
-          top: -50%;
-          right: 30%;
-          border-left: 80px solid transparent;
-          border-right: 80px solid transparent;
-          border-bottom: 800px solid #e23a52;
-          transform-origin: bottom;
-        }
-
-        .light-beam-3 {
-          top: -50%;
-          left: 60%;
-          border-left: 120px solid transparent;
-          border-right: 120px solid transparent;
-          border-bottom: 1200px solid #e23a52;
-          transform-origin: bottom;
-        }
-
-        .spotlight {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          opacity: 0.1;
-          filter: blur(80px);
-          animation: rotate 20s infinite;
-        }
-
-        .spotlight-1 {
-          background: radial-gradient(
-            circle at 20% 20%,
-            #e23a52,
-            transparent 50%
-          );
+          left: 10%;
           animation-delay: 0s;
         }
-
-        .spotlight-2 {
-          background: radial-gradient(
-            circle at 60% 60%,
-            #e23a52,
-            transparent 50%
-          );
-          animation-delay: -5s;
+        .light-beam-2 {
+          left: 30%;
+          animation-delay: -2s;
+        }
+        .light-beam-3 {
+          left: 50%;
+          animation-delay: -4s;
+        }
+        .light-beam-4 {
+          left: 70%;
+          animation-delay: -6s;
+        }
+        .light-beam-5 {
+          left: 90%;
+          animation-delay: -8s;
         }
 
-        .spotlight-3 {
-          background: radial-gradient(
-            circle at 80% 20%,
-            #e23a52,
-            transparent 50%
-          );
-          animation-delay: -10s;
-        }
-
-        @keyframes rotate {
-          0% {
-            transform: rotate(0deg);
-          }
+        @keyframes moveBeam {
+          0%,
           100% {
-            transform: rotate(360deg);
+            transform: translateX(-50px) rotate(-5deg);
+          }
+          50% {
+            transform: translateX(50px) rotate(5deg);
           }
         }
       `}</style>
