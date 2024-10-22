@@ -171,7 +171,7 @@ const BaoDerivatives: React.FC = () => {
         </div>
       </div>
       <div className="relative z-10 mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8 lg:pt-12">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
               logo: <BaoUSDLogo />,

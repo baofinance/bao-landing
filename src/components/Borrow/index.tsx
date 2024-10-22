@@ -224,9 +224,9 @@ export function BorrowAndMint() {
                           <div
                             className={`w-full rounded-md px-4 py-2 text-left text-sm transition-colors ${
                               hoveredStrategy === index
-                                ? 'bg-baoPink text-baoWhite'
+                                ? 'bg-baoPink/10 text-baoPink'
                                 : 'bg-baoBlack text-baoWhite'
-                            } cursor-pointer outline outline-1 outline-baoPink/50`}
+                            } cursor-pointer outline outline-1 outline-baoPink/50 hover:bg-baoPink/5 hover:text-baoPink`}
                             onMouseEnter={() => setHoveredStrategy(index)}
                           >
                             {strategy}

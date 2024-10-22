@@ -1,21 +1,88 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { Button } from '../Button'
 
 const integrations = [
-  { name: 'Balancer', logo: '/integrations/balancer.svg' },
-  { name: 'Chainlink', logo: '/integrations/chainlink.svg' },
-  { name: 'The Graph', logo: '/integrations/the-graph.svg' },
-  { name: 'Immunefi', logo: '/integrations/immunefi.svg' },
-  { name: 'Lido', logo: '/integrations/lido.svg' },
-  { name: 'Liquity', logo: '/integrations/liquity.svg' },
-  { name: 'Paladin', logo: '/integrations/paladin.svg' },
-  { name: 'Rocket Pool', logo: '/integrations/rocket-pool.svg' },
-  { name: 'StakeDAO', logo: '/integrations/stakedao.svg' },
-  { name: 'Uniswap', logo: '/integrations/uniswap.svg' },
+  {
+    name: 'Aura',
+    logo: '/images/logos/Aura.avif',
+    description:
+      'Aura Finance enhances liquidity provision and rewards for BAO token holders.',
+  },
+  {
+    name: 'Balancer',
+    logo: '/images/logos/Balncer.png',
+    description:
+      'Balancer integration allows for efficient liquidity provision and trading of BAO tokens.',
+  },
+  {
+    name: 'Chainlink',
+    logo: '/images/logos/chainlink.jpg',
+    description:
+      'Chainlink oracles provide reliable and decentralized price feeds for BAO derivatives.',
+  },
+  {
+    name: 'Immunefi',
+    logo: '/images/logos/immunefi.jpg',
+    description:
+      'Immunefi partnership enhances security through bug bounty programs.',
+  },
+  {
+    name: 'Lido',
+    logo: '/images/logos/lido.jpg',
+    description:
+      'stETH was chosen by our community to be integrated as collateral for our derivatives after passing risk assessments with flying colors.',
+  },
+  {
+    name: 'Liquity',
+    logo: '/images/logos/liquity.jpg',
+    description:
+      'LUSD from Liquity is the gold standard for decentralized stablecoins and as a result was chosen by our community to be integrated as derivative backing collateral.',
+  },
+  {
+    name: 'Paladin',
+    logo: '/images/logos/paladin.jpg',
+    description:
+      'Paladin provides a marketplace to boost rewards for Bao liquidity providers.',
+  },
+  {
+    name: 'Rocket Pool',
+    logo: '/images/logos/rocketpool.jpg',
+    description:
+      'rETH was chosen by our community to be integrated as collateral for our derivatives after passing risk assessments with flying colors.',
+  },
+  {
+    name: 'Safe',
+    logo: '/images/logos/safe.jpg',
+    description:
+      'Safe (formerly Gnosis Safe) provides secure multi-signature wallet functionality for BAO.',
+  },
+  {
+    name: 'StakeDAO',
+    logo: '/images/logos/stakedao.jpg',
+    description:
+      'StakeDAO collaboration provides additional yield strategies for BAO token holders.',
+  },
 ]
 
+const DISCORD_INVITE_LINK = 'https://discord.gg/BW3P62vJXT'
+
 export function Integrations() {
+  const [hoveredIntegration, setHoveredIntegration] = useState(integrations[0])
+
+  const getLogoScale = (name: string) => {
+    const zoomOutMoreLogos = ['Balancer', 'StakeDAO']
+    const zoomOutLogos = ['Aura', 'Safe', 'Lido']
+
+    if (zoomOutMoreLogos.includes(name)) {
+      return 'scale-110'
+    } else if (zoomOutLogos.includes(name)) {
+      return 'scale-125'
+    } else {
+      return 'scale-150'
+    }
+  }
+
   return (
     <section className="relative overflow-hidden bg-baoBlack py-24 text-baoWhite">
       {/* Animated waves background */}
@@ -73,34 +140,64 @@ export function Integrations() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-12 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
+        <h2 className="mb-12 text-center font-bakbak text-[clamp(20px,5vw,64px)] font-bold uppercase leading-none text-baoWhite">
           ♥ INTEGRATED WITH THE BEST ♥
         </h2>
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {integrations.map((integration) => (
-            <div
-              key={integration.name}
-              className="flex flex-col items-center justify-center"
-            >
-              <div className="relative h-16 w-32">
-                <Image
-                  src={integration.logo}
-                  alt={`${integration.name} logo`}
-                  layout="fill"
-                  objectFit="contain"
-                />
+        <div className="flex flex-col">
+          <div className="mb-8 flex flex-wrap justify-center gap-8">
+            {integrations.map((integration) => (
+              <div
+                key={integration.name}
+                className={`flex cursor-pointer flex-col items-center justify-center transition-all duration-300 ${
+                  hoveredIntegration.name === integration.name
+                    ? 'scale-110'
+                    : 'hover:scale-105'
+                }`}
+                onMouseEnter={() => setHoveredIntegration(integration)}
+              >
+                <div className="relative h-16 w-16 overflow-hidden rounded-full bg-baoWhite">
+                  <Image
+                    src={integration.logo}
+                    alt={`${integration.name} logo`}
+                    layout="fill"
+                    objectFit="cover"
+                    className={getLogoScale(integration.name)}
+                  />
+                </div>
+                <p className="mt-2 text-center text-sm">{integration.name}</p>
               </div>
-              <p className="mt-2 text-center text-sm">{integration.name}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className="relative flex flex-col rounded-lg bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <h3 className="mb-4 font-bakbak text-2xl font-bold text-baoWhite">
+              {hoveredIntegration.name}
+            </h3>
+            <p className="mb-8 text-lg text-baoWhite">
+              {hoveredIntegration.description}
+            </p>
+            <Button
+              variant="solid"
+              color="baoPink"
+              href="#"
+              className="self-center text-lg"
+            >
+              Learn More
+            </Button>
+          </div>
         </div>
+
+        {/* Add the tagline and "Integrate Your Project" button */}
         <div className="mt-16 text-center">
-          <p className="mb-8 text-xl font-semibold">
-            Rocket Pool integration offers decentralized Ethereum staking,
-            expanding the range of staking options available to Bao users.
+          <p className="mb-4 text-xl font-semibold text-baoWhite">
+            Join us building a better future
           </p>
-          <Button variant="solid" color="baoPink" href="#" className="text-lg">
-            Work with BAO
+          <Button
+            variant="solid"
+            color="baoPink"
+            href={DISCORD_INVITE_LINK}
+            className="text-lg"
+          >
+            Integrate Your Project
           </Button>
         </div>
       </div>

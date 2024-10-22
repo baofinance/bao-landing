@@ -13,7 +13,7 @@ import { SnapshotLink } from '../SnapshotLink'
 import { XLink } from '../XLink'
 import { DeBankLink } from '../DeBankLink'
 import { Button } from '../Button'
-import { BaoLogo } from '../BaoLogo'
+import Image from 'next/image'
 
 const features = [
   {
@@ -100,7 +100,7 @@ export function SecondaryFeatures() {
       <Container>
         <div className="relative z-10 text-center">
           <h2 className="mb-4 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoBlack">
-            WE NEED YOU
+            JOIN THE DUMPLING REVOLUTION
           </h2>
           <p className="mb-12 text-center font-bakbak text-[clamp(16px,1.8vw,22px)] uppercase text-baoBlack">
             Calling all rebels, builders and dreamers
@@ -125,70 +125,93 @@ export function SecondaryFeatures() {
             ))}
           </ul>
 
-          {/* BAO Token Section with enhanced shimmering effect, logo, and thicker baoblack outline */}
-          <div className="shimmer-container relative mb-14">
-            <div className="relative rounded-lg bg-baoPink p-8 text-baoWhite outline outline-4 outline-baoBlack">
-              <div className="absolute right-4 top-4 opacity-20">
-                <BaoLogo className="h-24 w-24 text-baoWhite" />
-              </div>
-              <div className="mb-8 inline-block bg-baoWhite px-8 py-2">
-                <h3 className="text-center font-bakbak text-[clamp(18px,2.5vw,24px)] font-bold uppercase text-baoBlack">
-                  THE BAO TOKEN
-                </h3>
-              </div>
-              <p className="mb-6 text-center">
-                The BAO token is at the heart of our ecosystem, empowering
-                community-driven governance and decision-making.
-              </p>
-              <div className="grid gap-8 md:grid-cols-2">
-                <div className="flex flex-col items-center rounded-lg bg-baoWhite p-6 text-baoBlack">
-                  <FontAwesomeIcon
-                    icon={faLock}
-                    className="mb-4 text-4xl text-baoPink"
-                  />
-                  <h4 className="mb-2 text-xl font-bold">veBAO Governance</h4>
-                  <p className="text-center">
-                    Lock your BAO tokens to receive veBAO, granting you voting
-                    rights and control over the project. veBAO holders propose
-                    and vote on governance decisions, controlling everything
-                    from team members to revenue usage, tokenomics, roadmap, and
-                    product launches.
-                  </p>
-                </div>
-                <div className="flex flex-col items-center rounded-lg bg-baoWhite p-6 text-baoBlack">
-                  <FontAwesomeIcon
-                    icon={faCoins}
-                    className="mb-4 text-4xl text-baoPink"
-                  />
-                  <h4 className="mb-2 text-xl font-bold">
-                    Earn Liquidity Rewards
-                  </h4>
-                  <p className="text-center">
-                    Provide liquidity in our Balancer 80/20 pools to earn AURA
-                    and BAL tokens. Participate in our liquidity mining program
-                    and earn additional rewards while supporting the BAO
-                    ecosystem.
-                  </p>
+          {/* BAO Token Section with pulsing background and spotlight effect */}
+          <div className="relative mb-14">
+            <div className="relative overflow-hidden rounded-lg bg-baoPink/90 p-8 text-baoWhite outline outline-4 outline-baoBlack">
+              {/* Spotlight effect */}
+              <div className="spotlight-effect absolute inset-0"></div>
+
+              {/* Pulsing background */}
+              <div className="absolute inset-0 opacity-20">
+                <div className="grid h-full w-full grid-cols-5 gap-4">
+                  {[...Array(25)].map((_, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center justify-center"
+                    >
+                      <Image
+                        src="/images/logos/logo-white-outline.svg"
+                        alt="BAO Logo Pattern"
+                        width={70}
+                        height={70}
+                        className="animate-pulse-opacity"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div className="mt-8 flex justify-center">
-                <div className="grid w-full max-w-[600px] grid-cols-2 gap-4">
-                  <Button
-                    href="https://info.bao.finance/docs/protocol/ecosystem-dynamics/vebao"
-                    variant="solid"
-                    color="baoWhite"
-                    className="text-lg"
-                  >
-                    Learn More
-                  </Button>
-                  <Button
-                    href="https://app.baofinance.io/swap"
-                    variant="solid"
-                    color="baoBlack"
-                    className="text-lg"
-                  >
-                    Buy BAO
-                  </Button>
+
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="mb-8 inline-block bg-baoWhite/95 px-8 py-2">
+                  <h3 className="text-center font-bakbak text-[clamp(18px,2.5vw,24px)] font-bold uppercase text-baoBlack">
+                    THE BAO TOKEN
+                  </h3>
+                </div>
+                <p className="mb-6 text-center">
+                  The BAO token is at the heart of our ecosystem, empowering
+                  community-driven governance and decision-making.
+                </p>
+                <div className="grid gap-8 md:grid-cols-2">
+                  <div className="flex flex-col items-center rounded-lg bg-baoWhite/90 p-6 text-baoBlack">
+                    <FontAwesomeIcon
+                      icon={faLock}
+                      className="mb-4 text-4xl text-baoPink"
+                    />
+                    <h4 className="mb-2 text-xl font-bold">veBAO Governance</h4>
+                    <p className="text-center">
+                      Lock your BAO tokens to receive veBAO, granting you voting
+                      rights and control over the project. veBAO holders propose
+                      and vote on governance decisions, controlling everything
+                      from team members to revenue usage, tokenomics, roadmap,
+                      and product launches.
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-center rounded-lg bg-baoWhite/90 p-6 text-baoBlack">
+                    <FontAwesomeIcon
+                      icon={faCoins}
+                      className="mb-4 text-4xl text-baoPink"
+                    />
+                    <h4 className="mb-2 text-xl font-bold">
+                      Earn Liquidity Rewards
+                    </h4>
+                    <p className="text-center">
+                      Provide liquidity in our Balancer 80/20 pools to earn AURA
+                      and BAL tokens. Participate in our liquidity mining
+                      program and earn additional rewards while supporting the
+                      BAO ecosystem.
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-8 flex justify-center">
+                  <div className="grid w-full max-w-[600px] grid-cols-2 gap-4">
+                    <Button
+                      href="https://info.bao.finance/docs/protocol/ecosystem-dynamics/vebao"
+                      variant="solid"
+                      color="baoWhite"
+                      className="text-lg"
+                    >
+                      Learn More
+                    </Button>
+                    <Button
+                      href="https://app.baofinance.io/swap"
+                      variant="solid"
+                      color="baoBlack"
+                      className="text-lg"
+                    >
+                      Buy BAO
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -204,44 +227,35 @@ export function SecondaryFeatures() {
       </Container>
 
       <style jsx>{`
-        @keyframes shimmer {
-          0% {
-            background-position: -1000px 0;
-          }
+        @keyframes spotlightAnimation {
+          0%,
           100% {
-            background-position: 1000px 0;
+            background-position: 0% 0%;
+          }
+          50% {
+            background-position: 100% 100%;
           }
         }
-        .shimmer-container {
-          position: relative;
-          overflow: visible;
-        }
-        .shimmer-container::before {
-          content: '';
-          position: absolute;
-          top: -8px;
-          left: -8px;
-          right: -8px;
-          bottom: -8px;
-          background: linear-gradient(
-            to right,
-            rgba(226, 58, 82, 0) 0%,
-            rgba(226, 58, 82, 0.8) 50%,
-            rgba(226, 58, 82, 0) 100%
+        .spotlight-effect {
+          background: radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
           );
-          filter: blur(15px);
-          border-radius: 16px;
-          z-index: -1;
-          animation: shimmer 4s infinite;
+          background-size: 200% 200%;
+          animation: spotlightAnimation 15s ease-in-out infinite;
         }
-        .animate-wave {
-          animation: waveAnimation 15s ease-in-out infinite;
+        @keyframes pulseOpacity {
+          0%,
+          100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.8;
+          }
         }
-        .animate-wave-slow {
-          animation: waveAnimation 18s ease-in-out infinite;
-        }
-        .animate-wave-slower {
-          animation: waveAnimation 21s ease-in-out infinite;
+        .animate-pulse-opacity {
+          animation: pulseOpacity 4s ease-in-out infinite;
         }
       `}</style>
     </section>
