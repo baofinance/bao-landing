@@ -4,8 +4,7 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
-import { Borrow } from '@/components/Borrow'
-import { ActiveVaults } from '@/components/ActiveVaults'
+import { BorrowAndMint } from '@/components/Borrow'
 import BaoDerivatives from '@/components/BaoDerivatives'
 import { Earn } from '@/components/Earn'
 import { Vision } from '@/components/Vision'
@@ -32,15 +31,14 @@ export default function Home() {
       <main>
         <Hero />
         <BaoDerivatives />
-
-        <Earn />
         <Vision />
-        <ActiveVaults />
-        <Borrow />
-        <SecondaryFeatures />
         <DerivativeUseCases />
-        <Integrations />
+        <Earn />
+        <BorrowAndMint />
         <Security />
+        <SecondaryFeatures />
+
+        <Integrations />
       </main>
       <Footer />
     </>

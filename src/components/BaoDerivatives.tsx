@@ -1,6 +1,11 @@
 import React, { useEffect, useRef } from 'react'
-import { BaoETHLogo, BaoUSDLogo, BaoBTCLogo, BaoQuestionLogo } from './Logos'
-import { Button, ButtonProps } from '../Button'
+import {
+  BaoETHLogo,
+  BaoUSDLogo,
+  BaoBTCLogo,
+  BaoQuestionLogo,
+} from './BaoDerivatives/Logos'
+import { Button, ButtonProps } from './Button'
 
 const BaoDerivatives: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -114,7 +119,56 @@ const BaoDerivatives: React.FC = () => {
       />
       {/* Animated waves background */}
       <div className="absolute inset-0 h-full w-full">
-        {/* ... (keep existing wave SVGs) ... */}
+        {/* Bottom wave (darkest) */}
+        <div className="absolute inset-x-0 bottom-0 h-full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="absolute bottom-0 h-full w-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#e23a52"
+              fillOpacity="0.2"
+              d="M0,160L60,170.7C120,181,240,203,360,192C480,181,600,139,720,128C840,117,960,139,1080,154.7C1200,171,1320,181,1380,186.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+              className="animate-wave-slower"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Middle wave */}
+        <div className="absolute inset-x-0 bottom-0 h-4/5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="absolute bottom-0 h-full w-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#e23a52"
+              fillOpacity="0.15"
+              d="M0,224L60,213.3C120,203,240,181,360,181.3C480,181,600,203,720,213.3C840,224,960,224,1080,213.3C1200,203,1320,181,1380,170.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+              className="animate-wave-slow"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Top wave (lightest) */}
+        <div className="absolute inset-x-0 bottom-0 h-3/5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="absolute bottom-0 h-full w-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#e23a52"
+              fillOpacity="0.1"
+              d="M0,288L60,277.3C120,267,240,245,360,234.7C480,224,600,224,720,234.7C840,245,960,267,1080,261.3C1200,256,1320,224,1380,208L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+              className="animate-wave"
+            ></path>
+          </svg>
+        </div>
       </div>
       <div className="relative z-10 mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8 lg:pt-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -158,7 +212,11 @@ const BaoDerivatives: React.FC = () => {
           ].map((item, index) => (
             <div
               key={index}
-              className="relative flex flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className={`relative flex flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                item.title === 'bao???'
+                  ? 'outline outline-4 outline-baoBlack'
+                  : ''
+              }`}
             >
               <div className="absolute -top-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center overflow-hidden rounded-full bg-baoPink">
                 {item.logo}

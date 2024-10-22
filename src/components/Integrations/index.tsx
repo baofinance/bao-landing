@@ -1,179 +1,107 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { Button } from '../Button'
 
-const DISCORD_INVITE_LINK = 'https://discord.gg/BW3P62vJXT'
-
-const partners = [
-  {
-    name: 'Balancer',
-    logo: '/images/logos/Balancer.webp',
-    description:
-      'Bao uses Balancer for liquidity provision and AMM functionality, allowing users to trade baoUSD and baoETH efficiently.',
-  },
-  {
-    name: 'Chainlink',
-    logo: '/images/logos/chainlink.webp',
-    description:
-      "Chainlink oracles are used to provide accurate and tamper-proof price feeds for Bao's tokenized derivatives.",
-  },
-  {
-    name: 'The Graph',
-    logo: '/images/logos/Graph.webp',
-    description:
-      'The Graph is used to index and query blockchain data, providing efficient access to Bao protocol information.',
-  },
-  {
-    name: 'Immunefi',
-    logo: '/images/logos/immunefi.svg',
-    description:
-      'Immunefi provides a bug bounty platform to help secure the Bao protocol and protect user funds.',
-  },
-  {
-    name: 'Lido',
-    logo: '/images/logos/Lido_DAO.webp',
-    description:
-      'Lido collaboration provides liquid staking solutions, enhancing staking opportunities for Bao users.',
-  },
-  {
-    name: 'Liquity',
-    logo: '/images/logos/Liquity.webp',
-    description:
-      'Liquity provides a decentralized borrowing protocol that Bao integrates with for additional stability and liquidity options.',
-  },
-  {
-    name: 'Paladin',
-    logo: '/images/logos/paladin.webp',
-    description:
-      'Paladin integration offers advanced options for governance token lending and borrowing within the Bao ecosystem.',
-  },
-  {
-    name: 'Rocket Pool',
-    logo: '/images/logos/rocketPool.webp',
-    description:
-      'Rocket Pool integration offers decentralized Ethereum staking, expanding the range of staking options available to Bao users.',
-  },
-  {
-    name: 'StakeDAO',
-    logo: '/images/logos/stakedao.webp',
-    description:
-      'StakeDAO collaboration enhances yield farming opportunities and governance for Bao users.',
-  },
-  {
-    name: 'Uniswap',
-    logo: '/images/logos/uniswap.webp',
-    description:
-      "Uniswap provides additional liquidity and trading options for BAO tokens and Bao's synthetic assets.",
-  },
+const integrations = [
+  { name: 'Balancer', logo: '/integrations/balancer.svg' },
+  { name: 'Chainlink', logo: '/integrations/chainlink.svg' },
+  { name: 'The Graph', logo: '/integrations/the-graph.svg' },
+  { name: 'Immunefi', logo: '/integrations/immunefi.svg' },
+  { name: 'Lido', logo: '/integrations/lido.svg' },
+  { name: 'Liquity', logo: '/integrations/liquity.svg' },
+  { name: 'Paladin', logo: '/integrations/paladin.svg' },
+  { name: 'Rocket Pool', logo: '/integrations/rocket-pool.svg' },
+  { name: 'StakeDAO', logo: '/integrations/stakedao.svg' },
+  { name: 'Uniswap', logo: '/integrations/uniswap.svg' },
 ]
 
 export function Integrations() {
-  const [activePartner, setActivePartner] = useState(partners[0])
-
   return (
-    <section className="relative overflow-hidden bg-baoWhite py-24 text-baoBlack">
-      {/* Bottom wave (darkest) */}
-      <div className="absolute inset-x-0 bottom-0 h-full">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 320"
-          className="absolute bottom-0 h-full w-full"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="#e23a52"
-            fillOpacity="0.2"
-            d="M0,32L48,53.3C96,75,192,117,288,138.7C384,160,480,160,576,138.7C672,117,768,75,864,64C960,53,1056,75,1152,96C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            className="animate-wave-slower"
-          ></path>
-        </svg>
+    <section className="relative overflow-hidden bg-baoBlack py-24 text-baoWhite">
+      {/* Animated waves background */}
+      <div className="absolute inset-0 h-full w-full">
+        {/* Top wave (darkest) */}
+        <div className="absolute inset-x-0 top-0 h-2/3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="absolute top-0 h-full w-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#e23a52"
+              fillOpacity="0.08"
+              d="M0,160L60,170.7C120,181,240,203,360,192C480,181,600,139,720,128C840,117,960,139,1080,154.7C1200,171,1320,181,1380,186.7L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+              className="animate-wave-slower"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Middle wave */}
+        <div className="absolute inset-x-0 top-0 h-1/2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="absolute top-0 h-full w-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#e23a52"
+              fillOpacity="0.05"
+              d="M0,224L60,213.3C120,203,240,181,360,181.3C480,181,600,203,720,213.3C840,224,960,224,1080,213.3C1200,203,1320,181,1380,170.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+              className="animate-wave-slow"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Bottom wave (lightest) */}
+        <div className="absolute inset-x-0 top-0 h-1/3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="absolute top-0 h-full w-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#e23a52"
+              fillOpacity="0.03"
+              d="M0,288L60,277.3C120,267,240,245,360,234.7C480,224,600,224,720,234.7C840,245,960,267,1080,261.3C1200,256,1320,224,1380,208L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+              className="animate-wave"
+            ></path>
+          </svg>
+        </div>
       </div>
 
-      {/* Middle wave */}
-      <div className="absolute inset-x-0 bottom-0 h-5/6">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 320"
-          className="absolute bottom-0 h-full w-full"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="#e23a52"
-            fillOpacity="0.15"
-            d="M0,96L48,112C96,128,192,160,288,170.7C384,181,480,171,576,154.7C672,139,768,117,864,117.3C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            className="animate-wave-slow"
-          ></path>
-        </svg>
-      </div>
-
-      {/* Top wave (lightest) */}
-      <div className="absolute inset-x-0 bottom-0 h-3/4">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 320"
-          className="absolute bottom-0 h-full w-full"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="#e23a52"
-            fillOpacity="0.1"
-            d="M0,160L48,170.7C96,181,192,203,288,192C384,181,480,139,576,133.3C672,128,768,160,864,165.3C960,171,1056,149,1152,144C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            className="animate-wave"
-          ></path>
-        </svg>
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl px-8">
-        <h2 className="mb-12 text-center font-bakbak text-[clamp(30px,6vw,80px)] font-bold leading-tight">
-          <span className="align-middle text-[0.5em] text-baoPink">♥</span>{' '}
-          INTEGRATED WITH THE BEST{' '}
-          <span className="align-middle text-[0.5em] text-baoPink">♥</span>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 className="mb-12 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
+          ♥ INTEGRATED WITH THE BEST ♥
         </h2>
-        <div className="grid gap-8 md:grid-cols-2">
-          <div className="grid grid-cols-3 gap-8 sm:grid-cols-4">
-            {partners.map((partner) => (
-              <div
-                key={partner.name}
-                className="flex cursor-pointer items-center justify-center bg-baoBlack bg-opacity-10 p-4 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
-                onMouseEnter={() => setActivePartner(partner)}
-              >
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          {integrations.map((integration) => (
+            <div
+              key={integration.name}
+              className="flex flex-col items-center justify-center"
+            >
+              <div className="relative h-16 w-32">
                 <Image
-                  src={partner.logo}
-                  alt={`${partner.name} logo`}
-                  width={100}
-                  height={100}
-                  className="h-auto max-w-full"
-                  onError={(e) => {
-                    e.currentTarget.src = '/images/logos/placeholder.svg'
-                    e.currentTarget.alt = `${partner.name} logo (placeholder)`
-                  }}
+                  src={integration.logo}
+                  alt={`${integration.name} logo`}
+                  layout="fill"
+                  objectFit="contain"
                 />
               </div>
-            ))}
-          </div>
-          <div className="flex flex-col">
-            <div
-              className="bg-baoBlack bg-opacity-80 p-8 text-baoWhite"
-              style={{ minHeight: '300px' }}
-            >
-              <h3 className="mb-4 font-bakbak text-3xl">
-                {activePartner.name}
-              </h3>
-              <p className="text-base leading-relaxed">
-                {activePartner.description}
-              </p>
+              <p className="mt-2 text-center text-sm">{integration.name}</p>
             </div>
-            <div className="mt-4 flex justify-center">
-              <Button
-                variant="solid"
-                color="baoPink"
-                href={DISCORD_INVITE_LINK}
-                className="text-xl"
-              >
-                Work with BAO
-              </Button>
-            </div>
-          </div>
+          ))}
+        </div>
+        <div className="mt-16 text-center">
+          <p className="mb-8 text-xl font-semibold">
+            Rocket Pool integration offers decentralized Ethereum staking,
+            expanding the range of staking options available to Bao users.
+          </p>
+          <Button variant="solid" color="baoPink" href="#" className="text-lg">
+            Work with BAO
+          </Button>
         </div>
       </div>
 
@@ -182,184 +110,154 @@ export function Integrations() {
           0% {
             d: path(
               M0,
-              160L48,
-              170.7C96,
-              181,
-              192,
-              203,
-              288,
-              192C384,
-              181,
-              480,
-              139,
-              576,
-              133.3C672,
-              128,
-              768,
-              160,
-              864,
-              165.3C960,
-              171,
-              1056,
-              149,
-              1152,
-              144C1248,
-              139,
-              1344,
-              149,
-              1392,
-              154.7L1440,
-              160L1440,
-              320L1392,
-              320C1344,
-              320,
-              1248,
-              320,
-              1152,
-              320C1056,
-              320,
+              288L60,
+              277.3C120,
+              267,
+              240,
+              245,
+              360,
+              234.7C480,
+              224,
+              600,
+              224,
+              720,
+              234.7C840,
+              245,
               960,
-              320,
-              864,
-              320C768,
-              320,
-              672,
-              320,
-              576,
-              320C480,
-              320,
-              384,
-              320,
-              288,
-              320C192,
-              320,
-              96,
-              320,
-              48,
-              320L0,
-              320Z
+              267,
+              1080,
+              261.3C1200,
+              256,
+              1320,
+              224,
+              1380,
+              208L1440,
+              192L1440,
+              0L1380,
+              0C1320,
+              0,
+              1200,
+              0,
+              1080,
+              0C960,
+              0,
+              840,
+              0,
+              720,
+              0C600,
+              0,
+              480,
+              0,
+              360,
+              0C240,
+              0,
+              120,
+              0,
+              60,
+              0L0,
+              0Z
             );
           }
           50% {
             d: path(
               M0,
-              128L48,
-              138.7C96,
-              149,
+              256L60,
+              245.3C120,
+              235,
+              240,
+              213,
+              360,
+              202.7C480,
               192,
-              171,
-              288,
-              160C384,
-              149,
-              480,
-              107,
-              576,
-              101.3C672,
-              96,
-              768,
-              128,
-              864,
-              133.3C960,
-              139,
-              1056,
-              117,
-              1152,
-              112C1248,
-              107,
-              1344,
-              117,
-              1392,
-              122.7L1440,
-              128L1440,
-              320L1392,
-              320C1344,
-              320,
-              1248,
-              320,
-              1152,
-              320C1056,
-              320,
+              600,
+              192,
+              720,
+              202.7C840,
+              213,
               960,
-              320,
-              864,
-              320C768,
-              320,
-              672,
-              320,
-              576,
-              320C480,
-              320,
-              384,
-              320,
-              288,
-              320C192,
-              320,
-              96,
-              320,
-              48,
-              320L0,
-              320Z
+              235,
+              1080,
+              229.3C1200,
+              224,
+              1320,
+              192,
+              1380,
+              176L1440,
+              160L1440,
+              0L1380,
+              0C1320,
+              0,
+              1200,
+              0,
+              1080,
+              0C960,
+              0,
+              840,
+              0,
+              720,
+              0C600,
+              0,
+              480,
+              0,
+              360,
+              0C240,
+              0,
+              120,
+              0,
+              60,
+              0L0,
+              0Z
             );
           }
           100% {
             d: path(
               M0,
-              160L48,
-              170.7C96,
-              181,
-              192,
-              203,
-              288,
-              192C384,
-              181,
-              480,
-              139,
-              576,
-              133.3C672,
-              128,
-              768,
-              160,
-              864,
-              165.3C960,
-              171,
-              1056,
-              149,
-              1152,
-              144C1248,
-              139,
-              1344,
-              149,
-              1392,
-              154.7L1440,
-              160L1440,
-              320L1392,
-              320C1344,
-              320,
-              1248,
-              320,
-              1152,
-              320C1056,
-              320,
+              288L60,
+              277.3C120,
+              267,
+              240,
+              245,
+              360,
+              234.7C480,
+              224,
+              600,
+              224,
+              720,
+              234.7C840,
+              245,
               960,
-              320,
-              864,
-              320C768,
-              320,
-              672,
-              320,
-              576,
-              320C480,
-              320,
-              384,
-              320,
-              288,
-              320C192,
-              320,
-              96,
-              320,
-              48,
-              320L0,
-              320Z
+              267,
+              1080,
+              261.3C1200,
+              256,
+              1320,
+              224,
+              1380,
+              208L1440,
+              192L1440,
+              0L1380,
+              0C1320,
+              0,
+              1200,
+              0,
+              1080,
+              0C960,
+              0,
+              840,
+              0,
+              720,
+              0C600,
+              0,
+              480,
+              0,
+              360,
+              0C240,
+              0,
+              120,
+              0,
+              60,
+              0L0,
+              0Z
             );
           }
         }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import {
   FaExclamationTriangle,
   FaLightbulb,
@@ -11,6 +11,12 @@ import { Button } from '../Button'
 const DISCORD_INVITE_LINK = 'https://discord.gg/BW3P62vJXT'
 
 export function Vision() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    // ... (keep the existing canvas effect code)
+  }, [])
+
   const visionItems = [
     {
       icon: FaExclamationTriangle,
@@ -40,18 +46,71 @@ export function Vision() {
 
   return (
     <section className="relative overflow-hidden bg-baoBlack py-24 text-baoWhite">
-      {/* Spotlight background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="spotlight spotlight-1"></div>
-        <div className="spotlight spotlight-2"></div>
-        <div className="spotlight spotlight-3"></div>
+      <canvas
+        ref={canvasRef}
+        className="absolute left-0 top-0 w-full"
+        style={{ height: '100px' }}
+      />
+
+      {/* Animated waves background */}
+      <div className="absolute inset-0 h-full w-full">
+        {/* Top wave (darkest) */}
+        <div className="absolute inset-x-0 top-0 h-1/2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="absolute top-0 h-full w-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#e23a52"
+              fillOpacity="0.05"
+              d="M0,160L60,170.7C120,181,240,203,360,192C480,181,600,139,720,128C840,117,960,139,1080,154.7C1200,171,1320,181,1380,186.7L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+              className="animate-wave-slower"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Middle wave */}
+        <div className="absolute inset-x-0 top-0 h-1/3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="absolute top-0 h-full w-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#e23a52"
+              fillOpacity="0.03"
+              d="M0,224L60,213.3C120,203,240,181,360,181.3C480,181,600,203,720,213.3C840,224,960,224,1080,213.3C1200,203,1320,181,1380,170.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+              className="animate-wave-slow"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Bottom wave (lightest) */}
+        <div className="absolute inset-x-0 top-0 h-1/4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="absolute top-0 h-full w-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#e23a52"
+              fillOpacity="0.02"
+              d="M0,288L60,277.3C120,267,240,245,360,234.7C480,224,600,224,720,234.7C840,245,960,267,1080,261.3C1200,256,1320,224,1380,208L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+              className="animate-wave"
+            ></path>
+          </svg>
+        </div>
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-8">
-        <h2 className="mb-4 text-center font-bakbak text-[clamp(30px,6vw,80px)] font-bold leading-tight">
+        <h2 className="mb-12 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
           WHY ONCHAIN DERIVATIVES?
         </h2>
-        <p className="mb-12 text-center font-bakbak text-[clamp(18px,2vw,24px)]">
+        <p className="mb-12 text-center font-bakbak text-[clamp(16px,1.8vw,22px)]">
           OPEN, TRANSPARENT, AND FOR EVERYONE
         </p>
 
@@ -65,7 +124,7 @@ export function Vision() {
 
           {/* Video on the right - full height of the grid */}
           <div className="lg:w-1/4">
-            <div className="h-full rounded-lg bg-baoWhite p-4 shadow-lg">
+            <div className="h-full rounded-lg bg-baoBlack p-4 shadow-lg outline outline-1 outline-baoWhite/20">
               <div className="aspect-w-9 aspect-h-16 h-full">
                 <iframe
                   src="https://www.youtube.com/embed/riTE_j-wN5E"
@@ -96,49 +155,169 @@ export function Vision() {
       </div>
 
       <style jsx>{`
-        .spotlight {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          opacity: 0.1;
-          filter: blur(80px);
-          animation: rotate 20s infinite;
-        }
-
-        .spotlight-1 {
-          background: radial-gradient(
-            circle at 20% 20%,
-            #e23a52,
-            transparent 50%
-          );
-          animation-delay: 0s;
-        }
-
-        .spotlight-2 {
-          background: radial-gradient(
-            circle at 60% 60%,
-            #e23a52,
-            transparent 50%
-          );
-          animation-delay: -5s;
-        }
-
-        .spotlight-3 {
-          background: radial-gradient(
-            circle at 80% 20%,
-            #e23a52,
-            transparent 50%
-          );
-          animation-delay: -10s;
-        }
-
-        @keyframes rotate {
+        @keyframes waveAnimation {
           0% {
-            transform: rotate(0deg);
+            d: path(
+              M0,
+              288L60,
+              277.3C120,
+              267,
+              240,
+              245,
+              360,
+              234.7C480,
+              224,
+              600,
+              224,
+              720,
+              234.7C840,
+              245,
+              960,
+              267,
+              1080,
+              261.3C1200,
+              256,
+              1320,
+              224,
+              1380,
+              208L1440,
+              192L1440,
+              0L1380,
+              0C1320,
+              0,
+              1200,
+              0,
+              1080,
+              0C960,
+              0,
+              840,
+              0,
+              720,
+              0C600,
+              0,
+              480,
+              0,
+              360,
+              0C240,
+              0,
+              120,
+              0,
+              60,
+              0L0,
+              0Z
+            );
+          }
+          50% {
+            d: path(
+              M0,
+              256L60,
+              245.3C120,
+              235,
+              240,
+              213,
+              360,
+              202.7C480,
+              192,
+              600,
+              192,
+              720,
+              202.7C840,
+              213,
+              960,
+              235,
+              1080,
+              229.3C1200,
+              224,
+              1320,
+              192,
+              1380,
+              176L1440,
+              160L1440,
+              0L1380,
+              0C1320,
+              0,
+              1200,
+              0,
+              1080,
+              0C960,
+              0,
+              840,
+              0,
+              720,
+              0C600,
+              0,
+              480,
+              0,
+              360,
+              0C240,
+              0,
+              120,
+              0,
+              60,
+              0L0,
+              0Z
+            );
           }
           100% {
-            transform: rotate(360deg);
+            d: path(
+              M0,
+              288L60,
+              277.3C120,
+              267,
+              240,
+              245,
+              360,
+              234.7C480,
+              224,
+              600,
+              224,
+              720,
+              234.7C840,
+              245,
+              960,
+              267,
+              1080,
+              261.3C1200,
+              256,
+              1320,
+              224,
+              1380,
+              208L1440,
+              192L1440,
+              0L1380,
+              0C1320,
+              0,
+              1200,
+              0,
+              1080,
+              0C960,
+              0,
+              840,
+              0,
+              720,
+              0C600,
+              0,
+              480,
+              0,
+              360,
+              0C240,
+              0,
+              120,
+              0,
+              60,
+              0L0,
+              0Z
+            );
           }
+        }
+        .animate-wave {
+          animation: waveAnimation 15s ease-in-out infinite;
+        }
+        .animate-wave-slow {
+          animation: waveAnimation 20s ease-in-out infinite;
+        }
+        .animate-wave-slower {
+          animation: waveAnimation 25s ease-in-out infinite;
         }
       `}</style>
     </section>
@@ -148,9 +327,7 @@ export function Vision() {
 function VisionBox({ icon: Icon, title, description, className = '' }) {
   return (
     <div
-      className={`group relative flex flex-col items-center rounded-lg p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
-        className || 'bg-baoWhite text-baoBlack'
-      }`}
+      className={`group relative flex flex-col items-center rounded-lg bg-baoBlack p-6 text-baoWhite shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${className}`}
     >
       <div className="absolute -top-6 left-1/2 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full bg-baoPink">
         <Icon className="text-2xl text-baoWhite" />

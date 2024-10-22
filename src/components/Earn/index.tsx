@@ -31,11 +31,11 @@ export function Earn() {
   ]
 
   return (
-    <section className="relative overflow-hidden bg-baoWhite py-24">
+    <section className="relative overflow-hidden bg-baoBlack py-24 text-baoWhite">
       {/* Wave container */}
       <div className="absolute inset-0 h-full w-full">
         {/* Bottom wave (darkest) */}
-        <div className="absolute inset-x-0 bottom-0 h-full">
+        <div className="absolute inset-x-0 bottom-0 h-2/3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 320"
@@ -44,7 +44,7 @@ export function Earn() {
           >
             <path
               fill="#e23a52"
-              fillOpacity="0.2"
+              fillOpacity="0.08"
               d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,106.7C960,107,1056,85,1152,80C1248,75,1344,85,1392,90.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
               className="animate-wave-slower"
             ></path>
@@ -52,7 +52,7 @@ export function Earn() {
         </div>
 
         {/* Middle wave */}
-        <div className="absolute inset-x-0 bottom-0 h-5/6">
+        <div className="absolute inset-x-0 bottom-0 h-1/2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 320"
@@ -61,7 +61,7 @@ export function Earn() {
           >
             <path
               fill="#e23a52"
-              fillOpacity="0.15"
+              fillOpacity="0.05"
               d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,149.3C672,149,768,171,864,176C960,181,1056,171,1152,154.7C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
               className="animate-wave-slow"
             ></path>
@@ -69,7 +69,7 @@ export function Earn() {
         </div>
 
         {/* Top wave (lightest) */}
-        <div className="absolute inset-x-0 bottom-0 h-3/4">
+        <div className="absolute inset-x-0 bottom-0 h-1/3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 320"
@@ -78,7 +78,7 @@ export function Earn() {
           >
             <path
               fill="#e23a52"
-              fillOpacity="0.1"
+              fillOpacity="0.03"
               d="M0,128L48,117.3C96,107,192,85,288,80C384,75,480,85,576,90.7C672,96,768,96,864,90.7C960,85,1056,75,1152,74.7C1248,75,1344,85,1392,90.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
               className="animate-wave"
             ></path>
@@ -88,13 +88,13 @@ export function Earn() {
 
       <div className="relative z-10 mx-auto grid max-w-7xl gap-8 px-8 md:grid-cols-2 md:grid-rows-[auto,1fr]">
         <div className="flex flex-col items-center justify-center text-center md:col-span-1">
-          <h2 className="font-bakbak text-[clamp(30px,8vw,100px)] font-bold uppercase leading-none text-baoBlack">
+          <h2 className="mb-4 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
             EARN
           </h2>
-          <p className="mb-4 font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoBlack">
+          <p className="mb-4 font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoWhite">
             BY PROVIDING LIQUIDITY.
           </p>
-          <div className="inline-block rounded-md bg-baoBlack px-12 py-3">
+          <div className="inline-block rounded-md bg-baoPink px-12 py-3">
             <span className="text-[clamp(12px,1.5vw,18px)] font-bold uppercase text-baoWhite">
               UP TO 50% vAPR
             </span>
@@ -104,7 +104,7 @@ export function Earn() {
         {earnItems.map((item, index) => (
           <div
             key={index}
-            className={`bg-opacity-97 relative flex flex-col rounded-lg bg-baoBlack p-8 text-left text-baoWhite shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl
+            className={`bg-opacity-97 relative flex flex-col rounded-lg bg-baoBlack p-8 text-left text-baoWhite shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl
               ${item.highlight ? 'highlight-box' : ''}`}
           >
             <h3 className="mb-4 font-bakbak text-2xl">{item.title}</h3>
@@ -327,13 +327,13 @@ export function Earn() {
           }
         }
         .animate-wave {
-          animation: waveAnimation 10s ease-in-out infinite;
+          animation: waveAnimation 20s ease-in-out infinite;
         }
         .animate-wave-slow {
-          animation: waveAnimation 13s ease-in-out infinite;
+          animation: waveAnimation 25s ease-in-out infinite;
         }
         .animate-wave-slower {
-          animation: waveAnimation 16s ease-in-out infinite;
+          animation: waveAnimation 30s ease-in-out infinite;
         }
       `}</style>
     </section>

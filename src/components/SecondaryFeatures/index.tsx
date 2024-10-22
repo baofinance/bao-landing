@@ -99,16 +99,12 @@ export function SecondaryFeatures() {
 
       <Container>
         <div className="relative z-10 text-center">
-          <h2 className="mb-4 font-bakbak text-[clamp(30px,8vw,100px)] font-bold uppercase leading-none">
-            We need you
+          <h2 className="mb-4 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoBlack">
+            WE NEED YOU
           </h2>
-          <div className="flex justify-center">
-            <div className="my-4 inline-block bg-baoBlack px-8 py-2">
-              <p className="whitespace-nowrap text-[clamp(14px,1.5vw,20px)] font-bold uppercase text-baoWhite">
-                Calling all rebels, builders and dreamers
-              </p>
-            </div>
-          </div>
+          <p className="mb-12 text-center font-bakbak text-[clamp(16px,1.8vw,22px)] uppercase text-baoBlack">
+            Calling all rebels, builders and dreamers
+          </p>
 
           {/* Community, Grassroots, Decentralization boxes */}
           <ul className="relative z-10 mb-14 mt-16 grid gap-8 sm:grid-cols-3">
@@ -129,9 +125,9 @@ export function SecondaryFeatures() {
             ))}
           </ul>
 
-          {/* BAO Token Section with enhanced shimmering effect and logo */}
+          {/* BAO Token Section with enhanced shimmering effect, logo, and thicker baoblack outline */}
           <div className="shimmer-container relative mb-14">
-            <div className="relative rounded-lg bg-baoPink p-8 text-baoWhite">
+            <div className="relative rounded-lg bg-baoPink p-8 text-baoWhite outline outline-4 outline-baoBlack">
               <div className="absolute right-4 top-4 opacity-20">
                 <BaoLogo className="h-24 w-24 text-baoWhite" />
               </div>
