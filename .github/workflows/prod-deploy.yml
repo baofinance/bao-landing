@@ -3,7 +3,6 @@ on:
   release:
     types: [published]
 
-
 jobs:
   trigger_deploy:
     name: Trigger DO Deploy
