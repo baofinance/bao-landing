@@ -140,9 +140,16 @@ export function Integrations() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-12 text-center font-bakbak text-[clamp(20px,5vw,64px)] font-bold uppercase leading-none text-baoWhite">
-          ♥ INTEGRATED WITH THE BEST ♥
+        <h2 className="mb-4 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
+          INTEGRATED
         </h2>
+        <div className="mb-12 text-center">
+          <div className="inline-block bg-baoPink px-4 py-2">
+            <p className="text-center font-bakbak text-[clamp(16px,1.8vw,22px)] uppercase text-baoWhite">
+              WITH THE BEST
+            </p>
+          </div>
+        </div>
         <div className="flex flex-col">
           <div className="mb-8 flex flex-wrap justify-center gap-8">
             {integrations.map((integration) => (

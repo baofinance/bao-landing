@@ -118,10 +118,10 @@ export function DerivativeUseCases() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-8">
-        <h2 className="mb-12 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoBlack">
+        <h2 className="mb-2 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoBlack">
           UNLIMITED POSSIBILITIES
         </h2>
-        <div className="mx-auto mb-12 text-center">
+        <div className="mx-auto mb-16 text-center">
           <div className="inline-block bg-baoBlack px-4 py-2">
             <p className="text-center font-bakbak text-[clamp(16px,1.8vw,22px)] text-baoWhite">
               To Disrupt the $4 Quadrillion Derivatives Market

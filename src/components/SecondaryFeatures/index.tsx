@@ -100,14 +100,16 @@ export function SecondaryFeatures() {
       <Container>
         <div className="relative z-10 text-center">
           <h2 className="mb-4 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoBlack">
-            JOIN THE DUMPLING REVOLUTION
+            SHAPE OUR FUTURE
           </h2>
-          <p className="mb-12 text-center font-bakbak text-[clamp(16px,1.8vw,22px)] uppercase text-baoBlack">
-            Calling all rebels, builders and dreamers
-          </p>
+          <div className="mb-8 inline-block bg-baoPink px-4 py-2">
+            <p className="text-center font-bakbak text-[clamp(16px,1.8vw,22px)] uppercase text-baoWhite">
+              Calling all rebels, builders and dreamers
+            </p>
+          </div>
 
           {/* Community, Grassroots, Decentralization boxes */}
-          <ul className="relative z-10 mb-14 mt-16 grid gap-8 sm:grid-cols-3">
+          <ul className="relative z-10 mb-14 mt-8 grid gap-8 sm:grid-cols-3">
             {features.map((feature) => (
               <li
                 key={feature.name}
@@ -153,11 +155,18 @@ export function SecondaryFeatures() {
 
               {/* Content */}
               <div className="relative z-10">
-                <div className="mb-8 inline-block bg-baoWhite/95 px-8 py-2">
-                  <h3 className="text-center font-bakbak text-[clamp(18px,2.5vw,24px)] font-bold uppercase text-baoBlack">
-                    THE BAO TOKEN
-                  </h3>
+                <div className="mb-2 flex justify-center">
+                  <Image
+                    src="/images/logos/logo-text-only-solid.svg"
+                    alt="BAO Logo"
+                    width={200}
+                    height={80}
+                    className="mb-2"
+                  />
                 </div>
+                <h3 className="mb-8 text-center font-bakbak text-[clamp(18px,2.5vw,24px)] font-bold uppercase text-baoWhite">
+                  TOKEN
+                </h3>
                 <p className="mb-6 text-center">
                   The BAO token is at the heart of our ecosystem, empowering
                   community-driven governance and decision-making.
@@ -217,11 +226,11 @@ export function SecondaryFeatures() {
             </div>
           </div>
 
-          <div className="mb-14 flex justify-center gap-4">
-            <DiscordLink />
-            <SnapshotLink />
-            <XLink />
-            <DeBankLink />
+          <div className="mb-14 flex justify-center gap-6">
+            <DiscordLink containerClassName="h-12 w-12" />
+            <SnapshotLink containerClassName="h-12 w-12" />
+            <XLink containerClassName="h-12 w-12" />
+            <DeBankLink containerClassName="h-12 w-12" />
           </div>
         </div>
       </Container>

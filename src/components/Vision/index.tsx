@@ -107,14 +107,16 @@ export function Vision() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-8">
-        <h2 className="mb-12 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
+        <h2 className="mb-2 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
           WHY ONCHAIN DERIVATIVES?
         </h2>
-        <p className="mb-12 text-center font-bakbak text-[clamp(16px,1.8vw,22px)]">
-          OPEN, TRANSPARENT, AND FOR EVERYONE
-        </p>
+        <div className="mb-8 text-center">
+          <span className="inline-block bg-baoPink px-4 py-2 font-bakbak text-[clamp(16px,1.8vw,22px)] uppercase text-baoWhite">
+            OPEN, TRANSPARENT, AND FOR EVERYONE
+          </span>
+        </div>
 
-        <div className="flex flex-col gap-8 lg:flex-row">
+        <div className="mt-16 flex flex-col gap-8 lg:flex-row">
           {/* 2x2 grid on the left */}
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:w-3/4">
             {visionItems.map((item, index) => (

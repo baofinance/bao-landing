@@ -96,19 +96,21 @@ const Security: React.FC = () => {
           <h2 className="mb-4 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
             SECURED
           </h2>
-          <p className="mb-12 text-center font-bakbak text-[clamp(16px,1.8vw,22px)] uppercase text-baoWhite">
-            BY DESIGN
-          </p>
+          <div className="mb-8 inline-block bg-baoPink px-4 py-2">
+            <p className="text-center font-bakbak text-[clamp(16px,1.8vw,22px)] uppercase text-baoWhite">
+              BY DESIGN
+            </p>
+          </div>
         </div>
-        <div className="mt-10">
+        <div className="mt-8">
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
             {securityFeatures.map((feature, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center rounded-lg bg-baoBlack p-6 shadow-lg outline outline-1 outline-baoPink/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="relative flex flex-col items-center rounded-lg bg-baoBlack p-8 pt-16 text-center shadow-lg outline outline-1 outline-baoPink/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
-                <div className="mb-4 rounded-full bg-baoPink p-3">
-                  <feature.icon className="h-6 w-6 text-baoWhite" />
+                <div className="absolute -top-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center rounded-full bg-baoPink">
+                  <feature.icon className="text-3xl text-baoWhite" />
                 </div>
                 <h3 className="mb-2 text-center text-xl font-semibold">
                   {feature.title}

@@ -170,7 +170,7 @@ const BaoDerivatives: React.FC = () => {
           </svg>
         </div>
       </div>
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8 lg:pt-12">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-20 sm:px-6 lg:px-8 lg:pt-24">
         <div className="grid gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
@@ -224,6 +224,11 @@ const BaoDerivatives: React.FC = () => {
               <h3 className="mb-4 mt-8 font-bakbak text-2xl font-bold text-baoWhite">
                 {item.title}
               </h3>
+              {item.comingSoon && (
+                <div className="mb-4 rounded-sm bg-baoPink px-2 py-0.5 text-[.6rem] font-bold uppercase text-baoWhite">
+                  Coming Soon
+                </div>
+              )}
               <p className="mb-8 flex-grow text-sm text-baoWhite">
                 {item.description}
               </p>
@@ -254,11 +259,6 @@ const BaoDerivatives: React.FC = () => {
                   )
                 })}
               </div>
-              {item.comingSoon && item.title !== 'bao???' && (
-                <div className="absolute right-2 top-2 rounded-sm bg-baoPink px-2 py-0.5 text-[.6rem] font-bold uppercase text-baoWhite">
-                  Coming Soon
-                </div>
-              )}
             </div>
           ))}
         </div>

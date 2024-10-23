@@ -91,11 +91,13 @@ export function Earn() {
           <h2 className="mb-4 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
             EARN
           </h2>
-          <p className="mb-4 font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoWhite">
-            BY PROVIDING LIQUIDITY.
-          </p>
-          <div className="inline-block rounded-md bg-baoPink px-12 py-3">
-            <span className="text-[clamp(12px,1.5vw,18px)] font-bold uppercase text-baoWhite">
+          <div className="mb-4 inline-block bg-baoPink px-4 py-2">
+            <p className="font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoWhite">
+              BY PROVIDING LIQUIDITY.
+            </p>
+          </div>
+          <div className="glow-text">
+            <span className="text-[clamp(16px,2vw,24px)] font-bold uppercase text-baoWhite">
               UP TO 50% vAPR
             </span>
           </div>
@@ -304,6 +306,51 @@ export function Earn() {
         }
         .animate-wave-slower {
           animation: waveAnimation 30s ease-in-out infinite;
+        }
+        @keyframes shimmer {
+          0% {
+            background-position: -200% 0;
+          }
+          100% {
+            background-position: 200% 0;
+          }
+        }
+        .shimmer-text {
+          display: inline-block;
+          position: relative;
+        }
+        .shimmer-text::after {
+          content: 'UP TO 50% vAPR';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            #e23a52 50%,
+            transparent 100%
+          );
+          background-size: 200% 100%;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: shimmer 3s infinite linear;
+        }
+        @keyframes glow {
+          0%,
+          100% {
+            text-shadow: 0 0 5px #e23a52, 0 0 10px #e23a52, 0 0 15px #e23a52,
+              0 0 20px #e23a52;
+          }
+          50% {
+            text-shadow: 0 0 10px #e23a52, 0 0 20px #e23a52, 0 0 30px #e23a52,
+              0 0 40px #e23a52;
+          }
+        }
+        .glow-text {
+          animation: glow 2s ease-in-out infinite;
         }
       `}</style>
     </section>

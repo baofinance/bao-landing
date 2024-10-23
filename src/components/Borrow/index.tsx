@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Button } from '../Button'
-import { FaCheckCircle, FaChevronDown, FaChevronUp } from 'react-icons/fa'
+import {
+  FaCheckCircle,
+  FaChevronDown,
+  FaChevronUp,
+  FaEthereum,
+  FaExchangeAlt,
+  FaWallet,
+} from 'react-icons/fa'
 
 const supplyTokens = [
   { name: 'wstETH', imageSrc: '/tokens/wstETH.png' },
@@ -20,7 +27,7 @@ const borrowTokens = [
 const borrowStrategies = [
   'Leverage Yield',
   'Leverage Long',
-  'Spend while you earn',
+  'Spend & Earn', // Changed from 'Spend while you earn'
   'Leverage Short',
 ]
 
@@ -36,6 +43,7 @@ export function BorrowAndMint() {
   const [selectedStrategy, setSelectedStrategy] = useState(0)
   const [hoveredStrategy, setHoveredStrategy] = useState(0)
   const [hoveredMintStep, setHoveredMintStep] = useState(0)
+  const [expandedMintStep, setExpandedMintStep] = useState<number>(0)
 
   const mintFeatures = [
     'No Liquidation Leverage',
@@ -49,16 +57,19 @@ export function BorrowAndMint() {
     {
       title: 'Deposit ETH',
       description: 'Securely deposit your ETH to start minting tokens.',
+      icon: FaEthereum,
     },
     {
       title: 'Choose Token Type',
       description:
         'Select between pegged or leveraged tokens based on your strategy.',
+      icon: FaExchangeAlt,
     },
     {
       title: 'Use or Store',
       description:
         'Utilize your tokens in DeFi protocols or securely store them in your wallet.',
+      icon: FaWallet,
     },
   ]
 
@@ -67,9 +78,9 @@ export function BorrowAndMint() {
 
     "Leverage Long: Create a leveraged long position on your collateral (or a leveraged short on the borrowed asset) by borrowing a token not linked to your collateral's price. For instance, use ETH as collateral to borrow baoUSD, then sell the baoUSD for more ETH. This amplifies your exposure to ETH price movements, potentially increasing gains (but also risks) if ETH appreciates against USD.",
 
-    'Yield Farming: Maintain exposure to your Liquid Staking Tokens (LSTs) while accessing additional yield farming opportunities. Use LSTs like wstETH as collateral to borrow baoUSD, then deposit the borrowed baoUSD into incentivized liquidity pools. This strategy allows you to earn rewards from both your staked ETH and the liquidity provision, potentially boosting your overall returns.',
+    'Spend & Earn: Unlock the value of your yield-bearing assets without selling them. Use tokens like wstETH as collateral to borrow baoETH or baoUSD for spending, while continuing to earn interest on your original stake. This approach allows you to access liquidity for immediate needs or investments while maintaining long-term exposure to your appreciating assets.',
 
-    'Spend While You Earn: Unlock the value of your yield-bearing assets without selling them. Use tokens like wstETH as collateral to borrow baoETH or baoUSD for spending, while continuing to earn interest on your original stake. This approach allows you to access liquidity for immediate needs or investments while maintaining long-term exposure to your appreciating assets.',
+    "Leverage Short: Create a leveraged short position on your collateral (or a leveraged long on the borrowed asset) by borrowing a token not linked to your collateral's price. For instance, use ETH as collateral to borrow baoUSD, then sell the baoUSD for more ETH. This amplifies your exposure to ETH price movements, potentially increasing gains (but also risks) if ETH appreciates against USD.",
   ]
 
   const toggleCard = (index: number) => {
@@ -140,9 +151,11 @@ export function BorrowAndMint() {
               <h2 className="mb-2 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
                 BORROW
               </h2>
-              <p className="mb-6 font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoWhite">
-                💎 AT THE BEST RATES 🚀
-              </p>
+              <div className="mb-6 inline-block bg-baoWhite px-4 py-2">
+                <p className="font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoBlack">
+                  AT THE BEST RATES
+                </p>
+              </div>
 
               {/* Supply and Borrow headers with hover effect logos */}
               <div className="mb-12 flex w-full justify-between">
@@ -251,42 +264,41 @@ export function BorrowAndMint() {
               <h2 className="mb-2 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
                 MINT
               </h2>
-              <p className="mb-6 font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoWhite">
-                PEGGED OR LEVERAGE TOKENS
-              </p>
-              {/* Numbered list with mouseover effect */}
-              <div className="flex w-full justify-between gap-2">
+              <div className="mb-6 inline-block bg-baoWhite px-4 py-2">
+                <p className="font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoBlack">
+                  PEGGED OR LEVERAGE TOKENS
+                </p>
+              </div>
+              {/* Numbered list with expand/collapse effect */}
+              <div className="flex w-full justify-between gap-4">
                 {mintSteps.map((step, index) => (
                   <div
                     key={index}
-                    className={`cursor-pointer overflow-hidden rounded-lg bg-baoBlack p-4 text-baoWhite outline outline-1 outline-baoPink/50 transition-all duration-300 ${
-                      hoveredMintStep === index
-                        ? 'w-2/3 bg-baoPink/10'
-                        : 'w-1/6'
+                    className={`relative cursor-pointer overflow-hidden rounded-lg bg-baoBlack p-4 text-baoWhite outline outline-1 outline-baoPink/50 transition-all duration-300 ${
+                      expandedMintStep === index ? 'w-2/3' : 'w-1/6'
                     }`}
-                    style={{ height: '160px' }}
-                    onMouseEnter={() => setHoveredMintStep(index)}
+                    style={{ height: '180px' }}
+                    onMouseEnter={() => setExpandedMintStep(index)}
                   >
-                    <div className="relative h-full">
-                      <div
-                        className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-                          hoveredMintStep === index
-                            ? 'opacity-0'
-                            : 'opacity-100'
-                        }`}
-                      >
-                        <span className="text-2xl font-bold">{index + 1}</span>
-                      </div>
-                      <div
-                        className={`transition-opacity duration-300 ${
-                          hoveredMintStep === index
-                            ? 'opacity-100'
-                            : 'opacity-0'
-                        }`}
-                      >
-                        <h3 className="text-lg font-semibold">{step.title}</h3>
-                        <p className="mt-2 text-sm">{step.description}</p>
-                      </div>
+                    <div className="absolute left-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-baoPink text-sm font-bold text-baoWhite">
+                      {index + 1}
+                    </div>
+                    <div
+                      className={`transition-opacity duration-300 ${
+                        expandedMintStep === index ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    >
+                      <h3 className="mb-2 mt-8 text-lg font-semibold">
+                        {step.title}
+                      </h3>
+                      <p className="text-sm">{step.description}</p>
+                    </div>
+                    <div
+                      className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+                        expandedMintStep === index ? 'opacity-0' : 'opacity-100'
+                      }`}
+                    >
+                      <step.icon className="text-4xl text-baoPink" />
                     </div>
                   </div>
                 ))}
@@ -294,8 +306,12 @@ export function BorrowAndMint() {
             </div>
 
             {/* Coming Soon Banner */}
-            <div className="my-8 rounded-lg bg-baoPink p-6 text-center text-baoWhite">
-              <span className="font-bakbak text-4xl font-bold uppercase">
+            <div className="my-6 rounded-lg bg-baoPink p-4 text-center text-baoWhite">
+              {' '}
+              {/* Reduced padding and margin */}
+              <span className="font-bakbak text-3xl font-bold uppercase">
+                {' '}
+                {/* Reduced font size */}
                 COMING SOON
               </span>
             </div>
