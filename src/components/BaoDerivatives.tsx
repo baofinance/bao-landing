@@ -1,99 +1,14 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import {
   BaoETHLogo,
   BaoUSDLogo,
   BaoBTCLogo,
   BaoQuestionLogo,
 } from './BaoDerivatives/Logos'
-import { Button, ButtonProps } from './Button'
+import { Button, ButtonProps } from '@/components/Button'
+import { Container } from '@/components/Container'
 
-const BaoDerivatives: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    const pixelSizes = [16, 24, 32]
-    const rows = 10
-    const cols = Math.ceil(canvas.width / pixelSizes[0])
-
-    const colors = ['#1e2022', '#faf2e3', 'rgba(250, 242, 227, 0.5)']
-
-    let animationFrameId: number
-    let lastUpdateTime = 0
-    const updateInterval = 1000
-
-    const pixels: { color: string; size: number }[][] = []
-
-    // Initialize pixels
-    for (let y = 0; y < rows; y++) {
-      pixels[y] = []
-      for (let x = 0; x < cols; x++) {
-        const progress = y / rows
-        const colorIndex = Math.min(
-          Math.floor(progress * colors.length * 1.5),
-          colors.length - 1
-        )
-        pixels[y][x] = {
-          color: colors[colorIndex],
-          size: pixelSizes[Math.floor(Math.random() * pixelSizes.length)],
-        }
-      }
-    }
-
-    const animate = (currentTime: number) => {
-      if (currentTime - lastUpdateTime >= updateInterval) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-        // Update a smaller portion of pixels
-        for (let i = 0; i < (rows * cols) / 50; i++) {
-          const y = Math.floor(Math.random() * rows)
-          const x = Math.floor(Math.random() * cols)
-          const progress = y / rows
-          const colorIndex = Math.min(
-            Math.floor(progress * colors.length * 1.5),
-            colors.length - 1
-          )
-          pixels[y][x] = {
-            color: colors[colorIndex],
-            size: pixelSizes[Math.floor(Math.random() * pixelSizes.length)],
-          }
-        }
-
-        // Draw all pixels
-        for (let y = 0; y < rows; y++) {
-          for (let x = 0; x < cols; x++) {
-            const pixel = pixels[y][x]
-            ctx.fillStyle = pixel.color
-            ctx.fillRect(x * pixel.size, y * pixel.size, pixel.size, pixel.size)
-          }
-        }
-
-        lastUpdateTime = currentTime
-      }
-      animationFrameId = requestAnimationFrame(animate)
-    }
-
-    animate(0)
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = 200
-    }
-
-    handleResize()
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-      cancelAnimationFrame(animationFrameId)
-    }
-  }, [])
-
+export function BaoDerivatives() {
   const DISCORD_INVITE_LINK = 'https://discord.gg/BW3P62vJXT'
 
   const buttonProps = (
@@ -111,12 +26,7 @@ const BaoDerivatives: React.FC = () => {
   })
 
   return (
-    <section className="relative overflow-hidden bg-[#faf2e3] pb-24 pt-24 lg:pb-32 lg:pt-32">
-      <canvas
-        ref={canvasRef}
-        className="absolute left-0 top-0 w-full"
-        style={{ height: '200px' }}
-      />
+    <section className="relative overflow-hidden bg-baoWhite py-24 text-baoBlack">
       {/* Animated waves background */}
       <div className="absolute inset-0 h-full w-full">
         {/* Bottom wave (darkest) */}
@@ -170,7 +80,8 @@ const BaoDerivatives: React.FC = () => {
           </svg>
         </div>
       </div>
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-20 sm:px-6 lg:px-8 lg:pt-24">
+
+      <Container className="relative z-10">
         <div className="grid gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
@@ -212,23 +123,23 @@ const BaoDerivatives: React.FC = () => {
           ].map((item, index) => (
             <div
               key={index}
-              className={`relative flex flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                item.title === 'bao???'
-                  ? 'outline outline-4 outline-baoBlack'
-                  : ''
-              }`}
+              className="relative flex flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
+              {item.comingSoon && (
+                <div className="absolute -right-10 top-4 z-30 flex items-center justify-center">
+                  <div className="rotate-[45deg] transform">
+                    <div className="rounded-sm bg-baoPink/80 px-4 py-1.5 text-base font-bold uppercase tracking-widest text-baoWhite shadow-lg outline outline-1 outline-offset-2 outline-baoPink/60">
+                      Coming Soon
+                    </div>
+                  </div>
+                </div>
+              )}
               <div className="absolute -top-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center overflow-hidden rounded-full bg-baoPink">
                 {item.logo}
               </div>
               <h3 className="mb-4 mt-8 font-bakbak text-2xl font-bold text-baoWhite">
                 {item.title}
               </h3>
-              {item.comingSoon && (
-                <div className="mb-4 rounded-sm bg-baoPink px-2 py-0.5 text-[.6rem] font-bold uppercase text-baoWhite">
-                  Coming Soon
-                </div>
-              )}
               <p className="mb-8 flex-grow text-sm text-baoWhite">
                 {item.description}
               </p>
@@ -262,7 +173,174 @@ const BaoDerivatives: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
+
+      <style jsx>{`
+        @keyframes waveAnimation {
+          0% {
+            d: path(
+              M0,
+              288L60,
+              277.3C120,
+              267,
+              240,
+              245,
+              360,
+              234.7C480,
+              224,
+              600,
+              224,
+              720,
+              234.7C840,
+              245,
+              960,
+              267,
+              1080,
+              261.3C1200,
+              256,
+              1320,
+              224,
+              1380,
+              208L1440,
+              192L1440,
+              320L1380,
+              320C1320,
+              320,
+              1200,
+              320,
+              1080,
+              320C960,
+              320,
+              840,
+              320,
+              720,
+              320C600,
+              320,
+              480,
+              320,
+              360,
+              320C240,
+              320,
+              120,
+              320,
+              60,
+              320L0,
+              320Z
+            );
+          }
+          50% {
+            d: path(
+              M0,
+              256L60,
+              245.3C120,
+              235,
+              240,
+              213,
+              360,
+              202.7C480,
+              192,
+              600,
+              192,
+              720,
+              202.7C840,
+              213,
+              960,
+              235,
+              1080,
+              229.3C1200,
+              224,
+              1320,
+              192,
+              1380,
+              176L1440,
+              160L1440,
+              320L1380,
+              320C1320,
+              320,
+              1200,
+              320,
+              1080,
+              320C960,
+              320,
+              840,
+              320,
+              720,
+              320C600,
+              320,
+              480,
+              320,
+              360,
+              320C240,
+              320,
+              120,
+              320,
+              60,
+              320L0,
+              320Z
+            );
+          }
+          100% {
+            d: path(
+              M0,
+              288L60,
+              277.3C120,
+              267,
+              240,
+              245,
+              360,
+              234.7C480,
+              224,
+              600,
+              224,
+              720,
+              234.7C840,
+              245,
+              960,
+              267,
+              1080,
+              261.3C1200,
+              256,
+              1320,
+              224,
+              1380,
+              208L1440,
+              192L1440,
+              320L1380,
+              320C1320,
+              320,
+              1200,
+              320,
+              1080,
+              320C960,
+              320,
+              840,
+              320,
+              720,
+              320C600,
+              320,
+              480,
+              320,
+              360,
+              320C240,
+              320,
+              120,
+              320,
+              60,
+              320L0,
+              320Z
+            );
+          }
+        }
+        .animate-wave {
+          animation: waveAnimation 15s ease-in-out infinite;
+        }
+        .animate-wave-slow {
+          animation: waveAnimation 20s ease-in-out infinite;
+        }
+        .animate-wave-slower {
+          animation: waveAnimation 25s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   )
 }

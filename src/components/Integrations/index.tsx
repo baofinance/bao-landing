@@ -182,14 +182,6 @@ export function Integrations() {
             <p className="mb-8 text-lg text-baoWhite">
               {hoveredIntegration.description}
             </p>
-            <Button
-              variant="solid"
-              color="baoPink"
-              href="#"
-              className="self-center text-lg"
-            >
-              Learn More
-            </Button>
           </div>
         </div>
 

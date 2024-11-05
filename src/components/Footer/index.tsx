@@ -3,13 +3,14 @@ import {
   faDiscord,
   faGithub,
   faMedium,
-  faTwitter,
+  faXTwitter,
 } from '@fortawesome/free-brands-svg-icons'
 import {
   faBolt,
   faBook,
   faBug,
   faComments,
+  faD,
 } from '@fortawesome/pro-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -29,10 +30,10 @@ export function Footer() {
         className="xs:pl-2 xs:pr-2 hover:text-baoRed pl-3 pr-3 text-baoWhite no-underline"
         target="_blank"
         href="https://twitter.com/BaoCommunity"
-        aria-label="Twitter"
+        aria-label="X (Twitter)"
         rel="noreferrer"
       >
-        <FontAwesomeIcon icon={faTwitter} height={24} width={24} />
+        <FontAwesomeIcon icon={faXTwitter} height={24} width={24} />
       </a>
       <a
         className="xs:pl-2 xs:pr-2 hover:text-baoRed pl-3 pr-3 text-baoWhite no-underline"

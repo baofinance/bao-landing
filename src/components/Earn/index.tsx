@@ -1,5 +1,7 @@
 import React from 'react'
 import { Button } from '../Button'
+import Image from 'next/image'
+import { Container } from '../Container'
 
 export function Earn() {
   const earnItems = [
@@ -21,7 +23,7 @@ export function Earn() {
       comingSoon: true,
     },
     {
-      title: 'MultiLend',
+      title: 'Staked Derivatives (S-Tokens)',
       description:
         'Lend in multiple markets simultaneously with a single deposit.',
       buttons: ['Deposit', 'Learn More'],
@@ -86,271 +88,110 @@ export function Earn() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-8 px-8 md:grid-cols-2 md:grid-rows-[auto,1fr]">
-        <div className="flex flex-col items-center justify-center text-center md:col-span-1">
-          <h2 className="mb-4 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
-            EARN
-          </h2>
-          <div className="mb-4 inline-block bg-baoPink px-4 py-2">
-            <p className="font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoWhite">
-              BY PROVIDING LIQUIDITY.
+      <Container>
+        <div className="grid gap-8 lg:grid-cols-2">
+          {/* Title Section - Takes up one cell in the 2x2 grid */}
+          <div className="relative z-10 flex min-h-[200px] flex-col items-center justify-center text-center">
+            <h2 className="mb-4 font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
+              EARN
+            </h2>
+            <div className="mb-4 inline-block bg-baoPink px-4 py-2">
+              <p className="font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoWhite">
+                BY PROVIDING LIQUIDITY
+              </p>
+            </div>
+            <p className="glow font-bakbak text-[clamp(18px,2vw,24px)] font-bold text-baoWhite">
+              UP TO 50% VAPR
             </p>
           </div>
-          <div className="glow-text">
-            <span className="text-[clamp(16px,2vw,24px)] font-bold uppercase text-baoWhite">
-              UP TO 50% vAPR
-            </span>
-          </div>
-        </div>
 
-        {earnItems.map((item, index) => (
-          <div
-            key={index}
-            className={`bg-opacity-97 relative flex flex-col rounded-lg bg-baoBlack p-8 text-left text-baoWhite shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl
-              ${item.highlight ? 'highlight-box' : ''}`}
-          >
-            <h3 className="mb-4 font-bakbak text-2xl">{item.title}</h3>
-            <p className="mb-6">{item.description}</p>
-            <div className="align-right mt-auto flex justify-end gap-3">
-              <Button
-                variant="solid"
-                color="baoPink"
-                href={item.links ? item.links[0] : undefined}
-                className={
-                  item.comingSoon ? 'cursor-not-allowed opacity-50' : ''
-                }
-              >
-                {item.buttons[0]}
-              </Button>
-              <Button
-                variant="solid"
-                color="baoWhite"
-                href={item.links ? item.links[1] : undefined}
-                className={
-                  item.comingSoon ? 'cursor-not-allowed opacity-50' : ''
-                }
-              >
-                {item.buttons[1]}
-              </Button>
+          {/* AMM Liquidity Box - Next to title */}
+          <div className="relative flex h-[200px] flex-col rounded-xl bg-baoBlack p-8 text-left shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <h3 className="mb-4 font-bakbak text-2xl font-bold text-baoWhite">
+              {earnItems[0].title}
+            </h3>
+            <p className="mb-auto flex-grow text-sm text-baoWhite">
+              {earnItems[0].description}
+            </p>
+            <div className="flex justify-end gap-4">
+              {earnItems[0].buttons.map((button, buttonIndex) => (
+                <Button
+                  key={buttonIndex}
+                  href={earnItems[0].links?.[buttonIndex] ?? '#'}
+                  variant="solid"
+                  color={buttonIndex === 0 ? 'baoPink' : 'baoWhite'}
+                  className="rounded-xl px-4 py-2"
+                >
+                  {button}
+                </Button>
+              ))}
             </div>
-            {item.comingSoon && (
-              <div className="absolute right-5 top-5 rounded-sm bg-baoPink px-8 py-1 text-xs font-bold uppercase text-baoWhite">
-                Coming Soon
-              </div>
-            )}
           </div>
-        ))}
-      </div>
+
+          {/* Stability Pools and Staked Derivatives - Below in their own row */}
+          {earnItems.slice(1).map((item, index) => (
+            <div
+              key={index}
+              className="relative flex flex-col rounded-xl bg-baoBlack p-8 text-left shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
+              {item.comingSoon && (
+                <div className="absolute -right-10 top-4 z-30 flex items-center justify-center">
+                  <div className="rotate-[45deg] transform">
+                    <div className="rounded-sm bg-baoPink/80 px-4 py-1.5 text-base font-bold uppercase tracking-widest text-baoWhite shadow-lg outline outline-1 outline-offset-2 outline-baoPink/60">
+                      Coming Soon
+                    </div>
+                  </div>
+                </div>
+              )}
+              <h3 className="mb-4 font-bakbak text-2xl font-bold text-baoWhite">
+                {item.title}
+              </h3>
+              <p className="mb-8 flex-grow text-sm text-baoWhite">
+                {item.description}
+              </p>
+              <div className="flex justify-end gap-4">
+                {item.buttons.map((button, buttonIndex) => {
+                  if (item.comingSoon) {
+                    return (
+                      <div
+                        key={buttonIndex}
+                        className={`cursor-not-allowed rounded-xl px-4 py-2 text-center font-medium opacity-50 ${
+                          buttonIndex === 0
+                            ? 'bg-[#9e1239] text-baoWhite'
+                            : 'bg-[#808080] text-baoBlack'
+                        }`}
+                      >
+                        {button}
+                      </div>
+                    )
+                  }
+
+                  return (
+                    <Button
+                      key={buttonIndex}
+                      href={item.links?.[buttonIndex] ?? '#'}
+                      variant="solid"
+                      color={buttonIndex === 0 ? 'baoPink' : 'baoWhite'}
+                      className={`rounded-xl px-4 py-2 ${
+                        buttonIndex === 0
+                          ? 'bg-[#9e1239]/90 text-baoWhite hover:bg-[#9e1239]'
+                          : 'bg-[#808080]/90 text-baoBlack hover:bg-[#808080]'
+                      }`}
+                    >
+                      {button}
+                    </Button>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Container>
 
       <style jsx>{`
-        @keyframes waveAnimation {
-          0% {
-            d: path(
-              M0,
-              288L60,
-              277.3C120,
-              267,
-              240,
-              245,
-              360,
-              234.7C480,
-              224,
-              600,
-              224,
-              720,
-              234.7C840,
-              245,
-              960,
-              267,
-              1080,
-              261.3C1200,
-              256,
-              1320,
-              224,
-              1380,
-              208L1440,
-              192L1440,
-              0L1380,
-              0C1320,
-              0,
-              1200,
-              0,
-              1080,
-              0C960,
-              0,
-              840,
-              0,
-              720,
-              0C600,
-              0,
-              480,
-              0,
-              360,
-              0C240,
-              0,
-              120,
-              0,
-              60,
-              0L0,
-              0Z
-            );
-          }
-          50% {
-            d: path(
-              M0,
-              256L60,
-              245.3C120,
-              235,
-              240,
-              213,
-              360,
-              202.7C480,
-              192,
-              600,
-              192,
-              720,
-              202.7C840,
-              213,
-              960,
-              235,
-              1080,
-              229.3C1200,
-              224,
-              1320,
-              192,
-              1380,
-              176L1440,
-              160L1440,
-              0L1380,
-              0C1320,
-              0,
-              1200,
-              0,
-              1080,
-              0C960,
-              0,
-              840,
-              0,
-              720,
-              0C600,
-              0,
-              480,
-              0,
-              360,
-              0C240,
-              0,
-              120,
-              0,
-              60,
-              0L0,
-              0Z
-            );
-          }
-          100% {
-            d: path(
-              M0,
-              288L60,
-              277.3C120,
-              267,
-              240,
-              245,
-              360,
-              234.7C480,
-              224,
-              600,
-              224,
-              720,
-              234.7C840,
-              245,
-              960,
-              267,
-              1080,
-              261.3C1200,
-              256,
-              1320,
-              224,
-              1380,
-              208L1440,
-              192L1440,
-              0L1380,
-              0C1320,
-              0,
-              1200,
-              0,
-              1080,
-              0C960,
-              0,
-              840,
-              0,
-              720,
-              0C600,
-              0,
-              480,
-              0,
-              360,
-              0C240,
-              0,
-              120,
-              0,
-              60,
-              0L0,
-              0Z
-            );
-          }
-        }
-        .animate-wave {
-          animation: waveAnimation 20s ease-in-out infinite;
-        }
-        .animate-wave-slow {
-          animation: waveAnimation 25s ease-in-out infinite;
-        }
-        .animate-wave-slower {
-          animation: waveAnimation 30s ease-in-out infinite;
-        }
-        @keyframes shimmer {
-          0% {
-            background-position: -200% 0;
-          }
-          100% {
-            background-position: 200% 0;
-          }
-        }
-        .shimmer-text {
-          display: inline-block;
-          position: relative;
-        }
-        .shimmer-text::after {
-          content: 'UP TO 50% vAPR';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent 0%,
-            #e23a52 50%,
-            transparent 100%
-          );
-          background-size: 200% 100%;
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: shimmer 3s infinite linear;
-        }
-        @keyframes glow {
-          0%,
-          100% {
-            text-shadow: 0 0 5px #e23a52, 0 0 10px #e23a52, 0 0 15px #e23a52,
-              0 0 20px #e23a52;
-          }
-          50% {
-            text-shadow: 0 0 10px #e23a52, 0 0 20px #e23a52, 0 0 30px #e23a52,
-              0 0 40px #e23a52;
-          }
-        }
-        .glow-text {
-          animation: glow 2s ease-in-out infinite;
+        .glow {
+          text-shadow: 0 0 10px rgba(226, 26, 83, 0.5),
+            0 0 20px rgba(226, 26, 83, 0.3), 0 0 30px rgba(226, 26, 83, 0.2);
         }
       `}</style>
     </section>

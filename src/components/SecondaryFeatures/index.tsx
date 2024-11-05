@@ -14,6 +14,17 @@ import { XLink } from '../XLink'
 import { DeBankLink } from '../DeBankLink'
 import { Button } from '../Button'
 import Image from 'next/image'
+import Link from 'next/link'
+import { FaDiscord, FaTwitter, FaChartLine } from 'react-icons/fa'
+import { LuVote } from 'react-icons/lu'
+import {
+  faDiscord,
+  faXTwitter,
+  faGithub,
+  faMedium,
+  faTwitter,
+} from '@fortawesome/free-brands-svg-icons'
+import { faBolt, faD } from '@fortawesome/pro-solid-svg-icons'
 
 const features = [
   {
@@ -33,6 +44,29 @@ const features = [
     description:
       'Our products are designed with decentralization in mind. Without central points of failure, we are more resilient, censorship resistant, transparent, accessible, and adaptable.',
     icon: faNetworkWired,
+  },
+]
+
+const socialLinks = [
+  {
+    name: 'Discord',
+    href: 'https://discord.gg/BW3P62vJXT',
+    icon: faDiscord,
+  },
+  {
+    name: 'Snapshot',
+    href: 'https://snapshot.org/#/baovotes.eth',
+    icon: faBolt,
+  },
+  {
+    name: 'X',
+    href: 'https://x.com/baocommunity',
+    icon: faXTwitter,
+  },
+  {
+    name: 'DeBank',
+    href: 'https://debank.com/profile/0xf4Dc48D260C93ad6a96c5Ce563E70CA578987c74',
+    icon: faD,
   },
 ]
 
@@ -100,7 +134,7 @@ export function SecondaryFeatures() {
       <Container>
         <div className="relative z-10 text-center">
           <h2 className="mb-4 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoBlack">
-            SHAPE OUR FUTURE
+            JOIN THE BAO GANG
           </h2>
           <div className="mb-8 inline-block bg-baoPink px-4 py-2">
             <p className="text-center font-bakbak text-[clamp(16px,1.8vw,22px)] uppercase text-baoWhite">
@@ -108,12 +142,34 @@ export function SecondaryFeatures() {
             </p>
           </div>
 
-          {/* Community, Grassroots, Decentralization boxes */}
+          {/* Moved and enlarged social links */}
+          <div className="mb-14 flex justify-center gap-8">
+            {socialLinks.map((link) => (
+              <div key={link.name} className="group relative">
+                <Link
+                  href={link.href}
+                  className="flex h-20 w-20 items-center justify-center rounded-full bg-baoBlack p-2 transition-all duration-300 hover:scale-110"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={link.icon}
+                    className="h-10 w-10 text-baoWhite transition-all duration-300 group-hover:opacity-80"
+                  />
+                </Link>
+                <div className="absolute left-1/2 top-full mt-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-baoBlack px-2 py-1 text-sm text-baoWhite group-hover:block">
+                  {link.name}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Updated Community, Grassroots, Decentralization boxes */}
           <ul className="relative z-10 mb-14 mt-8 grid gap-8 sm:grid-cols-3">
             {features.map((feature) => (
               <li
                 key={feature.name}
-                className="bg-opacity-97 relative flex flex-col items-center rounded-lg bg-baoBlack p-8 pt-16 text-center text-baoWhite transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-baoPink/15"
+                className="bg-opacity-97 relative flex flex-col items-center rounded-lg bg-baoBlack p-8 pt-16 text-center text-baoWhite shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-baoPink/15"
               >
                 <div className="absolute -top-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center rounded-full bg-baoPink">
                   <FontAwesomeIcon
@@ -127,26 +183,27 @@ export function SecondaryFeatures() {
             ))}
           </ul>
 
-          {/* BAO Token Section with pulsing background and spotlight effect */}
+          {/* BAO Token Section - Added outline */}
           <div className="relative mb-14">
-            <div className="relative overflow-hidden rounded-lg bg-baoPink/90 p-8 text-baoWhite outline outline-4 outline-baoBlack">
-              {/* Spotlight effect */}
-              <div className="spotlight-effect absolute inset-0"></div>
-
-              {/* Pulsing background */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="grid h-full w-full grid-cols-5 gap-4">
-                  {[...Array(25)].map((_, index) => (
+            <div className="relative overflow-hidden rounded-lg bg-baoWhite/80 p-8 text-baoBlack outline outline-1 outline-baoBlack/20">
+              {/* Background pattern */}
+              <div className="absolute inset-0">
+                <div className="grid h-full w-full grid-cols-4 gap-8">
+                  {[...Array(16)].map((_, index) => (
                     <div
                       key={index}
                       className="flex items-center justify-center"
                     >
                       <Image
-                        src="/images/logos/logo-white-outline.svg"
+                        src="/images/logos/logo-solid.svg"
                         alt="BAO Logo Pattern"
-                        width={70}
-                        height={70}
-                        className="animate-pulse-opacity"
+                        width={50}
+                        height={50}
+                        className="animate-logo-pulse"
+                        style={{
+                          animationDelay: `${index * 0.25}s`,
+                          animationDuration: '4s',
+                        }}
                       />
                     </div>
                   ))}
@@ -164,15 +221,17 @@ export function SecondaryFeatures() {
                     className="mb-2"
                   />
                 </div>
-                <h3 className="mb-8 text-center font-bakbak text-[clamp(18px,2.5vw,24px)] font-bold uppercase text-baoWhite">
-                  TOKEN
-                </h3>
+                <div className="mb-8 inline-block bg-baoBlack px-4 py-2">
+                  <h3 className="text-center font-bakbak text-[clamp(18px,2.5vw,24px)] font-bold uppercase text-baoWhite">
+                    TOKEN
+                  </h3>
+                </div>
                 <p className="mb-6 text-center">
                   The BAO token is at the heart of our ecosystem, empowering
                   community-driven governance and decision-making.
                 </p>
                 <div className="grid gap-8 md:grid-cols-2">
-                  <div className="flex flex-col items-center rounded-lg bg-baoWhite/90 p-6 text-baoBlack">
+                  <div className="flex flex-col items-center rounded-lg bg-baoBlack p-6 text-baoWhite shadow-lg outline outline-1 outline-baoWhite/20">
                     <FontAwesomeIcon
                       icon={faLock}
                       className="mb-4 text-4xl text-baoPink"
@@ -186,7 +245,7 @@ export function SecondaryFeatures() {
                       and product launches.
                     </p>
                   </div>
-                  <div className="flex flex-col items-center rounded-lg bg-baoWhite/90 p-6 text-baoBlack">
+                  <div className="flex flex-col items-center rounded-lg bg-baoBlack p-6 text-baoWhite shadow-lg outline outline-1 outline-baoWhite/20">
                     <FontAwesomeIcon
                       icon={faCoins}
                       className="mb-4 text-4xl text-baoPink"
@@ -203,11 +262,11 @@ export function SecondaryFeatures() {
                   </div>
                 </div>
                 <div className="mt-8 flex justify-center">
-                  <div className="grid w-full max-w-[600px] grid-cols-2 gap-4">
+                  <div className="grid w-full max-w-[600px] grid-cols-2 gap-8">
                     <Button
                       href="https://info.bao.finance/docs/protocol/ecosystem-dynamics/vebao"
                       variant="solid"
-                      color="baoWhite"
+                      color="baoBlack"
                       className="text-lg"
                     >
                       Learn More
@@ -215,7 +274,7 @@ export function SecondaryFeatures() {
                     <Button
                       href="https://app.baofinance.io/swap"
                       variant="solid"
-                      color="baoBlack"
+                      color="baoPink"
                       className="text-lg"
                     >
                       Buy BAO
@@ -224,13 +283,6 @@ export function SecondaryFeatures() {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="mb-14 flex justify-center gap-6">
-            <DiscordLink containerClassName="h-12 w-12" />
-            <SnapshotLink containerClassName="h-12 w-12" />
-            <XLink containerClassName="h-12 w-12" />
-            <DeBankLink containerClassName="h-12 w-12" />
           </div>
         </div>
       </Container>
@@ -248,23 +300,36 @@ export function SecondaryFeatures() {
         .spotlight-effect {
           background: radial-gradient(
             circle at 50% 50%,
-            rgba(255, 255, 255, 0.1) 0%,
-            transparent 50%
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 70%
           );
           background-size: 200% 200%;
-          animation: spotlightAnimation 15s ease-in-out infinite;
+          animation: spotlightAnimation 20s ease-in-out infinite;
         }
         @keyframes pulseOpacity {
           0%,
           100% {
-            opacity: 0.3;
+            opacity: 0.2;
           }
           50% {
-            opacity: 0.8;
+            opacity: 0.4;
           }
         }
-        .animate-pulse-opacity {
-          animation: pulseOpacity 4s ease-in-out infinite;
+        .animate-pulse-slow {
+          animation: pulseOpacity 6s ease-in-out infinite;
+        }
+        @keyframes logoPulse {
+          0%,
+          100% {
+            opacity: 0.05;
+          }
+          50% {
+            opacity: 0.2;
+          }
+        }
+        .animate-logo-pulse {
+          animation: logoPulse 4s ease-in-out infinite;
+          animation-delay: calc(var(--logo-delay, 0) * 1s);
         }
       `}</style>
     </section>

@@ -17,6 +17,9 @@ module.exports = {
       animation: {
         flicker1: 'flicker1 8s infinite',
         flicker2: 'flicker2 8s infinite',
+        'wave-1': 'wave-1 15s infinite ease-in-out',
+        'wave-2': 'wave-2 10s infinite ease-in-out',
+        'logo-pulse': 'logoPulse 4s ease-in-out infinite',
       },
       keyframes: {
         flicker1: {
@@ -36,6 +39,20 @@ module.exports = {
           '64%, 66%': { opacity: '0' },
           '80%, 82%': { opacity: '0.4', clipPath: 'inset(70% 5% 5% 65%)' },
           '84%, 86%': { opacity: '0' },
+        },
+        'wave-1': {
+          '0%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(-25%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        'wave-2': {
+          '0%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(25%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        logoPulse: {
+          '0%, 100%': { opacity: '0.05' },
+          '50%': { opacity: '0.2' },
         },
       },
     },

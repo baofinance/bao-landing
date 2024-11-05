@@ -9,6 +9,21 @@ import {
   FaExchangeAlt,
   FaWallet,
 } from 'react-icons/fa'
+import {
+  faChartLine,
+  faArrowTrendUp,
+  faWallet,
+  faArrowTrendDown,
+  faEthernet,
+  faArrowRightArrowLeft,
+  faRepeat,
+  faCoins,
+  faMoneyBillTransfer,
+  faHandHoldingDollar,
+  faSackDollar,
+  faChartLineDown,
+} from '@fortawesome/pro-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const supplyTokens = [
   { name: 'wstETH', imageSrc: '/tokens/wstETH.png' },
@@ -25,10 +40,94 @@ const borrowTokens = [
 ]
 
 const borrowStrategies = [
-  'Leverage Yield',
-  'Leverage Long',
-  'Spend & Earn', // Changed from 'Spend while you earn'
-  'Leverage Short',
+  {
+    name: 'Leverage Yield',
+    icon: faChartLine,
+    steps: [
+      {
+        icon: faCoins,
+        text: 'Supply yield-bearing collateral',
+      },
+      {
+        icon: faArrowRightArrowLeft,
+        text: 'Borrow correlated token',
+      },
+      {
+        icon: faHandHoldingDollar,
+        text: 'Buy more collateral',
+      },
+      {
+        icon: faRepeat,
+        text: 'Repeat to compound yield',
+      },
+    ],
+  },
+  {
+    name: 'Leverage Long',
+    icon: faArrowTrendUp,
+    steps: [
+      {
+        icon: faCoins,
+        text: 'Supply any collateral',
+      },
+      {
+        icon: faArrowRightArrowLeft,
+        text: 'Borrow uncorrelated token',
+      },
+      {
+        icon: faHandHoldingDollar,
+        text: 'Buy more collateral',
+      },
+      {
+        icon: faChartLine,
+        text: 'Profit from price increase',
+      },
+    ],
+  },
+  {
+    name: 'Spend & Earn',
+    icon: faWallet,
+    steps: [
+      {
+        icon: faCoins,
+        text: 'Supply yield-bearing collateral',
+      },
+      {
+        icon: faArrowRightArrowLeft,
+        text: 'Borrow stable token',
+      },
+      {
+        icon: faHandHoldingDollar,
+        text: 'Use borrowed funds',
+      },
+      {
+        icon: faRepeat,
+        text: 'Let yield pay your debt',
+      },
+    ],
+  },
+  {
+    name: 'Leverage Short',
+    icon: faArrowTrendDown,
+    steps: [
+      {
+        icon: faCoins,
+        text: 'Supply any collateral',
+      },
+      {
+        icon: faArrowRightArrowLeft,
+        text: 'Borrow correlated token',
+      },
+      {
+        icon: faHandHoldingDollar,
+        text: 'Sell borrowed token',
+      },
+      {
+        icon: faChartLineDown,
+        text: 'Profit from price decrease',
+      },
+    ],
+  },
 ]
 
 export function BorrowAndMint() {
@@ -147,7 +246,7 @@ export function BorrowAndMint() {
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Borrow Section */}
           <div className="flex flex-col">
-            <div className="relative flex flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div className="relative flex h-full flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
               <h2 className="mb-2 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
                 BORROW
               </h2>
@@ -158,9 +257,7 @@ export function BorrowAndMint() {
               </div>
 
               {/* Supply and Borrow headers with hover effect logos */}
-              <div className="mb-12 flex w-full justify-between">
-                {' '}
-                {/* Increased mb-6 to mb-12 */}
+              <div className="mb-8 flex w-full justify-between">
                 <div className="text-center">
                   <h3 className="mb-4 font-bakbak text-xl text-baoWhite">
                     Supply
@@ -212,65 +309,106 @@ export function BorrowAndMint() {
                 </div>
               </div>
 
-              <div className="flex w-full justify-center">
-                <Button
-                  variant="solid"
-                  color="baoPink"
-                  href="https://app.baofinance.io/vaults"
-                  className="px-8 py-3 text-lg"
-                >
-                  BORROW NOW
-                </Button>
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <div className="relative flex flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              {/* Borrow Strategies - Updated to column layout */}
+              <div className="mb-8 w-full">
                 <h3 className="mb-4 font-bakbak text-2xl text-baoWhite">
                   Borrow Strategies
                 </h3>
-                <div className="flex w-full">
-                  <div className="w-1/3 pr-4">
-                    <ul className="space-y-2">
-                      {borrowStrategies.map((strategy, index) => (
-                        <li key={index}>
-                          <div
-                            className={`w-full rounded-md px-4 py-2 text-left text-sm transition-colors ${
-                              hoveredStrategy === index
-                                ? 'bg-baoPink/10 text-baoPink'
-                                : 'bg-baoBlack text-baoWhite'
-                            } cursor-pointer outline outline-1 outline-baoPink/50 hover:bg-baoPink/5 hover:text-baoPink`}
-                            onMouseEnter={() => setHoveredStrategy(index)}
-                          >
-                            {strategy}
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
+                <div className="flex gap-8">
+                  {/* Strategy List */}
+                  <div className="w-2/5">
+                    {borrowStrategies.map((strategy, index) => (
+                      <div
+                        key={index}
+                        className={`mb-4 flex cursor-pointer items-center gap-4 rounded-lg p-4 outline outline-1 transition-all duration-300 ${
+                          hoveredStrategy === index
+                            ? 'bg-baoPink/10 text-baoWhite outline-baoPink'
+                            : 'text-baoWhite outline-baoPink/50 hover:bg-baoPink/5 hover:outline-baoPink'
+                        }`}
+                        onMouseEnter={() => setHoveredStrategy(index)}
+                      >
+                        <FontAwesomeIcon
+                          icon={strategy.icon}
+                          className="h-6 w-6 shrink-0 text-baoPink"
+                        />
+                        <span className="whitespace-nowrap font-semibold">
+                          {strategy.name}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                  <div className="w-2/3 pl-4">
-                    <div className="h-full overflow-y-auto rounded-md bg-baoBlack p-4 text-left text-sm text-baoWhite outline outline-1 outline-baoPink/50">
-                      {strategyExplanations[hoveredStrategy]}
-                    </div>
+
+                  {/* Strategy Details */}
+                  <div className="w-3/5 rounded-lg bg-baoBlack p-6 outline outline-1 outline-baoPink/50">
+                    {borrowStrategies.map((strategy, index) => (
+                      <div
+                        key={index}
+                        className={`transition-opacity duration-300 ${
+                          hoveredStrategy === index
+                            ? 'opacity-100'
+                            : 'hidden opacity-0'
+                        }`}
+                      >
+                        <h4 className="mb-4 text-lg font-semibold text-baoWhite">
+                          {strategy.name}
+                        </h4>
+                        <div className="space-y-4">
+                          {strategy.steps.map((step, stepIndex) => (
+                            <div
+                              key={stepIndex}
+                              className="flex items-center gap-3"
+                            >
+                              <FontAwesomeIcon
+                                icon={step.icon}
+                                className="h-5 w-5 text-baoPink"
+                              />
+                              <span className="text-sm text-baoWhite">
+                                {step.text}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
+
+              {/* Moved BORROW NOW button below strategies */}
+              <Button
+                variant="solid"
+                color="baoPink"
+                href="https://app.baofinance.io/vaults"
+                className="px-8 py-3 text-lg"
+              >
+                BORROW NOW
+              </Button>
             </div>
           </div>
 
           {/* Mint Section */}
           <div className="flex flex-col">
-            <div className="relative flex flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-              <h2 className="mb-2 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
+            <div className="relative flex h-full flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              {/* Large Coming Soon Banner - adjusted positioning */}
+              <div className="absolute -right-10 top-4 z-30 flex items-center justify-center">
+                <div className="rotate-[45deg] transform">
+                  <div className="rounded-sm bg-baoPink/80 px-4 py-1.5 text-base font-bold uppercase tracking-widest text-baoWhite shadow-lg outline outline-1 outline-offset-2 outline-baoPink/60">
+                    Coming Soon
+                  </div>
+                </div>
+              </div>
+
+              <h2 className="relative z-20 mb-2 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
                 MINT
               </h2>
-              <div className="mb-6 inline-block bg-baoWhite px-4 py-2">
+              <div className="relative z-20 mb-6 inline-block bg-baoWhite px-4 py-2">
                 <p className="font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoBlack">
                   PEGGED OR LEVERAGE TOKENS
                 </p>
               </div>
-              {/* Numbered list with expand/collapse effect */}
-              <div className="flex w-full justify-between gap-4">
+
+              {/* Numbered list - now interactive */}
+              <div className="relative z-20 mb-8 flex w-full justify-between gap-4">
                 {mintSteps.map((step, index) => (
                   <div
                     key={index}
@@ -303,21 +441,9 @@ export function BorrowAndMint() {
                   </div>
                 ))}
               </div>
-            </div>
 
-            {/* Coming Soon Banner */}
-            <div className="my-6 rounded-lg bg-baoPink p-4 text-center text-baoWhite">
-              {' '}
-              {/* Reduced padding and margin */}
-              <span className="font-bakbak text-3xl font-bold uppercase">
-                {' '}
-                {/* Reduced font size */}
-                COMING SOON
-              </span>
-            </div>
-
-            <div className="flex-grow">
-              <div className="h-full rounded-lg bg-baoBlack p-6 shadow-lg outline outline-1 outline-baoWhite/20">
+              {/* Features list */}
+              <div className="relative z-20 mb-8 w-full rounded-lg bg-baoBlack p-6 shadow-lg outline outline-1 outline-baoWhite/20">
                 <ul className="space-y-4">
                   {mintFeatures.map((feature, index) => (
                     <li key={index} className="flex items-center">
