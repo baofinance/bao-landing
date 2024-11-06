@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { Container } from '@/components/Container'
 import { AnimatedBackground } from '../AnimatedBackground'
 import { Button } from '@/components/Button'
+import { faChevronDown } from '@fortawesome/pro-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export function Hero() {
   const roles = useMemo(() => ['REBELS', 'BUILDERS', 'DREAMERS'], [])
@@ -87,6 +89,13 @@ export function Hero() {
           </div>
         </div>
       </Container>
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <FontAwesomeIcon
+          icon={faChevronDown}
+          className="h-6 w-6 text-baoPink"
+        />
+      </div>
     </div>
   )
 }

@@ -221,7 +221,7 @@ export function SecondaryFeatures() {
                     className="mb-2"
                   />
                 </div>
-                <div className="mb-8 inline-block bg-baoBlack px-4 py-2">
+                <div className="mb-8 inline-block bg-baoPink px-4 py-2">
                   <h3 className="text-center font-bakbak text-[clamp(18px,2.5vw,24px)] font-bold uppercase text-baoWhite">
                     TOKEN
                   </h3>
