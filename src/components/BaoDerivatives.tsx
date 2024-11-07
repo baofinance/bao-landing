@@ -110,7 +110,12 @@ export function BaoDerivatives() {
             },
             {
               logo: <BaoQuestionLogo />,
-              title: 'bao???',
+              title: (
+                <span>
+                  bao
+                  <span className="select-none blur-[8px]">xyz</span>
+                </span>
+              ),
               description:
                 "Unleash the future: Weather-proof your portfolio, tokenize real estate, or trade sentiment. With diverse data feeds, we're crafting financial instruments that pulse with real-world rhythms. Welcome to DeFi's new frontier.",
               buttons: ['Explore Ideas', 'Suggest a Derivative'],
