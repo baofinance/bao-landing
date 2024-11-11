@@ -1,1 +1,10 @@
-{"data":{"site":{"siteMetadata":{"title":"Bao Finance","siteUrl":"https://bao.finance"}}}}
+{
+  "data": {
+    "site": {
+      "siteMetadata": {
+        "title": "Bao Finance",
+        "siteUrl": "https://bao.finance"
+      }
+    }
+  }
+}

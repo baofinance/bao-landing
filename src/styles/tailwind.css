@@ -32,13 +32,13 @@
 }
 
 .stroke-white {
-	-webkit-text-fill-color: transparent;
-	-webkit-text-stroke-color: #faf2e3;
-	-webkit-text-stroke-width: 1px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: #faf2e3;
+  -webkit-text-stroke-width: 1px;
 }
 
 .stroke-red {
-	-webkit-text-fill-color: transparent;
-	-webkit-text-stroke-color: #e21a53;
-	-webkit-text-stroke-width: 1px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: #e21a53;
+  -webkit-text-stroke-width: 1px;
 }
