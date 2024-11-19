@@ -6,13 +6,34 @@ import {
   FaBalanceScale,
   FaChartLine,
 } from 'react-icons/fa'
+import { Container } from '../Container'
+import { faShieldCheck } from '@fortawesome/pro-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const securityFeatures = [
   {
     icon: FaShieldAlt,
     title: 'Audits',
-    description:
-      'All contracts are continuously monitored by white hat hackers since 2021.',
+    description: (
+      <div className="flex flex-col items-center gap-4">
+        <p>
+          Our contracts are built on battle-tested foundations from industry
+          leaders like Compound, Inverse, and Curve. Each implementation is
+          thoroughly reviewed by the Immunefi white hat community, ensuring the
+          highest standards of security through continuous monitoring and
+          auditing.
+        </p>
+        <div className="flex items-center gap-4">
+          <Image
+            src="/images/logos/immunefi.svg"
+            alt="Immunefi Logo"
+            width={120}
+            height={24}
+            className="invert"
+          />
+        </div>
+      </div>
+    ),
   },
   {
     icon: FaLock,
@@ -34,7 +55,7 @@ const securityFeatures = [
   },
 ]
 
-const Security: React.FC = () => {
+export function Security() {
   return (
     <section className="relative overflow-hidden bg-baoBlack py-24 text-baoWhite">
       {/* Animated waves background */}
@@ -91,36 +112,32 @@ const Security: React.FC = () => {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+      <Container>
+        <div className="relative z-10 text-center">
           <h2 className="mb-4 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
-            SECURED
+            SECURE
           </h2>
           <div className="mb-8 inline-block bg-baoPink px-4 py-2">
-            <p className="text-center font-bakbak text-[clamp(16px,1.8vw,22px)] uppercase text-baoWhite">
+            <p className="font-bakbak text-[clamp(14px,1.5vw,22px)] uppercase text-baoWhite">
               BY DESIGN
             </p>
           </div>
-        </div>
-        <div className="mt-8">
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-            {securityFeatures.map((feature, index) => (
+
+          {/* Updated grid layout to make boxes wider */}
+          <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2">
+            {securityFeatures.map((feature) => (
               <div
-                key={index}
-                className="relative flex flex-col items-center rounded-lg bg-baoBlack p-8 pt-16 text-center shadow-lg outline outline-1 outline-baoPink/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                key={feature.title}
+                className="flex flex-col items-center rounded-lg bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20"
               >
-                <div className="absolute -top-8 left-1/2 flex h-16 w-16 -translate-x-1/2 items-center justify-center rounded-full bg-baoPink">
-                  <feature.icon className="text-3xl text-baoWhite" />
-                </div>
-                <h3 className="mb-2 text-center text-xl font-semibold">
-                  {feature.title}
-                </h3>
-                <p className="text-center text-sm">{feature.description}</p>
+                <feature.icon className="mb-4 text-4xl text-baoPink" />
+                <h3 className="mb-4 text-xl font-bold">{feature.title}</h3>
+                <div className="text-sm opacity-80">{feature.description}</div>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </Container>
 
       <style jsx>{`
         @keyframes waveAnimation {
