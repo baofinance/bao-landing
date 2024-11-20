@@ -242,12 +242,12 @@ export function BorrowAndMint() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-8">
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Borrow Section */}
           <div className="flex flex-col">
-            <div className="relative flex h-full flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-              <h2 className="mb-2 text-center font-bakbak text-[clamp(24px,6vw,80px)] font-bold uppercase leading-none text-baoWhite">
+            <div className="relative flex h-full flex-col items-center rounded-xl bg-baoBlack p-4 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8">
+              <h2 className="mb-2 text-center font-bakbak text-[clamp(24px,6vw,60px)] font-bold uppercase leading-none text-baoWhite">
                 BORROW
               </h2>
               <div className="mb-6 inline-block bg-baoWhite px-4 py-2">
@@ -257,19 +257,19 @@ export function BorrowAndMint() {
               </div>
 
               {/* Supply and Borrow headers with hover effect logos */}
-              <div className="mb-8 flex w-full justify-between">
+              <div className="mb-8 flex w-full flex-col justify-between gap-4 sm:flex-row sm:gap-0">
                 <div className="text-center">
                   <h3 className="mb-4 font-bakbak text-xl text-baoWhite">
                     Supply
                   </h3>
-                  <div className="flex justify-center space-x-2">
+                  <div className="flex flex-wrap justify-center gap-2">
                     {supplyTokens.map((token, index) => (
                       <div key={token.name} className="group relative pb-4">
                         <Image
                           src={token.imageSrc}
                           alt={`${token.name} Logo`}
-                          width={50}
-                          height={50}
+                          width={40}
+                          height={40}
                           className="transition-transform duration-300 group-hover:scale-125"
                         />
                         <span className="absolute left-1/2 top-full mt-0.5 hidden -translate-x-1/2 whitespace-nowrap rounded bg-baoPink px-2 py-1 text-xs text-white transition-opacity duration-300 group-hover:block">
@@ -283,40 +283,33 @@ export function BorrowAndMint() {
                   <h3 className="mb-4 font-bakbak text-xl text-baoWhite">
                     Borrow
                   </h3>
-                  <div className="flex justify-center space-x-2">
+                  <div className="flex flex-wrap justify-center gap-2">
                     {borrowTokens.map((token, index) => (
                       <div key={token.name} className="group relative pb-4">
                         <Image
                           src={token.imageSrc}
                           alt={`${token.name} Logo`}
-                          width={50}
-                          height={50}
+                          width={40}
+                          height={40}
                           className="transition-transform duration-300 group-hover:scale-125"
                         />
                         <span className="absolute left-1/2 top-full mt-0.5 hidden -translate-x-1/2 whitespace-nowrap rounded bg-baoPink px-2 py-1 text-xs text-white transition-opacity duration-300 group-hover:block">
                           {token.name}
                         </span>
-                        {token.comingSoon && (
-                          <div className="absolute inset-0 flex items-center justify-center rounded-full bg-baoPink bg-opacity-80">
-                            <span className="text-xs font-bold text-white">
-                              COMING SOON
-                            </span>
-                          </div>
-                        )}
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Borrow Strategies - Updated to column layout */}
+              {/* Borrow Strategies */}
               <div className="mb-8 w-full">
                 <h3 className="mb-4 font-bakbak text-2xl text-baoWhite">
                   Borrow Strategies
                 </h3>
-                <div className="flex gap-8">
+                <div className="flex flex-col gap-4 lg:flex-row lg:gap-8">
                   {/* Strategy List */}
-                  <div className="w-2/5">
+                  <div className="w-full lg:w-2/5">
                     {borrowStrategies.map((strategy, index) => (
                       <div
                         key={index}
@@ -339,7 +332,7 @@ export function BorrowAndMint() {
                   </div>
 
                   {/* Strategy Details */}
-                  <div className="w-3/5 rounded-lg bg-baoBlack p-6 outline outline-1 outline-baoPink/50">
+                  <div className="w-full rounded-lg bg-baoBlack p-4 outline outline-1 outline-baoPink/50 sm:p-6 lg:w-3/5">
                     {borrowStrategies.map((strategy, index) => (
                       <div
                         key={index}
@@ -374,7 +367,6 @@ export function BorrowAndMint() {
                 </div>
               </div>
 
-              {/* Moved BORROW NOW button below strategies */}
               <Button
                 variant="solid"
                 color="baoPink"
@@ -388,7 +380,7 @@ export function BorrowAndMint() {
 
           {/* Mint Section */}
           <div className="flex flex-col">
-            <div className="relative flex h-full flex-col items-center rounded-xl bg-baoBlack p-8 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div className="relative flex h-full flex-col items-center rounded-xl bg-baoBlack p-4 text-center shadow-lg outline outline-1 outline-baoWhite/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8">
               {/* Large Coming Soon Banner - adjusted positioning */}
               <div className="absolute -right-10 top-4 z-30 flex items-center justify-center">
                 <div className="rotate-[45deg] transform">
