@@ -7,8 +7,6 @@ import {
   FaChartLine,
 } from 'react-icons/fa'
 import { Container } from '../Container'
-import { faShieldCheck } from '@fortawesome/pro-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const securityFeatures = [
   {
